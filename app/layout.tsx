@@ -10,6 +10,14 @@ import ThemeSwitcher from './components/ThemeSwitcher'
 export const metadata: Metadata = {
   title: 'Helveticampbell',
   description: 'Design Portfolio',
+  icons: {
+    icon: [
+      {
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
+      }
+    ]
+  }
 }
 
 export default function RootLayout({
@@ -18,14 +26,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen">
         <ThemeProvider 
           attribute="data-theme" 
           defaultTheme="system" 
-          enableSystem 
-          forcedTheme="light"
-          disableTransitionOnChange
+          enableSystem
         >
           {/* Background stays mounted during navigation */}
           <ParallaxBackground />
