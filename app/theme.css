@@ -1,0 +1,95 @@
+:root {
+  /* Base colors */
+  --color-primary: 220 14% 96%;
+  --color-secondary: 220 13% 91%;
+  --color-tertiary: 220 12% 86%;
+  
+  /* Text colors - Light mode */
+  --color-text-heading: 220 10% 5%;
+  --color-text-primary: 220 10% 8%;
+  --color-text-secondary: 220 10% 15%;
+  --color-text-tertiary: 220 10% 25%;
+  
+  /* Background colors */
+  --color-bg-primary: 220 14% 96%;
+  --color-bg-secondary: 220 13% 91%;
+  --color-bg-tertiary: 220 12% 86%;
+  
+  /* Container colors */
+  --color-container-bg: 0 0% 100%;
+  --color-container-opacity: 0.4;
+  --color-container-blur: 12px;
+  
+  /* Shadow colors */
+  --color-shadow: 220 10% 20%;
+  --color-shadow-opacity: 0.1;
+  --color-shadow-hover-opacity: 0.15;
+  
+  /* Accent colors */
+  --color-accent: 220 100% 50%;
+  --color-accent-hover: 220 100% 45%;
+  
+  /* Animation Tokens */
+  --transition-duration-fast: 75ms;
+  --transition-duration-normal: 100ms;
+  --transition-duration-slow: 150ms;
+  
+  --transition-timing-enter: cubic-bezier(0.4, 0, 0.2, 1); /* ease-out for entering */
+  --transition-timing-leave: cubic-bezier(0.4, 0, 1, 1);   /* ease-in for leaving */
+  
+  --scale-enter-from: 0.95;
+  --scale-enter-to: 1;
+  --scale-leave-from: 1;
+  --scale-leave-to: 0.95;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-primary: 220 14% 20%;
+  --color-secondary: 220 13% 25%;
+  --color-tertiary: 220 12% 30%;
+  
+  /* Text colors - Dark mode */
+  --color-text-heading: 220 10% 95%;
+  --color-text-primary: 220 10% 90%;
+  --color-text-secondary: 220 10% 80%;
+  --color-text-tertiary: 220 10% 65%;
+  
+  --color-bg-primary: 220 14% 20%;
+  --color-bg-secondary: 220 13% 25%;
+  --color-bg-tertiary: 220 12% 30%;
+  
+  --color-container-bg: 0 0% 100%;
+  --color-container-opacity: 0.2;
+  
+  --color-shadow: 220 10% 0%;
+  --color-shadow-opacity: 0.2;
+  --color-shadow-hover-opacity: 0.25;
+}
+
+/* Warm mode */
+[data-theme="warm"] {
+  --color-primary: 30 14% 96%;
+  --color-secondary: 30 13% 91%;
+  --color-tertiary: 30 12% 86%;
+  
+  /* Text colors - Warm mode */
+  --color-text-heading: 30 10% 5%;
+  --color-text-primary: 30 10% 8%;
+  --color-text-secondary: 30 10% 15%;
+  --color-text-tertiary: 30 10% 25%;
+  
+  --color-bg-primary: 30 14% 96%;
+  --color-bg-secondary: 30 13% 91%;
+  --color-bg-tertiary: 30 12% 86%;
+  
+  --color-container-bg: 0 0% 100%;
+  --color-container-opacity: 0.4;
+  
+  --color-shadow: 30 10% 20%;
+  --color-shadow-opacity: 0.1;
+  --color-shadow-hover-opacity: 0.15;
+  
+  --color-accent: 30 100% 50%;
+  --color-accent-hover: 30 100% 45%;
+} 
