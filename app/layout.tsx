@@ -30,8 +30,11 @@ export default function RootLayout({
       <body className="min-h-screen">
         <ThemeProvider 
           attribute="data-theme" 
-          defaultTheme="system" 
+          defaultTheme="system"
           enableSystem
+          storageKey="theme"
+          disableTransitionOnChange
+          enableColorScheme={false}
         >
           {/* Background stays mounted during navigation */}
           <ParallaxBackground />

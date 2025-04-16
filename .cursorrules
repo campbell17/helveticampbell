@@ -268,6 +268,7 @@ React Components Documentation: https://headlessui.com/react
 When implementing HeadlessUI components:
 - ALWAYS check component documentation for built-in props and functionality BEFORE implementing custom solutions
 - Never reinvent functionality that exists natively in the component (e.g., use `anchor` prop for positioning instead of custom CSS)
+- Always use the latest documented import patterns (e.g., use `MenuButton` instead of `Menu.Button`)
 - Always check the component-specific documentation (e.g., https://headlessui.com/react/menu for Menu components)
 - Use the official examples as starting points
 - Follow the documented patterns for state management
@@ -286,6 +287,8 @@ When implementing HeadlessUI components:
 2. Documentation Priorities:
    - Official docs over blog posts or tutorials
    - Latest version documentation over older versions
+   - Latest documented patterns over deprecated ones
+   - Latest import methods over nested properties
    - Accessibility guidelines from component libraries
    - TypeScript types from official definitions
 
@@ -295,3 +298,6 @@ When implementing HeadlessUI components:
    - Follow keyboard navigation patterns
    - Implement proper accessibility features
    - Use official examples as reference
+   - Never use deprecated patterns even if they still work
+   - Always use named imports instead of nested properties when available
+   - Check the "Basic example" section first for the canonical way to implement
