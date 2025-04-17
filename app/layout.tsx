@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { ThemeProvider } from 'next-themes'
+import Link from 'next/link'
+import { H1 } from './components/Typography'
 
 // These styles apply to every route in the application
 import './globals.css'
@@ -27,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen overflow-x-hidden">
+      <body className="min-h-screen overflow-x-hidden bg-bg-primary text-text-primary">
         <ThemeProvider 
           attribute="data-theme" 
           defaultTheme="system"
@@ -44,24 +45,15 @@ export default function RootLayout({
             {/* Fixed navigation sidebar */}
             <div className="fixed top-8 bottom-8 left-8 w-64 z-10">
               <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full">
-                <h1 className="font-helvetica text-2xl font-bold text-[hsl(var(--color-text-heading))] mb-10 flex-none">HC</h1>
+                <H1 className="mb-10 flex-none">HC</H1>
                 <div className="flex flex-col gap-6 mb-6 flex-1">
-                  <Link 
-                    href="/" 
-                    className="nav-link block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color,background-color] duration-[var(--duration-50)]"
-                  >
+                  <Link href="/" className="nav-link">
                     About
                   </Link>
-                  <Link 
-                    href="/work" 
-                    className="nav-link block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color,background-color] duration-[var(--duration-50)]"
-                  >
+                  <Link href="/work" className="nav-link">
                     Work
                   </Link>
-                  <Link 
-                    href="/writing" 
-                    className="nav-link block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color,background-color] duration-[var(--duration-50)]"
-                  >
+                  <Link href="/writing" className="nav-link">
                     Writing
                   </Link>
                 </div>

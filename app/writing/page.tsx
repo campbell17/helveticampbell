@@ -1,7 +1,9 @@
-export default function Writing() {
+import { H1 } from '../components/Typography';
+
+export default function WritingPage() {
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-8">Writing</h1>
+    <div className="rounded-[var(--container-radius)] p-8">
+      <H1 className="mb-8">Writing</H1>
       
       <div className="space-y-8">
         <article className="rounded-lg p-6 bg-black/20 backdrop-blur">
@@ -12,5 +14,5 @@ export default function Writing() {
         {/* Add more articles as needed */}
       </div>
     </div>
-  )
+  );
 } 

@@ -1,7 +1,9 @@
-export default function Work() {
+import { H1 } from '../components/Typography';
+
+export default function WorkPage() {
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-8">Selected Work</h1>
+    <div className="rounded-[var(--container-radius)] p-8">
+      <H1 className="mb-8">Selected Work</H1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="rounded-lg p-6 bg-black/20 backdrop-blur">

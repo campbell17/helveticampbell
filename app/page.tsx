@@ -1,6 +1,7 @@
 'use client'
 
 import { useScrollAnimation } from './hooks/useScrollAnimation'
+import { H1 } from './components/Typography'
 
 function GridItem({ index }: { index: number }) {
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({
@@ -35,10 +36,10 @@ function GridItem({ index }: { index: number }) {
 
 export default function HomePage() {
   return (
-    <div className="min-h-full">
+    <div className="rounded-[var(--container-radius)] p-8">
+      <H1 className="mb-4">Work</H1>
       {/* Page header */}
       <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">Work</h1>
         <p className="text-[hsl(var(--color-text-secondary))] text-lg">
           A collection of selected projects and experiments.
         </p>
