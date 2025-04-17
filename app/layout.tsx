@@ -46,38 +46,40 @@ export default function RootLayout({
           <Header />
           
           {/* Layout container */}
-          <div className="relative">
-            {/* Fixed navigation sidebar */}
-            <div className="fixed top-12 bottom-12 left-8 w-64 z-50">
-              <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full">
-                {/* <H1 className="mb-10 flex-none">HC</H1> */}
-                <div className="flex flex-col gap-2 mb-6 flex-1">
-                  <Link href="/" className="nav-link">
-                    About
-                  </Link>
-                  <Link href="/work" className="nav-link">
-                    Work
-                  </Link>
-                  <Link href="/writing" className="nav-link">
-                    Writing
-                  </Link>
+          <div className="min-h-screen flex flex-col">
+            <div className="flex-1 relative">
+              {/* Fixed navigation sidebar */}
+              <div className="fixed top-12 bottom-12 left-8 w-64 z-50">
+                <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full">
+                  {/* <H1 className="mb-10 flex-none">HC</H1> */}
+                  <div className="flex flex-col gap-2 mb-6 flex-1">
+                    <Link href="/" className="nav-link">
+                      About
+                    </Link>
+                    <Link href="/work" className="nav-link">
+                      Work
+                    </Link>
+                    <Link href="/writing" className="nav-link">
+                      Writing
+                    </Link>
+                  </div>
+                  <div className="flex-none">
+                    <ThemeSwitcher />
+                  </div>
+                </nav>
+              </div>
+
+              {/* Main content area */}
+              <main className="pl-80 pr-8 pt-16 pb-16">
+                <div className="max-w-[1200px] mx-auto">
+                  {children}
                 </div>
-                <div className="flex-none">
-                  <ThemeSwitcher />
-                </div>
-              </nav>
+              </main>
             </div>
 
-            {/* Main content area */}
-            <main className="pl-80 pr-8 pt-16 pb-16 min-h-screen">
-              <div className="max-w-[1200px] mx-auto">
-                {children}
-              </div>
-            </main>
+            {/* Footer */}
+            <Footer />
           </div>
-
-          {/* Fixed footer */}
-          <Footer />
         </ThemeProvider>
       </body>
     </html>

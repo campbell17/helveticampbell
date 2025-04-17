@@ -2,9 +2,9 @@
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 h-16 bg-black z-40">
+    <footer className="w-full bg-black relative">
       {/* SVG edge */}
-      <div className="absolute top-0 left-0 right-0 h-8 -mt-4">
+      <div className="absolute -top-8 left-0 right-0 h-8 overflow-visible">
         <svg 
           width="100%" 
           height="100%" 
@@ -17,7 +17,7 @@ export default function Footer() {
       </div>
       
       {/* Content area */}
-      <div className="h-full px-8 py-4">
+      <div className="h-64 px-8 py-4">
         {/* Add your footer content here */}
       </div>
     </footer>
