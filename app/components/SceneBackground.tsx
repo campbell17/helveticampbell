@@ -17,7 +17,7 @@ export default function SceneBackground() {
   const cameraRef = useRef<THREE.PerspectiveCamera>(null)
   const rendererRef = useRef<THREE.WebGLRenderer>(null)
   const animationFrameRef = useRef<number | null>(null)
-  const initialCameraY = useRef(400) // Lowered from 600 to 400
+  const initialCameraY = useRef(300) // Lowered from 400 to 300
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -29,7 +29,7 @@ export default function SceneBackground() {
     sceneRef.current = scene
     
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000)
-    camera.position.set(150, initialCameraY.current, 400)
+    camera.position.set(100, initialCameraY.current, 300) // Reduced X from 150 to 100, Z from 400 to 300
     camera.lookAt(0, -150, 0)
     cameraRef.current = camera
     
@@ -54,20 +54,20 @@ export default function SceneBackground() {
     
     containerRef.current.appendChild(canvas)
     
-    // Create grid
+    // Create grid with adjusted size
     const viewportHeight = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * 2
     const aspectRatio = window.innerWidth / window.innerHeight
-    const size = Math.max(800, viewportHeight * aspectRatio * 800)
-    const divisions = Math.floor(size / 20)
+    const size = Math.max(600, viewportHeight * aspectRatio * 600) // Reduced from 800 to 600
+    const divisions = Math.floor(size / 15) // Reduced from 20 to 15 for more grid lines
 
     const gridHelper = new THREE.GridHelper(
       size,
       divisions,
       new THREE.Color('#FFFFFF'),
-      new THREE.Color('#999999')  // Lighter secondary color
+      new THREE.Color('#999999')
     )
     gridHelper.material.transparent = true
-    gridHelper.material.opacity = 0.15  // Lower base opacity
+    gridHelper.material.opacity = 0.15
     gridHelper.position.y = -150
 
     // Create a gradient texture for fading
