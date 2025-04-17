@@ -42,6 +42,7 @@ export default function SceneBackground() {
   const rendererRef = useRef<THREE.WebGLRenderer>(null)
   const animationFrameRef = useRef<number | null>(null)
   const initialCameraY = useRef(300)
+  const maxScrollDistance = useRef(1440) // Maximum scroll distance in pixels
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -196,8 +197,12 @@ export default function SceneBackground() {
 
       // Smoothly interpolate scroll position
       currentScrollY += (targetScrollY - currentScrollY) * 0.05
+      
+      // Limit scroll distance
+      const limitedScrollY = Math.min(currentScrollY, maxScrollDistance.current)
+      
       // SENSITIVITY
-      camera.position.y = initialCameraY.current + (-currentScrollY * 0.15)
+      camera.position.y = initialCameraY.current + (-limitedScrollY * 0.15)
 
       camera.lookAt(0, -150, 0)
       
