@@ -9,7 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        helvetica: ['Helvetica', 'Arial', 'sans-serif'],
+        display: ['Ubuntu', 'sans-serif'],
+        body: ['Zen Antique Soft', 'serif'],
       },
     },
   },

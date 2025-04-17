@@ -1,16 +1,29 @@
 @import 'tailwindcss';
 @import './theme.css';
 
+.heading-color {
+  color: hsl(var(--color-text-heading));
+}
+
+.body-color {
+  color: hsl(var(--color-text-primary));
+}
+
 body {
-  @apply antialiased;
+  @apply antialiased text-xl;
   background-color: hsl(var(--color-bg-primary));
   color: hsl(var(--color-text-primary));
   overflow-x: hidden;
 }
 
+p {
+  @apply mb-6 font-body;
+}
+
 /* Navigation */
 .nav-link {
-  @apply block px-4 py-2 text-lg rounded-full text-text-primary transition-all duration-50 ease-in-out;
+  @apply block px-4 py-2 text-lg rounded-full transition-all duration-50 ease-in-out;
+  color: hsl(var(--color-text-primary));
   border: var(--nav-link-border-width) solid transparent;
 }
 

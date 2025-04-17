@@ -1,55 +1,62 @@
 'use client'
 
-import { useScrollAnimation } from './hooks/useScrollAnimation'
-import { H1 } from './components/Typography'
-
-function GridItem({ index }: { index: number }) {
-  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({
-    threshold: 0.2,
-    rootMargin: '50px'
-  })
-
-  return (
-    <div 
-      ref={ref}
-      className={`
-        relative aspect-square 
-        bg-[hsl(var(--color-container-bg)/0.3)] 
-        rounded-[var(--container-radius)] 
-        overflow-hidden 
-        group
-        transition-all
-        duration-[var(--duration-300)]
-        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-      `}
-    >
-      {/* Placeholder content */}
-      <div className="absolute inset-0 flex items-center justify-center text-[hsl(var(--color-text-secondary))]">
-        {index + 1}
-      </div>
-
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-[hsl(var(--color-container-bg)/0.2)] opacity-0 group-hover:opacity-100 transition-opacity duration-[var(--duration-150)]" />
-    </div>
-  )
-}
+import { H1, H2 } from './components/Typography'
 
 export default function HomePage() {
   return (
-    <div className="rounded-[var(--container-radius)] p-8">
-      <H1 className="mb-4">Work</H1>
-      {/* Page header */}
-      <div className="mb-12">
-        <p className="text-[hsl(var(--color-text-secondary))] text-lg">
-          A collection of selected projects and experiments.
-        </p>
+    <div className="max-w-3xl mx-auto px-8 py-12">
+      <H1 className="mb-8">About Me</H1>
+      
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae massa fermentum efficitur.
+        Integer eget ligula in nisi pellentesque tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus 
+        et ultrices posuere cubilia curae.
+      </p>
+
+      <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-[hsl(var(--color-container-bg)/0.3)] mb-12">
+        <div className="absolute inset-0 flex items-center justify-center text-[hsl(var(--color-text-secondary))]">
+          Hero Image
+        </div>
       </div>
 
-      {/* Grid of items */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pb-8">
-        {Array.from({ length: 40 }).map((_, index) => (
-          <GridItem key={index} index={index} />
-        ))}
+      <div className="prose prose-invert max-w-none">
+        <p>
+          Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Vivamus magna justo, lacinia eget 
+          consectetur sed, convallis at tellus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+          Curabitur aliquet quam id dui posuere blandit. Nulla quis lorem ut libero malesuada feugiat.
+        </p>
+
+        <p>
+          Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+          Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis in faucibus orci luctus et 
+          ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
+        </p>
+
+        <p>
+          Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis in 
+          faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel.
+          Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.
+        </p>
+
+        <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-[hsl(var(--color-container-bg)/0.3)] my-12">
+          <div className="absolute inset-0 flex items-center justify-center text-[hsl(var(--color-text-secondary))]">
+            Secondary Image
+          </div>
+        </div>
+
+        <p>
+          Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ac diam sit amet quam 
+          vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor 
+          accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+        </p>
+
+        <p>
+          Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. 
+          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
+          Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Nulla porttitor 
+          accumsan tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere 
+          cubilia curae.
+        </p>
       </div>
     </div>
   )

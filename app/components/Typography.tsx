@@ -10,7 +10,7 @@ interface TextLinkProps extends TextProps {
 
 export function H1({ children, className = '' }: TextProps) {
   return (
-    <h1 className={`text-4xl font-bold text-text-heading font-helvetica ${className}`}>
+    <h1 className={`text-6xl font-[400] tracking-tight text-[hsl(var(--color-text-heading))] font-display ${className}`}>
       {children}
     </h1>
   );
@@ -18,7 +18,7 @@ export function H1({ children, className = '' }: TextProps) {
 
 export function H2({ children, className = '' }: TextProps) {
   return (
-    <h2 className={`text-3xl font-bold text-text-heading font-helvetica ${className}`}>
+    <h2 className={`text-3xl font-bold text-[hsl(var(--color-text-heading))] font-display ${className}`}>
       {children}
     </h2>
   );
@@ -26,7 +26,7 @@ export function H2({ children, className = '' }: TextProps) {
 
 export function Caption({ children, className = '' }: TextProps) {
   return (
-    <p className={`text-sm text-text-secondary ${className}`}>
+    <p className={`text-sm text-[hsl(var(--color-text-secondary))] ${className}`}>
       {children}
     </p>
   );
@@ -34,7 +34,7 @@ export function Caption({ children, className = '' }: TextProps) {
 
 export function Overline({ children, className = '' }: TextProps) {
   return (
-    <p className={`text-xs uppercase tracking-wider text-text-tertiary ${className}`}>
+    <p className={`text-xs uppercase tracking-wider text-[hsl(var(--color-text-tertiary))] ${className}`}>
       {children}
     </p>
   );
@@ -49,7 +49,7 @@ export function TextLink({ children, href, external = false, className = '' }: T
   return (
     <a 
       href={href}
-      className={`text-text-primary hover:text-text-heading underline underline-offset-4 transition-colors ${className}`}
+      className={`text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] underline underline-offset-4 transition-colors ${className}`}
       {...externalProps}
     >
       {children}
