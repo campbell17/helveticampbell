@@ -1,50 +1,92 @@
 'use client'
 
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
+import * as THREE from 'three'
 
 export default function ParallaxBackground() {
-  const bgRef = useRef<HTMLDivElement>(null)
-
-  useLayoutEffect(() => {
+  const containerRef = useRef<HTMLDivElement>(null)
+  
+  useEffect(() => {
+    if (!containerRef.current) return
+    
+    // Setup
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setClearColor(0x000000, 0)
+    containerRef.current.appendChild(renderer.domElement)
+    
+    // Create infinite grid
+    const size = 200
+    const divisions = 40
+    const gridHelper = new THREE.GridHelper(size, divisions, 
+      new THREE.Color('hsl(var(--color-text-primary))'),
+      new THREE.Color('hsl(var(--color-text-primary))')
+    )
+    gridHelper.material.opacity = 0.15
+    gridHelper.material.transparent = true
+    scene.add(gridHelper)
+    
+    // Position camera
+    camera.position.set(0, 30, 100)
+    camera.lookAt(0, 0, 0)
+    
+    // Animation
+    let targetRotationX = 0
+    let targetRotationY = 0
+    let currentRotationX = 0
+    let currentRotationY = 0
+    
+    const animate = () => {
+      requestAnimationFrame(animate)
+      
+      // Smooth rotation
+      currentRotationX += (targetRotationX - currentRotationX) * 0.05
+      currentRotationY += (targetRotationY - currentRotationY) * 0.05
+      
+      gridHelper.rotation.x = currentRotationX
+      gridHelper.rotation.y = currentRotationY
+      
+      renderer.render(scene, camera)
+    }
+    
+    // Handle mouse movement
     const handleMouseMove = (e: MouseEvent) => {
-      if (!bgRef.current) return
-
       const { clientX, clientY } = e
       const { innerWidth, innerHeight } = window
       
-      // Use larger pixel values for more obvious movement
-      const moveX = ((clientX - innerWidth / 2) / innerWidth) * 8 // 50px max movement
-      const moveY = ((clientY - innerHeight / 2) / innerHeight) * 4
-
-      requestAnimationFrame(() => {
-        if (bgRef.current) {
-          bgRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`
-        }
-      })
+      targetRotationY = ((clientX - innerWidth / 2) / innerWidth) * 0.5
+      targetRotationX = ((clientY - innerHeight / 2) / innerHeight) * 0.2
     }
-
+    
+    // Handle resize
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth, window.innerHeight)
+    }
+    
     window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    window.addEventListener('resize', handleResize)
+    
+    animate()
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('resize', handleResize)
+      containerRef.current?.removeChild(renderer.domElement)
+      renderer.dispose()
+    }
   }, [])
-
+  
   return (
     <div 
-      ref={bgRef}
-      className="parallax-bg"
+      ref={containerRef}
+      className="fixed inset-0 -z-10"
       style={{
-        backgroundImage: 'url(/images/bg-test.jpg)',
-        backgroundSize: '125% 125%',
-        backgroundPosition: 'center',
-        filter: 'opacity(0.5)',
-        position: 'fixed',
-        zIndex: -1,
-        left: '-12.5%',
-        top: '-12.5%',
-        width: '125%',
-        height: '125%',
-        transform: 'translate(0px, 0px)',
-        transition: 'transform 0.1s ease-out', // Smooth out the movement
-        willChange: 'transform' // Optimize for animations
+        backgroundColor: 'hsl(var(--color-bg-primary))',
       }}
     />
   )

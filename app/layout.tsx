@@ -43,24 +43,24 @@ export default function RootLayout({
           <div className="fixed inset-8">
             <div className="relative h-full grid grid-cols-[256px_1fr] gap-8">
               {/* Primary Navigation - independent scroll */}
-              <nav className="container-glass rounded-xl p-6 flex flex-col h-full overflow-y-auto">
+              <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full overflow-y-auto">
                 <h1 className="font-helvetica text-2xl font-bold text-[hsl(var(--color-text-heading))] mb-10 flex-none">HC</h1>
                 <div className="flex flex-col gap-6 mb-6 flex-1 overflow-y-auto">
                   <Link 
                     href="/" 
-                    className="block text-lg text-[hsl(var(--color-text-primary)] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-lg transition-all border border-transparent hover:border-gray-200/20"
+                    className="block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color] duration-[var(--duration-50)]"
                   >
                     About
                   </Link>
                   <Link 
                     href="/work" 
-                    className="block text-lg text-[hsl(var(--color-text-primary)] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-lg transition-all border border-transparent hover:border-gray-200/20"
+                    className="block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color] duration-[var(--duration-50)]"
                   >
                     Work
                   </Link>
                   <Link 
                     href="/writing" 
-                    className="block text-lg text-[hsl(var(--color-text-primary)] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-lg transition-all border border-transparent hover:border-gray-200/20"
+                    className="block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color] duration-[var(--duration-50)]"
                   >
                     Writing
                   </Link>
@@ -71,8 +71,8 @@ export default function RootLayout({
               </nav>
 
               {/* Main Content - independent scroll */}
-              <main className="h-full overflow-hidden">
-                <div className="container-glass rounded-xl p-8 h-full overflow-y-auto">
+              <main className="h-full">
+                <div className="container-glass rounded-[var(--container-radius)] p-8 h-full overflow-y-auto">
                   {children}
                 </div>
               </main>

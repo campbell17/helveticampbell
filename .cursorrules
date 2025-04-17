@@ -301,3 +301,12 @@ When implementing HeadlessUI components:
    - Never use deprecated patterns even if they still work
    - Always use named imports instead of nested properties when available
    - Check the "Basic example" section first for the canonical way to implement
+
+## Debugging Best Practices
+1. When debugging components or functionality:
+   - NEVER revert to older/deprecated methods even temporarily
+   - Always stick with the latest documented approach
+   - If the latest method isn't working, investigate why rather than trying older methods
+   - Document any workarounds needed for the latest methods
+   - If a latest method truly doesn't work, escalate to library maintainers rather than reverting
+   - Keep a consistent approach throughout the debugging process
