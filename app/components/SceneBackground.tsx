@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
+import { usePathname } from 'next/navigation'
 
 // Custom shader for the grid effect
 const gridVertexShader = `
@@ -65,6 +66,30 @@ export default function SceneBackground() {
   const animationFrameRef = useRef<number | null>(null)
   const initialCameraY = useRef(300)
   const maxScrollDistance = useRef(1440)
+  const targetCameraX = useRef(0)
+  const currentCameraX = useRef(0)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    // Set target camera position based on current page
+    switch (pathname) {
+      case '/':
+        targetCameraX.current = 50
+        break
+      case '/about':
+        targetCameraX.current = 100 // Move right
+        break
+      case '/work':
+        targetCameraX.current = 100 // Move left
+        break
+      case '/writing':
+        targetCameraX.current = 160 // Slight right
+        break
+      default:
+        targetCameraX.current = 50
+    }
+    console.log('Target camera X set to:', targetCameraX.current)
+  }, [pathname])
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -141,6 +166,10 @@ export default function SceneBackground() {
       currentScrollY += (targetScrollY - currentScrollY) * 0.05
       const limitedScrollY = Math.min(currentScrollY, maxScrollDistance.current)
       camera.position.y = initialCameraY.current + (-limitedScrollY * 0.15)
+
+      // Smoothly interpolate camera position
+      currentCameraX.current += (targetCameraX.current - currentCameraX.current) * 0.05
+      camera.position.x = currentCameraX.current
       camera.lookAt(0, -150, 0)
       
       renderer.render(scene, camera)
