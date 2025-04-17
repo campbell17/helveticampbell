@@ -42,25 +42,25 @@ export default function RootLayout({
           {/* Layout container */}
           <div className="relative">
             {/* Fixed navigation sidebar */}
-            <div className="fixed top-8 left-8 w-64 z-10">
-              <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col">
+            <div className="fixed top-8 bottom-8 left-8 w-64 z-10">
+              <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full">
                 <h1 className="font-helvetica text-2xl font-bold text-[hsl(var(--color-text-heading))] mb-10 flex-none">HC</h1>
-                <div className="flex flex-col gap-6 mb-6">
+                <div className="flex flex-col gap-6 mb-6 flex-1">
                   <Link 
                     href="/" 
-                    className="block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color] duration-[var(--duration-50)]"
+                    className="nav-link block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color,background-color] duration-[var(--duration-50)]"
                   >
                     About
                   </Link>
                   <Link 
                     href="/work" 
-                    className="block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color] duration-[var(--duration-50)]"
+                    className="nav-link block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color,background-color] duration-[var(--duration-50)]"
                   >
                     Work
                   </Link>
                   <Link 
                     href="/writing" 
-                    className="block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color] duration-[var(--duration-50)]"
+                    className="nav-link block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color,background-color] duration-[var(--duration-50)]"
                   >
                     Writing
                   </Link>

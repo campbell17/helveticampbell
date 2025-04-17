@@ -64,11 +64,35 @@ export default function SceneBackground() {
       size,
       divisions,
       new THREE.Color('#FFFFFF'),
-      new THREE.Color('#666666')
+      new THREE.Color('#999999')  // Lighter secondary color
     )
     gridHelper.material.transparent = true
-    gridHelper.material.opacity = 0.3
+    gridHelper.material.opacity = 0.15  // Lower base opacity
     gridHelper.position.y = -150
+
+    // Create a gradient texture for fading
+    const canvas2 = document.createElement('canvas')
+    canvas2.width = 1
+    canvas2.height = 256
+    const ctx = canvas2.getContext('2d')
+    if (ctx) {
+      const gradient = ctx.createLinearGradient(0, 0, 0, 256)
+      gradient.addColorStop(0, 'rgba(255,255,255,0)')  // Transparent at top
+      gradient.addColorStop(0.5, 'rgba(255,255,255,1)')  // Fully visible in middle
+      gradient.addColorStop(1, 'rgba(255,255,255,1)')  // Fully visible at bottom
+      ctx.fillStyle = gradient
+      ctx.fillRect(0, 0, 1, 256)
+    }
+
+    const texture = new THREE.CanvasTexture(canvas2)
+    texture.needsUpdate = true
+
+    // Apply the texture to the grid material
+    const gridMaterial = gridHelper.material as THREE.Material
+    if ('map' in gridMaterial) {
+      gridMaterial.map = texture
+    }
+
     scene.add(gridHelper)
 
     console.log('Grid created with size:', size, 'divisions:', divisions)
