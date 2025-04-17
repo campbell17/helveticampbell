@@ -2,15 +2,19 @@ import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import Link from 'next/link'
 import { H1 } from './components/Typography'
-
-// These styles apply to every route in the application
+import { Inter } from 'next/font/google'
 import './globals.css'
+import './theme.css'
 import SceneBackground from './components/SceneBackground'
 import ThemeSwitcher from './components/ThemeSwitcher'
+import Header from './components/Header'
+import Footer from './components/Footer'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Helveticampbell',
-  description: 'Design Portfolio',
+  title: 'Helvetica Campbell',
+  description: 'Portfolio and creative works',
   icons: {
     icon: [
       {
@@ -28,25 +32,27 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen overflow-x-hidden bg-bg-primary text-text-primary">
+      <body className={inter.className}>
         <ThemeProvider 
           attribute="data-theme" 
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
-          storageKey="theme"
           disableTransitionOnChange
-          enableColorScheme={false}
         >
           {/* Background stays mounted during navigation */}
           <SceneBackground />
           
+          {/* Fixed header and footer */}
+          <Header />
+          <Footer />
+          
           {/* Layout container */}
           <div className="relative">
             {/* Fixed navigation sidebar */}
-            <div className="fixed top-8 bottom-8 left-8 w-64 z-10">
+            <div className="fixed top-16 bottom-16 left-8 w-64 z-30">
               <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full">
                 <H1 className="mb-10 flex-none">HC</H1>
-                <div className="flex flex-col gap-6 mb-6 flex-1">
+                <div className="flex flex-col gap-2 mb-6 flex-1">
                   <Link href="/" className="nav-link">
                     About
                   </Link>
@@ -64,7 +70,7 @@ export default function RootLayout({
             </div>
 
             {/* Main content area */}
-            <main className="pl-80 pr-8 pt-8 min-h-screen">
+            <main className="pl-80 pr-8 pt-16 pb-16 min-h-screen">
               <div className="max-w-[1200px] mx-auto">
                 {children}
               </div>

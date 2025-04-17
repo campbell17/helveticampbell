@@ -98,12 +98,12 @@ export default function SceneBackground() {
     console.log('Grid created with size:', size, 'divisions:', divisions)
 
     // Create particles
-    const particleCount = Math.floor(size / 20)
+    const particleCount = Math.floor(size / 80) // Halved from size/20
     const particles = new THREE.Group()
     
     const particleGeometry = new THREE.SphereGeometry(1.5, 8, 8)
     const particleMaterial = new THREE.MeshBasicMaterial({
-      color: '#FFFFFF',
+      color: 0xb2e7ff,
       transparent: true,
       opacity: 0.8
     })
@@ -123,7 +123,7 @@ export default function SceneBackground() {
       }
       
       particle.userData = {
-        speed: 0.4 + Math.random() * 0.4,
+        speed: 6 + Math.random() * 6, // Quintupled from 0.8 + Math.random() * 0.8
         direction: isHorizontal ? 'x' : 'z',
         distance: 0
       }
@@ -166,17 +166,8 @@ export default function SceneBackground() {
           ? (particle.position.x + size/2) / size
           : (particle.position.z + size/2) / size
         
-        // Create speed curve with long high-speed section
-        let speedMultiplier
-        if (progress < 0.1) {
-          speedMultiplier = progress * 10 * 6
-        } else if (progress > 0.9) {
-          speedMultiplier = (1 - progress) * 10 * 6
-        } else {
-          speedMultiplier = 6
-        }
-        
-        speedMultiplier = Math.max(1, Math.min(6, speedMultiplier))
+        // Continuous speed increase based on progress
+        const speedMultiplier = 1 + (progress * 2) // Start at 1x, increase up to 3x
         const currentSpeed = speed * speedMultiplier
         
         if (direction === 'x') {
