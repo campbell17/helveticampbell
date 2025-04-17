@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen">
+      <body className="min-h-screen overflow-x-hidden">
         <ThemeProvider 
           attribute="data-theme" 
           defaultTheme="system"
@@ -39,13 +39,13 @@ export default function RootLayout({
           {/* Background stays mounted during navigation */}
           <SceneBackground />
           
-          {/* Content container with fixed margins */}
-          <div className="fixed inset-8">
-            <div className="relative h-full grid grid-cols-[256px_1fr] gap-8">
-              {/* Primary Navigation - independent scroll */}
-              <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full overflow-y-auto">
+          {/* Layout container */}
+          <div className="relative">
+            {/* Fixed navigation sidebar */}
+            <div className="fixed top-8 left-8 w-64 z-10">
+              <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col">
                 <h1 className="font-helvetica text-2xl font-bold text-[hsl(var(--color-text-heading))] mb-10 flex-none">HC</h1>
-                <div className="flex flex-col gap-6 mb-6 flex-1">
+                <div className="flex flex-col gap-6 mb-6">
                   <Link 
                     href="/" 
                     className="block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color] duration-[var(--duration-50)]"
@@ -69,16 +69,14 @@ export default function RootLayout({
                   <ThemeSwitcher />
                 </div>
               </nav>
-
-              {/* Main Content - independent scroll */}
-              <main className="h-full overflow-y-auto">
-                <div className="container-glass rounded-[var(--container-radius)] h-full">
-                  <div className="p-8">
-                    {children}
-                  </div>
-                </div>
-              </main>
             </div>
+
+            {/* Main content area */}
+            <main className="pl-80 pr-8 pt-8 min-h-screen">
+              <div className="max-w-[1200px] mx-auto">
+                {children}
+              </div>
+            </main>
           </div>
         </ThemeProvider>
       </body>
