@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap');
-
 @theme {
+  
   /* Fonts  */
   --font-display: "Ubuntu", sans-serif;
   --font-body: "Zen Antique Soft", serif;
-
+  
 }
 
 /* Regular CSS variables for theme-specific overrides */
@@ -20,7 +18,7 @@
 
   /* Text colors - Light mode */
   --color-text-heading: 220 10% 5%;
-  --color-text-primary: 220 10% 8%;
+  --color-text-primary: 360 0% 10%;
   --color-text-secondary: 220 10% 15%;
   --color-text-tertiary: 220 10% 25%;
 
@@ -28,6 +26,7 @@
   --color-bg-primary: 220 14% 96%;
   --color-bg-secondary: 220 13% 91%;
   --color-bg-tertiary: 220 12% 86%;
+  --color-bg-active: 220 10% 90%;
 
   /* Container colors */
   --color-container-bg: 0 0% 100%;

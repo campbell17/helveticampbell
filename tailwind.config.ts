@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Ubuntu', 'sans-serif'],
-        body: ['Zen Antique Soft', 'serif'],
+        display: ['Raleway', 'sans-serif'],
+        body: ['Nanum Myeongjo', 'serif'],
       },
     },
   },

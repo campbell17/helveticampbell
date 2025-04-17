@@ -84,7 +84,7 @@ export default function SceneBackground() {
     const viewportHeight = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * 2
     const aspectRatio = window.innerWidth / window.innerHeight
     const size = Math.max(2400, viewportHeight * aspectRatio * 2400)
-    const divisions = Math.floor(size / 15)
+    const divisions = Math.floor(size / 45)
 
     const gridHelper = new THREE.GridHelper(
       size,

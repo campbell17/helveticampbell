@@ -10,7 +10,7 @@ interface TextLinkProps extends TextProps {
 
 export function H1({ children, className = '' }: TextProps) {
   return (
-    <h1 className={`text-6xl font-[400] tracking-tight text-[hsl(var(--color-text-heading))] font-display ${className}`}>
+    <h1 className={`text-6xl font-[900] tracking-tight text-[hsl(var(--color-text-heading))] font-display ${className}`}>
       {children}
     </h1>
   );

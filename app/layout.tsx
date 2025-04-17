@@ -1,16 +1,13 @@
-import type { Metadata } from 'next'
-import { ThemeProvider } from 'next-themes'
-import Link from 'next/link'
-import { H1 } from './components/Typography'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import './theme.css'
+import type { Metadata } from 'next'
+import { ThemeProvider } from 'next-themes'
+import { H1 } from './components/Typography'
 import SceneBackground from './components/SceneBackground'
 import ThemeSwitcher from './components/ThemeSwitcher'
 import Header from './components/Header'
 import Footer from './components/Footer'
-
-const inter = Inter({ subsets: ['latin'] })
+import Navigation from './components/Navigation'
 
 export const metadata: Metadata = {
   title: 'Helveticampbell',
@@ -30,9 +27,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body>
         <ThemeProvider 
           attribute="data-theme" 
           defaultTheme="light"
@@ -52,17 +50,7 @@ export default function RootLayout({
               <div className="fixed top-12 bottom-12 left-8 w-64 z-50">
                 <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full">
                   {/* <H1 className="mb-10 flex-none">HC</H1> */}
-                  <div className="flex flex-col gap-2 mb-6 flex-1">
-                    <Link href="/" className="nav-link">
-                      About
-                    </Link>
-                    <Link href="/work" className="nav-link">
-                      Work
-                    </Link>
-                    <Link href="/writing" className="nav-link">
-                      Writing
-                    </Link>
-                  </div>
+                  <Navigation />
                   <div className="flex-none">
                     <ThemeSwitcher />
                   </div>
