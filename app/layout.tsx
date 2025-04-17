@@ -42,16 +42,15 @@ export default function RootLayout({
           {/* Background stays mounted during navigation */}
           <SceneBackground />
           
-          {/* Fixed header and footer */}
+          {/* Fixed header */}
           <Header />
-          <Footer />
           
           {/* Layout container */}
           <div className="relative">
             {/* Fixed navigation sidebar */}
             <div className="fixed top-12 bottom-12 left-8 w-64 z-50">
               <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full">
-                <H1 className="mb-10 flex-none">HC</H1>
+                {/* <H1 className="mb-10 flex-none">HC</H1> */}
                 <div className="flex flex-col gap-2 mb-6 flex-1">
                   <Link href="/" className="nav-link">
                     About
@@ -76,6 +75,9 @@ export default function RootLayout({
               </div>
             </main>
           </div>
+
+          {/* Fixed footer */}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
