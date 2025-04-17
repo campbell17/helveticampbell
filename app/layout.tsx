@@ -13,7 +13,7 @@ import Footer from './components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Helvetica Campbell',
+  title: 'Helveticampbell',
   description: 'Portfolio and creative works',
   icons: {
     icon: [
@@ -43,7 +43,7 @@ export default function RootLayout({
           <SceneBackground />
           
           {/* Fixed header */}
-          <Header />
+          {/* <Header /> */}
           
           {/* Layout container */}
           <div className="min-h-screen flex flex-col">
@@ -78,7 +78,7 @@ export default function RootLayout({
             </div>
 
             {/* Footer */}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </ThemeProvider>
       </body>
