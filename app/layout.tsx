@@ -4,7 +4,7 @@ import { ThemeProvider } from 'next-themes'
 
 // These styles apply to every route in the application
 import './globals.css'
-import ParallaxBackground from './components/ParallaxBackground'
+import SceneBackground from './components/SceneBackground'
 import ThemeSwitcher from './components/ThemeSwitcher'
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export default function RootLayout({
           enableColorScheme={false}
         >
           {/* Background stays mounted during navigation */}
-          <ParallaxBackground />
+          <SceneBackground />
           
           {/* Content container with fixed margins */}
           <div className="fixed inset-8">
@@ -45,7 +45,7 @@ export default function RootLayout({
               {/* Primary Navigation - independent scroll */}
               <nav className="container-glass rounded-[var(--container-radius)] p-6 flex flex-col h-full overflow-y-auto">
                 <h1 className="font-helvetica text-2xl font-bold text-[hsl(var(--color-text-heading))] mb-10 flex-none">HC</h1>
-                <div className="flex flex-col gap-6 mb-6 flex-1 overflow-y-auto">
+                <div className="flex flex-col gap-6 mb-6 flex-1">
                   <Link 
                     href="/" 
                     className="block text-lg text-[hsl(var(--color-text-primary))] hover:text-[hsl(var(--color-text-heading))] px-4 py-2 rounded-[var(--button-radius)] border border-transparent hover:border-[hsl(var(--color-border-hover))] transition-[border-color,color] duration-[var(--duration-50)]"
@@ -71,9 +71,11 @@ export default function RootLayout({
               </nav>
 
               {/* Main Content - independent scroll */}
-              <main className="h-full">
-                <div className="container-glass rounded-[var(--container-radius)] p-8 h-full overflow-y-auto">
-                  {children}
+              <main className="h-full overflow-y-auto">
+                <div className="container-glass rounded-[var(--container-radius)] h-full">
+                  <div className="p-8">
+                    {children}
+                  </div>
                 </div>
               </main>
             </div>

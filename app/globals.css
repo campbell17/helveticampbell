@@ -28,16 +28,18 @@ body {
 .container-glass {
   position: relative;
   background: none;
-  backdrop-filter: blur(12px);
+  /* Temporarily disable blur and shadow for background testing */
+  /* backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 
     0 20px 40px -15px hsl(var(--color-shadow) / 0.2),
     0 30px 70px -20px hsl(var(--color-shadow) / 0.15),
-    0 0 0 1px hsl(var(--color-shadow) / 0.05);
+    0 0 0 1px hsl(var(--color-shadow) / 0.05); */
 }
 
 .container-glass::before {
-  content: '';
+  /* Temporarily disable gradient overlays for background testing */
+  /* content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -65,7 +67,7 @@ body {
       to bottom right,
       hsl(var(--color-container-bg) / 0.8),
       hsl(var(--color-container-bg) / 0.7)
-    );
+    ); */
   pointer-events: none;
 }
 
