@@ -263,6 +263,19 @@ export default function ProjectSidebar({
   // Get images for lightbox
   const lightboxImages = projectKey ? projectDetails[projectKey]?.images || [] : [];
 
+  // Prevent body scrolling when sidebar is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen || !project) return null;
 
   return (
@@ -280,34 +293,44 @@ export default function ProjectSidebar({
       {/* Main Sidebar */}
       <motion.div
         initial={{ x: "100%" }}
-        animate={{ x: 0 }}
+        animate={{
+          x: ["100%", "90%", "92%", "0%"]
+        }}
         exit={{ x: "100%" }}
-        transition={{ duration: 0.15, ease: "easeOut" }}
-        className="fixed right-0 top-0 h-full w-[100vw] lg:w-[70%] xl:w-[50%] bg-gray-100/95 backdrop-blur-md border-l border-gray-200/20 shadow-xl z-50"
+        transition={{
+          duration: 0.75,
+          times: [0, 0.2, 0.4, 1],
+          ease: [
+            [0.25, 0.1, 0.25, 1], // initial movement
+            [0.03, -0.00003, 0.01, 1],  // slower bounce
+            [1.55, 0, 0.01, 1]    // extended hesitation before dramatic finish
+          ]
+        }}
+        className="fixed inset-0 bg-white/95 backdrop-blur-md shadow-xl z-[100] overflow-hidden"
       >
         {/* Close Button */}
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.15, delay: 0.15, ease: "easeOut" }}
-          exit={{ opacity: 0, transition: { duration: 0, delay: 0 }}}
+          transition={{ duration: 0.2, delay: 0.4, ease: "easeOut" }}
+          exit={{ opacity: 0, transition: { duration: 0.2, delay: 0 }}}
           onClick={onClose}
-          className="fixed right-4 top-4 lg:right-auto lg:left-0 lg:top-12 lg:transform lg:-translate-x-1/2 text-white/60 hover:text-white transition-colors z-[60] w-10 h-10 flex items-center justify-center rounded-full bg-gray-900/50 hover:bg-gray-900/80 backdrop-blur-sm border border-white/10"
+          className="fixed right-6 top-6 text-white/60 hover:text-white transition-colors z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-gray-900/70 hover:bg-gray-900/90 backdrop-blur-sm border border-white/10"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </motion.button>
 
-        <div className="h-full overflow-y-auto project-sidebar-content">
-          <div className="p-12">
+        <div className="h-full w-full overflow-y-auto project-sidebar-content">
+          <div className="p-6 pt-20 md:p-12 md:pt-20 max-w-5xl mx-auto">
             {/* Project Title */}
             <motion.h2 
               key={projectKey}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 0.85, ease: "easeIn" }}
               className="text-3xl font-black text-gray-900 mb-6"
             >
               {project.title}
@@ -320,7 +343,7 @@ export default function ProjectSidebar({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
+                transition={{ duration: 0.5, delay: 0.95, ease: "easeIn" }}
                 className="text-2xl font-serif text-gray-600 mb-12"
               >
                 {project.description}
@@ -333,7 +356,7 @@ export default function ProjectSidebar({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: 1.05, ease: "easeIn" }}
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               {project.images.map((image, index) => (
@@ -366,14 +389,14 @@ export default function ProjectSidebar({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
+              transition={{ duration: 0.3, delay: 0.8, ease: "easeOut" }}
               className="mt-8"
             >
               {/* Next Project Button */}
               <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.15, delay: 0.3, ease: "easeOut" }}
+                transition={{ duration: 0.3, delay: 0.9, ease: "easeOut" }}
                 onClick={() => {
                   if (!projectKey) return;
                   
@@ -411,9 +434,9 @@ export default function ProjectSidebar({
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.02 }}
             onClick={scrollToTop}
-            className="fixed bottom-4 right-4 text-white/60 hover:text-white transition-colors z-[60] w-10 h-10 flex items-center justify-center rounded-full bg-slate-500/50 hover:bg-slate-700/80 backdrop-blur-sm border border-white/10"
+            className="fixed bottom-6 right-6 text-white/60 hover:text-white transition-colors z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-slate-500/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
           </motion.button>

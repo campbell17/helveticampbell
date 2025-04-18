@@ -57,6 +57,7 @@
     hsl(0 0% 100% / 0), 
     hsl(0 0% 100% / 0.1)
   );
+  --container-glass-gradient-new: "bg-gradient-to-tr from-slate-50/50 via-teal-50/50 to-red-50/50";
   --container-glass-border: hsl(0 0% 100% / 0.2);
   --container-glass-shadow: hsl(220 10% 20% / 0.2);
 
