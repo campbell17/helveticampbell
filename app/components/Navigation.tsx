@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 export default function Navigation() {
   const pathname = usePathname()
-  const textStyles = 'font-display font-[900] tracking-tight lowercase text-lg nav-link'
+  const textStyles = 'font-helveticampbell font-[900] tracking-normal text-xl nav-link'
 
   return (
     <div className="flex flex-col gap-2 mb-6 flex-1">
