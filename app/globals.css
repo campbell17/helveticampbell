@@ -19,24 +19,64 @@
   --scrollbar-width: 8px;
 }
 
+/* Hide native scrollbar but keep scrolling functionality */
 html {
-  scrollbar-width: var(--scrollbar-width);
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+  overflow-y: scroll; /* Force vertical scrollbar */
 }
 
-::-webkit-scrollbar {
-  width: var(--scrollbar-width);
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  width: 0px; /* Remove default width */
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+/* Custom scrollbar styling */
+.custom-scrollbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100vh;
+  z-index: 40;
+  pointer-events: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  border: 2px solid transparent;
+.scrollbar-track {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 10px;
+  background-color: transparent;
 }
+
+.scrollbar-thumb {
+  position: absolute;
+  width: 6px;
+  right: 2px;
+  border-radius: 3px;
+  background-color: rgba(100, 100, 100, 0.4);
+  transition: width 0.2s, right 0.2s, background-color 0.2s;
+}
+
+.scrollbar-thumb:hover {
+  width: 8px;
+  right: 1px;
+  background-color: rgba(100, 100, 100, 0.6);
+}
+
+/* The main content container needs margin to account for the fixed sidebar */
+.content-wrapper {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Specific z-index levels for different components */
+.z-sidebar { z-index: 100; }
+.z-modal { z-index: 110; }
+.z-lightbox { z-index: 120; }
+.z-scrollbar { z-index: 40; }
 
 /* Body scrolling control */
 html.sidebar-open {

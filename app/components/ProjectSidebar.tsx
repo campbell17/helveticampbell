@@ -204,6 +204,45 @@ interface ProjectSidebarProps {
   setCurrentGallery: (gallery: string | null) => void;
 }
 
+// Pre-transition component with its own lifecycle
+const PreTransition = ({ show, onComplete }: { show: boolean; onComplete: () => void }) => {
+  useEffect(() => {
+    if (show) {
+      // Trigger the callback after animation completes
+      const timer = setTimeout(onComplete, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [show, onComplete]);
+
+  return (
+    <AnimatePresence mode="wait">
+      {show && (
+        <motion.div
+          initial={{ clipPath: "inset(0 0 0 100%)" }}
+          animate={{ clipPath: "inset(0 0 0 0)" }}
+          exit={{ clipPath: "inset(0 0 0 100%)", opacity: 0 }}
+          transition={{
+            duration: 0.15,
+            ease: "easeInOut",
+            exit: { duration: 0.2 }
+          }}
+          className="fixed inset-0 bg-black z-sidebar flex items-center justify-center"
+        >
+          <motion.h1 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="text-white text-4xl md:text-6xl font-helveticampbell tracking-tight"
+          >
+            Helveticampbell
+          </motion.h1>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 export default function ProjectSidebar({ 
   isOpen, 
   onClose, 
@@ -215,6 +254,54 @@ export default function ProjectSidebar({
 }: ProjectSidebarProps) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const project = projectKey ? projectDetails[projectKey] : null;
+
+  // Animation state management
+  const [showPreTransition, setShowPreTransition] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+
+  // Handle opening sequence
+  useEffect(() => {
+    if (isOpen && !showSidebar && !isExiting) {
+      if (lightboxImageIndex === null) {
+        // Start with pre-transition (will auto-trigger sidebar via callback)
+        setShowPreTransition(true);
+      } else {
+        // Skip pre-transition if lightbox is open
+        setShowSidebar(true);
+      }
+    }
+  }, [isOpen, showSidebar, isExiting, lightboxImageIndex]);
+
+  // Handle transition from pre-transition to sidebar
+  const handlePreTransitionComplete = () => {
+    setShowSidebar(true);
+  };
+
+  // Custom close handler to manage exit animations
+  const handleClose = () => {
+    setIsExiting(true);
+    
+    // Immediately hide pre-transition if showing
+    setShowPreTransition(false);
+    
+    // Start sidebar exit animation
+    setShowSidebar(false);
+    
+    // Wait for exit animations to complete before final cleanup
+    setTimeout(() => {
+      onClose();
+      setIsExiting(false);
+    }, 300); // Short time to match the exit animation duration
+  };
+
+  const handleImageClick = (index: number) => {
+    // Create a unique gallery ID for this project
+    if (projectKey) {
+      setCurrentGallery(`project-${projectKey}`);
+      setLightboxImageIndex(index);
+    }
+  };
 
   // Handle scroll for back-to-top button
   useEffect(() => {
@@ -252,47 +339,6 @@ export default function ProjectSidebar({
     }
   }, [isOpen, projectKey]);
 
-  // Create state for handling both open and close states
-  const [localOpen, setLocalOpen] = useState(false);
-  const [isExiting, setIsExiting] = useState(false);
-  
-  // Create state for the pre-transition overlay
-  const [showPreTransition, setShowPreTransition] = useState(false);
-
-  // Sync local state with parent state
-  useEffect(() => {
-    if (isOpen) {
-      setLocalOpen(true);
-    }
-  }, [isOpen]);
-  
-  // Handle pre-transition and sidebar opening sequence
-  useEffect(() => {
-    if (isOpen) {
-      // Don't show pre-transition if lightbox is open
-      if (lightboxImageIndex === null) {
-        setShowPreTransition(true);
-      }
-      
-      // Then hide main scrollbar after a short delay
-      const scrollbarTimer = setTimeout(() => {
-        document.documentElement.classList.add('sidebar-open');
-      }, 200); // After pre-transition has covered most of the screen
-      
-      return () => clearTimeout(scrollbarTimer);
-    } else {
-      // Only remove the pre-transition after the sidebar has exited
-      if (!isExiting) {
-        setShowPreTransition(false);
-      }
-      document.documentElement.classList.remove('sidebar-open');
-    }
-    
-    return () => {
-      document.documentElement.classList.remove('sidebar-open');
-    };
-  }, [isOpen, lightboxImageIndex, isExiting]);
-
   // Handle escape key to close sidebar
   useEffect(() => {
     if (!isOpen) return;
@@ -308,32 +354,10 @@ export default function ProjectSidebar({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, lightboxImageIndex]);
 
-  // Custom close handler to manage exit animations
-  const handleClose = () => {
-    setIsExiting(true);
-    
-    // Wait for exit animation to complete before notifying parent
-    setTimeout(() => {
-      setLocalOpen(false);
-      setTimeout(() => {
-        onClose();
-        setIsExiting(false);
-      }, 300);
-    }, 500); // Shortened time for quicker exit
-  };
-
-  const handleImageClick = (index: number) => {
-    // Create a unique gallery ID for this project
-    if (projectKey) {
-      setCurrentGallery(`project-${projectKey}`);
-      setLightboxImageIndex(index);
-    }
-  };
-
   // Get images for lightbox
   const lightboxImages = projectKey ? projectDetails[projectKey]?.images || [] : [];
 
-  if ((!localOpen && !isExiting) || !project) return null;
+  if (!isOpen && !isExiting || !project) return null;
 
   return (
     <>
@@ -347,47 +371,26 @@ export default function ProjectSidebar({
         initialImageIndex={lightboxImageIndex || 0}
       />
 
-      {/* Pre-transition overlay */}
-      <AnimatePresence>
-        {showPreTransition && (
-          <motion.div
-            initial={{ clipPath: "inset(0 0 0 100%)" }}
-            animate={{ clipPath: "inset(0 0 0% 0)" }}
-            exit={{ clipPath: "inset(0 0 0 0)" }}
-            transition={{ 
-              duration: 0.15, 
-              ease: "easeInOut",
-              delay: isExiting ? 0.5 : 0 // Sync with sidebar exit
-            }}
-            className="fixed inset-0 bg-black z-[99] flex items-center justify-center"
-          >
-            <motion.h1 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="text-white text-4xl md:text-6xl font-helveticampbell tracking-tight"
-            >
-              Helveticampbell
-            </motion.h1>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Pre-transition as separate component */}
+      <PreTransition 
+        show={showPreTransition} 
+        onComplete={handlePreTransitionComplete} 
+      />
 
       {/* Main Sidebar */}
-      <AnimatePresence>
-        {localOpen && (
+      <AnimatePresence mode="sync">
+        {showSidebar && (
           <motion.div
-            initial={{ x: "100%" }}
+            initial={{ x: "100%", opacity: 1 }}
             animate={{
-              x: ["100%", "90%", "92%", "0%"]
+              x: ["100%", "90%", "92%", "0%"],
+              opacity: 1
             }}
             exit={{ 
-              x: "100%",
-              transition: {
-                duration: 0.45,
-                ease: [0.2, 0, 0, 1] // Smooth acceleration out
-              }
+              opacity: 0,
+              x: "5%",
+              backdropFilter: "blur(0px)",
+              backgroundColor: "rgba(255, 255, 255, 0)"
             }}
             transition={{
               duration: 0.75,
@@ -395,27 +398,32 @@ export default function ProjectSidebar({
               ease: [
                 [0.25, 0.1, 0.25, 1], // initial movement
                 [0.03, -0.00003, 0.01, 1],  // slower bounce
-                [1.55, 0, 0.01, 1]    // extended hesitation before dramatic finish
+                [1, 0, 0.01, 1]    // modified ease for dramatic finish
               ],
-              delay: 0.4 // Delay to allow pre-transition to clear
+              delay: 0.4, // Delay to allow pre-transition to clear
+              exit: { duration: 0.3, ease: "easeOut" } // Faster exit animation
             }}
-            className="fixed inset-0 bg-white/95 backdrop-blur-md shadow-xl z-[100] overflow-hidden"
+            className="fixed inset-0 bg-white/95 backdrop-blur-md shadow-xl z-sidebar overflow-hidden"
           >
             {/* Close Button */}
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0.7, ease: "easeOut" }}
-              exit={{ opacity: 0, transition: { duration: 0.2, delay: 0 }}}
+              exit={{ opacity: 0 }}
               onClick={handleClose}
-              className="fixed right-6 top-6 text-white/60 hover:text-white transition-colors z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-gray-900/70 hover:bg-gray-900/90 backdrop-blur-sm border border-white/10"
+              className="fixed right-6 top-6 text-white/60 hover:text-white transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-gray-900/70 hover:bg-gray-900/90 backdrop-blur-sm border border-white/10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </motion.button>
 
-            <div className="h-full w-full overflow-y-auto project-sidebar-content">
+            <motion.div 
+              className="h-full w-full overflow-y-auto project-sidebar-content"
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
               <div className="p-6 pt-20 md:p-12 md:pt-20 max-w-5xl mx-auto">
                 {/* Project Title */}
                 <motion.h2 
@@ -423,7 +431,12 @@ export default function ProjectSidebar({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 0.85, ease: "easeIn" }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.85, 
+                    ease: "easeIn",
+                    exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                  }}
                   className="text-3xl font-black text-gray-900 mb-6"
                 >
                   {project.title}
@@ -436,7 +449,12 @@ export default function ProjectSidebar({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5, delay: 0.95, ease: "easeIn" }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 0.95, 
+                      ease: "easeIn",
+                      exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                    }}
                     className="text-2xl font-serif text-gray-600 mb-12"
                   >
                     {project.description}
@@ -449,7 +467,12 @@ export default function ProjectSidebar({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 1.05, ease: "easeIn" }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 1.05, 
+                    ease: "easeIn",
+                    exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                  }}
                   className="grid grid-cols-1 md:grid-cols-2 gap-6"
                 >
                   {project.images.map((image, index) => (
@@ -482,14 +505,25 @@ export default function ProjectSidebar({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3, delay: 0.8, ease: "easeOut" }}
+                  transition={{ 
+                    duration: 0.3, 
+                    delay: 0.8, 
+                    ease: "easeOut",
+                    exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                  }}
                   className="mt-8"
                 >
                   {/* Next Project Button */}
                   <motion.button
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.9, ease: "easeOut" }}
+                    exit={{ opacity: 0 }}
+                    transition={{ 
+                      duration: 0.3, 
+                      delay: 0.9, 
+                      ease: "easeOut",
+                      exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                    }}
                     onClick={() => {
                       if (!projectKey) return;
                       
@@ -515,7 +549,7 @@ export default function ProjectSidebar({
                   </motion.button>
                 </motion.div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -529,7 +563,7 @@ export default function ProjectSidebar({
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.02 }}
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 text-white/60 hover:text-white transition-colors z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-slate-500/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10"
+            className="fixed bottom-6 right-6 text-white/60 hover:text-white transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-slate-500/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />

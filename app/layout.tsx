@@ -9,6 +9,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 import AnimatedLayout from './components/AnimatedLayout'
+import CustomScrollbar from './components/CustomScrollbar'
+import { cn } from './lib/utils'
+import { font } from './lib/fonts'
 
 export const metadata: Metadata = {
   title: 'Helveticampbell',
@@ -31,7 +34,10 @@ export default function RootLayout({
   
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className={cn(
+        'relative min-h-screen bg-white font-sans antialiased',
+        font.variable
+      )}>
         <ThemeProvider 
           attribute="data-theme" 
           defaultTheme="light"
@@ -66,6 +72,7 @@ export default function RootLayout({
             </div>
 
           </div>
+          <CustomScrollbar />
         </ThemeProvider>
       </body>
     </html>
