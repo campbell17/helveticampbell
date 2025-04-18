@@ -7,10 +7,8 @@ export default function HomePage() {
     <>
       <H1 className="mb-8">This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>
       
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae massa fermentum efficitur.
-        Integer eget ligula in nisi pellentesque tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus 
-        et ultrices posuere cubilia curae.
+      <p className="subheading">
+        Designer. Writer. Curiositeur (not a word).
       </p>
 
       <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-[hsl(var(--color-container-bg)/0.3)] mb-12">

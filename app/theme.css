@@ -12,6 +12,9 @@
   /* Component specific */
   --container-radius: 1rem;
   
+  /* Typography sizes */
+  --text-subheading: "3xl";
+
   /* Base colors */
   --color-primary: 220 14% 96%;
   --color-secondary: 220 13% 91%;

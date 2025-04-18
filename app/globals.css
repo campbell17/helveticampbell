@@ -107,6 +107,10 @@ p {
   @apply mb-6 font-body font-[400] leading-loose text-gray-700;
 }
 
+.subheading {
+  @apply text-2xl;
+}
+
 /* Navigation */
 .nav-link {
   @apply border-1 border-transparent block px-4 py-2 rounded-full transition-all duration-50 ease-in-out;
