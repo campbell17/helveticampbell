@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         display: ['Raleway', 'sans-serif'],
-        body: ['Nanum Myeongjo', 'serif'],
+        body: ['Bitter', 'serif'],
         helveticampbell: ['Lobster', 'sans-serif'],
       },
     },
