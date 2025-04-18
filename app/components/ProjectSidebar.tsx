@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Lightbox from './Lightbox';
 
 // Animation timing constants
@@ -12,6 +12,36 @@ const ANIMATION_TIMING = {
   cleanup: 350, // Slightly longer than exit duration to ensure animations complete
   enter: {
     duration: 0.2,
+    ease: "easeOut"
+  },
+};
+
+// Separate timing for PreTransition component
+const PRE_TRANSITION_TIMING = {
+  enter: {
+    duration: 0.15,
+    ease: "easeInOut"
+  },
+  exit: {
+    duration: 0.15,
+    ease: "easeOut",
+    delay: 0.5 // Delay exit until main sidebar is closed
+  }
+};
+
+// Separate timing for main sidebar component
+const SIDEBAR_TIMING = {
+  enter: {
+    duration: 0.75,
+    ease: [
+      [0.25, 0.1, 0.25, 1], // initial movement
+      [0.03, -0.00003, 0.01, 1], // slower bounce
+      [1, 0, 0.01, 1] // modified ease for dramatic finish
+    ],
+    times: [0, 0.2, 0.4, 1]
+  },
+  exit: {
+    duration: 0.3,
     ease: "easeOut"
   },
 };
@@ -218,32 +248,43 @@ interface ProjectSidebarProps {
 }
 
 // Pre-transition component with its own lifecycle
-const PreTransition = ({ show, onComplete }: { show: boolean; onComplete: () => void }) => {
+const PreTransition = ({ 
+  show, 
+  onComplete, 
+  isExiting,
+  onExitComplete
+}: { 
+  show: boolean; 
+  onComplete: () => void; 
+  isExiting: boolean;
+  onExitComplete?: () => void;
+}) => {
   useEffect(() => {
-    if (show) {
-      // Trigger the callback after animation completes
+    if (show && !isExiting) {
+      // Only trigger the callback during entrance, not exit
       const timer = setTimeout(onComplete, 200);
       return () => clearTimeout(timer);
     }
-  }, [show, onComplete]);
+  }, [show, onComplete, isExiting]);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" onExitComplete={onExitComplete}>
       {show && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ clipPath: "inset(0 0 0 100%)" }}
+          animate={{ clipPath: "inset(0 0 0 0)" }}
+          exit={{ clipPath: "inset(0 0 0 100%)" }}
           transition={{
             duration: 0.15,
             ease: "easeInOut",
-            exit: ANIMATION_TIMING.exit
+            exit: PRE_TRANSITION_TIMING.exit
           }}
           className="fixed inset-0 bg-black z-sidebar flex items-center justify-center"
         >
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
             transition={{ duration: 0.15 }}
             className="text-white text-4xl md:text-6xl font-helveticampbell tracking-tight"
           >
@@ -266,6 +307,7 @@ export default function ProjectSidebar({
 }: ProjectSidebarProps) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const project = projectKey ? projectDetails[projectKey] : null;
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
   // Animation state management
   const [showPreTransition, setShowPreTransition] = useState(false);
@@ -290,21 +332,31 @@ export default function ProjectSidebar({
     setShowSidebar(true);
   };
 
-  // Custom close handler to manage exit animations
-  const handleClose = () => {
-    setIsExiting(true);
-    
-    // Immediately hide pre-transition if showing
-    setShowPreTransition(false);
-    
-    // Start sidebar exit animation
-    setShowSidebar(false);
-    
-    // Wait for exit animations to complete before final cleanup
-    setTimeout(() => {
+  // Handle pre-transition exit complete
+  const handlePreTransitionExitComplete = () => {
+    if (isExiting) {
+      // Final cleanup after pre-transition has fully exited
       onClose();
       setIsExiting(false);
-    }, ANIMATION_TIMING.cleanup); // Use shared timing constant
+    }
+  };
+
+  // Custom close handler to manage exit animations
+  const handleClose = () => {
+    // Start exit sequence
+    setIsExiting(true);
+    
+    // First, slide out the sidebar
+    setShowSidebar(false);
+    
+    // Then show the PreTransition which will handle its own exit
+    setShowPreTransition(true);
+    
+    // For exit - handle after a delay
+    setTimeout(() => {
+      // Trigger the exit animation after delay
+      setShowPreTransition(false);
+    }, PRE_TRANSITION_TIMING.exit.delay * 1000);
   };
 
   const handleImageClick = (index: number) => {
@@ -386,35 +438,37 @@ export default function ProjectSidebar({
       {/* Pre-transition as separate component */}
       <PreTransition 
         show={showPreTransition} 
-        onComplete={handlePreTransitionComplete} 
+        onComplete={handlePreTransitionComplete}
+        isExiting={isExiting}
+        onExitComplete={handlePreTransitionExitComplete}
       />
 
       {/* Main Sidebar */}
       <AnimatePresence mode="sync">
         {showSidebar && (
           <motion.div
+            key="main-sidebar"
             initial={{ x: "100%", opacity: 1 }}
             animate={{
               x: ["100%", "90%", "92%", "0%"],
               opacity: 1
             }}
+            // Single exit prop with its own transition
             exit={{ 
-              opacity: 0,
-              x: "0%", // Keep at 0% to prevent sliding
-              transition: {
-                opacity: ANIMATION_TIMING.exit, // Apply exit timing to opacity only
-                x: { duration: 0 } // Instant for x to prevent any movement
+              x: "100%", // Slide to the right on exit
+              opacity: 1, // Keep opacity at 1 during slide
+              transition: { 
+                duration: 0.25, // Explicit hardcoded value - EDIT THIS NUMBER
+                ease: "easeOut" 
               }
             }}
+            // Main transition only for entrance
             transition={{
-              duration: 0.75,
-              times: [0, 0.2, 0.4, 1],
-              ease: [
-                [0.25, 0.1, 0.25, 1], // initial movement
-                [0.03, -0.00003, 0.01, 1],  // slower bounce
-                [1, 0, 0.01, 1]    // modified ease for dramatic finish
-              ],
-              delay: 0 // No delay for entrance
+              // Only applied to entrance animation
+              duration: SIDEBAR_TIMING.enter.duration,
+              times: SIDEBAR_TIMING.enter.times,
+              ease: SIDEBAR_TIMING.enter.ease,
+              delay: 0, // No delay for entrance
             }}
             className="fixed inset-0 bg-[#f5f6f7] backdrop-blur-xs shadow-xl z-sidebar overflow-hidden"
           >
@@ -435,8 +489,10 @@ export default function ProjectSidebar({
               className="h-full w-full overflow-y-auto project-sidebar-content"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut", exit: ANIMATION_TIMING.exit }}
+              transition={{ 
+                duration: SIDEBAR_TIMING.enter.duration / 3,
+                ease: "easeOut"
+              }}
             >
               <div className="p-6 pt-20 md:p-12 md:pt-20 max-w-5xl mx-auto">
                 {/* Project Title */}
@@ -444,6 +500,7 @@ export default function ProjectSidebar({
                   key={projectKey}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
+                  exit={{ opacity: 1 }} // No fade on exit
                   transition={{ 
                     duration: 0.5, 
                     delay: 0.85, 
@@ -460,6 +517,7 @@ export default function ProjectSidebar({
                     key={`${projectKey}-description`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
+                    exit={{ opacity: 1 }} // No fade on exit
                     transition={{ 
                       duration: 0.5, 
                       delay: 0.95, 
@@ -476,6 +534,7 @@ export default function ProjectSidebar({
                   key={`${projectKey}-images`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
+                  exit={{ opacity: 1 }} // No fade on exit
                   transition={{ 
                     duration: 0.5, 
                     delay: 1.05, 
@@ -512,6 +571,7 @@ export default function ProjectSidebar({
                   key={`${projectKey}-navigation`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
+                  exit={{ opacity: 1 }} // No fade on exit
                   transition={{ 
                     duration: 0.3, 
                     delay: 0.8, 
@@ -523,6 +583,7 @@ export default function ProjectSidebar({
                   <motion.button
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
+                    exit={{ opacity: 1 }} // No fade on exit
                     transition={{ 
                       duration: 0.3, 
                       delay: 0.9, 
@@ -540,7 +601,7 @@ export default function ProjectSidebar({
                       setTimeout(() => {
                         // This is where we would navigate to the next project
                         // But we'll let the parent component handle it
-                      }, ANIMATION_TIMING.cleanup);
+                      }, 500); // Use fixed cleanup time instead of removed property
                     }}
                     className="w-full bg-gray-900 text-white hover:text-white flex justify-center items-center gap-4 hover:bg-gray-800 p-8 rounded-full transition-all duration-150 ease-out"
                   >
