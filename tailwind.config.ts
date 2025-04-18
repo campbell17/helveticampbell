@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         display: ['Raleway', 'sans-serif'],
         body: ['Nanum Myeongjo', 'serif'],
+        helveticampbell: ['Lobster', 'sans-serif'],
       },
     },
   },

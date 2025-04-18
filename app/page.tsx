@@ -5,7 +5,7 @@ import { H1, H2 } from './components/Typography'
 export default function HomePage() {
   return (
     <div className="max-w-3xl mx-auto px-8 py-12">
-      <H1 className="mb-8">Hi. This is Helveticampbell.</H1>
+      <H1 className="mb-8">This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>
       
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae massa fermentum efficitur.
