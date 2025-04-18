@@ -252,6 +252,76 @@ export default function ProjectSidebar({
     }
   }, [isOpen, projectKey]);
 
+  // Create state for handling both open and close states
+  const [localOpen, setLocalOpen] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+  
+  // Create state for the pre-transition overlay
+  const [showPreTransition, setShowPreTransition] = useState(false);
+
+  // Sync local state with parent state
+  useEffect(() => {
+    if (isOpen) {
+      setLocalOpen(true);
+    }
+  }, [isOpen]);
+  
+  // Handle pre-transition and sidebar opening sequence
+  useEffect(() => {
+    if (isOpen) {
+      // Don't show pre-transition if lightbox is open
+      if (lightboxImageIndex === null) {
+        setShowPreTransition(true);
+      }
+      
+      // Then hide main scrollbar after a short delay
+      const scrollbarTimer = setTimeout(() => {
+        document.documentElement.classList.add('sidebar-open');
+      }, 200); // After pre-transition has covered most of the screen
+      
+      return () => clearTimeout(scrollbarTimer);
+    } else {
+      // Only remove the pre-transition after the sidebar has exited
+      if (!isExiting) {
+        setShowPreTransition(false);
+      }
+      document.documentElement.classList.remove('sidebar-open');
+    }
+    
+    return () => {
+      document.documentElement.classList.remove('sidebar-open');
+    };
+  }, [isOpen, lightboxImageIndex, isExiting]);
+
+  // Handle escape key to close sidebar
+  useEffect(() => {
+    if (!isOpen) return;
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && lightboxImageIndex === null) {
+        e.preventDefault();
+        handleClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, lightboxImageIndex]);
+
+  // Custom close handler to manage exit animations
+  const handleClose = () => {
+    setIsExiting(true);
+    
+    // Wait for exit animation to complete before notifying parent
+    setTimeout(() => {
+      setLocalOpen(false);
+      setTimeout(() => {
+        onClose();
+        setIsExiting(false);
+      }, 300);
+    }, 500); // Shortened time for quicker exit
+  };
+
   const handleImageClick = (index: number) => {
     // Create a unique gallery ID for this project
     if (projectKey) {
@@ -263,20 +333,7 @@ export default function ProjectSidebar({
   // Get images for lightbox
   const lightboxImages = projectKey ? projectDetails[projectKey]?.images || [] : [];
 
-  // Prevent body scrolling when sidebar is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
-  if (!isOpen || !project) return null;
+  if ((!localOpen && !isExiting) || !project) return null;
 
   return (
     <>
@@ -290,140 +347,178 @@ export default function ProjectSidebar({
         initialImageIndex={lightboxImageIndex || 0}
       />
 
+      {/* Pre-transition overlay */}
+      <AnimatePresence>
+        {showPreTransition && (
+          <motion.div
+            initial={{ clipPath: "inset(0 0 0 100%)" }}
+            animate={{ clipPath: "inset(0 0 0% 0)" }}
+            exit={{ clipPath: "inset(0 0 0 0)" }}
+            transition={{ 
+              duration: 0.15, 
+              ease: "easeInOut",
+              delay: isExiting ? 0.5 : 0 // Sync with sidebar exit
+            }}
+            className="fixed inset-0 bg-black z-[99] flex items-center justify-center"
+          >
+            <motion.h1 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-white text-4xl md:text-6xl font-helveticampbell tracking-tight"
+            >
+              Helveticampbell
+            </motion.h1>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Main Sidebar */}
-      <motion.div
-        initial={{ x: "100%" }}
-        animate={{
-          x: ["100%", "90%", "92%", "0%"]
-        }}
-        exit={{ x: "100%" }}
-        transition={{
-          duration: 0.75,
-          times: [0, 0.2, 0.4, 1],
-          ease: [
-            [0.25, 0.1, 0.25, 1], // initial movement
-            [0.03, -0.00003, 0.01, 1],  // slower bounce
-            [1.55, 0, 0.01, 1]    // extended hesitation before dramatic finish
-          ]
-        }}
-        className="fixed inset-0 bg-white/95 backdrop-blur-md shadow-xl z-[100] overflow-hidden"
-      >
-        {/* Close Button */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, delay: 0.4, ease: "easeOut" }}
-          exit={{ opacity: 0, transition: { duration: 0.2, delay: 0 }}}
-          onClick={onClose}
-          className="fixed right-6 top-6 text-white/60 hover:text-white transition-colors z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-gray-900/70 hover:bg-gray-900/90 backdrop-blur-sm border border-white/10"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </motion.button>
-
-        <div className="h-full w-full overflow-y-auto project-sidebar-content">
-          <div className="p-6 pt-20 md:p-12 md:pt-20 max-w-5xl mx-auto">
-            {/* Project Title */}
-            <motion.h2 
-              key={projectKey}
+      <AnimatePresence>
+        {localOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{
+              x: ["100%", "90%", "92%", "0%"]
+            }}
+            exit={{ 
+              x: "100%",
+              transition: {
+                duration: 0.45,
+                ease: [0.2, 0, 0, 1] // Smooth acceleration out
+              }
+            }}
+            transition={{
+              duration: 0.75,
+              times: [0, 0.2, 0.4, 1],
+              ease: [
+                [0.25, 0.1, 0.25, 1], // initial movement
+                [0.03, -0.00003, 0.01, 1],  // slower bounce
+                [1.55, 0, 0.01, 1]    // extended hesitation before dramatic finish
+              ],
+              delay: 0.4 // Delay to allow pre-transition to clear
+            }}
+            className="fixed inset-0 bg-white/95 backdrop-blur-md shadow-xl z-[100] overflow-hidden"
+          >
+            {/* Close Button */}
+            <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, delay: 0.85, ease: "easeIn" }}
-              className="text-3xl font-black text-gray-900 mb-6"
+              transition={{ duration: 0.2, delay: 0.7, ease: "easeOut" }}
+              exit={{ opacity: 0, transition: { duration: 0.2, delay: 0 }}}
+              onClick={handleClose}
+              className="fixed right-6 top-6 text-white/60 hover:text-white transition-colors z-[110] w-12 h-12 flex items-center justify-center rounded-full bg-gray-900/70 hover:bg-gray-900/90 backdrop-blur-sm border border-white/10"
             >
-              {project.title}
-            </motion.h2>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </motion.button>
 
-            {/* Project Description */}
-            {project.description && (
-              <motion.p 
-                key={`${projectKey}-description`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.95, ease: "easeIn" }}
-                className="text-2xl font-serif text-gray-600 mb-12"
-              >
-                {project.description}
-              </motion.p>
-            )}
-
-            {/* Project Images */}
-            <motion.div 
-              key={`${projectKey}-images`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, delay: 1.05, ease: "easeIn" }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            >
-              {project.images.map((image, index) => (
-                <div 
-                  key={index} 
-                  className={`flex flex-col gap-2 ${image.fullWidth ? 'md:col-span-2' : ''}`}
+            <div className="h-full w-full overflow-y-auto project-sidebar-content">
+              <div className="p-6 pt-20 md:p-12 md:pt-20 max-w-5xl mx-auto">
+                {/* Project Title */}
+                <motion.h2 
+                  key={projectKey}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.85, ease: "easeIn" }}
+                  className="text-3xl font-black text-gray-900 mb-6"
                 >
-                  <div 
-                    className="cursor-pointer relative group" 
-                    onClick={() => handleImageClick(index)}
-                  >
-                    <Image 
-                      src={image.src}
-                      alt={image.alt}
-                      width={1000} 
-                      height={1000}
-                      className="transition-all duration-200 group-hover:opacity-[60%]" 
-                    />
-                  </div>
-                  {image.caption && (
-                    <p className="text-sm text-gray-500 mb-4">{image.caption}</p>
-                  )}
-                </div>
-              ))}
-            </motion.div>
+                  {project.title}
+                </motion.h2>
 
-            {/* Project Navigation */}
-            <motion.div 
-              key={`${projectKey}-navigation`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, delay: 0.8, ease: "easeOut" }}
-              className="mt-8"
-            >
-              {/* Next Project Button */}
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.9, ease: "easeOut" }}
-                onClick={() => {
-                  if (!projectKey) return;
-                  
-                  const projectKeys = Object.keys(projectDetails);
-                  const currentIndex = projectKeys.indexOf(projectKey);
-                  const nextIndex = (currentIndex + 1) % projectKeys.length;
-                  
-                  // We'll need to handle this in the parent component
-                  onClose();
-                  setTimeout(() => {
-                    // This is where we would navigate to the next project
-                    // But we'll let the parent component handle it
-                  }, 200);
-                }}
-                className="w-full bg-gray-900 text-white hover:text-white flex justify-center items-center gap-4 hover:bg-gray-800 p-8 rounded-full transition-all duration-150 ease-out"
-              >
-                <h2 className="text-xl font-black tracking-tight">
-                  {Object.keys(projectDetails).indexOf(projectKey || '') === Object.keys(projectDetails).length - 1 
-                    ? `Back to ${projectDetails[Object.keys(projectDetails)[0]].title}`
-                    : `Up Next: ${projectDetails[Object.keys(projectDetails)[(Object.keys(projectDetails).indexOf(projectKey || '') + 1) % Object.keys(projectDetails).length]].title}`
-                  }
-                </h2>
-              </motion.button>
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
+                {/* Project Description */}
+                {project.description && (
+                  <motion.p 
+                    key={`${projectKey}-description`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, delay: 0.95, ease: "easeIn" }}
+                    className="text-2xl font-serif text-gray-600 mb-12"
+                  >
+                    {project.description}
+                  </motion.p>
+                )}
+
+                {/* Project Images */}
+                <motion.div 
+                  key={`${projectKey}-images`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 1.05, ease: "easeIn" }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                >
+                  {project.images.map((image, index) => (
+                    <div 
+                      key={index} 
+                      className={`flex flex-col gap-2 ${image.fullWidth ? 'md:col-span-2' : ''}`}
+                    >
+                      <div 
+                        className="cursor-pointer relative group" 
+                        onClick={() => handleImageClick(index)}
+                      >
+                        <Image 
+                          src={image.src}
+                          alt={image.alt}
+                          width={1000} 
+                          height={1000}
+                          className="transition-all duration-200 group-hover:opacity-[60%]" 
+                        />
+                      </div>
+                      {image.caption && (
+                        <p className="text-sm text-gray-500 mb-4">{image.caption}</p>
+                      )}
+                    </div>
+                  ))}
+                </motion.div>
+
+                {/* Project Navigation */}
+                <motion.div 
+                  key={`${projectKey}-navigation`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, delay: 0.8, ease: "easeOut" }}
+                  className="mt-8"
+                >
+                  {/* Next Project Button */}
+                  <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3, delay: 0.9, ease: "easeOut" }}
+                    onClick={() => {
+                      if (!projectKey) return;
+                      
+                      const projectKeys = Object.keys(projectDetails);
+                      const currentIndex = projectKeys.indexOf(projectKey);
+                      const nextIndex = (currentIndex + 1) % projectKeys.length;
+                      
+                      // We'll need to handle this in the parent component
+                      onClose();
+                      setTimeout(() => {
+                        // This is where we would navigate to the next project
+                        // But we'll let the parent component handle it
+                      }, 200);
+                    }}
+                    className="w-full bg-gray-900 text-white hover:text-white flex justify-center items-center gap-4 hover:bg-gray-800 p-8 rounded-full transition-all duration-150 ease-out"
+                  >
+                    <h2 className="text-xl font-black tracking-tight">
+                      {Object.keys(projectDetails).indexOf(projectKey || '') === Object.keys(projectDetails).length - 1 
+                        ? `Back to ${projectDetails[Object.keys(projectDetails)[0]].title}`
+                        : `Up Next: ${projectDetails[Object.keys(projectDetails)[(Object.keys(projectDetails).indexOf(projectKey || '') + 1) % Object.keys(projectDetails).length]].title}`
+                      }
+                    </h2>
+                  </motion.button>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Back to Top Button */}
       <AnimatePresence>

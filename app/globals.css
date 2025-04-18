@@ -14,6 +14,40 @@
   color: hsl(var(--color-text-primary));
 }
 
+/* Custom scrollbar styles */
+:root {
+  --scrollbar-width: 8px;
+}
+
+html {
+  scrollbar-width: var(--scrollbar-width);
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  border: 2px solid transparent;
+}
+
+/* Body scrolling control */
+html.sidebar-open {
+  scrollbar-width: none;
+}
+
+html.sidebar-open::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
 body {
   @apply antialiased text-xl;
   background-color: hsl(var(--color-bg-primary));
