@@ -36,7 +36,7 @@ function GridItem({ index }: { index: number }) {
 
 export default function WorkPage() {
   return (
-    <div className="rounded-[var(--container-radius)] p-8">
+    <div className="max-w-3xl mx-auto px-8 py-12">
       <H1 className="mb-4">Work</H1>
       {/* Page header */}
       <div className="mb-12">
@@ -46,7 +46,7 @@ export default function WorkPage() {
       </div>
 
       {/* Grid of items */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
         {Array.from({ length: 40 }).map((_, index) => (
           <GridItem key={index} index={index} />
         ))}

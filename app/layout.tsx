@@ -40,9 +40,6 @@ export default function RootLayout({
           {/* Background stays mounted during navigation */}
           <SceneBackground />
           
-          {/* Fixed header */}
-          {/* <Header /> */}
-          
           {/* Layout container */}
           <div className="min-h-screen flex flex-col">
             <div className="flex-1 relative">
@@ -65,8 +62,6 @@ export default function RootLayout({
               </main>
             </div>
 
-            {/* Footer */}
-            {/* <Footer /> */}
           </div>
         </ThemeProvider>
       </body>

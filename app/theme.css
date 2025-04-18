@@ -34,7 +34,7 @@
   --color-container-blur: 2px;
 
   /* Border colors */
-  --color-border: 220 13% 91%;
+  --color-border: oklch(92.8% 0.006 264.531);
   --color-border-hover: 220 13% 85%;
 
   /* Nav link specific */
