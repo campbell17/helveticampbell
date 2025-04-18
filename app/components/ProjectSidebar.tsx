@@ -58,6 +58,7 @@ interface ProjectDetails {
   title: string;
   description?: string;
   images: ImageData[];
+  content?: React.ReactNode;
 }
 
 // Project data from the original Sidebar component
@@ -65,6 +66,46 @@ const projectDetails: Record<string, ProjectDetails> = {
   "Fulcrum": {
     title: "Fulcrum",
     description: "Here's a taste of some work I've done over the years at Fulcrum. More to come...",
+    content: (
+      <>
+        <p>
+          Fourteen years ago, a geospatial technology company named Spatial Networks hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.
+        </p>
+
+        <p>
+          Before that, I founded a design agency called Whiteshark Creations with an engineering colleague. We worked with some great clients in our first year, but I realized agency life wasn&apos;t my calling and I left for other design pursuits.
+        </p>
+
+        <p>
+          Prior to going solo, my design career began its infancy, when Macromedia was still a household name and Web 2.0 was hitting it&apos;s bubbly prime. I started as a web designer and this is where I first clapped eyes on naked HTML & CSS - No WYSIWYG editor to hide all the crimes. We had dedicated developers to write all the code, so my exposure and practice only came in fits and starts. I wouldn&apos;t feel the power of `git push origin master` until my first year working at Spatial Networks.
+        </p>
+
+        <p>
+          When you&apos;re the only designer for a company with big ambitions, becoming a generalist is a matter of survival. I have sketchbooks with pages chock full of logos, mobile app screens, mobile app icons, and trade show pull-up banners for offshoots of ideas that didn&apos;t (and never would) exist.
+        </p>
+
+        <p>
+          I loved it.
+        </p>
+
+        <p>
+          But what I loved most was working on the web apps and the marketing websites. Since we were so small, everyone had to be trusted to make what they were doing count without much (or any) oversight. This was the first time I was encouraged to simply address the customer problem and build. There was no time for hand-wringing. 
+        </p>
+
+        <p>
+          We took a few cracks at different product ideas. Allinspections, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be my final meeting at Spatial Networks. Instead, he offered me the opportunity to head up something new: Fulcrum.
+        </p>
+
+        <p>
+          Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.
+        </p>
+
+        <p>
+          Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.
+        </p>
+
+      </>
+    ),    
     images: [
       { src: "/images/work/isolated/iso-fulcrum-icon-og.jpg", alt: "Fulcrum Icon OG" },
       { src: "/images/work/isolated/iso-fulcrum-logo.jpg", alt: "Fulcrum Logo" },
@@ -494,77 +535,95 @@ export default function ProjectSidebar({
                 ease: "easeOut"
               }}
             >
-              <div className="p-6 pt-20 md:p-12 md:pt-20 max-w-5xl mx-auto">
-                {/* Project Title */}
-                <motion.h2 
-                  key={projectKey}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 1 }} // No fade on exit
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 0.85, 
-                    ease: "easeIn"
-                  }}
-                  className="text-3xl font-black text-gray-900 mb-6"
-                >
-                  {project.title}
-                </motion.h2>
-
-                {/* Project Description */}
-                {project.description && (
-                  <motion.p 
-                    key={`${projectKey}-description`}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 p-20 mx-auto">
+                <div className="left-side max-w-md">
+                  {/* Project Title */}
+                  <motion.h2 
+                    key={projectKey}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 1 }} // No fade on exit
                     transition={{ 
                       duration: 0.5, 
-                      delay: 0.95, 
+                      delay: 0.85, 
                       ease: "easeIn"
                     }}
-                    className="text-2xl font-serif text-gray-600 mb-12"
                   >
-                    {project.description}
-                  </motion.p>
-                )}
+                    {project.title}
+                  </motion.h2>
 
-                {/* Project Images */}
-                <motion.div 
-                  key={`${projectKey}-images`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 1 }} // No fade on exit
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 1.05, 
-                    ease: "easeIn"
-                  }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                >
-                  {project.images.map((image, index) => (
-                    <div 
-                      key={index} 
-                      className={`flex flex-col gap-2 ${image.fullWidth ? 'md:col-span-2' : ''}`}
+                  {/* Project Description */}
+                  {project.description && (
+                    <motion.p 
+                      key={`${projectKey}-description`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 1 }} // No fade on exit
+                      transition={{ 
+                        duration: 0.5, 
+                        delay: 0.95, 
+                        ease: "easeIn"
+                      }}                      
                     >
+                      {project.description}
+                    </motion.p>
+                  )}
+
+                  {/* Project Content */}
+                  {project.content && (
+                    <motion.div 
+                      key={`${projectKey}-content`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 1 }} // No fade on exit
+                      transition={{ 
+                        duration: 0.5, 
+                        delay: 0.95, 
+                        ease: "easeIn"
+                      }}                      
+                    >
+                      {project.content}
+                    </motion.div>
+                  )}
+                </div>
+                <div className="right-side"> 
+                  {/* Project Images */}
+                  <motion.div 
+                    key={`${projectKey}-images`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 1 }} // No fade on exit
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 1.05, 
+                      ease: "easeIn"
+                    }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                  >
+                    {project.images.map((image, index) => (
                       <div 
-                        className="cursor-pointer relative group" 
-                        onClick={() => handleImageClick(index)}
+                        key={index} 
+                        className={`flex flex-col gap-2 ${image.fullWidth ? 'md:col-span-2' : ''}`}
                       >
-                        <Image 
-                          src={image.src}
-                          alt={image.alt}
-                          width={1000} 
-                          height={1000}
-                          className="transition-all duration-200 group-hover:opacity-[60%]" 
-                        />
+                        <div 
+                          className="cursor-pointer relative group" 
+                          onClick={() => handleImageClick(index)}
+                        >
+                          <Image 
+                            src={image.src}
+                            alt={image.alt}
+                            width={1000} 
+                            height={1000}
+                            className="transition-all duration-200 group-hover:opacity-[60%]" 
+                          />
+                        </div>
+                        {image.caption && (
+                          <p className="text-sm text-gray-500 mb-4">{image.caption}</p>
+                        )}
                       </div>
-                      {image.caption && (
-                        <p className="text-sm text-gray-500 mb-4">{image.caption}</p>
-                      )}
-                    </div>
-                  ))}
-                </motion.div>
+                    ))}
+                  </motion.div>
+                </div>
 
                 {/* Project Navigation */}
                 <motion.div 
