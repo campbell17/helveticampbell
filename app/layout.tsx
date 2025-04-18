@@ -8,6 +8,7 @@ import ThemeSwitcher from './components/ThemeSwitcher'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
+import AnimatedLayout from './components/AnimatedLayout'
 
 export const metadata: Metadata = {
   title: 'Helveticampbell',
@@ -54,10 +55,12 @@ export default function RootLayout({
                 </nav>
               </div>
 
-              {/* Main content area */}
+              {/* Main content area - wrap in AnimatedLayout for transitions */}
               <main className="pl-80 pr-8 pt-16 pb-16">
                 <div className="max-w-[1200px] mx-auto">
-                  {children}
+                  <AnimatedLayout>
+                    {children}
+                  </AnimatedLayout>
                 </div>
               </main>
             </div>
