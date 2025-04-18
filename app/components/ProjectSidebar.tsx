@@ -3,6 +3,19 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Lightbox from './Lightbox';
 
+// Animation timing constants
+const ANIMATION_TIMING = {
+  exit: {
+    duration: 0.3,
+    ease: "easeOut"
+  },
+  cleanup: 350, // Slightly longer than exit duration to ensure animations complete
+  enter: {
+    duration: 0.2,
+    ease: "easeOut"
+  },
+};
+
 interface ImageData {
   src: string;
   alt: string;
@@ -218,20 +231,19 @@ const PreTransition = ({ show, onComplete }: { show: boolean; onComplete: () => 
     <AnimatePresence mode="wait">
       {show && (
         <motion.div
-          initial={{ clipPath: "inset(0 0 0 100%)" }}
-          animate={{ clipPath: "inset(0 0 0 0)" }}
-          exit={{ clipPath: "inset(0 0 0 100%)", opacity: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{
             duration: 0.15,
             ease: "easeInOut",
-            exit: { duration: 0.2 }
+            exit: ANIMATION_TIMING.exit
           }}
           className="fixed inset-0 bg-black z-sidebar flex items-center justify-center"
         >
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             className="text-white text-4xl md:text-6xl font-helveticampbell tracking-tight"
           >
@@ -292,7 +304,7 @@ export default function ProjectSidebar({
     setTimeout(() => {
       onClose();
       setIsExiting(false);
-    }, 300); // Short time to match the exit animation duration
+    }, ANIMATION_TIMING.cleanup); // Use shared timing constant
   };
 
   const handleImageClick = (index: number) => {
@@ -388,9 +400,11 @@ export default function ProjectSidebar({
             }}
             exit={{ 
               opacity: 0,
-              x: "5%",
-              backdropFilter: "blur(0px)",
-              backgroundColor: "rgba(255, 255, 255, 0)"
+              x: "0%", // Keep at 0% to prevent sliding
+              transition: {
+                opacity: ANIMATION_TIMING.exit, // Apply exit timing to opacity only
+                x: { duration: 0 } // Instant for x to prevent any movement
+              }
             }}
             transition={{
               duration: 0.75,
@@ -400,17 +414,15 @@ export default function ProjectSidebar({
                 [0.03, -0.00003, 0.01, 1],  // slower bounce
                 [1, 0, 0.01, 1]    // modified ease for dramatic finish
               ],
-              delay: 0.4, // Delay to allow pre-transition to clear
-              exit: { duration: 0.3, ease: "easeOut" } // Faster exit animation
+              delay: 0 // No delay for entrance
             }}
-            className="fixed inset-0 bg-white/95 backdrop-blur-md shadow-xl z-sidebar overflow-hidden"
+            className="fixed inset-0 bg-[#f5f6f7] backdrop-blur-xs shadow-xl z-sidebar overflow-hidden"
           >
             {/* Close Button */}
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.2, delay: 0.7, ease: "easeOut" }}
-              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
               onClick={handleClose}
               className="fixed right-6 top-6 text-white/60 hover:text-white transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-gray-900/70 hover:bg-gray-900/90 backdrop-blur-sm border border-white/10"
             >
@@ -421,8 +433,10 @@ export default function ProjectSidebar({
 
             <motion.div 
               className="h-full w-full overflow-y-auto project-sidebar-content"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.3, ease: "easeOut", exit: ANIMATION_TIMING.exit }}
             >
               <div className="p-6 pt-20 md:p-12 md:pt-20 max-w-5xl mx-auto">
                 {/* Project Title */}
@@ -430,12 +444,10 @@ export default function ProjectSidebar({
                   key={projectKey}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
                   transition={{ 
                     duration: 0.5, 
                     delay: 0.85, 
-                    ease: "easeIn",
-                    exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                    ease: "easeIn"
                   }}
                   className="text-3xl font-black text-gray-900 mb-6"
                 >
@@ -448,12 +460,10 @@ export default function ProjectSidebar({
                     key={`${projectKey}-description`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
                     transition={{ 
                       duration: 0.5, 
                       delay: 0.95, 
-                      ease: "easeIn",
-                      exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                      ease: "easeIn"
                     }}
                     className="text-2xl font-serif text-gray-600 mb-12"
                   >
@@ -466,12 +476,10 @@ export default function ProjectSidebar({
                   key={`${projectKey}-images`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
                   transition={{ 
                     duration: 0.5, 
                     delay: 1.05, 
-                    ease: "easeIn",
-                    exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                    ease: "easeIn"
                   }}
                   className="grid grid-cols-1 md:grid-cols-2 gap-6"
                 >
@@ -504,12 +512,10 @@ export default function ProjectSidebar({
                   key={`${projectKey}-navigation`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
                   transition={{ 
                     duration: 0.3, 
                     delay: 0.8, 
-                    ease: "easeOut",
-                    exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                    ease: "easeOut"
                   }}
                   className="mt-8"
                 >
@@ -517,12 +523,10 @@ export default function ProjectSidebar({
                   <motion.button
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
                     transition={{ 
                       duration: 0.3, 
                       delay: 0.9, 
-                      ease: "easeOut",
-                      exit: { duration: 0.3, delay: 0, ease: "easeOut" }
+                      ease: "easeOut"
                     }}
                     onClick={() => {
                       if (!projectKey) return;
@@ -536,7 +540,7 @@ export default function ProjectSidebar({
                       setTimeout(() => {
                         // This is where we would navigate to the next project
                         // But we'll let the parent component handle it
-                      }, 200);
+                      }, ANIMATION_TIMING.cleanup);
                     }}
                     className="w-full bg-gray-900 text-white hover:text-white flex justify-center items-center gap-4 hover:bg-gray-800 p-8 rounded-full transition-all duration-150 ease-out"
                   >
@@ -559,9 +563,8 @@ export default function ProjectSidebar({
         {showBackToTop && (
           <motion.button
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.02 }}
+            animate={{ opacity: 1, y: 0, transition: ANIMATION_TIMING.enter }}
+            exit={{ opacity: 0, y: 20, transition: ANIMATION_TIMING.exit }}
             onClick={scrollToTop}
             className="fixed bottom-6 right-6 text-white/60 hover:text-white transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-slate-500/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10"
           >
