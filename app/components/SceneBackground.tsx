@@ -65,7 +65,7 @@ export default function SceneBackground() {
   const rendererRef = useRef<THREE.WebGLRenderer>(null)
   const animationFrameRef = useRef<number | null>(null)
   const initialCameraY = useRef(300)
-  const maxScrollDistance = useRef(1440)
+  const maxScrollDistance = useRef(2800)
   const targetCameraX = useRef(0)
   const currentCameraX = useRef(0)
   const pathname = usePathname()
@@ -171,7 +171,7 @@ export default function SceneBackground() {
       
       // Calculate additional z-axis movement after max scroll
       const extraScroll = Math.max(0, currentScrollY - maxScrollDistance.current)
-      const zOffset = -extraScroll * 0.05 // Move camera back along z-axis
+      const zOffset = extraScroll * 0.03 // Move camera back along z-axis
       
       // Smoothly interpolate camera position for navigation
       currentCameraX.current += (targetCameraX.current - currentCameraX.current) * 0.05
@@ -182,9 +182,9 @@ export default function SceneBackground() {
         baseY,
         300 + zOffset // Start at 300 and move back as we scroll further
       )
-      
+          
       camera.lookAt(0, -150, 0)
-      
+
       renderer.render(scene, camera)
     }
     
