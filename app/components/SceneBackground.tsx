@@ -165,11 +165,24 @@ export default function SceneBackground() {
       // Smoothly interpolate scroll position
       currentScrollY += (targetScrollY - currentScrollY) * 0.05
       const limitedScrollY = Math.min(currentScrollY, maxScrollDistance.current)
-      camera.position.y = initialCameraY.current + (-limitedScrollY * 0.15)
-
-      // Smoothly interpolate camera position
+      
+      // Base camera position
+      const baseY = initialCameraY.current + (-limitedScrollY * 0.15)
+      
+      // Calculate additional z-axis movement after max scroll
+      const extraScroll = Math.max(0, currentScrollY - maxScrollDistance.current)
+      const zOffset = -extraScroll * 0.05 // Move camera back along z-axis
+      
+      // Smoothly interpolate camera position for navigation
       currentCameraX.current += (targetCameraX.current - currentCameraX.current) * 0.05
-      camera.position.x = currentCameraX.current
+      
+      // Set camera position
+      camera.position.set(
+        currentCameraX.current,
+        baseY,
+        300 + zOffset // Start at 300 and move back as we scroll further
+      )
+      
       camera.lookAt(0, -150, 0)
       
       renderer.render(scene, camera)
