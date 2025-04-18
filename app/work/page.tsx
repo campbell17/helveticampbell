@@ -87,12 +87,12 @@ export default function WorkPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-8 py-12">
+    <>
       <H1 className="mb-4">Work</H1>
       
       {/* Page header */}
       <div className="mb-12">
-        <p className="text-[hsl(var(--color-text-secondary))] text-lg">
+        <p>
           A collection of selected projects and experiments. Click on any item to see more details.
         </p>
       </div>
@@ -144,6 +144,6 @@ export default function WorkPage() {
         currentGallery={currentGallery}
         setCurrentGallery={setCurrentGallery}
       />
-    </div>
+    </>
   )
 } 

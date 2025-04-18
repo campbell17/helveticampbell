@@ -2,7 +2,7 @@ import { H1 } from '../components/Typography';
 
 export default function WritingPage() {
   return (
-    <div className="max-w-3xl mx-auto px-8 py-12">
+    <>
       <H1 className="mb-8">Writing</H1>
       
       <p>
@@ -56,6 +56,6 @@ export default function WritingPage() {
           cubilia curae.
         </p>
       </div>
-    </div>
+    </>
   )
 } 
