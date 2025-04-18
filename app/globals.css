@@ -52,16 +52,16 @@ html::-webkit-scrollbar {
 
 .scrollbar-thumb {
   position: absolute;
-  width: 6px;
+  width: 10px;
   right: 2px;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: rgba(100, 100, 100, 0.4);
   transition: width 0.2s, right 0.2s, background-color 0.2s;
 }
 
 .scrollbar-thumb:hover {
-  width: 8px;
-  right: 1px;
+  width: 10px;
+  right: 2px;
   background-color: rgba(100, 100, 100, 0.6);
 }
 

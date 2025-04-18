@@ -25,7 +25,7 @@ const PRE_TRANSITION_TIMING = {
   exit: {
     duration: 0.15,
     ease: "easeOut",
-    delay: 0.5 // Delay exit until main sidebar is closed
+    delay: 0.25 // Delay exit until main sidebar is closed
   }
 };
 
@@ -478,7 +478,7 @@ export default function ProjectSidebar({
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
               onClick={handleClose}
-              className="fixed right-6 top-6 text-white/60 hover:text-white transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-gray-900/70 hover:bg-gray-900/90 backdrop-blur-sm border border-white/10"
+              className="cursor-pointer fixed right-6 top-6 text-black/60 hover:text-black transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
