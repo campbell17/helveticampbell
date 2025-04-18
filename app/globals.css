@@ -96,7 +96,7 @@ body {
 }
 
 p {
-  @apply mb-6 font-body font-[400] leading-loose text-gray-600;
+  @apply mb-6 font-body font-[400] leading-loose text-gray-700;
 }
 
 /* Navigation */
