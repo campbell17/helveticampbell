@@ -171,7 +171,7 @@ export default function SceneBackground() {
       
       // Calculate additional z-axis movement after max scroll
       const extraScroll = Math.max(0, currentScrollY - maxScrollDistance.current)
-      const zOffset = extraScroll * 0.03 // Move camera back along z-axis
+      const zOffset = -extraScroll * 0.03 // Move camera forward along z-axis
       
       // Smoothly interpolate camera position for navigation
       currentCameraX.current += (targetCameraX.current - currentCameraX.current) * 0.05
