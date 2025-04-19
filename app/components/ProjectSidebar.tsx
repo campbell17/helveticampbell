@@ -145,6 +145,46 @@ const projectDetails: Record<string, ProjectDetails> = {
   "Spatial Networks": {
     title: "Spatial Networks",
     description: "Our parent company and Fulcrum's first customer.",
+    content: (
+      <>
+        <p>
+          Fourteen years ago, a geospatial technology company named Spatial Networks hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.
+        </p>
+
+        <p>
+          Before that, I founded a design agency called Whiteshark Creations with an engineering colleague. We worked with some great clients in our first year, but I realized agency life wasn&apos;t my calling and I left for other design pursuits.
+        </p>
+
+        <p>
+          Prior to going solo, my design career began its infancy, when Macromedia was still a household name and Web 2.0 was hitting it&apos;s bubbly prime. I started as a web designer and this is where I first clapped eyes on naked HTML & CSS - No WYSIWYG editor to hide all the crimes. We had dedicated developers to write all the code, so my exposure and practice only came in fits and starts. I wouldn&apos;t feel the power of `git push origin master` until my first year working at Spatial Networks.
+        </p>
+
+        <p>
+          When you&apos;re the only designer for a company with big ambitions, becoming a generalist is a matter of survival. I have sketchbooks with pages chock full of logos, mobile app screens, mobile app icons, and trade show pull-up banners for offshoots of ideas that didn&apos;t (and never would) exist.
+        </p>
+
+        <p>
+          I loved it.
+        </p>
+
+        <p>
+          But what I loved most was working on the web apps and the marketing websites. Since we were so small, everyone had to be trusted to make what they were doing count without much (or any) oversight. This was the first time I was encouraged to simply address the customer problem and build. There was no time for hand-wringing. 
+        </p>
+
+        <p>
+          We took a few cracks at different product ideas. Allinspections, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be my final meeting at Spatial Networks. Instead, he offered me the opportunity to head up something new: Fulcrum.
+        </p>
+
+        <p>
+          Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.
+        </p>
+
+        <p>
+          Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.
+        </p>
+
+      </>
+    ),
     images: [
       { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks Icon" },
       { src: "/images/work/isolated/iso-sni-logo.jpg", alt: "Spatial Networks Logo" },
@@ -418,48 +458,30 @@ export default function ProjectSidebar({
     // Only set up the scroll handler when the sidebar is actually visible
     // and the DOM element is available
     if (!showSidebar || !sidebarContentRef.current) {
-      console.log("Sidebar not ready yet for scroll handling");
       return;
     }
-    
-    console.log("Setting up scroll handler");
     
     const sidebar = sidebarContentRef.current;
     
     const handleScroll = () => {
       if (sidebar) {
         const scrollPosition = sidebar.scrollTop;
-        const wasScrolled = isScrolled;
-        const newScrolled = scrollPosition > 100;
-        
-        // Only log when the state would change
-        if (wasScrolled !== newScrolled) {
-          console.log(`Scroll position changed to ${scrollPosition}px, isScrolled: ${newScrolled}`);
-        }
-        
         setShowBackToTop(scrollPosition > 300);
-        setIsScrolled(newScrolled);
+        setIsScrolled(scrollPosition > 100);
       }
     };
 
     if (sidebar) {
-      console.log("Found sidebar element, attaching scroll listener");
       sidebar.addEventListener('scroll', handleScroll);
       
       // Trigger an initial check
       handleScroll();
       
       return () => {
-        console.log("Cleaning up scroll listener");
         sidebar.removeEventListener('scroll', handleScroll);
       };
     }
-  }, [isScrolled, showSidebar]); // Added showSidebar to dependency array
-
-  // Log when the sticky header rendering state changes
-  useEffect(() => {
-    console.log(`Sticky header state changed: isScrolled=${isScrolled}`);
-  }, [isScrolled]);
+  }, [showSidebar]); 
 
   const scrollToTop = () => {
     if (sidebarContentRef.current) {
@@ -565,7 +587,7 @@ export default function ProjectSidebar({
             <div
               data-scrolled={isScrolled ? "true" : "false"}
               data-testid="sticky-header"
-              className={`fixed top-0 left-0 right-0 z-modal transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'opacity-100' : ' opacity-0'}`}
+              className={`fixed top-0 left-0 right-0 z-modal transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
               style={{
                 // Force important styles to ensure visibility if needed
                 zIndex: 110
@@ -628,44 +650,85 @@ export default function ProjectSidebar({
                   )}
                 </div>
 
-                {/* Main content area - two column layout on larger screens */}
-                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-                  {/* Left column - Project content */}
-                  {project.content && (
-                    <motion.div 
-                      key={`${projectKey}-content`}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 1 }}
-                      transition={{ 
-                        duration: 0.25, 
-                        delay: 0.85, 
-                        ease: "easeIn"
-                      }}
-                      className="lg:col-span-5 prose prose-lg prose-slate max-w-none"
-                    >
-                      {project.content}
-                    </motion.div>
-                  )}
+                {/* Main content area - two column layout with the docs site approach */}
+                {project.content && (
+                  <div className="max-w-7xl mx-auto relative">
+                    <div className="flex flex-col lg:flex-row lg:gap-16 xl:gap-24">
+                      {/* Left column - Sticky content that remains visible */}
+                      <motion.div 
+                        key={`${projectKey}-content`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 1 }}
+                        transition={{ 
+                          duration: 0.25, 
+                          delay: 0.85, 
+                          ease: "easeIn"
+                        }}
+                        className="lg:w-5/12 xl:w-5/12 mb-12 lg:mb-0"
+                      >
+                        <div className="lg:sticky lg:top-24 max-w-none pr-4">
+                          {project.content}
+                        </div>
+                      </motion.div>
 
-                  {/* Right column - Images grid */}
-                  <motion.div 
-                    key={`${projectKey}-images`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 1 }}
-                    transition={{ 
-                      duration: 0.25, 
-                      delay: 1.05, 
-                      ease: "easeIn"
-                    }}
-                    className={`${project.content ? 'lg:col-span-7' : 'lg:col-span-12'}`}
-                  >
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                      {/* Right column - Images that scroll normally */}
+                      <motion.div 
+                        key={`${projectKey}-images`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 1 }}
+                        transition={{ 
+                          duration: 0.25, 
+                          delay: 1.05, 
+                          ease: "easeIn"
+                        }}
+                        className="lg:w-7/12 xl:w-7/12"
+                      >
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 pb-8">
+                          {project.images.map((image, index) => (
+                            <div 
+                              key={index} 
+                              className={`${image.fullWidth ? 'md:col-span-2 lg:col-span-2' : ''}`}
+                            >
+                              <div 
+                                className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+                                onClick={() => handleImageClick(index)}
+                              >
+                                <div className="aspect-[4/3] relative">
+                                  <Image 
+                                    src={image.src}
+                                    alt={image.alt}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    className="object-cover transition-all duration-300 group-hover:scale-105"
+                                  />
+                                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                                    <div className="w-12 h-12 rounded-full bg-white/0 group-hover:bg-white/80 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-300">
+                                      <MagnifyingGlassPlusIcon className="h-6 w-6 text-gray-900" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              {image.caption && (
+                                <p className="mt-3 text-sm text-gray-500">{image.caption}</p>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Fallback for projects without content - just show images in a grid */}
+                {!project.content && (
+                  <div className="max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                       {project.images.map((image, index) => (
                         <div 
                           key={index} 
-                          className={`${image.fullWidth ? 'md:col-span-2' : ''}`}
+                          className={`${image.fullWidth ? 'md:col-span-2 lg:col-span-3' : ''}`}
                         >
                           <div 
                             className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
@@ -692,8 +755,8 @@ export default function ProjectSidebar({
                         </div>
                       ))}
                     </div>
-                  </motion.div>
-                </div>
+                  </div>
+                )}
 
                 {/* Project Navigation */}
                 <motion.div 
