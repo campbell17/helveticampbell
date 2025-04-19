@@ -554,7 +554,7 @@ export default function ProjectSidebar({
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
               onClick={handleClose}
-              className="cursor-pointer fixed right-6 top-6 text-black/60 hover:text-black transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+              className={`cursor-pointer fixed text-black/60 hover:text-black transition-all z-[1000] flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10 ${isScrolled ? 'right-4 top-3.5 w-10 h-10' : ' right-6 top-6 w-12 h-12'}`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -565,27 +565,19 @@ export default function ProjectSidebar({
             <div
               data-scrolled={isScrolled ? "true" : "false"}
               data-testid="sticky-header"
-              className={`fixed top-0 left-0 right-0 z-modal transition-all duration-300 ease-in-out bg-[#f5f6f7]/95 backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
+              className={`fixed top-0 left-0 right-0 z-modal transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'opacity-100' : ' opacity-0'}`}
               style={{
                 // Force important styles to ensure visibility if needed
                 zIndex: 110
               }}
             >
-              <div className="max-w-7xl mx-auto flex justify-between items-center">
-                <div>
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-6">
                   <h2 className="text-xl font-semibold text-gray-900">{project?.title}</h2>
                   {project?.description && (
-                    <p className="text-sm text-gray-600 truncate max-w-md">{project.description}</p>
+                    <p className="hidden md:block text-sm text-gray-600 truncate" style={{ marginBottom: '0px' }}>{project.description}</p>
                   )}
                 </div>
-                <button 
-                  onClick={scrollToTop} 
-                  className="bg-white rounded-full p-2 shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-gray-900"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                  </svg>
-                </button>
               </div>
             </div>
 
@@ -771,7 +763,7 @@ export default function ProjectSidebar({
             animate={{ opacity: 1, y: 0, transition: ANIMATION_TIMING.enter }}
             exit={{ opacity: 0, y: 20, transition: ANIMATION_TIMING.exit }}
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 text-white/60 hover:text-white transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-slate-500/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10"
+            className="fixed bottom-6 right-6 text-black/60 hover:text-black transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
