@@ -693,7 +693,7 @@ export default function ProjectSidebar({
                                 className={`${image.fullWidth ? 'md:col-span-2 lg:col-span-2' : ''}`}
                               >
                                 <div 
-                                  className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+                                  className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-sm shadow-slate-900/20 transition-all duration-100"
                                   onClick={() => handleImageClick(index)}
                                 >
                                   <div className="aspect-[4/3] relative">
@@ -704,8 +704,8 @@ export default function ProjectSidebar({
                                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                       className="object-cover transition-all duration-100 group-hover:scale-105"
                                     />
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                                      <div className="w-12 h-12 rounded-full bg-white/0 group-hover:bg-white/80 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-300">
+                                    <div className="absolute inset-0 bg-slate-600/0 group-hover:bg-slate-600/10 transition-all duration-100 flex items-center justify-center">
+                                      <div className="w-12 h-12 rounded-full bg-white/0 group-hover:bg-white/95 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-300">
                                         <MagnifyingGlassPlusIcon className="h-6 w-6 text-gray-900" />
                                       </div>
                                     </div>
