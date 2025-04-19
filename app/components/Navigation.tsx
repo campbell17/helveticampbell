@@ -3,18 +3,40 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export default function Navigation() {
   const pathname = usePathname()
   const textStyles = 'font-helveticampbell font-[900] tracking-normal text-xl relative px-1 transition-colors duration-200 p-1'
+  const [isFirstLoad, setIsFirstLoad] = useState(true)
   
   // Animation constants
   const ENTER_DELAY = 0.15
   const ENTER_DURATION = 0.15
   const EXIT_DURATION = 0.15
+  
+  // Initial page load animation constants
+  const INITIAL_LOAD_DELAY = 0.2
+  const INITIAL_LOAD_DURATION = 0.6
+  
+  // Set isFirstLoad to false after component mounts
+  useEffect(() => {
+    setIsFirstLoad(false)
+  }, [])
 
   return (
-    <div className="flex flex-col gap-6 mb-6 flex-1 relative">
+    <motion.div 
+      className="flex flex-col gap-6 mb-6 flex-1 relative"
+      initial={{ opacity: 0 }}
+      animate={{ 
+        opacity: 1, 
+        transition: {
+          duration: INITIAL_LOAD_DURATION,
+          delay: INITIAL_LOAD_DELAY,
+          ease: [0.25, 0.1, 0.25, 1] // Custom easing for a smooth entrance
+        }
+      }}
+    >
       <Link 
         href="/" 
         className={`${textStyles} ${pathname === "/" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
@@ -101,6 +123,6 @@ export default function Navigation() {
           )}
         </AnimatePresence>
       </Link>
-    </div>
+    </motion.div>
   )
 } 
