@@ -9,7 +9,7 @@ import AnimatedLayout from './components/AnimatedLayout'
 import CustomScrollbar from './components/CustomScrollbar'
 import { cn } from './lib/utils'
 import { font } from './lib/fonts'
-import Image from 'next/image'
+
 export const metadata: Metadata = {
   title: 'Helveticampbell',
   description: 'Portfolio and creative works',
