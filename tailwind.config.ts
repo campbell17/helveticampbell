@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Raleway', 'sans-serif'],
+        display: ['Merriweather', 'serif'],
         body: ['Bitter', 'serif'],
         helveticampbell: ['Lobster', 'sans-serif'],
       },

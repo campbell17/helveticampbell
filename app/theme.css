@@ -1,10 +1,12 @@
 @theme {
   
   /* Fonts  */
-  --font-display: "Raleway", sans-serif;
+  --font-display: "Merriweather", sans-serif;
   --font-body: "Bitter", serif;
   --font-helveticampbell: "Lobster", sans-serif;
-  
+  --font-merriweather: "Merriweather", serif;
+
+  --color-text-primary: oklch(37.1% 0 0);
   --color-text-secondary: oklch(55.6% 0 0);
 }
 

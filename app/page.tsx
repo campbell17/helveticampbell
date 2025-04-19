@@ -7,9 +7,9 @@ export default function HomePage() {
     <>
       <H1>This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>
       
-      <p className="subheading">
+      <span className="subheading">
         Tim is a versatile, product-focused designer capable of building and evolving digital experiences from the ground up.
-      </p>
+      </span>
 
       <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-[hsl(var(--color-container-bg)/0.3)] mb-12">
         <div className="absolute inset-0 flex items-center justify-center text-[hsl(var(--color-text-secondary))]">
