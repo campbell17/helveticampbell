@@ -54,6 +54,7 @@ interface ImageData {
   caption?: string;
   fullWidth?: boolean;
   gallery?: number;
+  aspectRatio?: string;
 }
 
 interface ProjectDetails {
@@ -113,12 +114,12 @@ const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/isolated/iso-fulcrum-logo.jpg", alt: "Fulcrum Logo" },
       { src: "/images/work/isolated/iso-fulcrum-logo-og.jpg", alt: "Fulcrum Logo OG" },
       { src: "/images/work/isolated/iso-fulcrum-logo-live.jpg", alt: "Fulcrum Logo Live" },
-      { src: "/images/work/browser/browser-fulcrum-modern-builder-empty.jpg", alt: "Fulcrum Modern Builder Empty" },
-      { src: "/images/work/browser/browser-fulcrum-modern-builder-selected.jpg", alt: "Fulcrum Modern Builder Selected" },
-      { src: "/images/work/browser/browser-fulcrum-modern-apps-empty.jpg", alt: "Fulcrum Modern Apps Empty" },
-      { src: "/images/work/browser/browser-fulcrum-modern-apps-context.jpg", alt: "Fulcrum Modern Apps Context" },
-      { src: "/images/work/browser/browser-fulcrum-modern-apps-list.jpg", alt: "Fulcrum Modern Apps List" },
-      { src: "/images/work/browser/browser-fulcrum-modern-dataviewer.jpg", alt: "Fulcrum Modern Dataviewer" },
+      { src: "/images/work/browser/browser-fulcrum-modern-builder-empty.jpg", alt: "Fulcrum Modern Builder Empty", aspectRatio: "100/60" },
+      { src: "/images/work/browser/browser-fulcrum-modern-builder-selected.jpg", alt: "Fulcrum Modern Builder Selected", aspectRatio: "100/60" },
+      { src: "/images/work/browser/browser-fulcrum-modern-apps-empty.jpg", alt: "Fulcrum Modern Apps Empty", aspectRatio: "100/60" },
+      { src: "/images/work/browser/browser-fulcrum-modern-apps-context.jpg", alt: "Fulcrum Modern Apps Context", aspectRatio: "100/60" },
+      { src: "/images/work/browser/browser-fulcrum-modern-apps-list.jpg", alt: "Fulcrum Modern Apps List", aspectRatio: "100/60" },
+      { src: "/images/work/browser/browser-fulcrum-modern-dataviewer.jpg", alt: "Fulcrum Modern Dataviewer", aspectRatio: "100/60" },
       { src: "/images/work/snapshots/snapshot-fulcrum-cw-office-1.jpg", alt: "Fulcrum CW Office 1" },
       { src: "/images/work/snapshots/snapshot-fulcrum-cw-office-2.jpg", alt: "Fulcrum CW Office 2" },
       { src: "/images/work/snapshots/snapshot-fulcrum-cw-onsite-fema-1.jpg", alt: "Fulcrum CW Onsite FEMA 1" },
@@ -130,10 +131,10 @@ const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/full/full-fulcrum-book-cover.jpg", alt: "Fulcrum Book Cover" },
       { src: "/images/work/full/full-fulcrum-book-fundamentals.jpg", alt: "Fulcrum Book Fundamentals" },
       { src: "/images/work/full/full-fulcrum-book-data.jpg", alt: "Fulcrum Book Data" },
-      { src: "/images/work/full/full-fulcrum-handout.jpg", alt: "Fulcrum Handout", fullWidth: true },
+      { src: "/images/work/full/full-fulcrum-handout.jpg", alt: "Fulcrum Handout", fullWidth: true, aspectRatio: "100/64" },
       { src: "/images/work/gridded/grid-fulcrum-buildericons-v3.jpg", alt: "Fulcrum Builder Icons v3" },
       { src: "/images/work/isolated/iso-fulcrum-package.jpg", alt: "Fulcrum Package" },
-      { src: "/images/work/isolated/iso-fulcrum-packaging-holidaybox.jpg", alt: "Fulcrum Holiday Box", fullWidth: true },
+      { src: "/images/work/isolated/iso-fulcrum-packaging-holidaybox.jpg", alt: "Fulcrum Holiday Box", fullWidth: true, aspectRatio: "100/50" },
       { src: "/images/work/isolated/iso-fulcrum-pullup-1.jpg", alt: "Fulcrum Pullup 1" },
       { src: "/images/work/snapshots/snapshot-fulcrum-cw-tradeshow.jpg", alt: "Fulcrum CW Tradeshow" },
       { src: "/images/work/isolated/iso-fulcrum-sticker-1.jpg", alt: "Fulcrum Sticker 1" },
@@ -696,7 +697,12 @@ export default function ProjectSidebar({
                                   className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-sm shadow-slate-900/20 transition-all duration-100"
                                   onClick={() => handleImageClick(index)}
                                 >
-                                  <div className="aspect-[4/3] relative">
+                                  <div 
+                                    className="relative" 
+                                    style={{ 
+                                      aspectRatio: image.aspectRatio || '4/4'
+                                    }}
+                                  >
                                     <Image 
                                       src={image.src}
                                       alt={image.alt}
@@ -736,7 +742,10 @@ export default function ProjectSidebar({
                             className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
                             onClick={() => handleImageClick(index)}
                           >
-                            <div className="aspect-[4/3] relative">
+                            <div 
+                              className="relative" 
+                              style={{ aspectRatio: image.aspectRatio || '4/3' }}
+                            >
                               <Image 
                                 src={image.src}
                                 alt={image.alt}
