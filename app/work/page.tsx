@@ -111,7 +111,7 @@ export default function WorkPage() {
         </div>
         
         {/* Additional text from "My Work" tile content */}
-        <div className="mt-12 max-w-2xl mx-auto">
+        <div className="mt-12">
           <p>
             I knew I wanted to be a designer when I realized I wasn't afraid to get paid.
           </p>
