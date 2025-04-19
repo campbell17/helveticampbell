@@ -3,7 +3,11 @@ import { H1 } from '../components/Typography';
 export default function WritingPage() {
   return (
     <>
-      <H1 className="mb-8">Writing</H1>
+      <H1>Writing</H1>
+
+      <p className="subheading">
+        A collection of essays, articles, and other writing.
+      </p>
       
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae massa fermentum efficitur.

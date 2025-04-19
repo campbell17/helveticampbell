@@ -89,18 +89,15 @@ export default function WorkPage() {
 
   return (
     <>
-      <H1 className="mb-4">Work</H1>
-      
-      {/* Page header */}
-      <div className="mb-12">
-        <p>
-          A collection of selected projects and experiments. Click on any item to see more details.
-        </p>
-      </div>
+      <H1>Work</H1>
 
+      <p className="subheading">
+      A collection of selected projects and experiments. Click on any item to see more details.
+      </p>
+      
       {/* Work gallery grid */}
       <div className="mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {workImages.map((image, index) => (
             <WorkItem
               key={index}

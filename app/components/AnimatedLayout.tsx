@@ -16,7 +16,7 @@ export default function AnimatedLayout({ children }: AnimatedLayoutProps) {
       {/* Key on pathname to trigger animation when route changes */}
       <div 
         key={pathname}
-        className="max-w-4xl mx-auto px-8 py-12"
+        className="max-w-4xl mx-auto px-8 py-12 backdrop-blur-[3px]"
       >
         {children}
       </div>

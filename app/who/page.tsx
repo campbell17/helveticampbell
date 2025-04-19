@@ -1,21 +1,41 @@
 'use client'
 
-import { H1, H2 } from './components/Typography'
+import { H1, H2, H3 } from '../components/Typography'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function HomePage() {
   return (
     <>
-      <H1>This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>
+      <H1>Tim Campbell</H1>
       
       <p className="subheading">
-        Tim is a versatile, product-focused designer capable of building and evolving digital experiences from the ground up.
+        Settle in, it's story time.
       </p>
+      
+      <H2 className="mb-8">The Short Version...</H2>
+      <H3>Here's what you need to know</H3>
 
-      <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-[hsl(var(--color-container-bg)/0.3)] mb-12">
-        <div className="absolute inset-0 flex items-center justify-center text-[hsl(var(--color-text-secondary))]">
-          Hero Image
-        </div>
-      </div>
+      <ul className="space-y-4 list-disc list-outside ml-5">
+          <li>
+            I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer" className="text-teal-600">Fulcrum</Link> for its first 10 years while it grew from a simple idea to $12M+ ARR with 2,000+ customers.
+          </li>
+          <li>
+            This included web app, mobile Apps, branding, marketing website, print materials.
+          </li>
+          <li>
+            I&apos;m used to working with Rails, HTML, CSS, as well as JS/React. They didn&apos;t ask me to learn how to code. I did it to speed us up. 
+          </li>
+          <li>
+            In addition to working on Fulcrum, I was also solely responsible for designing and shipping the branding, website, and print / trade show materials for our parent company, Spatial Networks.
+          </li>
+          <li>
+            I write for fun. You can read what I publish on <Link href="https://campbellseventeen.substack.com" target="_blank" rel="noopener noreferrer" className="text-teal-600">Substack</Link>.
+          </li>
+          <li>
+            I enjoy sports and I love Formula 1. I haven&apos;t missed a race in 25 years.
+          </li>
+        </ul>
 
       <div className="prose prose-invert max-w-none">
         <p>

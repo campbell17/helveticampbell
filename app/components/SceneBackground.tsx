@@ -76,14 +76,14 @@ export default function SceneBackground() {
       case '/':
         targetCameraX.current = 50
         break
-      case '/about':
+      case '/work':
         targetCameraX.current = 100 // Move right
         break
-      case '/work':
-        targetCameraX.current = 100 // Move left
-        break
       case '/writing':
-        targetCameraX.current = 160 // Slight right
+        targetCameraX.current = 160 // Move left
+        break
+      case '/who':
+        targetCameraX.current = 220 // Slight right
         break
       default:
         targetCameraX.current = 50

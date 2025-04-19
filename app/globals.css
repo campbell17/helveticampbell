@@ -89,26 +89,18 @@ html.sidebar-open::-webkit-scrollbar {
 }
 
 body {
-  @apply antialiased text-xl;
+  @apply antialiased text-2xl;
   background-color: hsl(var(--color-bg-primary));
   color: hsl(var(--color-text-primary));
   overflow-x: hidden;
 }
 
-/* h1 {
-  @apply text-6xl font-[700] tracking-tight text-[hsl(var(--color-text-heading))] font-display mb-6;
-} */
-
-h2 {
-  @apply text-3xl font-bold text-[hsl(var(--color-text-heading))] font-display;
-}
-
-p {
+p, ul, ol {
   @apply mb-12 font-body font-[400] leading-loose text-gray-700;
 }
 
 .subheading {
-  @apply text-2xl;
+  @apply text-2xl lg:text-4xl;
 }
 
 /* Navigation */

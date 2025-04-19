@@ -9,7 +9,7 @@ import AnimatedLayout from './components/AnimatedLayout'
 import CustomScrollbar from './components/CustomScrollbar'
 import { cn } from './lib/utils'
 import { font } from './lib/fonts'
-
+import Image from 'next/image'
 export const metadata: Metadata = {
   title: 'Helveticampbell',
   description: 'Portfolio and creative works',
@@ -49,7 +49,7 @@ export default function RootLayout({
             <div className="flex-1 relative">
               {/* Fixed navigation sidebar */}
               <div className="fixed top-12 bottom-12 left-8 w-64 z-50">
-                <nav className="rounded-[var(--container-radius)] p-6 flex flex-col h-full">
+                <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
                   {/* <H1 className="mb-10 flex-none">HC</H1> */}
                   <Navigation />
                   <div className="flex-none">
