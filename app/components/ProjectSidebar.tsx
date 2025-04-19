@@ -208,22 +208,62 @@ const projectDetails: Record<string, ProjectDetails> = {
   "Allinspections": {
     title: "Allinspections",
     description: "Precursor to Fulcrum and my first product at Spatial Networks.",
+    content: (
+      <>
+        <p>
+          Fourteen years ago, a geospatial technology company named Spatial Networks hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.
+        </p>
+
+        <p>
+          Before that, I founded a design agency called Whiteshark Creations with an engineering colleague. We worked with some great clients in our first year, but I realized agency life wasn&apos;t my calling and I left for other design pursuits.
+        </p>
+
+        <p>
+          Prior to going solo, my design career began its infancy, when Macromedia was still a household name and Web 2.0 was hitting it&apos;s bubbly prime. I started as a web designer and this is where I first clapped eyes on naked HTML & CSS - No WYSIWYG editor to hide all the crimes. We had dedicated developers to write all the code, so my exposure and practice only came in fits and starts. I wouldn&apos;t feel the power of `git push origin master` until my first year working at Spatial Networks.
+        </p>
+
+        <p>
+          When you&apos;re the only designer for a company with big ambitions, becoming a generalist is a matter of survival. I have sketchbooks with pages chock full of logos, mobile app screens, mobile app icons, and trade show pull-up banners for offshoots of ideas that didn&apos;t (and never would) exist.
+        </p>
+
+        <p>
+          I loved it.
+        </p>
+
+        <p>
+          But what I loved most was working on the web apps and the marketing websites. Since we were so small, everyone had to be trusted to make what they were doing count without much (or any) oversight. This was the first time I was encouraged to simply address the customer problem and build. There was no time for hand-wringing. 
+        </p>
+
+        <p>
+          We took a few cracks at different product ideas. Allinspections, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be my final meeting at Spatial Networks. Instead, he offered me the opportunity to head up something new: Fulcrum.
+        </p>
+
+        <p>
+          Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.
+        </p>
+
+        <p>
+          Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.
+        </p>
+
+      </>
+    ),    
     images: [
       { src: "/images/work/isolated/iso-allinspections-icon.jpg", alt: "Allinspections Icon" },
       { src: "/images/work/isolated/iso-allinspections-logo.jpg", alt: "Allinspections Logo" },
       { src: "/images/work/isolated/iso-allinspections-pullup-1.jpg", alt: "Allinspections Pullup 1", fullWidth: true },
       { src: "/images/work/isolated/iso-allinspections-pullup-2-alt.jpg", alt: "Allinspections Pullup 2 Alt", fullWidth: true },
       { src: "/images/work/isolated/iso-allinspections-pullup-3.jpg", alt: "Allinspections Pullup 3", fullWidth: true },
-      { src: "/images/work/browser/browser-allinspections-0.jpg", alt: "Allinspections Site 1" },
-      { src: "/images/work/browser/browser-allinspections-1.jpg", alt: "Allinspections Site 2" },
-      { src: "/images/work/browser/browser-allinspections-2.jpg", alt: "Allinspections Site 3" },
-      { src: "/images/work/browser/browser-allinspections-3.jpg", alt: "Allinspections Site 4" },
-      { src: "/images/work/browser/browser-allinspections-4-1.jpg", alt: "Allinspections Site 5" },
-      { src: "/images/work/browser/browser-allinspections-4-2.jpg", alt: "Allinspections Site 6" },
-      { src: "/images/work/browser/browser-allinspections-4-3.jpg", alt: "Allinspections Site 7" },
-      { src: "/images/work/browser/browser-allinspections-4-4.jpg", alt: "Allinspections Site 8" },
-      { src: "/images/work/browser/browser-allinspections-4-5.jpg", alt: "Allinspections Site 9" },
-      { src: "/images/work/browser/browser-allinspections-5.jpg", alt: "Allinspections Site 11" },
+      { src: "/images/work/browser/browser-allinspections-0.jpg", alt: "Allinspections Site 1", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-1.jpg", alt: "Allinspections Site 2", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-2.jpg", alt: "Allinspections Site 3", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-3.jpg", alt: "Allinspections Site 4", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-4-1.jpg", alt: "Allinspections Site 5", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-4-2.jpg", alt: "Allinspections Site 6", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-4-3.jpg", alt: "Allinspections Site 7", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-4-4.jpg", alt: "Allinspections Site 8", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-4-5.jpg", alt: "Allinspections Site 9", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-allinspections-5.jpg", alt: "Allinspections Site 11", aspectRatio: "1440/1261" },
       { src: "/images/work/full/full-allinspections-brochure.jpg", alt: "Allinspections Brochure", fullWidth: true },
       { src: "/images/work/full/full-allinspections-double-ad.jpg", alt: "Allinspections Double Ad", fullWidth: true },
       { src: "/images/work/full/full-allinspections-card-1.jpg", alt: "Allinspections Card 1" },
@@ -233,31 +273,111 @@ const projectDetails: Record<string, ProjectDetails> = {
   "Divide": {
     title: "Divide",
     description: "Branding, UI, game menus, HUD, icons, AR assets, world-building design.",
+    content: (
+      <>
+        <p>
+          Fourteen years ago, a geospatial technology company named Spatial Networks hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.
+        </p>
+
+        <p>
+          Before that, I founded a design agency called Whiteshark Creations with an engineering colleague. We worked with some great clients in our first year, but I realized agency life wasn&apos;t my calling and I left for other design pursuits.
+        </p>
+
+        <p>
+          Prior to going solo, my design career began its infancy, when Macromedia was still a household name and Web 2.0 was hitting it&apos;s bubbly prime. I started as a web designer and this is where I first clapped eyes on naked HTML & CSS - No WYSIWYG editor to hide all the crimes. We had dedicated developers to write all the code, so my exposure and practice only came in fits and starts. I wouldn&apos;t feel the power of `git push origin master` until my first year working at Spatial Networks.
+        </p>
+
+        <p>
+          When you&apos;re the only designer for a company with big ambitions, becoming a generalist is a matter of survival. I have sketchbooks with pages chock full of logos, mobile app screens, mobile app icons, and trade show pull-up banners for offshoots of ideas that didn&apos;t (and never would) exist.
+        </p>
+
+        <p>
+          I loved it.
+        </p>
+
+        <p>
+          But what I loved most was working on the web apps and the marketing websites. Since we were so small, everyone had to be trusted to make what they were doing count without much (or any) oversight. This was the first time I was encouraged to simply address the customer problem and build. There was no time for hand-wringing. 
+        </p>
+
+        <p>
+          We took a few cracks at different product ideas. Allinspections, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be my final meeting at Spatial Networks. Instead, he offered me the opportunity to head up something new: Fulcrum.
+        </p>
+
+        <p>
+          Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.
+        </p>
+
+        <p>
+          Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.
+        </p>
+
+      </>
+    ),    
     images: [
       { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide Logo" },
       { src: "/images/work/isolated/iso-divide-vestige-sticker.jpg", alt: "Divide Vestige Sticker" },
-      { src: "/images/work/full/full-divide-ingame-world-1.jpg", alt: "Divide In-Game World 1", fullWidth: true },
-      { src: "/images/work/full/full-divide-ingame-world-2.jpg", alt: "Divide In-Game World 2", fullWidth: true },
-      { src: "/images/work/full/full-divide-ingame-world-3.jpg", alt: "Divide In-Game World 3", fullWidth: true },
+      { src: "/images/work/full/full-divide-ingame-world-1.jpg", alt: "Divide In-Game World 1", fullWidth: true, aspectRatio: "10/5" },
+      { src: "/images/work/full/full-divide-ingame-world-2.jpg", alt: "Divide In-Game World 2", fullWidth: true, aspectRatio: "10/5" },
+      { src: "/images/work/full/full-divide-ingame-world-3.jpg", alt: "Divide In-Game World 3", fullWidth: true, aspectRatio: "10/5" },
       { src: "/images/work/full/full-divide-ps4.jpg", alt: "Divide PS4" },
       { src: "/images/work/gridded/grid-divide-icons.jpg", alt: "Divide Icons" },
-      { src: "/images/work/full/full-divide-ingame-UI-1.jpg", alt: "Divide In-Game UI 1", fullWidth: true },
-      { src: "/images/work/full/full-divide-ingame-UI-2.jpg", alt: "Divide In-Game UI 2", fullWidth: true },
-      { src: "/images/work/full/full-divide-ingame-codex-1.jpg", alt: "Divide In-Game Codex 1", fullWidth: true },
-      { src: "/images/work/full/full-divide-ingame-codex-2.jpg", alt: "Divide In-Game Codex 2", fullWidth: true },
-      { src: "/images/work/full/full-divide-ingame-codex-3.jpg", alt: "Divide In-Game Codex 3", fullWidth: true },
-      { src: "/images/work/full/full-divide-ingame-codex-4.jpg", alt: "Divide In-Game Codex 4", fullWidth: true },
+      { src: "/images/work/full/full-divide-ingame-UI-1.jpg", alt: "Divide In-Game UI 1", fullWidth: true, aspectRatio: "10/5" },
+      { src: "/images/work/full/full-divide-ingame-UI-2.jpg", alt: "Divide In-Game UI 2", fullWidth: true, aspectRatio: "10/5" },
+      { src: "/images/work/full/full-divide-ingame-codex-1.jpg", alt: "Divide In-Game Codex 1", fullWidth: true, aspectRatio: "10/5" },
+      { src: "/images/work/full/full-divide-ingame-codex-2.jpg", alt: "Divide In-Game Codex 2", fullWidth: true, aspectRatio: "10/5" },
+      { src: "/images/work/full/full-divide-ingame-codex-3.jpg", alt: "Divide In-Game Codex 3", fullWidth: true, aspectRatio: "10/5" },
+      { src: "/images/work/full/full-divide-ingame-codex-4.jpg", alt: "Divide In-Game Codex 4", fullWidth: true, aspectRatio: "10/5" },
       { src: "/images/work/full/full-divide-brochure-1.jpg", alt: "Divide Brochure 1", fullWidth: true },
       { src: "/images/work/full/full-divide-brochure-2.jpg", alt: "Divide Brochure 2", fullWidth: true },
       { src: "/images/work/full/full-divide-soundtrack.jpg", alt: "Divide Soundtrack" },
-      { src: "/images/work/full/full-divide-soundtrack-ep.jpg", alt: "Divide Soundtrack EP" },
       { src: "/images/work/full/full-divide-soundtrack-deluxe.jpg", alt: "Divide Soundtrack Deluxe" },
+      { src: "/images/work/full/full-divide-soundtrack-ep.jpg", alt: "Divide Soundtrack EP" },
       { src: "/images/work/snapshots/snapshot-divide-recording-1.jpg", alt: "Divide Recording Session" }
     ]
   },
   "Branding": {
     title: "Branding",
     description: "Various logos and identity work.",
+    content: (
+      <>
+        <p>
+          Fourteen years ago, a geospatial technology company named Spatial Networks hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.
+        </p>
+
+        <p>
+          Before that, I founded a design agency called Whiteshark Creations with an engineering colleague. We worked with some great clients in our first year, but I realized agency life wasn&apos;t my calling and I left for other design pursuits.
+        </p>
+
+        <p>
+          Prior to going solo, my design career began its infancy, when Macromedia was still a household name and Web 2.0 was hitting it&apos;s bubbly prime. I started as a web designer and this is where I first clapped eyes on naked HTML & CSS - No WYSIWYG editor to hide all the crimes. We had dedicated developers to write all the code, so my exposure and practice only came in fits and starts. I wouldn&apos;t feel the power of `git push origin master` until my first year working at Spatial Networks.
+        </p>
+
+        <p>
+          When you&apos;re the only designer for a company with big ambitions, becoming a generalist is a matter of survival. I have sketchbooks with pages chock full of logos, mobile app screens, mobile app icons, and trade show pull-up banners for offshoots of ideas that didn&apos;t (and never would) exist.
+        </p>
+
+        <p>
+          I loved it.
+        </p>
+
+        <p>
+          But what I loved most was working on the web apps and the marketing websites. Since we were so small, everyone had to be trusted to make what they were doing count without much (or any) oversight. This was the first time I was encouraged to simply address the customer problem and build. There was no time for hand-wringing. 
+        </p>
+
+        <p>
+          We took a few cracks at different product ideas. Allinspections, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be my final meeting at Spatial Networks. Instead, he offered me the opportunity to head up something new: Fulcrum.
+        </p>
+
+        <p>
+          Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.
+        </p>
+
+        <p>
+          Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.
+        </p>
+
+      </>
+    ),    
     images: [
       { src: "/images/work/isolated/iso-allinspections-icon.jpg", alt: "Allinspections Icon" },
       { src: "/images/work/isolated/iso-allinspections-logo.jpg", alt: "Allinspections Logo" },
@@ -282,6 +402,46 @@ const projectDetails: Record<string, ProjectDetails> = {
   "Personal": {
     title: "Personal",
     description: "Drawing, painting, photography, creative side projects, and the like.",
+    content: (
+      <>
+        <p>
+          Fourteen years ago, a geospatial technology company named Spatial Networks hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.
+        </p>
+
+        <p>
+          Before that, I founded a design agency called Whiteshark Creations with an engineering colleague. We worked with some great clients in our first year, but I realized agency life wasn&apos;t my calling and I left for other design pursuits.
+        </p>
+
+        <p>
+          Prior to going solo, my design career began its infancy, when Macromedia was still a household name and Web 2.0 was hitting it&apos;s bubbly prime. I started as a web designer and this is where I first clapped eyes on naked HTML & CSS - No WYSIWYG editor to hide all the crimes. We had dedicated developers to write all the code, so my exposure and practice only came in fits and starts. I wouldn&apos;t feel the power of `git push origin master` until my first year working at Spatial Networks.
+        </p>
+
+        <p>
+          When you&apos;re the only designer for a company with big ambitions, becoming a generalist is a matter of survival. I have sketchbooks with pages chock full of logos, mobile app screens, mobile app icons, and trade show pull-up banners for offshoots of ideas that didn&apos;t (and never would) exist.
+        </p>
+
+        <p>
+          I loved it.
+        </p>
+
+        <p>
+          But what I loved most was working on the web apps and the marketing websites. Since we were so small, everyone had to be trusted to make what they were doing count without much (or any) oversight. This was the first time I was encouraged to simply address the customer problem and build. There was no time for hand-wringing. 
+        </p>
+
+        <p>
+          We took a few cracks at different product ideas. Allinspections, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be my final meeting at Spatial Networks. Instead, he offered me the opportunity to head up something new: Fulcrum.
+        </p>
+
+        <p>
+          Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.
+        </p>
+
+        <p>
+          Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.
+        </p>
+
+      </>
+    ),    
     images: [
       { src: "/images/work/full/full-personal-painting-1.jpg", alt: "Painting 1" },
       { src: "/images/work/full/full-personal-painting-2.jpg", alt: "Painting 2" },
@@ -291,30 +451,30 @@ const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/full/full-personal-drawing-2.jpg", alt: "Drawing 2" },
       { src: "/images/work/full/full-personal-drawing-3.jpg", alt: "Drawing 3" },
       { src: "/images/work/full/full-personal-drawing-4.jpg", alt: "Drawing 4" },
-      { src: "/images/work/full/full-personal-photo-12.png", alt: "Photo 12" },
-      { src: "/images/work/full/full-personal-photo-13.png", alt: "Photo 13" },
-      { src: "/images/work/full/full-personal-photo-16.jpg", alt: "Photo 16" },
-      { src: "/images/work/full/full-personal-photo-19.png", alt: "Photo 19" },
-      { src: "/images/work/full/full-personal-photo-21.jpg", alt: "Photo 21" },
-      { src: "/images/work/full/full-personal-photo-22.jpg", alt: "Photo 22" },
-      { src: "/images/work/full/full-personal-photo-23.png", alt: "Photo 23" },
-      { src: "/images/work/full/full-personal-photo-25.jpg", alt: "Photo 25" },
-      { src: "/images/work/full/full-personal-photo-31.jpg", alt: "Photo 31" },
-      { src: "/images/work/full/full-personal-photo-32.png", alt: "Photo 32" },
-      { src: "/images/work/full/full-personal-photo-33.png", alt: "Photo 33" },
-      { src: "/images/work/full/full-personal-photo-35.jpg", alt: "Photo 35" },
-      { src: "/images/work/full/full-personal-photo-36.png", alt: "Photo 36" },
-      { src: "/images/work/full/full-personal-photo-41.png", alt: "Photo 41" },
-      { src: "/images/work/full/full-personal-photo-42.png", alt: "Photo 42" },
-      { src: "/images/work/full/full-personal-photo-44.png", alt: "Photo 44" },
-      { src: "/images/work/full/full-personal-photo-45.png", alt: "Photo 45" },
-      { src: "/images/work/full/full-personal-photo-46.png", alt: "Photo 46" },
-      { src: "/images/work/full/full-personal-photo-47.png", alt: "Photo 47" },
-      { src: "/images/work/full/full-personal-photo-51.png", alt: "Photo 51" },
-      { src: "/images/work/full/full-personal-photo-54.jpg", alt: "Photo 54" },
-      { src: "/images/work/full/full-personal-photo-58.png", alt: "Photo 58" },
-      { src: "/images/work/full/full-personal-photo-59.png", alt: "Photo 59" },
-      { src: "/images/work/full/full-personal-photo-64.png", alt: "Photo 64" },
+      { src: "/images/work/full/full-personal-photo-12.png", alt: "Photo 12", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-13.png", alt: "Photo 13", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-16.jpg", alt: "Photo 16", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-19.png", alt: "Photo 19", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-21.jpg", alt: "Photo 21", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-22.jpg", alt: "Photo 22", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-23.png", alt: "Photo 23", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-25.jpg", alt: "Photo 25", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-31.jpg", alt: "Photo 31", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-32.png", alt: "Photo 32", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-33.png", alt: "Photo 33", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-35.jpg", alt: "Photo 35", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-36.png", alt: "Photo 36", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-41.png", alt: "Photo 41", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-42.png", alt: "Photo 42", aspectRatio: "3/2" }, 
+      { src: "/images/work/full/full-personal-photo-44.png", alt: "Photo 44", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-45.png", alt: "Photo 45", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-46.png", alt: "Photo 46", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-47.png", alt: "Photo 47", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-51.png", alt: "Photo 51", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-54.jpg", alt: "Photo 54", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-58.png", alt: "Photo 58", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-59.png", alt: "Photo 59", aspectRatio: "3/2" },
+      { src: "/images/work/full/full-personal-photo-64.png", alt: "Photo 64", aspectRatio: "3/2" },
       { src: "/images/work/isolated/iso-personal-murphys-garage.jpg", alt: "Murphy's Garage sticker" },
       { src: "/images/work/isolated/iso-personal-helmet-concept.jpg", alt: "Helmet design concept" },
     ]
@@ -744,7 +904,7 @@ export default function ProjectSidebar({
                           >
                             <div 
                               className="relative" 
-                              style={{ aspectRatio: image.aspectRatio || '4/3' }}
+                              style={{ aspectRatio: image.aspectRatio || '4/4' }}
                             >
                               <Image 
                                 src={image.src}

@@ -113,25 +113,11 @@ export default function WorkPage() {
         
         {/* Additional text from "My Work" tile content */}
         <div className="mt-12">
-          <p>
-            I knew I wanted to be a designer when I realized I wasn't afraid to get paid.
-          </p>
-
-          <p>
-            I'll explain...
-          </p>
-
-          <p>
-            I went to art school where I majored in illustration and photography. Needless to say, after graduation I worked in sporting goods fitting people for running shoes (I was damn good, by the way). I never dug into how to make money with my art because I never felt comfortable with the idea of something so subjective being scrutinized in that way. Like how people who know they're about to get ripped off scrutinize the gleam in their car salesman's eye.
-          </p>
-
-          <p>
-            But I was always technically sharp and to me, design was more technical. If someone needed a logo, no problem. Logos cost this much. I fell in love with design because it was the perfect combination of drawing a sublime portrait and troubleshooting my neighbor's Dell. It always starts with logos, flyers, posters, brochures... so many brochures. In the beginning it was mostly print. When I started, web design was still young. But I kept my eye on it and dabbled where I could and eventually, it's all I did.
-          </p>
-
-          <p>
-            If design called to my logical side, the web called to my preternatural lust for improvement. When I sent that file entitled "business-card-CEO-front_FINAL-FINAL2.pdf" to the printer for that run of 10,000, the mouse-up event on the send button to his hotmail.com business address was what the racing instructors used to call a Pampers™ moment. On the web, however, I could fix a typo faster than that same PDF would load in Adobe Acrobat. I'm not condoning sloppiness, of course. Diapers are expensive.
-          </p>
+          <p>I knew I wanted to be a designer when I realized I wasn't afraid to get paid.</p>
+          <p>I went to art school where I majored in illustration and photography. Needless to say, after graduation I worked in sporting goods fitting people for running shoes (I was damn good, by the way). I never dug into how to make money with my art because I never felt comfortable with the idea of something so subjective being scrutinized in that way. Like how people who know they're about to get ripped off scrutinize the gleam in their car salesman's eye.</p>
+          <p>But I was always technically sharp and to me, design was more technical. If someone needed a logo, no problem. Logos cost this much. I fell in love with design because it was the perfect combination of drawing a sublime portrait and troubleshooting my neighbor's Dell. It always starts with logos, flyers, posters, brochures... so many brochures. In the beginning it was mostly print. When I started, web design was still young. But I kept my eye on it and dabbled where I could and eventually, it's all I did.</p>
+          <p>If design called to my logical side, the web called to my preternatural lust for improvement. When I sent that file entitled "business-card-CEO-front_FINAL-FINAL2.pdf" to the printer for that run of 10,000, the mouse-up event on the send button to his hotmail.com business address was what the racing instructors used to call a Pampers™ moment. On the web, however, I could fix a typo faster than that same PDF would load in Adobe Acrobat. I'm not condoning sloppiness, of course. Diapers are expensive.</p>
+          <p>I'm not condoning sloppiness, of course. Diapers are expensive.</p>
         </div>
       </div>
       

@@ -17,7 +17,7 @@ export default function Navigation() {
     <div className="flex flex-col gap-6 mb-6 flex-1 relative">
       <Link 
         href="/" 
-        className={`${textStyles} ${pathname === "/" ? 'text-black' : 'text-neutral-500 hover:text-neutral-800'}`}
+        className={`${textStyles} ${pathname === "/" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
       >
         Who
         <AnimatePresence mode="wait">
@@ -46,7 +46,7 @@ export default function Navigation() {
       
       <Link 
         href="/work" 
-        className={`${textStyles} ${pathname === "/work" ? 'text-black' : 'text-neutral-500 hover:text-neutral-800'}`}
+        className={`${textStyles} ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
       >
         Work
         <AnimatePresence mode="wait">
@@ -75,7 +75,7 @@ export default function Navigation() {
       
       <Link 
         href="/writing" 
-        className={`${textStyles} ${pathname === "/writing" ? 'text-black' : 'text-neutral-500 hover:text-neutral-800'}`}
+        className={`${textStyles} ${pathname === "/writing" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
       >
         Writing
         <AnimatePresence mode="wait">
