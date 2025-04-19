@@ -1,7 +1,7 @@
 'use client'
 
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import { H1, Caption } from '../components/Typography'
+import { H1, Caption, H2 } from '../components/Typography'
 import ProjectSidebar from '../components/ProjectSidebar'
 import { useState } from 'react'
 import Image from 'next/image'
@@ -107,7 +107,8 @@ export default function WorkPage() {
             />
           ))}
         </div>
-        
+      </div>
+        <H2 className="mb-8">Why Design?</H2>
         {/* Additional text from "My Work" tile content */}
         <div className="mt-12">
           <p>I knew I wanted to be a designer when I realized I wasn't afraid to get paid.</p>
@@ -116,7 +117,6 @@ export default function WorkPage() {
           <p>If design called to my logical side, the web called to my preternatural lust for improvement. When I sent that file entitled "business-card-CEO-front_FINAL-FINAL2.pdf" to the printer for that run of 10,000, the mouse-up event on the send button to his hotmail.com business address was what the racing instructors used to call a Pampers™ moment. On the web, however, I could fix a typo faster than that same PDF would load in Adobe Acrobat. I'm not condoning sloppiness, of course. Diapers are expensive.</p>
           <p>I'm not condoning sloppiness, of course. Diapers are expensive.</p>
         </div>
-      </div>
       
       {/* Project Sidebar component */}
       <ProjectSidebar
