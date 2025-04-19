@@ -350,7 +350,10 @@ export default function ProjectSidebar({
 }: ProjectSidebarProps) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const project = projectKey ? projectDetails[projectKey] : null;
-  const sidebarRef = useRef<HTMLDivElement>(null);
+  const sidebarContentRef = useRef<HTMLDivElement>(null);
+  
+  // State for sticky header
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Animation state management
   const [showPreTransition, setShowPreTransition] = useState(false);
@@ -410,41 +413,71 @@ export default function ProjectSidebar({
     }
   };
 
-  // Handle scroll for back-to-top button
+  // Handle scroll for sticky header and back-to-top button
   useEffect(() => {
+    // Only set up the scroll handler when the sidebar is actually visible
+    // and the DOM element is available
+    if (!showSidebar || !sidebarContentRef.current) {
+      console.log("Sidebar not ready yet for scroll handling");
+      return;
+    }
+    
+    console.log("Setting up scroll handler");
+    
+    const sidebar = sidebarContentRef.current;
+    
     const handleScroll = () => {
-      const sidebar = document.querySelector('.project-sidebar-content');
       if (sidebar) {
-        setShowBackToTop(sidebar.scrollTop > 3000);
+        const scrollPosition = sidebar.scrollTop;
+        const wasScrolled = isScrolled;
+        const newScrolled = scrollPosition > 100;
+        
+        // Only log when the state would change
+        if (wasScrolled !== newScrolled) {
+          console.log(`Scroll position changed to ${scrollPosition}px, isScrolled: ${newScrolled}`);
+        }
+        
+        setShowBackToTop(scrollPosition > 300);
+        setIsScrolled(newScrolled);
       }
     };
 
-    const sidebar = document.querySelector('.project-sidebar-content');
     if (sidebar) {
+      console.log("Found sidebar element, attaching scroll listener");
       sidebar.addEventListener('scroll', handleScroll);
-      return () => sidebar.removeEventListener('scroll', handleScroll);
+      
+      // Trigger an initial check
+      handleScroll();
+      
+      return () => {
+        console.log("Cleaning up scroll listener");
+        sidebar.removeEventListener('scroll', handleScroll);
+      };
     }
-  }, []);
+  }, [isScrolled, showSidebar]); // Added showSidebar to dependency array
+
+  // Log when the sticky header rendering state changes
+  useEffect(() => {
+    console.log(`Sticky header state changed: isScrolled=${isScrolled}`);
+  }, [isScrolled]);
 
   const scrollToTop = () => {
-    const sidebar = document.querySelector('.project-sidebar-content');
-    if (sidebar) {
-      sidebar.scrollTo({ top: 0, behavior: 'smooth' });
+    if (sidebarContentRef.current) {
+      sidebarContentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   // Reset scroll position when opening new project
   useEffect(() => {
-    if (isOpen && projectKey) {
+    if (isOpen && projectKey && showSidebar && sidebarContentRef.current) {
       const timer = setTimeout(() => {
-        const sidebar = document.querySelector('.project-sidebar-content');
-        if (sidebar) {
-          sidebar.scrollTop = 0;
+        if (sidebarContentRef.current) {
+          sidebarContentRef.current.scrollTop = 0;
         }
       }, 150);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, projectKey]);
+  }, [isOpen, projectKey, showSidebar]);
 
   // Handle escape key to close sidebar
   useEffect(() => {
@@ -528,7 +561,36 @@ export default function ProjectSidebar({
               </svg>
             </motion.button>
 
+            {/* Sticky Header - with data attributes for debugging */}
+            <div
+              data-scrolled={isScrolled ? "true" : "false"}
+              data-testid="sticky-header"
+              className={`fixed top-0 left-0 right-0 z-modal transition-all duration-300 ease-in-out bg-[#f5f6f7]/95 backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
+              style={{
+                // Force important styles to ensure visibility if needed
+                zIndex: 110
+              }}
+            >
+              <div className="max-w-7xl mx-auto flex justify-between items-center">
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-900">{project?.title}</h2>
+                  {project?.description && (
+                    <p className="text-sm text-gray-600 truncate max-w-md">{project.description}</p>
+                  )}
+                </div>
+                <button 
+                  onClick={scrollToTop} 
+                  className="bg-white rounded-full p-2 shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-gray-900"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
             <motion.div 
+              ref={sidebarContentRef}
               className="h-full w-full overflow-y-auto project-sidebar-content"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -622,6 +684,7 @@ export default function ProjectSidebar({
                                 src={image.src}
                                 alt={image.alt}
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 className="object-cover transition-all duration-300 group-hover:scale-105"
                               />
                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
