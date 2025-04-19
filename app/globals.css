@@ -104,7 +104,7 @@ h2 {
 }
 
 p {
-  @apply mb-6 font-body font-[400] leading-loose text-gray-700;
+  @apply mb-12 font-body font-[400] leading-loose text-gray-700;
 }
 
 .subheading {

@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import Lightbox from './Lightbox';
+import { H1 } from './Typography';
+import { MagnifyingGlassPlusIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 // Animation timing constants
 const ANIMATION_TIMING = {
@@ -539,7 +541,7 @@ export default function ProjectSidebar({
                 {/* Hero section with title and intro */}
                 <div className="max-w-7xl mx-auto mb-16">
                   {/* Project Title */}
-                  <motion.h2 
+                  <motion.div 
                     key={projectKey}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -549,10 +551,9 @@ export default function ProjectSidebar({
                       delay: 0.85, 
                       ease: "easeIn"
                     }}
-                    className="text-4xl md:text-5xl lg:text-6xl mb-6 font-black text-gray-900"
                   >
-                    {project.title}
-                  </motion.h2>
+                    <H1>{project.title}</H1>
+                  </motion.div>
 
                   {/* Project Description */}
                   {project.description && (
@@ -566,7 +567,7 @@ export default function ProjectSidebar({
                         delay: 0.85, 
                         ease: "easeIn"
                       }}
-                      className="text-xl md:text-2xl font-serif text-gray-600 max-w-3xl"
+                      className="text-xl md:text-2xl"
                     >
                       {project.description}
                     </motion.p>
@@ -606,11 +607,11 @@ export default function ProjectSidebar({
                     }}
                     className={`${project.content ? 'lg:col-span-7' : 'lg:col-span-12'}`}
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
                       {project.images.map((image, index) => (
                         <div 
                           key={index} 
-                          className={`mb-6 ${image.fullWidth ? 'md:col-span-2' : ''}`}
+                          className={`${image.fullWidth ? 'md:col-span-2' : ''}`}
                         >
                           <div 
                             className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
@@ -625,9 +626,7 @@ export default function ProjectSidebar({
                               />
                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                                 <div className="w-12 h-12 rounded-full bg-white/0 group-hover:bg-white/80 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-300">
-                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m4-3H6" />
-                                  </svg>
+                                  <MagnifyingGlassPlusIcon className="h-6 w-6 text-gray-900" />
                                 </div>
                               </div>
                             </div>
@@ -692,9 +691,7 @@ export default function ProjectSidebar({
                         : `${projectDetails[Object.keys(projectDetails)[(Object.keys(projectDetails).indexOf(projectKey || '') + 1) % Object.keys(projectDetails).length]].title}`
                       }
                     </span>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    <ArrowRightIcon className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" />
                   </motion.button>
                 </motion.div>
               </div>
