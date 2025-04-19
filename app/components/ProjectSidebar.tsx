@@ -667,7 +667,7 @@ export default function ProjectSidebar({
                         }}
                         className="lg:w-5/12 xl:w-5/12 mb-12 lg:mb-0"
                       >
-                        <div className="lg:sticky lg:top-24 max-w-none pr-4">
+                        <div className="lg:sticky lg:top-24 prose prose-lg prose-slate max-w-none pr-4">
                           {project.content}
                         </div>
                       </motion.div>
@@ -685,36 +685,38 @@ export default function ProjectSidebar({
                         }}
                         className="lg:w-7/12 xl:w-7/12"
                       >
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 pb-8">
-                          {project.images.map((image, index) => (
-                            <div 
-                              key={index} 
-                              className={`${image.fullWidth ? 'md:col-span-2 lg:col-span-2' : ''}`}
-                            >
+                        <div className="lg:sticky lg:top-24 pb-8">
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                            {project.images.map((image, index) => (
                               <div 
-                                className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
-                                onClick={() => handleImageClick(index)}
+                                key={index} 
+                                className={`${image.fullWidth ? 'md:col-span-2 lg:col-span-2' : ''}`}
                               >
-                                <div className="aspect-[4/3] relative">
-                                  <Image 
-                                    src={image.src}
-                                    alt={image.alt}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    className="object-cover transition-all duration-300 group-hover:scale-105"
-                                  />
-                                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                                    <div className="w-12 h-12 rounded-full bg-white/0 group-hover:bg-white/80 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-300">
-                                      <MagnifyingGlassPlusIcon className="h-6 w-6 text-gray-900" />
+                                <div 
+                                  className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+                                  onClick={() => handleImageClick(index)}
+                                >
+                                  <div className="aspect-[4/3] relative">
+                                    <Image 
+                                      src={image.src}
+                                      alt={image.alt}
+                                      fill
+                                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                      className="object-cover transition-all duration-300 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                                      <div className="w-12 h-12 rounded-full bg-white/0 group-hover:bg-white/80 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-300">
+                                        <MagnifyingGlassPlusIcon className="h-6 w-6 text-gray-900" />
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
+                                {image.caption && (
+                                  <p className="mt-3 text-sm text-gray-500">{image.caption}</p>
+                                )}
                               </div>
-                              {image.caption && (
-                                <p className="mt-3 text-sm text-gray-500">{image.caption}</p>
-                              )}
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
                       </motion.div>
                     </div>
