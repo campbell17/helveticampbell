@@ -1,7 +1,7 @@
 'use client'
 
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import { H1 } from '../components/Typography'
+import { H1, Caption } from '../components/Typography'
 import ProjectSidebar from '../components/ProjectSidebar'
 import { useState } from 'react'
 import Image from 'next/image'
@@ -65,7 +65,7 @@ function WorkItem({ image, onImageClick, index }: {
           </div>
         )}
       </div>
-      <p className="text-sm text-[hsl(var(--color-text-secondary))]">{image.alt}</p>
+      <Caption className="text-sm text-text-secondary">{image.alt}</Caption>
     </div>
   )
 }

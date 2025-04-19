@@ -5,6 +5,7 @@
   --font-body: "Bitter", serif;
   --font-helveticampbell: "Lobster", sans-serif;
   
+  --color-text-secondary: oklch(55.6% 0 0);
 }
 
 /* Regular CSS variables for theme-specific overrides */
@@ -23,7 +24,7 @@
   /* Text colors - Light mode */
   --color-text-heading: 220 10% 5%;
   --color-text-primary: 360 0% 10%;
-  --color-text-secondary: 220 10% 15%;
+  --color-text-secondary: oklch(55.6% 0 0);
   --color-text-tertiary: 220 10% 25%;
 
   /* Background colors */

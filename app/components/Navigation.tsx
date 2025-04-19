@@ -19,7 +19,7 @@ export default function Navigation() {
         href="/" 
         className={`${textStyles} ${pathname === "/" ? 'text-black' : 'text-neutral-500 hover:text-neutral-800'}`}
       >
-        About
+        Who
         <AnimatePresence mode="wait">
           {pathname === "/" && (
             <motion.div

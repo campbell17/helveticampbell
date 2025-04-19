@@ -26,9 +26,9 @@ export function H2({ children, className = '' }: TextProps) {
 
 export function Caption({ children, className = '' }: TextProps) {
   return (
-    <p className={`text-sm text-[hsl(var(--color-text-secondary))] ${className}`}>
+    <div className={`text-sm font-body font-[500] text-[oklch(var(--color-text-secondary))] ${className}`}>
       {children}
-    </p>
+    </div>
   );
 }
 
