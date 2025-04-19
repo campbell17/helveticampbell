@@ -39,7 +39,7 @@ function WorkItem({ image, onImageClick, index }: {
       `}
     >
       <div 
-        className="cursor-pointer relative group overflow-hidden rounded-[var(--container-radius)]" 
+        className="cursor-pointer relative group shadow-2xl hover:shadow-xs shadow-slate-900/20 overflow-hidden rounded-[var(--container-radius)]" 
         onClick={() => onImageClick(index)}
       >
         <Image
@@ -51,7 +51,7 @@ function WorkItem({ image, onImageClick, index }: {
         />
         
         {/* Simple hover overlay */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
+        <div className="absolute inset-0 bg-slate-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
         
         {/* Project icon indicator */}
         {image.projectKey && (

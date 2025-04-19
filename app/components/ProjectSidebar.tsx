@@ -535,19 +535,21 @@ export default function ProjectSidebar({
                 ease: "easeOut"
               }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 p-20 mx-auto">
-                <div className="left-side max-w-md">
+              <div className="p-6 pt-20 md:p-12 lg:p-16 xl:p-20">
+                {/* Hero section with title and intro */}
+                <div className="max-w-7xl mx-auto mb-16">
                   {/* Project Title */}
                   <motion.h2 
                     key={projectKey}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 1 }} // No fade on exit
+                    exit={{ opacity: 1 }}
                     transition={{ 
-                      duration: 0.5, 
+                      duration: 0.25, 
                       delay: 0.85, 
                       ease: "easeIn"
                     }}
+                    className="text-4xl md:text-5xl lg:text-6xl mb-6 font-black text-gray-900"
                   >
                     {project.title}
                   </motion.h2>
@@ -558,70 +560,84 @@ export default function ProjectSidebar({
                       key={`${projectKey}-description`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      exit={{ opacity: 1 }} // No fade on exit
+                      exit={{ opacity: 1 }}
                       transition={{ 
-                        duration: 0.5, 
-                        delay: 0.95, 
+                        duration: 0.25, 
+                        delay: 0.85, 
                         ease: "easeIn"
-                      }}                      
+                      }}
+                      className="text-xl md:text-2xl font-serif text-gray-600 max-w-3xl"
                     >
                       {project.description}
                     </motion.p>
                   )}
+                </div>
 
-                  {/* Project Content */}
+                {/* Main content area - two column layout on larger screens */}
+                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                  {/* Left column - Project content */}
                   {project.content && (
                     <motion.div 
                       key={`${projectKey}-content`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      exit={{ opacity: 1 }} // No fade on exit
+                      exit={{ opacity: 1 }}
                       transition={{ 
-                        duration: 0.5, 
-                        delay: 0.95, 
+                        duration: 0.25, 
+                        delay: 0.85, 
                         ease: "easeIn"
-                      }}                      
+                      }}
+                      className="lg:col-span-5 prose prose-lg prose-slate max-w-none"
                     >
                       {project.content}
                     </motion.div>
                   )}
-                </div>
-                <div className="right-side"> 
-                  {/* Project Images */}
+
+                  {/* Right column - Images grid */}
                   <motion.div 
                     key={`${projectKey}-images`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 1 }} // No fade on exit
+                    exit={{ opacity: 1 }}
                     transition={{ 
-                      duration: 0.5, 
+                      duration: 0.25, 
                       delay: 1.05, 
                       ease: "easeIn"
                     }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    className={`${project.content ? 'lg:col-span-7' : 'lg:col-span-12'}`}
                   >
-                    {project.images.map((image, index) => (
-                      <div 
-                        key={index} 
-                        className={`flex flex-col gap-2 ${image.fullWidth ? 'md:col-span-2' : ''}`}
-                      >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                      {project.images.map((image, index) => (
                         <div 
-                          className="cursor-pointer relative group" 
-                          onClick={() => handleImageClick(index)}
+                          key={index} 
+                          className={`mb-6 ${image.fullWidth ? 'md:col-span-2' : ''}`}
                         >
-                          <Image 
-                            src={image.src}
-                            alt={image.alt}
-                            width={1000} 
-                            height={1000}
-                            className="transition-all duration-200 group-hover:opacity-[60%]" 
-                          />
+                          <div 
+                            className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+                            onClick={() => handleImageClick(index)}
+                          >
+                            <div className="aspect-[4/3] relative">
+                              <Image 
+                                src={image.src}
+                                alt={image.alt}
+                                fill
+                                className="object-cover transition-all duration-300 group-hover:scale-105"
+                              />
+                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                                <div className="w-12 h-12 rounded-full bg-white/0 group-hover:bg-white/80 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-300">
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m4-3H6" />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {image.caption && (
+                            <p className="mt-3 text-sm text-gray-500">{image.caption}</p>
+                          )}
                         </div>
-                        {image.caption && (
-                          <p className="text-sm text-gray-500 mb-4">{image.caption}</p>
-                        )}
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </motion.div>
                 </div>
 
@@ -630,19 +646,25 @@ export default function ProjectSidebar({
                   key={`${projectKey}-navigation`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 1 }} // No fade on exit
+                  exit={{ opacity: 1 }}
                   transition={{ 
-                    duration: 0.3, 
+                    duration: 0.25, 
                     delay: 0.8, 
                     ease: "easeOut"
                   }}
-                  className="mt-8"
+                  className="max-w-7xl mx-auto mt-20 md:mt-24 border-t border-gray-200 pt-12"
                 >
+                  {/* Project name with divider */}
+                  <div className="mb-8 flex items-center gap-4">
+                    <div className="h-0.5 w-12 bg-gray-300"></div>
+                    <p className="text-sm uppercase tracking-wide text-gray-500 font-semibold">Next Project</p>
+                  </div>
+                  
                   {/* Next Project Button */}
                   <motion.button
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 1 }} // No fade on exit
+                    exit={{ opacity: 1 }}
                     transition={{ 
                       duration: 0.3, 
                       delay: 0.9, 
@@ -660,16 +682,19 @@ export default function ProjectSidebar({
                       setTimeout(() => {
                         // This is where we would navigate to the next project
                         // But we'll let the parent component handle it
-                      }, 500); // Use fixed cleanup time instead of removed property
+                      }, 500);
                     }}
-                    className="w-full bg-gray-900 text-white hover:text-white flex justify-center items-center gap-4 hover:bg-gray-800 p-8 rounded-full transition-all duration-150 ease-out"
+                    className="group w-full md:w-auto bg-gray-50 hover:bg-gray-900 text-gray-900 hover:text-white flex items-center gap-6 hover:gap-8 px-8 py-6 rounded-xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-gray-900 shadow-sm hover:shadow-lg"
                   >
-                    <h2 className="text-xl font-black tracking-tight">
+                    <span className="text-xl font-bold relative z-10">
                       {Object.keys(projectDetails).indexOf(projectKey || '') === Object.keys(projectDetails).length - 1 
-                        ? `Back to ${projectDetails[Object.keys(projectDetails)[0]].title}`
-                        : `Up Next: ${projectDetails[Object.keys(projectDetails)[(Object.keys(projectDetails).indexOf(projectKey || '') + 1) % Object.keys(projectDetails).length]].title}`
+                        ? `${projectDetails[Object.keys(projectDetails)[0]].title}`
+                        : `${projectDetails[Object.keys(projectDetails)[(Object.keys(projectDetails).indexOf(projectKey || '') + 1) % Object.keys(projectDetails).length]].title}`
                       }
-                    </h2>
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                   </motion.button>
                 </motion.div>
               </div>
