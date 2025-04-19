@@ -702,7 +702,7 @@ export default function ProjectSidebar({
                                       alt={image.alt}
                                       fill
                                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                      className="object-cover transition-all duration-300 group-hover:scale-105"
+                                      className="object-cover transition-all duration-100 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                                       <div className="w-12 h-12 rounded-full bg-white/0 group-hover:bg-white/80 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-all duration-300">
