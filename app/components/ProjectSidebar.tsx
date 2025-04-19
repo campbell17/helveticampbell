@@ -826,7 +826,7 @@ export default function ProjectSidebar({
                           delay: 0.85, 
                           ease: "easeIn"
                         }}
-                        className="lg:w-5/12 xl:w-5/12 mb-12 lg:mb-0"
+                        className="lg:w-7/12 xl:w-5/12 mb-12 lg:mb-0"
                       >
                         <div className="lg:sticky lg:top-24 prose prose-lg prose-slate max-w-none pr-4">
                           {project.content}
@@ -844,10 +844,10 @@ export default function ProjectSidebar({
                           delay: 1.05, 
                           ease: "easeIn"
                         }}
-                        className="lg:w-7/12 xl:w-7/12"
+                        className="lg:w-5/12 xl:w-7/12"
                       >
                         <div className="lg:sticky lg:top-24 pb-8">
-                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-8">
                             {project.images.map((image, index) => (
                               <div 
                                 key={index} 
