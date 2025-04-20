@@ -100,6 +100,10 @@ p, ul, ol {
   @apply mb-12 font-body font-[400] leading-loose;
 }
 
+figure {
+  @apply font-body
+}
+
 .subheading {
   @apply font-display text-2xl lg:text-4xl leading-normal mb-24 text-text-secondary;
 }

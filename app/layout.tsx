@@ -59,7 +59,7 @@ export default function RootLayout({
               </div>
 
               {/* Main content area - wrap in AnimatedLayout for transitions */}
-              <main className="pl-80 pr-8 pt-16 pb-16">
+              <main className="pl-72 pr-72 pt-16 pb-16">
                 <div className="max-w-[1200px] mx-auto">
                   <AnimatedLayout>
                     {children}

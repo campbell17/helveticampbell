@@ -18,18 +18,20 @@ export default function AnimatedLayout({ children }: AnimatedLayoutProps) {
   
   // Simple check for pages that should use wide layout
   // Add more paths to this array as needed
-  const wideLayoutPaths = ['/work']
-  const useWideLayout = wideLayoutPaths.includes(pathname)
+
+  // Not yet...
+  // const wideLayoutPaths = ['/work']
+  // const useWideLayout = wideLayoutPaths.includes(pathname)
+  // const maxWidthClass = useWideLayout ? 'max-w-6xl' : 'max-w-4xl'
   
-  // Apply appropriate max-width based on current path
-  const maxWidthClass = useWideLayout ? 'max-w-6xl' : 'max-w-4xl'
 
   return (
     <AnimatePresence mode="wait" initial={true}>
       {/* Key on pathname to trigger animation when route changes */}
       <div 
         key={pathname}
-        className={`${maxWidthClass} mx-auto px-8 py-12 bg-gradient-to-b from-white/0 from-20% via-white/60 via-98% to-white/0`}
+        // className={`${maxWidthClass} mx-auto px-8 py-12`} Not yet...
+        className="max-w-4xl mx-auto px-12 py-12"
       >
         {children}
       </div>
