@@ -131,16 +131,17 @@ export default function Navigation() {
           )}
         </AnimatePresence>
       </Link>
+      <AnimatePresence mode="wait">
       {pathname === "/who" && (
         <motion.div className="aspect-[4/4] -scale-x-100 relative rounded-[var(--container-radius)] overflow-hidden bg-[hsl(var(--color-container-bg)/0.3)] mb-12"
           initial={{ opacity: 0 }}
           animate={{ 
-            opacity: 1, 
-            transition: {
-              duration: 1,
-              delay: 0.5,
-              ease: "easeOut"
-            }
+            opacity: 1,
+            transition: { duration: 1, delay: 0.5, ease: "easeOut" }
+          }}
+          exit={{ 
+            opacity: 0,
+            transition: { duration: 0.15, ease: "easeOut" }
           }}
         >
           <Image
@@ -153,6 +154,7 @@ export default function Navigation() {
           />
         </motion.div>
       )}
+      </AnimatePresence>
     </motion.div>
   
   )
