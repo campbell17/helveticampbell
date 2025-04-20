@@ -5,9 +5,9 @@ export default function WritingPage() {
     <>
       <H1>Writing</H1>
 
-      <p className="subheading">
+      <div className="subheading">
         A collection of essays, articles, and other writing.
-      </p>
+      </div>
       
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae massa fermentum efficitur.

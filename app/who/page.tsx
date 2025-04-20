@@ -9,9 +9,9 @@ export default function HomePage() {
     <>
       <H1>Tim Campbell</H1>
       
-      <p className="subheading">
+      <div className="subheading">
         Here's what you need to know
-      </p>
+      </div>
 
       <H2 className="mb-8">The Short Version</H2>
 

@@ -101,7 +101,7 @@ p, ul, ol {
 }
 
 .subheading {
-  @apply font-display text-2xl lg:text-4xl text-text-secondary;
+  @apply font-display text-2xl lg:text-4xl leading-normal mb-24 text-text-secondary;
 }
 
 /* Navigation */
