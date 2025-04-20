@@ -189,14 +189,14 @@ const projectDetails: Record<string, ProjectDetails> = {
     images: [
       { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks Icon" },
       { src: "/images/work/isolated/iso-sni-logo.jpg", alt: "Spatial Networks Logo" },
-      { src: "/images/work/browser/browser-sni-2011.jpg", alt: "Spatial Networks 2011 Site" },
-      { src: "/images/work/browser/browser-sni-2013.jpg", alt: "Spatial Networks 2013 Site" },
-      { src: "/images/work/browser/browser-sni-2017.jpg", alt: "Spatial Networks 2017 Site" },
-      { src: "/images/work/browser/browser-sni-2019-1.jpg", alt: "Spatial Networks 2019 Site 1" },
-      { src: "/images/work/browser/browser-sni-2019-3.jpg", alt: "Spatial Networks 2019 Site 3" },
-      { src: "/images/work/browser/browser-sni-2019-4.jpg", alt: "Spatial Networks 2019 Site 4" },
-      { src: "/images/work/browser/browser-sni-2019-5.jpg", alt: "Spatial Networks 2019 Site 5" },
-      { src: "/images/work/browser/browser-sni-foresight-1.jpg", alt: "Spatial Networks Foresight" },
+      { src: "/images/work/browser/browser-sni-2011.jpg", alt: "Spatial Networks 2011 Site", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-sni-2013.jpg", alt: "Spatial Networks 2013 Site", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-sni-2017.jpg", alt: "Spatial Networks 2017 Site", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-sni-2019-1.jpg", alt: "Spatial Networks 2019 Site 1", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-sni-2019-3.jpg", alt: "Spatial Networks 2019 Site 3", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-sni-2019-4.jpg", alt: "Spatial Networks 2019 Site 4", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-sni-2019-5.jpg", alt: "Spatial Networks 2019 Site 5", aspectRatio: "1440/1261" },
+      { src: "/images/work/browser/browser-sni-foresight-1.jpg", alt: "Spatial Networks Foresight", aspectRatio: "1440/1261" },
       { src: "/images/work/isolated/iso-sni-icon-fall.jpg", alt: "Spatial Networks Icon fall" },
       { src: "/images/work/isolated/iso-sni-icon-fall-tshirt.jpg", alt: "Spatial Networks Icon fall tshirt" },
       { src: "/images/work/full/full-sni-ad-1.jpg", alt: "Spatial Networks Ad 1" },
@@ -793,7 +793,7 @@ export default function ProjectSidebar({
                 <div className="flex items-center gap-6">
                   <span style={{ marginBottom: '0px' }} className="font-semibold text-gray-900 text-3xl font-merriweather">{project?.title}</span>
                   {project?.description && (
-                    <p className="hidden md:block text-sm text-gray-600 truncate" style={{ marginBottom: '0px' }}>{project.description}</p>
+                    <p className="hidden md:block text-sm text-text-secondary truncate" style={{ marginBottom: '0px' }}>{project.description}</p>
                   )}
                 </div>
               </div>
@@ -837,7 +837,7 @@ export default function ProjectSidebar({
                         duration: 0.4,
                         ease: "easeInOut"
                       }}
-                      className="text-xl md:text-2xl"
+                      className="subheading"
                     >
                       {project.description}
                     </motion.p>

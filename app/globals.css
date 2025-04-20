@@ -91,13 +91,13 @@ html.sidebar-open::-webkit-scrollbar {
 }
 
 body {
-  @apply text-text-primary antialiased text-2xl;
+  @apply text-text-primary antialiased text-2xl text-text-primary;
   background-color: hsl(var(--color-bg-primary));
   overflow-x: hidden;
 }
 
 p, ul, ol {
-  @apply mb-12 font-body font-[400] leading-loose text-text-primary;
+  @apply mb-12 font-body font-[400] leading-loose;
 }
 
 .subheading {
