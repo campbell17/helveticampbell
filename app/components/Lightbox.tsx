@@ -66,8 +66,14 @@ export default function Lightbox({ isOpen, onClose, images, initialImageIndex }:
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        animate={{ 
+          opacity: 1,
+          transition: { duration: 0.15, ease: "easeInOut" }
+        }}
+        exit={{ 
+          opacity: 0,
+          transition: { duration: 0.15, ease: "easeOut" }
+        }}
         className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90"
         onClick={onClose}
       >
@@ -112,14 +118,30 @@ export default function Lightbox({ isOpen, onClose, images, initialImageIndex }:
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative w-full h-full max-w-[90vw] max-h-[90vh]">
-            <Image
-              src={currentImage.src}
-              alt={currentImage.alt}
-              fill
-              className="object-contain"
-              sizes="90vw"
-              priority
-            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImage.src}
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: 1,
+                  transition: { duration: 0.1, ease: "easeInOut" }
+                }}
+                exit={{ 
+                  opacity: 0,
+                  transition: { duration: 0.1, ease: "easeOut" }
+                }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={currentImage.src}
+                  alt={currentImage.alt}
+                  fill
+                  className="object-contain"
+                  sizes="90vw"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </motion.div>
