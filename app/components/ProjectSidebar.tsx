@@ -782,10 +782,11 @@ export default function ProjectSidebar({
             <div
               data-scrolled={isScrolled ? "true" : "false"}
               data-testid="sticky-header"
-              className={`fixed top-0 left-0 right-0 z-modal transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
+              className={`fixed top-0 left-0 right-0 z-modal transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
               style={{
                 // Force important styles to ensure visibility if needed
-                zIndex: 110
+                zIndex: 110,
+                opacity: isTransitioning ? 0 : (isScrolled ? 1 : 0)
               }}
             >
               <div className="flex justify-between items-center">
