@@ -878,12 +878,12 @@ export default function ProjectSidebar({
                         }}
                         className="lg:w-5/12 xl:w-7/12"
                       >
-                        <div className="lg:sticky lg:top-24 pb-8">
-                          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-8">
+                        <div className="@container lg:sticky lg:top-24 pb-8">
+                          <div className="grid grid-cols-1 @md:grid-cols-2 gap-4 lg:gap-8">
                             {project.images.map((image, index) => (
                               <div 
                                 key={index} 
-                                className={`${image.fullWidth ? 'md:col-span-2 lg:col-span-2' : ''}`}
+                                className={`${image.fullWidth ? '@md:col-span-2' : ''}`}
                               >
                                 <div 
                                   className="cursor-pointer relative group overflow-hidden rounded-xl shadow-md hover:shadow-sm shadow-slate-900/20 transition-all duration-100"
