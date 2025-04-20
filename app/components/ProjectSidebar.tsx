@@ -489,6 +489,7 @@ interface ProjectSidebarProps {
   setLightboxImageIndex: (index: number | null) => void;
   currentGallery: string | null;
   setCurrentGallery: (gallery: string | null) => void;
+  onNavigateToProject?: (projectKey: string) => void;
 }
 
 // Pre-transition component with its own lifecycle
@@ -547,7 +548,8 @@ export default function ProjectSidebar({
   lightboxImageIndex,
   setLightboxImageIndex,
   currentGallery,
-  setCurrentGallery
+  setCurrentGallery,
+  onNavigateToProject
 }: ProjectSidebarProps) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const project = projectKey ? projectDetails[projectKey] : null;
@@ -560,6 +562,10 @@ export default function ProjectSidebar({
   const [showPreTransition, setShowPreTransition] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  
+  // State for project transitions
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitionalProject, setTransitionalProject] = useState<string | null>(null);
 
   // Handle opening sequence
   useEffect(() => {
@@ -604,6 +610,34 @@ export default function ProjectSidebar({
       // Trigger the exit animation after delay
       setShowPreTransition(false);
     }, PRE_TRANSITION_TIMING.exit.delay * 1000);
+  };
+
+  // Handle project transition
+  const handleProjectTransition = (nextProjectKey: string) => {
+    if (!nextProjectKey || nextProjectKey === projectKey) return;
+    
+    // Start transition sequence
+    setIsTransitioning(true);
+    setTransitionalProject(nextProjectKey);
+    
+    // Completely fade out the current content before changing projects
+    setTimeout(() => {
+      // Scroll to top for the new project
+      if (sidebarContentRef.current) {
+        sidebarContentRef.current.scrollTop = 0;
+      }
+      
+      // Change to the new project
+      if (onNavigateToProject) {
+        onNavigateToProject(nextProjectKey);
+      }
+      
+      // Allow a moment for the DOM to update with new content, then start fade-in
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setTransitionalProject(null);
+      }, 100); // Short delay to ensure content has updated
+    }, 500); // Ensure this is longer than the fade-out animation (400ms)
   };
 
   const handleImageClick = (index: number) => {
@@ -779,14 +813,13 @@ export default function ProjectSidebar({
                 <div className="max-w-7xl mx-auto mb-16">
                   {/* Project Title */}
                   <motion.div 
-                    key={projectKey}
+                    key={`title-${projectKey}`}
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 1 }}
+                    animate={{ opacity: isTransitioning ? 0 : 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ 
-                      duration: 0.25, 
-                      delay: 0.85, 
-                      ease: "easeIn"
+                      duration: 0.4,
+                      ease: "easeInOut"
                     }}
                   >
                     <H1>{project.title}</H1>
@@ -795,14 +828,13 @@ export default function ProjectSidebar({
                   {/* Project Description */}
                   {project.description && (
                     <motion.p 
-                      key={`${projectKey}-description`}
+                      key={`description-${projectKey}`}
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 1 }}
+                      animate={{ opacity: isTransitioning ? 0 : 1 }}
+                      exit={{ opacity: 0 }}
                       transition={{ 
-                        duration: 0.25, 
-                        delay: 0.85, 
-                        ease: "easeIn"
+                        duration: 0.4,
+                        ease: "easeInOut"
                       }}
                       className="text-xl md:text-2xl"
                     >
@@ -817,14 +849,13 @@ export default function ProjectSidebar({
                     <div className="flex flex-col lg:flex-row lg:gap-16 xl:gap-24">
                       {/* Left column - Sticky content that remains visible */}
                       <motion.div 
-                        key={`${projectKey}-content`}
+                        key={`content-${projectKey}`}
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 1 }}
+                        animate={{ opacity: isTransitioning ? 0 : 1 }}
+                        exit={{ opacity: 0 }}
                         transition={{ 
-                          duration: 0.25, 
-                          delay: 0.85, 
-                          ease: "easeIn"
+                          duration: 0.4,
+                          ease: "easeInOut"
                         }}
                         className="lg:w-7/12 xl:w-5/12 mb-12 lg:mb-0"
                       >
@@ -835,14 +866,14 @@ export default function ProjectSidebar({
 
                       {/* Right column - Images that scroll normally */}
                       <motion.div 
-                        key={`${projectKey}-images`}
+                        key={`images-${projectKey}`}
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 1 }}
+                        animate={{ opacity: isTransitioning ? 0 : 1 }}
+                        exit={{ opacity: 0 }}
                         transition={{ 
-                          duration: 0.25, 
-                          delay: 1.05, 
-                          ease: "easeIn"
+                          duration: 0.4,
+                          ease: "easeInOut",
+                          delay: 0.1
                         }}
                         className="lg:w-5/12 xl:w-7/12"
                       >
@@ -892,7 +923,17 @@ export default function ProjectSidebar({
                 {/* Fallback for projects without content - just show images in a grid */}
                 {!project.content && (
                   <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <motion.div
+                      key={`grid-${projectKey}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: isTransitioning ? 0 : 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ 
+                        duration: 0.4,
+                        ease: "easeInOut"
+                      }}
+                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+                    >
                       {project.images.map((image, index) => (
                         <div 
                           key={index} 
@@ -925,66 +966,71 @@ export default function ProjectSidebar({
                           )}
                         </div>
                       ))}
-                    </div>
+                    </motion.div>
                   </div>
                 )}
-
-                {/* Project Navigation */}
-                <motion.div 
-                  key={`${projectKey}-navigation`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 1 }}
-                  transition={{ 
-                    duration: 0.25, 
-                    delay: 0.8, 
-                    ease: "easeOut"
-                  }}
-                  className="max-w-7xl mx-auto mt-20 md:mt-24 border-t border-gray-200 pt-12"
-                >
-                  {/* Project name with divider */}
-                  <div className="mb-8 flex items-center gap-4">
-                    <div className="h-0.5 w-12 bg-gray-300"></div>
-                    <p className="text-sm uppercase tracking-wide text-gray-500 font-semibold">Next Project</p>
-                  </div>
-                  
-                  {/* Next Project Button */}
-                  <motion.button
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 1 }}
-                    transition={{ 
-                      duration: 0.3, 
-                      delay: 0.9, 
-                      ease: "easeOut"
-                    }}
-                    onClick={() => {
-                      if (!projectKey) return;
-                      
-                      const projectKeys = Object.keys(projectDetails);
-                      const currentIndex = projectKeys.indexOf(projectKey);
-                      const nextIndex = (currentIndex + 1) % projectKeys.length;
-                      
-                      // We'll need to handle this in the parent component
-                      onClose();
-                      setTimeout(() => {
-                        // This is where we would navigate to the next project
-                        // But we'll let the parent component handle it
-                      }, 500);
-                    }}
-                    className="group w-full md:w-auto bg-gray-50 hover:bg-gray-900 text-gray-900 hover:text-white flex items-center gap-6 hover:gap-8 px-8 py-6 rounded-xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-gray-900 shadow-sm hover:shadow-lg"
-                  >
-                    <span className="text-xl font-bold relative z-10">
-                      {Object.keys(projectDetails).indexOf(projectKey || '') === Object.keys(projectDetails).length - 1 
-                        ? `${projectDetails[Object.keys(projectDetails)[0]].title}`
-                        : `${projectDetails[Object.keys(projectDetails)[(Object.keys(projectDetails).indexOf(projectKey || '') + 1) % Object.keys(projectDetails).length]].title}`
-                      }
-                    </span>
-                    <ArrowRightIcon className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2" />
-                  </motion.button>
-                </motion.div>
               </div>
             </motion.div>
+
+            {/* Previous Project Button - Fixed positioned */}
+            <motion.button
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ 
+                opacity: isTransitioning ? 0.5 : 1,
+                x: 0
+              }}
+              transition={{ 
+                duration: 0.3,
+                delay: isTransitioning ? 0 : 0.6 // Delay initial appearance after content loads
+              }}
+              onClick={() => {
+                if (!projectKey || isTransitioning) return;
+                
+                const projectKeys = Object.keys(projectDetails);
+                const currentIndex = projectKeys.indexOf(projectKey);
+                const prevIndex = (currentIndex - 1 + projectKeys.length) % projectKeys.length;
+                const prevProjectKey = projectKeys[prevIndex];
+                
+                // Navigate to previous project with transition
+                handleProjectTransition(prevProjectKey);
+              }}
+              className="fixed left-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10 shadow-sm hover:shadow-md"
+              aria-label="Previous Project"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+
+            {/* Next Project Button - Fixed positioned */}
+            <motion.button
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ 
+                opacity: isTransitioning ? 0.5 : 1,
+                x: 0
+              }}
+              transition={{ 
+                duration: 0.3,
+                delay: isTransitioning ? 0 : 0.6 // Delay initial appearance after content loads
+              }}
+              onClick={() => {
+                if (!projectKey || isTransitioning) return;
+                
+                const projectKeys = Object.keys(projectDetails);
+                const currentIndex = projectKeys.indexOf(projectKey);
+                const nextIndex = (currentIndex + 1) % projectKeys.length;
+                const nextProjectKey = projectKeys[nextIndex];
+                
+                // Navigate to next project with transition
+                handleProjectTransition(nextProjectKey);
+              }}
+              className="fixed right-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10 shadow-sm hover:shadow-md"
+              aria-label="Next Project"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

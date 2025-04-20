@@ -81,6 +81,11 @@ export default function WorkPage() {
     }
   };
 
+  // Handler for navigating between projects
+  const handleNavigateToProject = (projectKey: string) => {
+    setSelectedProject(projectKey);
+  };
+
   return (
     <>
       <H1>Work</H1>
@@ -121,6 +126,7 @@ export default function WorkPage() {
         setLightboxImageIndex={setLightboxImageIndex}
         currentGallery={currentGallery}
         setCurrentGallery={setCurrentGallery}
+        onNavigateToProject={handleNavigateToProject}
       />
     </>
   )
