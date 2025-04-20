@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import Lightbox from './Lightbox';
-import { H1 } from './Typography';
+import { H1, H2 } from './Typography';
 import { MagnifyingGlassPlusIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 // Animation timing constants
@@ -756,7 +756,7 @@ export default function ProjectSidebar({
             >
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-6">
-                  <h2 className="text-xl font-semibold text-gray-900">{project?.title}</h2>
+                  <span style={{ marginBottom: '0px' }} className="font-semibold text-gray-900 text-3xl font-merriweather">{project?.title}</span>
                   {project?.description && (
                     <p className="hidden md:block text-sm text-gray-600 truncate" style={{ marginBottom: '0px' }}>{project.description}</p>
                   )}
