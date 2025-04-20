@@ -18,7 +18,7 @@ const workImages = [
 ];
 
 function WorkItem({ image, onImageClick, index }: { 
-  image: typeof workImages[0]; 
+  image: { src: string; alt: string; projectKey: string; gallery: number; fullWidth?: boolean }; 
   onImageClick: (index: number) => void;
   index: number;
 }) {
