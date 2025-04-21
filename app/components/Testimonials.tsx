@@ -65,10 +65,10 @@ const testimonials = [
           "He's also incredibly generous with his knowledge, always willing to share, explain, and support others. A true team player, Tim gives constructive, insightful feedback and never hesitates to ask the right questions to ensure the best solution is being pursued.",
         ],
         author: {
-          name: 'Mariana Ciguentes',
+          name: 'Mariana Cifuentes',
           handle: 'Senior Product Designer (UI/UX)',
           imageUrl:
-            '/images/mariana.jpeg',
+            '/images/mariana2.jpeg',
         },
       },
       {
