@@ -133,7 +133,7 @@ export default function Navigation() {
       </Link>
       <AnimatePresence mode="wait">
       {pathname === "/who" && (
-        <motion.div className="aspect-[4/4] -scale-x-100 relative rounded-[var(--container-radius)] overflow-hidden bg-[hsl(var(--color-container-bg)/0.3)] mb-12"
+        <motion.div className="aspect-[4/4] -scale-x-100 relative rounded-[var(--container-radius)] overflow-hidden bg-[oklch(var(--color-container-bg)/0.3)] mb-12"
           initial={{ opacity: 0 }}
           animate={{ 
             opacity: 1,

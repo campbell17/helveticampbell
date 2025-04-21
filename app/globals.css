@@ -9,11 +9,11 @@
 @import './theme.css';
 
 .heading-color {
-  color: hsl(var(--color-text-heading));
+  color: oklch(var(--color-text-heading));
 }
 
 .body-color {
-  color: hsl(var(--color-text-primary));
+  color: oklch(var(--color-text-primary));
 }
 
 /* Custom scrollbar styles */
@@ -92,7 +92,7 @@ html.sidebar-open::-webkit-scrollbar {
 
 body {
   @apply text-text-primary antialiased text-2xl text-text-primary;
-  background-color: hsl(var(--color-bg-primary));
+  background-color: oklch(var(--color-bg-primary));
   overflow-x: hidden;
 }
 
