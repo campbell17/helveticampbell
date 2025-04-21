@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import React from 'react'
 
 const featuredTestimonial = {
   body: [
@@ -30,7 +31,7 @@ const testimonials = [
       {
         body: [
           "I had the pleasure of working closely with Tim at Fulcrum, where he brought an incredible mix of design talent, initiative, and thoughtfulness to our team.",
-          "What stood out most about Tim was his thoughtful ability to question — “Should we do this?” rather than just “How should we do this?” That kind of thinking helped us build not just usable features, but also avoid wasting time on things we didn’t need.",  
+          "What stood out most about Tim was his thoughtful ability to question — \"Should we do this?\" rather than just \"How should we do this?\" That kind of thinking helped us build not just usable features, but also avoid wasting time on things we didn't need.",  
           "Tim consistently delivered designs that were a joy to use—some of the most intuitive and polished parts of our platform were his work. He also took initiative on bigger efforts, like leading the charge on our web design system.",
           "I would gladly work with Tim again if the opportunity arose.",
         ],
@@ -59,9 +60,9 @@ const testimonials = [
       },
       {
         body: [
-          "I had the pleasure of working with Tim for about three years, and I can confidently say he’s a designer I truly admire. Tim is incredibly passionate about his work, and it shows in everything he does, his craft is consistently thoughtful, clean, and detailed.",
-          "I often turned to him as my go-to “copy ninja” and learned so much from his keen eye and clear thinking. Tim has deep expertise in design systems and web design, along with a solid technical background that makes him a versatile and valuable teammate.",
-          "He’s also incredibly generous with his knowledge, always willing to share, explain, and support others. A true team player, Tim gives constructive, insightful feedback and never hesitates to ask the right questions to ensure the best solution is being pursued.",
+          "I had the pleasure of working with Tim for about three years, and I can confidently say he's a designer I truly admire. Tim is incredibly passionate about his work, and it shows in everything he does, his craft is consistently thoughtful, clean, and detailed.",
+          "I often turned to him as my go-to \"copy ninja\" and learned so much from his keen eye and clear thinking. Tim has deep expertise in design systems and web design, along with a solid technical background that makes him a versatile and valuable teammate.",
+          "He's also incredibly generous with his knowledge, always willing to share, explain, and support others. A true team player, Tim gives constructive, insightful feedback and never hesitates to ask the right questions to ensure the best solution is being pursued.",
           "Any team would be lucky to have Tim on board."
         ],
         author: {
@@ -143,16 +144,26 @@ export default function Testimonials({ className }: TestimonialsProps) {
           {testimonials.flat(2).map((testimonial) => (
             <figure
               key={testimonial.author.handle}
-              className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 container-glass"
+              className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 container-glass relative overflow-hidden"
             >
-              <blockquote className="text-text-primary">
+              {/* Large quote mark pseudo-element (top) */}
+              <div className="absolute top-20 left-0 text-neutral-400 opacity-10 text-[224px] font-body z-0 -tracking-[20px] leading-16 pointer-events-none select-none">
+                &lsquo;&lsquo;
+              </div>
+
+              {/* Large quote mark pseudo-element (bottom) */}
+              <div className="absolute -bottom-16 right-6 text-neutral-400 opacity-10 text-[224px] font-body z-0 -tracking-[20px] leading-16 pointer-events-none select-none">
+                &rsquo;&rsquo;
+              </div>
+
+              <blockquote className="text-text-primary relative z-10">
                 {testimonial.body.map((paragraph, idx) => (
                   <div key={idx} className="mb-4">
                     {paragraph}
                   </div>
                 ))}
               </blockquote>
-              <figcaption className="flex items-center gap-x-4">
+              <figcaption className="flex items-center gap-x-4 relative z-10">
                 <Image
                   src={testimonial.author.imageUrl}
                   alt={`${testimonial.author.name}'s profile picture`}
