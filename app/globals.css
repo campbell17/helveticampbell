@@ -160,10 +160,7 @@ nav a {
 /* Container styles */
 .container-glass {
   @apply bg-gradient-to-tr from-slate-50/50 via-teal-50/50 to-red-50/50;
-  position: relative;
-  /* background-color: var(--container-glass-bg); */
-  /* background-image: var(--container-glass-gradient); */
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
   border: 1px solid var(--container-glass-border);
   box-shadow: 0 4px 32px -12px var(--container-glass-shadow);
