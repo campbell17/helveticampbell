@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Portfolio Website Context and Vision
+
+## Overview
+This portfolio site should resemble a high-end web application that is both visually appealing and functionally rich. It must feature modern design elements, smooth animations, and dynamic content loading. The site is built with Next.js, React, and Tailwind CSS, and the code should follow the guidelines detailed below.
+
+## Site Structure and Navigation
+- **Pages:**
+  - About
+  - Work
+  - Writing
+- **Content:**
+  - Use placeholder content for now; this will be refined later as the project evolves.
+
+## Layout and Structure
+- **Navigation & Content Areas:**
+  - **Sidebar:** Positioned on the left, this area will contain the logo and navigation links.
+  - **Content Area:** Occupies the right side, dynamically hydrating with the appropriate content based on navigation selections.
+- **Scrolling Behavior:**
+  - Both the sidebar and the main content container should scroll independently while the page background remains static.
+- **Margins & Padding:**
+  - Ensure generous internal padding in both containers.
+  - Apply ample margins from the edges of the browser window, allowing any textured or ambient background to show through the translucent containers.
+
+## Visual Style and Effects
+- **Containers:**
+  - Utilize abundant internal padding with nicely rounded corners.
+  - Implement a translucent "frosted glass" effect on content panels, with a light grey static background. Each container should have soft, high-elevation drop shadows.
+- **Typography:**
+  - **Display/Headings:** Use *Helvetica* for headings and display text to reflect the "helveticampbell" brand identity.
+  - **Body Text:** Choose a modern, highly legible sans-serif font that complements Helvetica; maintain an airy leading to avoid a cramped look.
+- **Motion and Interactivity:**
+  - Incorporate a parallax effect: as the mouse moves, a subtle shift in the background image should be observed.
+  - Use advanced motion and transition effects (via libraries such as three.js, framer motion, or industry standards):
+    - Fade in the main layout and content when the site loads.
+    - Fade out and in the page's content (copy and images) during navigation transitions while keeping the containers static.
+
+## Component Guidelines
+- **Lightbox:**  
+  - Enable users to enlarge images via click interaction.
+- **Modal Component:**  
+  - Should open with clickable triggers and be closable by both an X icon and the Escape key.
+- **Popover Component:**  
+  - Display rich contextual information on hover. Must allow the specification of both the trigger element and the popover content directly in the code.
+- **Drawer Component:**  
+  - A sliding panel that emerges from the right side; it should also be closable using an X icon and the Escape key.
+- **Consistency Requirement:**
+  - All components must adhere to the unified visual style — translucent, frosted glass containers with soft shadows and smooth transitions.
+
+## Tailwind CSS and Icon Strategy
+- Utilize **Tailwind CSS** for styling, ensuring consistency across all components.
+- Default to **Heroicons (outline)** for icons (available at [heroicons.com/outline](https://heroicons.com/outline)).
+- For accessible UI components, refer to patterns and components from [headlessui.com](https://headlessui.com/).
+
+## Additional Directives
+- Always maintain a consistent visual language across the entire site.
+- Any future elements or enhancements must integrate seamlessly with the described aesthetic and functionality.
+- Use temporary instructions in Agent chat only for transient needs; this file should capture the core, persistent design and functionality guidelines.

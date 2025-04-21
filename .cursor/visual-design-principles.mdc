@@ -1,0 +1,76 @@
+---
+description: When visual design and the look and feel of designs are mentioned.
+globs: 
+alwaysApply: false
+---
+# Visual Design Principles
+
+## Core Principles
+- Follow modern design trends while maintaining timeless principles
+- Prioritize whitespace and visual hierarchy
+- Use consistent spacing and alignment systems
+- Implement micro-interactions and subtle animations
+- Focus on typography as a primary design element
+
+## Color and Contrast
+- Use color theory effectively
+- Implement accessible color contrast ratios
+- Create cohesive color palettes
+- Use color to enhance user experience, not distract
+- Consider dark/light mode implementations
+
+## Typography
+- Use modern, clean typefaces
+- Implement responsive typography
+- Create clear typographic hierarchy
+- Use variable fonts when appropriate
+- Maintain optimal readability
+
+## Layout and Composition
+- Use modern layout techniques (Grid, Flexbox)
+- Implement responsive design patterns
+- Create balanced compositions
+- Use asymmetry effectively
+- Consider scroll-based animations
+
+## Visual Elements
+- Use high-quality imagery and graphics
+- Implement modern illustration styles
+- Use subtle gradients and shadows
+- Consider glassmorphism and neumorphism when appropriate
+- Use custom cursors and hover states
+
+## Motion and Interaction
+- Implement smooth transitions
+- Use scroll-triggered animations
+- Create engaging hover states
+- Consider parallax effects
+- Use motion to guide user attention
+
+## Modern UI Patterns
+- Implement card-based layouts
+- Use floating elements
+- Create immersive hero sections
+- Implement modern navigation patterns
+- Use progressive disclosure
+
+## Accessibility and Inclusivity
+- Ensure all visual elements are accessible
+- Consider color blindness and visual impairments
+- Provide alternative visual cues
+- Maintain readability across devices
+- Test with various user scenarios
+
+## Performance Considerations
+- Optimize images and assets
+- Implement lazy loading
+- Consider progressive enhancement
+- Balance visual richness with performance
+- Use modern optimization techniques
+
+## Trend Awareness
+- Stay current with design trends
+- Understand when to use and when to avoid trends
+- Balance innovation with usability
+- Consider cultural and contextual appropriateness
+- Adapt designs for different industries and audiences

@@ -63,7 +63,6 @@ const testimonials = [
           "I had the pleasure of working with Tim for about three years, and I can confidently say he's a designer I truly admire. Tim is incredibly passionate about his work, and it shows in everything he does, his craft is consistently thoughtful, clean, and detailed.",
           "I often turned to him as my go-to \"copy ninja\" and learned so much from his keen eye and clear thinking. Tim has deep expertise in design systems and web design, along with a solid technical background that makes him a versatile and valuable teammate.",
           "He's also incredibly generous with his knowledge, always willing to share, explain, and support others. A true team player, Tim gives constructive, insightful feedback and never hesitates to ask the right questions to ensure the best solution is being pursued.",
-          "Any team would be lucky to have Tim on board."
         ],
         author: {
           name: 'Mariana Ciguentes',
@@ -77,7 +76,6 @@ const testimonials = [
           "I had the pleasure of working closely with Tim Campbell for two years at Fulcrum, and I can confidently say he is an exceptional designer, collaborator, and colleague. Tim joined Fulcrum/Spatial Networks in its early days, and over more than 15 years, he became a foundational pillar of our team.",
           "As our Lead Product Designer focused on web design, Tim brought immense value through his deep understanding of our product, our customers, and their unique use cases and challenges. His insights consistently guided our team toward high-impact, user-focused solutions. Tim's ability to align our efforts with customer needs ensured we always prioritized work that created real value.",
           "Beyond his exceptional design skills, Tim is also highly skilled in user research and software development, making him a versatile and invaluable asset to any team. His dedication, collaborative spirit, and thoughtful approach to problem-solving made him a pleasure to work alongside every day.",
-          "I wholeheartedly recommend Tim Campbell and have no doubt he will positively impact any organization fortunate enough to have him.",
         ],
         author: {
           name: 'Adrian Zuniga',

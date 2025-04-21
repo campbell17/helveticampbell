@@ -1,0 +1,60 @@
+---
+description: 
+globs: **/*.html,**/*.jsx,**/*.tsx
+alwaysApply: false
+---
+# Semantic HTML Best Practices
+
+## Element Selection Guidelines
+1. Navigation
+   - Use `<nav>` for primary/secondary navigation menus
+   - Avoid nesting `<nav>` elements unless creating distinct navigation sections
+   - Don't use `<aside>` for primary navigation
+
+2. Content Sectioning
+   - `<main>` for the primary content of the page (only one per page)
+   - `<article>` for self-contained content that could be distributed independently
+   - `<section>` for thematically grouped content
+   - `<aside>` ONLY for content tangentially related to the surrounding content (pull quotes, sidebars with related articles, advertising, etc.)
+   - `<header>` and `<footer>` for introductory/concluding content of sections
+
+3. Text Content
+   - Use heading elements (`<h1>` through `<h6>`) in a logical hierarchy
+   - `<p>` for paragraphs of text
+   - `<ul>`, `<ol>`, `<dl>` for lists with appropriate semantic meaning
+
+4. Interactive Elements
+   - `<button>` for clickable actions that don't change URL
+   - `<a>` for navigation between pages/URLs
+   - Avoid using divs with click handlers when semantic elements exist
+
+5. Landmarks
+   - Each major section should have an ARIA landmark role (either implicit via semantic HTML or explicit via role attribute)
+   - Use unique labels for landmarks when there are multiple of the same type
+
+## Common Mistakes to Avoid
+1. Using `<div>` or `<span>` when a semantic element exists
+2. Using `<aside>` for primary navigation (use `<nav>` instead)
+3. Using multiple `<main>` elements
+4. Nesting interactive elements
+5. Using heading elements for styling instead of document structure
+
+## Accessibility Requirements
+1. All interactive elements must be keyboard accessible
+2. Maintain a logical tab order
+3. Ensure proper ARIA attributes when needed
+4. Provide alternative text for images
+5. Maintain proper color contrast
+6. Support screen readers with proper element roles and labels
+
+## SEO Considerations
+1. Use semantic elements to help search engines understand content hierarchy
+2. Implement proper meta tags
+3. Use structured data when appropriate
+4. Ensure content matches semantic structure
+
+Remember: When in doubt about which element to use, consider:
+1. What is the semantic meaning of this content?
+2. How would this be announced by a screen reader?
+3. Is this content primary, supplementary, or navigational?
+4. Could this content stand alone?

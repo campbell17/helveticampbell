@@ -1,0 +1,56 @@
+---
+description: 
+globs: **/*.js,**/*.jsx,**/*.ts,**/*.tsx,**/pages/**/*.js,**/pages/**/*.jsx,**/pages/**/*.ts,**/pages/**/*.tsx,**/app/**/*.js,**/app/**/*.jsx,**/app/**/*.ts,**/app/**/*.tsx
+alwaysApply: false
+---
+# Next.js Best Practices
+
+## Core Principles
+1. Always use Next.js native components and capabilities:
+   - Use `next/link` instead of `<a>` tags for internal navigation
+   - Use `next/image` instead of `<img>` for optimized image loading
+   - Use `next/font` for font optimization
+   - Use `next/navigation` hooks (useRouter, usePathname, etc.)
+   - Use App Router features (loading.tsx, error.tsx, layout.tsx)
+   - Use Server Components by default, 'use client' only when needed
+
+2. Data Fetching and Caching:
+   - Use Server Components for data fetching when possible
+   - Implement proper caching strategies using fetch cache options
+   - Use React Suspense boundaries for loading states
+   - Utilize generateStaticParams for static page generation
+   - Implement revalidation strategies appropriately (ISR)
+
+3. Routing and Navigation:
+   - Use dynamic route segments when appropriate
+   - Implement proper loading and error states for each route
+   - Use parallel routes for complex layouts
+   - Implement intercepting routes for modal patterns
+   - Use route groups for organizational purposes
+
+4. Performance Optimization:
+   - Implement proper metadata for SEO
+   - Use route segments to code-split effectively
+   - Optimize images with proper sizes and formats
+   - Use streaming where appropriate
+   - Implement proper caching strategies
+
+5. State Management:
+   - Use Server Components for static content
+   - Implement proper form handling with Server Actions
+   - Use React Context sparingly and only when needed
+   - Consider server-side state management solutions
+
+6. Security:
+   - Implement proper CORS policies
+   - Use middleware for authentication/authorization
+   - Sanitize user inputs
+   - Use environment variables for sensitive data
+   - Implement proper CSP headers
+
+7. Development Practices:
+   - Follow the App Router directory structure conventions
+   - Use TypeScript for better type safety
+   - Implement proper error boundaries
+   - Use proper loading states for better UX
+   - Follow the React Server Components patterns

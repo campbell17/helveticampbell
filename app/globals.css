@@ -100,8 +100,34 @@ p, ul, ol {
   @apply mb-12 font-body font-[400] leading-loose;
 }
 
-figure {
+figure, body a {
   @apply font-body
+}
+
+p a {
+  @apply text-link hover:text-link-hover transition-colors duration-150 relative;
+}
+
+p a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.15s ease;
+}
+
+p a:hover::after {
+  transform: scaleX(1);
+}
+
+nav a {
+  @apply font-helveticampbell;
+  /* color: var(--color-link); */
 }
 
 .subheading {
@@ -110,8 +136,9 @@ figure {
 
 /* Navigation */
 .nav-link {
-  @apply border-1 border-transparent block px-4 py-2 rounded-full transition-all duration-50 ease-in-out;
+  @apply font-helveticampbell border-1 border-transparent block px-4 py-2 rounded-full transition-all duration-50 ease-in-out;
   color: hsl(var(--color-text-primary));
+  font-family: var(--font-helveticampbell);
 
   &.active, &:hover {
     @apply border-1 bg-white/50 border-teal-100;
