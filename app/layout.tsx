@@ -7,6 +7,7 @@ import ThemeSwitcher from './components/ThemeSwitcher'
 import Navigation from './components/Navigation'
 import AnimatedLayout from './components/AnimatedLayout'
 import CustomScrollbar from './components/CustomScrollbar'
+import BackToTop from './components/BackToTop'
 import { cn } from './lib/utils'
 import { font } from './lib/fonts'
 import { ProjectSidebarProvider } from './contexts/ProjectSidebarContext'
@@ -50,7 +51,7 @@ export default function RootLayout({
             <div className="min-h-screen flex flex-col">
               <div className="flex-1 relative">
                 {/* Fixed navigation sidebar */}
-                <div className="fixed top-12 bottom-12 left-8 w-64 z-50">
+                <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto">
                   <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
                     {/* <H1 className="mb-10 flex-none">HC</H1> */}
                     <Navigation />
@@ -72,6 +73,7 @@ export default function RootLayout({
 
             </div>
             <CustomScrollbar />
+            <BackToTop />
           </ProjectSidebarProvider>
         </ThemeProvider>
       </body>

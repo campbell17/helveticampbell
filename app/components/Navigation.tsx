@@ -6,14 +6,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { H1 } from './Typography'
 import Image from 'next/image'
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { ChevronUpDownIcon } from '@heroicons/react/24/outline'
+import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline'
 import { useProjectSidebar } from '../contexts/ProjectSidebarContext'
 
 export default function Navigation() {
   const pathname = usePathname()
   const textStyles = 'font-helveticampbell font-[900] tracking-normal text-xl relative px-1 transition-colors duration-200 p-1'
   const [isFirstLoad, setIsFirstLoad] = useState(true)
+  const [isDisclosureOpen, setIsDisclosureOpen] = useState(false)
   
   // Get the openProject function from context
   const { openProject } = useProjectSidebar()
@@ -23,14 +24,32 @@ export default function Navigation() {
   const ENTER_DURATION = 0.15
   const EXIT_DURATION = 0.15
   
+  // Disclosure animation constants
+  const DISCLOSURE_DURATION = 0.2
+  const DISCLOSURE_EASE = [0.25, 0.1, 0.25, 1]
+  
   // Initial page load animation constants
   const INITIAL_LOAD_DELAY = 0.2
   const INITIAL_LOAD_DURATION = 0.6
   
-  // Set isFirstLoad to false after component mounts
+  // Load disclosure state from localStorage on initial render
   useEffect(() => {
+    // Only run in the browser, not during SSR
+    if (typeof window !== 'undefined') {
+      const savedState = localStorage.getItem('projectDisclosureOpen')
+      if (savedState !== null) {
+        setIsDisclosureOpen(savedState === 'true')
+      }
+    }
     setIsFirstLoad(false)
   }, [])
+  
+  // Save disclosure state to localStorage when it changes
+  const handleDisclosureChange = () => {
+    const newState = !isDisclosureOpen
+    setIsDisclosureOpen(newState)
+    localStorage.setItem('projectDisclosureOpen', newState.toString())
+  }
 
   // Project links for the Work disclosure
   const projects = [
@@ -90,23 +109,68 @@ export default function Navigation() {
             </AnimatePresence>
           </Link>
           
-          <Disclosure>
-            <DisclosureButton className="cursor-pointer absolute right-0 flex items-start p-1">
-              <ChevronDownIcon className="h-4 w-4 transition-transform ui-open:rotate-180 ui-open:transform text-neutral-400 hover:text-neutral-800" />
-            </DisclosureButton>
-            
-            <DisclosurePanel className="mt-2 ml-2 space-y-2">
-              {projects.map((project) => (
-                <button
-                  key={project.key}
-                  onClick={() => openProject(project.key)}
-                  className={`cursor-pointer block text-sm !font-display ${pathname === project.href ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
-                >
-                  {project.name}
-                </button>
-              ))}
-            </DisclosurePanel>
-          </Disclosure>
+          <button
+            onClick={handleDisclosureChange}
+            className="cursor-pointer absolute right-0 top-1 flex items-start p-1"
+            aria-expanded={isDisclosureOpen}
+          >
+            <motion.div
+              animate={{ rotate: isDisclosureOpen ? 180 : 0 }}
+              transition={{ duration: DISCLOSURE_DURATION, ease: DISCLOSURE_EASE }}
+            >
+              <ChevronUpDownIcon className="h-5 w-5 text-neutral-400 hover:text-neutral-800" />
+            </motion.div>
+          </button>
+          
+          <AnimatePresence initial={false}>
+            {isDisclosureOpen && (
+              <motion.div 
+                className="mt-4 space-y-2 w-full overflow-hidden"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ 
+                  height: 'auto', 
+                  opacity: 1,
+                  transition: {
+                    height: { duration: DISCLOSURE_DURATION, ease: DISCLOSURE_EASE },
+                    opacity: { duration: DISCLOSURE_DURATION * 1.2, ease: DISCLOSURE_EASE }
+                  }
+                }}
+                exit={{ 
+                  height: 0, 
+                  opacity: 0,
+                  transition: {
+                    height: { duration: DISCLOSURE_DURATION, ease: DISCLOSURE_EASE },
+                    opacity: { duration: DISCLOSURE_DURATION * 0.8, ease: DISCLOSURE_EASE }
+                  }
+                }}
+              >
+                {projects.map((project, index) => (
+                  <motion.button
+                    key={project.key}
+                    initial={{ opacity: 0 }}
+                    animate={{                       
+                      opacity: 1,
+                      transition: {
+                        delay: index * 0.05,
+                        duration: DISCLOSURE_DURATION,
+                        ease: DISCLOSURE_EASE
+                      }
+                    }}
+                    exit={{ 
+                      transition: {
+                        duration: DISCLOSURE_DURATION * 0.5,
+                        ease: DISCLOSURE_EASE
+                      }
+                    }}
+                    onClick={() => openProject(project.key)}
+                    className={`cursor-pointer flex items-center pl-2 rounded-full hover:bg-gradient-to-tr from-slate-50/50 via-teal-50/50 to-red-50/50 justify-between text-xs font-bold py-1 uppercase !font-body ${pathname === project.href ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group w-full`}
+                  >
+                    {project.name} <ArrowLeftStartOnRectangleIcon className="opacity-0 group-hover:opacity-100 mr-1.5 h-4 w-4 transition-opacity" />
+                  </motion.button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
       
