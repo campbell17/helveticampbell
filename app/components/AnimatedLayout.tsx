@@ -30,8 +30,7 @@ export default function AnimatedLayout({ children }: AnimatedLayoutProps) {
       {/* Key on pathname to trigger animation when route changes */}
       <div 
         key={pathname}
-        // className={`${maxWidthClass} mx-auto px-8 py-12`} Not yet...
-        className="max-w-4xl mx-auto px-12 py-12"
+        className="max-w-4xl mx-auto px-0 sm:px-4 md:px-8 py-6 md:py-12"
       >
         {children}
       </div>
