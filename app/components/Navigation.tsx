@@ -37,6 +37,9 @@ export default function Navigation() {
     { name: 'Fulcrum', href: '/work/fulcrum', key: 'Fulcrum' },
     { name: 'Spatial Networks', href: '/work/spatial-networks', key: 'Spatial Networks' },
     { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
+    { name: 'Divide', href: '/work/divide', key: 'Divide' },
+    { name: 'Branding', href: '/work/branding', key: 'Branding' },
+    { name: 'Personal', href: '/work/personal', key: 'Personal' },
   ]
 
   return (
@@ -97,7 +100,7 @@ export default function Navigation() {
                 <button
                   key={project.key}
                   onClick={() => openProject(project.key)}
-                  className={`block text-sm !font-display ${pathname === project.href ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+                  className={`cursor-pointer block text-sm !font-display ${pathname === project.href ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
                 >
                   {project.name}
                 </button>

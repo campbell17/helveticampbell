@@ -32,4 +32,7 @@ export const ProjectOpener = {
   openFulcrum: () => ProjectOpener.open('Fulcrum'),
   openSpatialNetworks: () => ProjectOpener.open('Spatial Networks'),
   openAllinspections: () => ProjectOpener.open('Allinspections'),
+  openDivide: () => ProjectOpener.open('Divide'),
+  openBranding: () => ProjectOpener.open('Branding'),
+  openPersonal: () => ProjectOpener.open('Personal'),
 } 
