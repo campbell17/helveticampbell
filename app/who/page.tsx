@@ -17,7 +17,7 @@ export default function HomePage() {
 
       <ul className="space-y-4 list-disc list-outside ml-5">
         <li>
-          I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer" className="text-teal-600">Fulcrum</Link> for its first 10 years while it grew from a simple idea to $12M+ ARR with 2,000+ customers.
+          I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer">Fulcrum</Link> for its first 10 years while it grew from a simple idea to $12M+ ARR with 2,000+ customers.
         </li>
         <li>
           This included web app, mobile Apps, branding, marketing website, print materials.

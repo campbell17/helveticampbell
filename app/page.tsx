@@ -8,7 +8,7 @@ export default function HomePage() {
       <H1>This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>
       
       <div className="subheading">
-        Versatile, product-focused design. Building and evolving digital experiences from the ground up.
+        Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up.
       </div>
 
       <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 mb-12">

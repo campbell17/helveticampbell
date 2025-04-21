@@ -104,11 +104,11 @@ figure, body a {
   @apply font-body
 }
 
-p a {
+p a, li a {
   @apply text-link hover:text-link-hover transition-colors duration-150 relative;
 }
 
-p a::after {
+p a::after, li a::after {
   content: '';
   position: absolute;
   width: 100%;
@@ -121,7 +121,7 @@ p a::after {
   transition: transform 0.15s ease;
 }
 
-p a:hover::after {
+p a:hover::after, li a:hover::after {
   transform: scaleX(1);
 }
 
