@@ -10,7 +10,7 @@ export default function HomePage() {
       <H1>Tim Campbell</H1>
       
       <div className="subheading">
-        Here's what you need to know
+        The TL;DR and the TL;S<em>(still)</em>R.
       </div>
 
       <H2 className="mb-8">The Short Version</H2>
