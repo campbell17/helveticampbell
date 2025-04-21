@@ -91,7 +91,7 @@ export default function WorkPage() {
       <H1>Work</H1>
 
       <div className="subheading">
-        Look at a few examples of my work, learn a bit about why I chose design, and hear what it's like to work with me.
+        See a few examples of my work, learn about why I chose design, and hear what it's like to work with me.
       </div>
 
       <div className="flex gap-20">
