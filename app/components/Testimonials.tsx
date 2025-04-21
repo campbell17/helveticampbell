@@ -139,7 +139,7 @@ export default function Testimonials({ className }: TestimonialsProps) {
   return (
     <div className={`@container ${className}`}>
       <div className="mx-auto">
-        <div className="mx-auto grid grid-cols-1 gap-8 text-sm/6 text-text-primary mt-8">
+        <div className="mx-auto grid grid-cols-1 gap-8 text-sm/6 text-text-primary">
           {testimonials.flat(2).map((testimonial) => (
             <figure
               key={testimonial.author.handle}
@@ -152,7 +152,7 @@ export default function Testimonials({ className }: TestimonialsProps) {
                   </div>
                 ))}
               </blockquote>
-              <figcaption className="mt-6 flex items-center gap-x-4">
+              <figcaption className="flex items-center gap-x-4">
                 <Image
                   src={testimonial.author.imageUrl}
                   alt={`${testimonial.author.name}'s profile picture`}

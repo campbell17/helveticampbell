@@ -120,9 +120,9 @@ export default function WorkPage() {
             <p>I'm not condoning sloppiness, of course. Diapers are expensive.</p>
           </div>
           {/* Working with Tim */}
-          <div className="2xl:fixed 2xl:top-12 2xl:bottom-12 2xl:right-20 2xl:w-64 2xl:z-50">
-            <H3 className="2xl:hidden mb-8">Working With Tim</H3>
-            <Testimonials className="2xl:fixed 2xl:top-12 2xl:bottom-12 2xl:right-20 2xl:w-64 2xl:z-50"/>
+          <div className="flex flex-col">
+            <H3>Collaboration Is Key</H3>
+            <Testimonials className=""/>
           </div>
         </div>
       </div>
