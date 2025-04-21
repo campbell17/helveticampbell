@@ -15,8 +15,8 @@ export default function WritingPage() {
         et ultrices posuere cubilia curae.
       </p>
 
-      <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-[oklch(var(--color-container-bg)/0.3)] mb-12">
-        <div className="absolute inset-0 flex items-center justify-center text-[oklch(var(--color-text-secondary))]">
+      <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 mb-12">
+        <div className="absolute inset-0 flex items-center justify-center text-text-secondary">
           Hero Image
         </div>
       </div>
@@ -40,8 +40,8 @@ export default function WritingPage() {
           Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.
         </p>
 
-        <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-[oklch(var(--color-container-bg)/0.3)] my-12">
-          <div className="absolute inset-0 flex items-center justify-center text-[oklch(var(--color-text-secondary))]">
+        <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 my-12">
+          <div className="absolute inset-0 flex items-center justify-center text-text-secondary">
             Secondary Image
           </div>
         </div>
