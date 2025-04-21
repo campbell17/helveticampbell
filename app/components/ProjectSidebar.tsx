@@ -806,6 +806,7 @@ export default function ProjectSidebar({
               animate={{ opacity: 1 }}
               transition={{ 
                 duration: SIDEBAR_TIMING.enter.duration / 3,
+                delay: 0.85,
                 ease: "easeOut"
               }}
             >

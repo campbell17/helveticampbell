@@ -9,6 +9,7 @@ import AnimatedLayout from './components/AnimatedLayout'
 import CustomScrollbar from './components/CustomScrollbar'
 import { cn } from './lib/utils'
 import { font } from './lib/fonts'
+import { ProjectSidebarProvider } from './contexts/ProjectSidebarContext'
 
 export const metadata: Metadata = {
   title: 'Helveticampbell',
@@ -41,35 +42,37 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* Background stays mounted during navigation */}
-          <SceneBackground />
-          
-          {/* Layout container */}
-          <div className="min-h-screen flex flex-col">
-            <div className="flex-1 relative">
-              {/* Fixed navigation sidebar */}
-              <div className="fixed top-12 bottom-12 left-8 w-64 z-50">
-                <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
-                  {/* <H1 className="mb-10 flex-none">HC</H1> */}
-                  <Navigation />
-                  <div className="flex-none">
-                    <ThemeSwitcher />
+          <ProjectSidebarProvider>
+            {/* Background stays mounted during navigation */}
+            <SceneBackground />
+            
+            {/* Layout container */}
+            <div className="min-h-screen flex flex-col">
+              <div className="flex-1 relative">
+                {/* Fixed navigation sidebar */}
+                <div className="fixed top-12 bottom-12 left-8 w-64 z-50">
+                  <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
+                    {/* <H1 className="mb-10 flex-none">HC</H1> */}
+                    <Navigation />
+                    <div className="flex-none">
+                      <ThemeSwitcher />
+                    </div>
+                  </nav>
+                </div>
+
+                {/* Main content area - wrap in AnimatedLayout for transitions */}
+                <main className="pl-72 pr-72 pt-16 pb-16">
+                  <div className="max-w-[1200px] mx-auto">
+                    <AnimatedLayout>
+                      {children}
+                    </AnimatedLayout>
                   </div>
-                </nav>
+                </main>
               </div>
 
-              {/* Main content area - wrap in AnimatedLayout for transitions */}
-              <main className="pl-72 pr-72 pt-16 pb-16">
-                <div className="max-w-[1200px] mx-auto">
-                  <AnimatedLayout>
-                    {children}
-                  </AnimatedLayout>
-                </div>
-              </main>
             </div>
-
-          </div>
-          <CustomScrollbar />
+            <CustomScrollbar />
+          </ProjectSidebarProvider>
         </ThemeProvider>
       </body>
     </html>

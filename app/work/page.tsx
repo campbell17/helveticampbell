@@ -3,10 +3,10 @@
 import Link from 'next/link'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { H1, Caption, H2, H3 } from '../components/Typography'
-import ProjectSidebar from '../components/ProjectSidebar'
-import { useState } from 'react'
 import Image from 'next/image'
 import Testimonials from '../components/Testimonials'
+import { useOpenProject } from '../hooks/useOpenProject'
+import { useState } from 'react'
 // Work images from Sidebar component
 const workImages = [
   // Gallery 1: My Work
@@ -66,7 +66,7 @@ function WorkItem({ image, onImageClick, index }: {
 }
 
 export default function WorkPage() {
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const { openProject } = useOpenProject();
   const [lightboxImageIndex, setLightboxImageIndex] = useState<number | null>(null);
   const [currentGallery, setCurrentGallery] = useState<string | null>(null);
 
@@ -74,17 +74,12 @@ export default function WorkPage() {
   const handleImageClick = (index: number) => {
     const clickedImage = workImages[index];
     if (clickedImage.projectKey) {
-      setSelectedProject(clickedImage.projectKey);
+      openProject(clickedImage.projectKey);
     } else {
       // For images without a project key, show in lightbox
       setCurrentGallery(`gallery-${clickedImage.gallery}`);
       setLightboxImageIndex(index);
     }
-  };
-
-  // Handler for navigating between projects
-  const handleNavigateToProject = (projectKey: string) => {
-    setSelectedProject(projectKey);
   };
 
   return (
@@ -122,7 +117,7 @@ export default function WorkPage() {
             <p>I spent my days fitting people for running shoes (I was damn good, by the way) and my nights working on my design portfolio. Despite the BFA(popover) in my posession and my love for making beautiful images, I never felt comfortable pursuing how to make money with my art. The idea of something so personal and subjective being scrutinized by someone else never squared with me.</p>
             <p>But I was always technically sharp, and to me design was more technical. If someone needed a logo, no problem. &ldquo;Logos cost this much&rdquo;. I fell in love with design because it was the perfect combination of drawing a sublime portrait and troubleshooting my neighbor's Dell. </p>
             <p>Design careers of the early 2000's always kicked off with logos, flyers, posters, and brochures... so many brochures. In the beginning it was mostly print, with some corporate Powerpoint decks(popover/footnote) thrown in. When I started, web design was still young. But I kept my eye on it and dabbled where I could and eventually, it's all I did.</p>
-            <p>If design called to my logical side, the web as a medium called to my preternatural lust for improvement. When I sent that file entitled "business-card-CEO-front_final-final2.pdf" to the printer for that run of 10,000, the click-event on the send button in Outlook was (popover: what the racing instructors used to call) a Pampers™ moment. On the web, however, I could fix a typo faster than that same PDF would load in Adobe Acrobat. I'm not condoning sloppiness, of course. Pampers™ are expensive. <Link href="/who">Get the full working history.</Link></p>            
+            <p>If design called to my logical side, the web as a medium called to my preternatural lust for improvement. When I sent that file entitled "business-card-CEO-front_final-final2.pdf" to the printer for that run of 10,000, the click-event on the send button in Outlook was (popover: what the racing instructors used to call) a Pampers™ moment. On the web, however, I could fix a typo faster than that same PDF would load in Adobe Acrobat. I'm not condoning sloppiness, of course. Pampers™ are expensive. <Link href="/who">Read more about my full working history.</Link></p>            
           </div>
         </div>
         <div>
@@ -133,17 +128,6 @@ export default function WorkPage() {
           </div>
         </div>
       </div>
-      {/* Project Sidebar component */}
-      <ProjectSidebar
-        isOpen={selectedProject !== null}
-        onClose={() => setSelectedProject(null)}
-        projectKey={selectedProject}
-        lightboxImageIndex={lightboxImageIndex}
-        setLightboxImageIndex={setLightboxImageIndex}
-        currentGallery={currentGallery}
-        setCurrentGallery={setCurrentGallery}
-        onNavigateToProject={handleNavigateToProject}
-      />
     </div>
   )
 } 

@@ -6,10 +6,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { H1 } from './Typography'
 import Image from 'next/image'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { useProjectSidebar } from '../contexts/ProjectSidebarContext'
+
 export default function Navigation() {
   const pathname = usePathname()
   const textStyles = 'font-helveticampbell font-[900] tracking-normal text-xl relative px-1 transition-colors duration-200 p-1'
   const [isFirstLoad, setIsFirstLoad] = useState(true)
+  
+  // Get the openProject function from context
+  const { openProject } = useProjectSidebar()
   
   // Animation constants
   const ENTER_DELAY = 0.15
@@ -25,6 +32,13 @@ export default function Navigation() {
     setIsFirstLoad(false)
   }, [])
 
+  // Project links for the Work disclosure
+  const projects = [
+    { name: 'Fulcrum', href: '/work/fulcrum', key: 'Fulcrum' },
+    { name: 'Spatial Networks', href: '/work/spatial-networks', key: 'Spatial Networks' },
+    { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
+  ]
+
   return (
     <motion.div 
       className="flex flex-col gap-6 mb-6 relative"
@@ -38,42 +52,60 @@ export default function Navigation() {
         }
       }}
     >
-      <Link 
-        href="/"         
-      >
+      <Link href="/">
         <div className="font-helveticampbell font-[900] tracking-normal text-3xl relative px-1 transition-colors duration-200 p-1">Helveticampbell</div>
       </Link>
 
-
-      
-      <Link 
-        href="/work" 
-        className={`${textStyles} ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
-      >
-        Work
-        <AnimatePresence mode="wait">
-          {pathname === "/work" && (
-            <motion.div
-              className="absolute bottom-0 left-0 right-0 h-[2px] bg-black rounded-full"
-              style={{ transformOrigin: 'left' }}
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              exit={{ 
-                scaleX: 0, 
-                transition: { 
-                  duration: EXIT_DURATION,
-                  ease: "easeOut" 
-                }
-              }}
-              transition={{
-                duration: ENTER_DURATION,
-                ease: "easeOut",
-                delay: ENTER_DELAY
-              }}
-            />
-          )}
-        </AnimatePresence>
-      </Link>
+      <div className="relative w-full">
+        <div className="flex flex-col items-start w-full">
+          <Link 
+            href="/work" 
+            className={`${textStyles} w-full ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+          >
+            Work
+            <AnimatePresence mode="wait">
+              {pathname === "/work" && (
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-black rounded-full"
+                  style={{ transformOrigin: 'left' }}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  exit={{ 
+                    scaleX: 0, 
+                    transition: { 
+                      duration: EXIT_DURATION,
+                      ease: "easeOut" 
+                    }
+                  }}
+                  transition={{
+                    duration: ENTER_DURATION,
+                    ease: "easeOut",
+                    delay: ENTER_DELAY
+                  }}
+                />
+              )}
+            </AnimatePresence>
+          </Link>
+          
+          <Disclosure>
+            <DisclosureButton className="cursor-pointer absolute right-0 flex items-start p-1">
+              <ChevronDownIcon className="h-4 w-4 transition-transform ui-open:rotate-180 ui-open:transform text-neutral-400 hover:text-neutral-800" />
+            </DisclosureButton>
+            
+            <DisclosurePanel className="mt-2 ml-2 space-y-2">
+              {projects.map((project) => (
+                <button
+                  key={project.key}
+                  onClick={() => openProject(project.key)}
+                  className={`block text-sm !font-display ${pathname === project.href ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+                >
+                  {project.name}
+                </button>
+              ))}
+            </DisclosurePanel>
+          </Disclosure>
+        </div>
+      </div>
       
       <Link 
         href="/writing" 
@@ -156,6 +188,5 @@ export default function Navigation() {
       )}
       </AnimatePresence>
     </motion.div>
-  
   )
 } 
