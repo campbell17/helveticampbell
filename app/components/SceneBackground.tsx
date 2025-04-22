@@ -288,7 +288,7 @@ export default function SceneBackground() {
     grid.position.y = -150
     scene.add(grid)
     
-    // Handle resize
+    // Handle resize with high frequency for mobile
     const handleResize = () => {
       if (!cameraRef.current || !rendererRef.current) return
       
@@ -302,7 +302,21 @@ export default function SceneBackground() {
       rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     }
     
+    // Handle mobile viewport changes that occur during scrolling (URL bar hides)
+    const handleViewportChanges = () => {
+      if (isDesktop || !rendererRef.current) return
+      
+      // For mobile only - update size when viewport changes during scrolling
+      handleResize()
+    }
+    
     window.addEventListener('resize', handleResize)
+    // Add scroll listener for mobile viewport changes
+    window.addEventListener('scroll', handleViewportChanges, { passive: true })
+    
+    // For pull-to-refresh handling
+    document.addEventListener('touchmove', handleViewportChanges, { passive: true })
+    document.addEventListener('touchend', handleViewportChanges, { passive: true })
     
     // Animation loop - this is where the magic happens
     const animate = () => {
@@ -396,6 +410,9 @@ export default function SceneBackground() {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize)
+      window.removeEventListener('scroll', handleViewportChanges)
+      document.removeEventListener('touchmove', handleViewportChanges)
+      document.removeEventListener('touchend', handleViewportChanges)
       
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
