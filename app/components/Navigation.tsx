@@ -6,20 +6,42 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { H1 } from './Typography'
 import Image from 'next/image'
-import { ChevronUpDownIcon } from '@heroicons/react/24/outline'
+import { ChevronUpDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline'
 import { useProjectSidebar } from '../contexts/ProjectSidebarContext'
 
-interface NavigationProps {
-  variant?: 'vertical' | 'horizontal'
+// Define types for project items
+interface ProjectItem {
+  name: string;
+  href: string;
+  key: string;
 }
 
-export default function Navigation({ variant = 'vertical' }: NavigationProps) {
+// Define animation constants type
+interface AnimationConstants {
+  duration: number;
+  delay: number;
+  disclosureDuration: number;
+  disclosureEase: number[];
+  enterDelay?: number;
+  enterDuration?: number;
+  exitDuration?: number;
+}
+
+// Props for navigation components
+interface NavigationComponentProps {
+  pathname: string;
+  projects: ProjectItem[];
+  isDisclosureOpen: boolean;
+  handleDisclosureChange: () => void;
+  openProject: (key: string) => void;
+  animationConstants: AnimationConstants;
+}
+
+export default function Navigation() {
   const pathname = usePathname()
-  const textStyles = 'font-helveticampbell font-[900] tracking-normal text-xl relative px-1 transition-colors duration-200 p-1'
   const [isFirstLoad, setIsFirstLoad] = useState(true)
   const [isDisclosureOpen, setIsDisclosureOpen] = useState(false)
-  const isHorizontal = variant === 'horizontal'
   
   // Get the openProject function from context
   const { openProject } = useProjectSidebar()
@@ -57,7 +79,7 @@ export default function Navigation({ variant = 'vertical' }: NavigationProps) {
   }
 
   // Project links for the Work disclosure
-  const projects = [
+  const projects: ProjectItem[] = [
     { name: 'Fulcrum', href: '/work/fulcrum', key: 'Fulcrum' },
     { name: 'Spatial Networks', href: '/work/spatial-networks', key: 'Spatial Networks' },
     { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
@@ -66,52 +88,191 @@ export default function Navigation({ variant = 'vertical' }: NavigationProps) {
     { name: 'Personal', href: '/work/personal', key: 'Personal' },
   ]
 
-  // Different classes for horizontal and vertical layouts
-  const containerClasses = isHorizontal 
-    ? "flex flex-row gap-4 items-center justify-start flex-wrap" 
-    : "flex flex-col gap-6 mb-6 relative";
+  // Determine which navigation to show based on screen size
+  return (
+    <>
+      {/* Mobile Navigation - Hidden on desktop */}
+      <div className="md:hidden">
+        <MobileNavigation 
+          pathname={pathname}
+          projects={projects}
+          isDisclosureOpen={isDisclosureOpen}
+          handleDisclosureChange={handleDisclosureChange}
+          openProject={openProject}
+          animationConstants={{
+            duration: INITIAL_LOAD_DURATION,
+            delay: INITIAL_LOAD_DELAY,
+            disclosureDuration: DISCLOSURE_DURATION,
+            disclosureEase: DISCLOSURE_EASE
+          }}
+        />
+      </div>
 
-  const linkClasses = isHorizontal
-    ? `relative text-sm font-medium ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`
-    : `${textStyles} w-full ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`;
+      {/* Desktop Navigation - Hidden on mobile */}
+      <div className="hidden md:block">
+        <DesktopNavigation 
+          pathname={pathname}
+          projects={projects}
+          isDisclosureOpen={isDisclosureOpen}
+          handleDisclosureChange={handleDisclosureChange}
+          openProject={openProject}
+          animationConstants={{
+            enterDelay: ENTER_DELAY,
+            enterDuration: ENTER_DURATION,
+            exitDuration: EXIT_DURATION,
+            duration: INITIAL_LOAD_DURATION,
+            delay: INITIAL_LOAD_DELAY,
+            disclosureDuration: DISCLOSURE_DURATION,
+            disclosureEase: DISCLOSURE_EASE
+          }}
+        />
+      </div>
+    </>
+  )
+}
 
-  const disclosureContainerClasses = isHorizontal
-    ? "relative"
-    : "relative w-full";
+// Mobile Navigation Component
+function MobileNavigation({ 
+  pathname, 
+  projects, 
+  isDisclosureOpen, 
+  handleDisclosureChange, 
+  openProject,
+  animationConstants
+}: NavigationComponentProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
+  return (
+    <div className="relative">
+      <motion.div 
+        className="flex flex-row items-center justify-between w-full"
+        initial={{ opacity: 0 }}
+        animate={{ 
+          opacity: 1, 
+          transition: {
+            duration: animationConstants.duration,
+            delay: animationConstants.delay,
+            ease: [0.25, 0.1, 0.25, 1]
+          }
+        }}
+      >
+        {/* Site title */}
+        <Link href="/">
+          <div className="font-helveticampbell font-[900] tracking-normal text-2xl relative transition-colors duration-200">
+            Helveticampbell
+          </div>
+        </Link>
+        
+        {/* Hamburger menu button - positioned with higher z-index */}
+        <button
+          onClick={toggleMobileMenu}
+          className="flex items-center justify-center p-2 rounded-md focus:outline-none relative z-50"
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? (
+            <XMarkIcon className="h-6 w-6 text-black" />
+          ) : (
+            <Bars3Icon className="h-6 w-6 text-black" />
+          )}
+        </button>
+      </motion.div>
+      
+      {/* Full screen mobile navigation menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: 1,
+              transition: {
+                duration: 0.2,
+                ease: "easeOut"
+              }
+            }}
+            exit={{ 
+              opacity: 0,
+              transition: {
+                duration: 0.15,
+                ease: "easeIn"
+              }
+            }}
+          >
+            <nav className="flex flex-col items-center space-y-8 w-full px-8">
+              <Link 
+                href="/work" 
+                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/work" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Work
+              </Link>
+              <Link 
+                href="/writing" 
+                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/writing" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Writing
+              </Link>
+              <Link 
+                href="/who" 
+                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/who" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Who
+              </Link>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
 
-  const projectButtonClasses = isHorizontal
-    ? `cursor-pointer flex items-center text-xs font-bold py-1 px-2 rounded-full hover:bg-gradient-to-tr from-slate-50/50 via-teal-50/50 to-red-50/50 uppercase !font-body ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group`
-    : `cursor-pointer flex items-center pl-2 rounded-full hover:bg-gradient-to-tr from-slate-50/50 via-teal-50/50 to-red-50/50 justify-between text-xs font-bold py-1 uppercase !font-body ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group w-full`;
-
+// Desktop Navigation Component
+function DesktopNavigation({ 
+  pathname, 
+  projects, 
+  isDisclosureOpen, 
+  handleDisclosureChange, 
+  openProject,
+  animationConstants
+}: NavigationComponentProps) {
+  const textStyles = 'font-helveticampbell font-[900] tracking-normal text-xl relative px-1 transition-colors duration-200 p-1'
+  
   return (
     <motion.div 
-      className={containerClasses}
+      className="flex flex-col gap-6 mb-6 relative"
       initial={{ opacity: 0 }}
       animate={{ 
         opacity: 1, 
         transition: {
-          duration: INITIAL_LOAD_DURATION,
-          delay: INITIAL_LOAD_DELAY,
-          ease: [0.25, 0.1, 0.25, 1] // Custom easing for a smooth entrance
+          duration: animationConstants.duration,
+          delay: animationConstants.delay,
+          ease: [0.25, 0.1, 0.25, 1]
         }
       }}
     >
-      {/* Only show title in vertical mode, already in header for horizontal */}
-      {!isHorizontal && (
-        <Link href="/">
-          <div className="font-helveticampbell font-[900] tracking-normal text-3xl relative px-1 transition-colors duration-200 p-1">Helveticampbell</div>
-        </Link>
-      )}
+      {/* Site title */}
+      <Link href="/">
+        <div className="font-helveticampbell font-[900] tracking-normal text-3xl relative px-1 transition-colors duration-200 p-1">
+          Helveticampbell
+        </div>
+      </Link>
 
-      <div className={disclosureContainerClasses}>
-        <div className={isHorizontal ? "flex items-center" : "flex flex-col items-start w-full"}>
+      {/* Work link with dropdown */}
+      <div className="relative w-full">
+        <div className="flex flex-col items-start w-full">
           <Link 
             href="/work" 
-            className={linkClasses}
+            className={`${textStyles} w-full ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
           >
             Work
             <AnimatePresence mode="wait">
-              {pathname === "/work" && !isHorizontal && (
+              {pathname === "/work" && (
                 <motion.div
                   className="absolute bottom-0 left-0 right-0 h-[2px] bg-black rounded-full"
                   style={{ transformOrigin: 'left' }}
@@ -120,60 +281,58 @@ export default function Navigation({ variant = 'vertical' }: NavigationProps) {
                   exit={{ 
                     scaleX: 0, 
                     transition: { 
-                      duration: EXIT_DURATION,
+                      duration: animationConstants.exitDuration,
                       ease: "easeOut" 
                     }
                   }}
                   transition={{
-                    duration: ENTER_DURATION,
+                    duration: animationConstants.enterDuration,
                     ease: "easeOut",
-                    delay: ENTER_DELAY
+                    delay: animationConstants.enterDelay
                   }}
                 />
               )}
             </AnimatePresence>
           </Link>
           
+          {/* Dropdown toggle button */}
           <button
             onClick={handleDisclosureChange}
-            className={isHorizontal 
-              ? "cursor-pointer ml-1 flex items-center p-1" 
-              : "cursor-pointer absolute right-0 top-1 flex items-start p-1"}
+            className="cursor-pointer absolute right-0 top-1 flex items-start p-1"
             aria-expanded={isDisclosureOpen}
           >
             <motion.div
               animate={{ rotate: isDisclosureOpen ? 180 : 0 }}
-              transition={{ duration: DISCLOSURE_DURATION, ease: DISCLOSURE_EASE }}
+              transition={{ duration: animationConstants.disclosureDuration, ease: animationConstants.disclosureEase }}
             >
               <ChevronUpDownIcon className="h-5 w-5 text-neutral-400 hover:text-neutral-800" />
             </motion.div>
           </button>
           
+          {/* Projects dropdown */}
           <AnimatePresence initial={false}>
             {isDisclosureOpen && (
               <motion.div 
-                className={isHorizontal 
-                  ? "absolute top-full left-0 mt-1 z-20 bg-white/90 backdrop-blur-sm shadow-md rounded-lg p-2 w-max" 
-                  : "mt-4 space-y-2 w-full overflow-hidden"}
+                className="mt-4 space-y-2 w-full overflow-hidden"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ 
                   height: 'auto', 
                   opacity: 1,
                   transition: {
-                    height: { duration: DISCLOSURE_DURATION, ease: DISCLOSURE_EASE },
-                    opacity: { duration: DISCLOSURE_DURATION * 1.2, ease: DISCLOSURE_EASE }
+                    height: { duration: animationConstants.disclosureDuration, ease: animationConstants.disclosureEase },
+                    opacity: { duration: animationConstants.disclosureDuration * 1.2, ease: animationConstants.disclosureEase }
                   }
                 }}
                 exit={{ 
                   height: 0, 
                   opacity: 0,
                   transition: {
-                    height: { duration: DISCLOSURE_DURATION, ease: DISCLOSURE_EASE },
-                    opacity: { duration: DISCLOSURE_DURATION * 0.8, ease: DISCLOSURE_EASE }
+                    height: { duration: animationConstants.disclosureDuration, ease: animationConstants.disclosureEase },
+                    opacity: { duration: animationConstants.disclosureDuration * 0.8, ease: animationConstants.disclosureEase }
                   }
                 }}
               >
-                <div className={isHorizontal ? "flex flex-col space-y-1" : ""}>
+                <div>
                   {projects.map((project, index) => (
                     <motion.button
                       key={project.key}
@@ -182,23 +341,21 @@ export default function Navigation({ variant = 'vertical' }: NavigationProps) {
                         opacity: 1,
                         transition: {
                           delay: index * 0.05,
-                          duration: DISCLOSURE_DURATION,
-                          ease: DISCLOSURE_EASE
+                          duration: animationConstants.disclosureDuration,
+                          ease: animationConstants.disclosureEase
                         }
                       }}
                       exit={{ 
                         transition: {
-                          duration: DISCLOSURE_DURATION * 0.5,
-                          ease: DISCLOSURE_EASE
+                          duration: animationConstants.disclosureDuration * 0.5,
+                          ease: animationConstants.disclosureEase
                         }
                       }}
                       onClick={() => openProject(project.key)}
-                      className={projectButtonClasses}
+                      className={`cursor-pointer flex items-center pl-2 rounded-full hover:bg-gradient-to-tr from-slate-50/50 via-teal-50/50 to-red-50/50 justify-between text-xs font-bold py-1 uppercase !font-body ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group w-full`}
                     >
-                      {project.name} 
-                      {!isHorizontal && (
-                        <ArrowLeftStartOnRectangleIcon className="opacity-0 group-hover:opacity-100 mr-1.5 h-4 w-4 transition-opacity" />
-                      )}
+                      {project.name}
+                      <ArrowLeftStartOnRectangleIcon className="opacity-0 group-hover:opacity-100 mr-1.5 h-4 w-4 transition-opacity" />
                     </motion.button>
                   ))}
                 </div>
@@ -208,15 +365,14 @@ export default function Navigation({ variant = 'vertical' }: NavigationProps) {
         </div>
       </div>
       
+      {/* Writing link */}
       <Link 
         href="/writing" 
-        className={isHorizontal 
-          ? `relative text-sm font-medium ${pathname === "/writing" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`
-          : `${textStyles} ${pathname === "/writing" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+        className={`${textStyles} ${pathname === "/writing" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
       >
         Writing
         <AnimatePresence mode="wait">
-          {pathname === "/writing" && !isHorizontal && (
+          {pathname === "/writing" && (
             <motion.div
               className="absolute bottom-0 left-0 right-0 h-[2px] bg-black rounded-full"
               style={{ transformOrigin: 'left' }}
@@ -225,28 +381,28 @@ export default function Navigation({ variant = 'vertical' }: NavigationProps) {
               exit={{ 
                 scaleX: 0, 
                 transition: { 
-                  duration: EXIT_DURATION,
+                  duration: animationConstants.exitDuration,
                   ease: "easeOut" 
                 }
               }}
               transition={{
-                duration: ENTER_DURATION,
+                duration: animationConstants.enterDuration,
                 ease: "easeOut",
-                delay: ENTER_DELAY
+                delay: animationConstants.enterDelay
               }}
             />
           )}
         </AnimatePresence>
       </Link>
+      
+      {/* Who link */}
       <Link 
         href="/who" 
-        className={isHorizontal 
-          ? `relative text-sm font-medium ${pathname === "/who" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`
-          : `${textStyles} ${pathname === "/who" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+        className={`${textStyles} ${pathname === "/who" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
       >
         Who
         <AnimatePresence mode="wait">
-          {pathname === "/who" && !isHorizontal && (
+          {pathname === "/who" && (
             <motion.div
               className="absolute bottom-0 left-0 right-0 h-[2px] bg-black rounded-full"
               style={{ transformOrigin: 'left' }}
@@ -255,46 +411,45 @@ export default function Navigation({ variant = 'vertical' }: NavigationProps) {
               exit={{ 
                 scaleX: 0, 
                 transition: { 
-                  duration: EXIT_DURATION,
+                  duration: animationConstants.exitDuration,
                   ease: "easeOut" 
                 }
               }}
               transition={{
-                duration: ENTER_DURATION,
+                duration: animationConstants.enterDuration,
                 ease: "easeOut",
-                delay: ENTER_DELAY
+                delay: animationConstants.enterDelay
               }}
             />
           )}
         </AnimatePresence>
       </Link>
-      {/* Image only shown in vertical layout and on /who page */}
-      {!isHorizontal && (
-        <AnimatePresence mode="wait">
-          {pathname === "/who" && (
-            <motion.div className="aspect-[4/4] -scale-x-100 relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 mb-12"
-              initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: 1,
-                transition: { duration: 1, delay: 0.5, ease: "easeOut" }
-              }}
-              exit={{ 
-                opacity: 0,
-                transition: { duration: 0.15, ease: "easeOut" }
-              }}
-            >
-              <Image
-                  src="/images/tim.jpg"
-                  alt="Tim Campbell"
-                  width={1000}
-                  height={1000}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="transition-all duration-200"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      )}
+      
+      {/* Profile image - only on /who page */}
+      <AnimatePresence mode="wait">
+        {pathname === "/who" && (
+          <motion.div className="aspect-[4/4] -scale-x-100 relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 mb-12"
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: 1,
+              transition: { duration: 1, delay: 0.5, ease: "easeOut" }
+            }}
+            exit={{ 
+              opacity: 0,
+              transition: { duration: 0.15, ease: "easeOut" }
+            }}
+          >
+            <Image
+                src="/images/tim.jpg"
+                alt="Tim Campbell"
+                width={1000}
+                height={1000}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="transition-all duration-200"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 } 

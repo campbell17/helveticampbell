@@ -1,44 +1,73 @@
 'use client'
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Cog6ToothIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline'
 import { useTheme } from 'next-themes'
+import { motion } from 'framer-motion'
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
   
   const themes = [
-    { name: 'Light', value: 'light' },
-    { name: 'Dark', value: 'dark' },
-    { name: 'System', value: 'system' }
+    { name: 'Light', value: 'light', icon: SunIcon },
+    { name: 'Dark', value: 'dark', icon: MoonIcon },
+    { name: 'System', value: 'system', icon: ComputerDesktopIcon }
   ] as const
 
-  return (
-    <div className="fixed bottom-6 left-6 w-52 text-left hidden">
-      <Menu>
-        <MenuButton className="inline-flex items-center gap-2 rounded-[var(--button-radius)] bg-white py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-100 data-[open]:bg-gray-200 data-[focus]:outline-1 data-[focus]:outline-white">
-          <Cog6ToothIcon className="size-4 text-black/60" />
-        </MenuButton>
+  // Get current theme icon
+  const CurrentThemeIcon = themes.find(t => t.value === theme)?.icon || SunIcon
 
-        <MenuItems
-          transition
-          anchor="top end"
-          className="w-52 origin-bottom-left rounded-[var(--container-radius)] border border-white/5 bg-white/5 p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
-        >
-          {themes.map(({ name, value }) => (
-            <MenuItem key={value}>
-              <button 
-                className="group flex w-full items-center gap-2 rounded-[var(--button-radius)] py-1.5 px-3 data-[focus]:bg-white/10"
-                onClick={() => setTheme(value)}
+  return (
+    <div className="fixed top-6 right-8">
+      <Menu>
+        {({ open }) => (
+          <div>
+            <MenuButton className="cursor-pointer flex items-center justify-center w-10 h-10 rounded-full backdrop-blur-sm border border-black/10 shadow-md hover:shadow-xs transition-all duration-200">
+              <motion.div
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                {name}
-                {theme === value && (
-                  <kbd className="ml-auto font-sans text-xs text-white/50">Active</kbd>
-                )}
-              </button>
-            </MenuItem>
-          ))}
-        </MenuItems>
+                <CurrentThemeIcon className="w-5 h-5 text-neutral-700" />
+              </motion.div>
+            </MenuButton>
+
+            <MenuItems
+              className="absolute right-0 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] container-glass bg-gradient-to-tr from-slate-50/60 via-teal-50/60 to-red-50/60 backdrop-blur-sm border border-white/10 p-1.5 shadow-lg focus:outline-none transition-all"
+              as={motion.div}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+            >
+              <div className="py-1 space-y-1">
+                {themes.map(({ name, value, icon: Icon }) => (
+                  <MenuItem key={value}>
+                    {({ active }) => (
+                      <motion.button 
+                        whileHover={{ x: 4 }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ duration: 0.1 }}
+                        className={`flex w-full items-center gap-3 px-3 py-2 rounded-md text-sm font-medium ${
+                          active ? 'bg-white/30' : ''
+                        } ${
+                          theme === value ? 'text-black font-semibold' : 'text-neutral-600'
+                        }`}
+                        onClick={() => setTheme(value)}
+                      >
+                        <Icon className="w-4 h-4" />
+                        <span>{name}</span>
+                        {theme === value && (
+                          <div className="ml-auto h-1.5 w-1.5 rounded-full bg-black/70" />
+                        )}
+                      </motion.button>
+                    )}
+                  </MenuItem>
+                ))}
+              </div>
+            </MenuItems>
+          </div>
+        )}
       </Menu>
     </div>
   )
