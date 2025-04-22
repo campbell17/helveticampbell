@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { usePathname } from 'next/navigation'
 
@@ -60,52 +60,196 @@ const gridFragmentShader = `
 
 export default function SceneBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const sceneRef = useRef<THREE.Scene>(null)
-  const cameraRef = useRef<THREE.PerspectiveCamera>(null)
-  const rendererRef = useRef<THREE.WebGLRenderer>(null)
   const animationFrameRef = useRef<number | null>(null)
-  const initialCameraY = useRef(300)
-  const maxScrollDistance = useRef(2800)
-  const targetCameraX = useRef(0)
-  const currentCameraX = useRef(0)
+  const sceneRef = useRef<THREE.Scene | null>(null)
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null)
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
+  const gridRef = useRef<THREE.Mesh | null>(null)
   const pathname = usePathname()
-  const shouldEnableScrollEffects = useRef(false)
-
-  useEffect(() => {
-    // Set target camera position based on current page
-    switch (pathname) {
+  const prevPathRef = useRef(pathname)
+  
+  // Track if we're on desktop or mobile
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null)
+  
+  // Camera and scroll state
+  const cameraPositionRef = useRef({
+    // Target positions for different pages
+    targetX: 50,
+    currentX: 50,
+    y: 300,
+    z: 300,
+    // New rotation properties for the rolling effect
+    targetRotationX: 0,
+    currentRotationX: 0,
+    targetRotationZ: 0,
+    currentRotationZ: 0
+  })
+  const scrollStateRef = useRef({
+    current: 0,
+    target: 0,
+    max: 2800
+  })
+  
+  // Log for debugging
+  const logState = () => {
+    console.log('Camera state:', {
+      currentX: cameraPositionRef.current.currentX,
+      targetX: cameraPositionRef.current.targetX,
+      currentRotationX: cameraPositionRef.current.currentRotationX,
+      targetRotationX: cameraPositionRef.current.targetRotationX,
+      currentRotationZ: cameraPositionRef.current.currentRotationZ,
+      targetRotationZ: cameraPositionRef.current.targetRotationZ
+    })
+  }
+  
+  // Helper to get camera settings for a specific pathname
+  const getCameraSettingsForPath = (path: string) => {
+    let targetX = 50
+    let targetRotationX = 0
+    let targetRotationZ = 0
+    
+    switch (path) {
       case '/':
-        targetCameraX.current = 50
+        targetX = 50
+        targetRotationX = 0
+        targetRotationZ = 0
         break
       case '/work':
-        targetCameraX.current = 100 // Move right
+        targetX = 100
+        targetRotationX = -0.05
+        targetRotationZ = 0.02
         break
       case '/writing':
-        targetCameraX.current = 160 // Move left
+        targetX = 160
+        targetRotationX = 0.05
+        targetRotationZ = -0.02
         break
       case '/who':
-        targetCameraX.current = 220 // Slight right
+        targetX = 220
+        targetRotationX = 0.03
+        targetRotationZ = 0.04
         break
       default:
-        targetCameraX.current = 50
+        targetX = 50
+        targetRotationX = 0
+        targetRotationZ = 0
     }
-    console.log('Target camera X set to:', targetCameraX.current)
-  }, [pathname])
-
+    
+    return { targetX, targetRotationX, targetRotationZ }
+  }
+  
+  // Update camera targets when pathname changes
   useEffect(() => {
-    if (!containerRef.current) return
-
-    // Setup
+    const { targetX, targetRotationX, targetRotationZ } = getCameraSettingsForPath(pathname)
+    
+    // Only update the target values, not the current values
+    // The animation loop will handle the transition
+    cameraPositionRef.current.targetX = targetX
+    cameraPositionRef.current.targetRotationX = targetRotationX
+    cameraPositionRef.current.targetRotationZ = targetRotationZ
+    
+    // Log the change for debugging
+    console.log(`Path changed from ${prevPathRef.current} to ${pathname}`)
+    console.log('New targets:', { targetX, targetRotationX, targetRotationZ })
+    
+    prevPathRef.current = pathname
+  }, [pathname])
+  
+  // Handle device detection
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)')
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsDesktop(e.matches)
+    }
+    
+    // Initial check
+    setIsDesktop(mediaQuery.matches)
+    
+    // Listen for changes
+    mediaQuery.addEventListener('change', handleChange)
+    
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange)
+    }
+  }, [])
+  
+  // Set up scroll handler - only for desktop
+  useEffect(() => {
+    if (isDesktop === null) return
+    
+    const handleScroll = () => {
+      if (isDesktop) {
+        scrollStateRef.current.target = window.scrollY
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isDesktop])
+  
+  // Set up Three.js scene - we only need to do this once
+  useEffect(() => {
+    if (!containerRef.current || isDesktop === null) return
+    
+    // Get initial camera settings based on the current path
+    const { targetX, targetRotationX, targetRotationZ } = getCameraSettingsForPath(pathname)
+    
+    // Initialize the camera position ref with both current and target set to the same initial values
+    // This prevents any immediate transitions on first load
+    cameraPositionRef.current = {
+      targetX,
+      currentX: targetX, // Start with current = target for smooth transitions later
+      y: 300,
+      z: 300,
+      targetRotationX,
+      currentRotationX: targetRotationX,
+      targetRotationZ,
+      currentRotationZ: targetRotationZ
+    }
+    
+    // Clean up any existing scene
+    if (sceneRef.current && rendererRef.current && gridRef.current) {
+      sceneRef.current.remove(gridRef.current)
+      rendererRef.current.dispose()
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current)
+      }
+      
+      const existingCanvas = containerRef.current.querySelector('canvas')
+      if (existingCanvas) {
+        containerRef.current.removeChild(existingCanvas)
+      }
+    }
+    
+    // Create new scene
     const scene = new THREE.Scene()
     sceneRef.current = scene
     
-    // CAMERA VALUES
+    // Create camera
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000)
-    camera.position.set(targetCameraX.current, initialCameraY.current, 300)
-    camera.lookAt(0, -150, 0)
     cameraRef.current = camera
     
-    const renderer = new THREE.WebGLRenderer({ 
+    // Set initial camera properties
+    camera.position.set(
+      cameraPositionRef.current.currentX,
+      cameraPositionRef.current.y,
+      cameraPositionRef.current.z
+    )
+    
+    // Set initial camera rotation
+    camera.rotation.x = cameraPositionRef.current.currentRotationX
+    camera.rotation.z = cameraPositionRef.current.currentRotationZ
+    
+    // Look at the center point
+    const lookAtTarget = new THREE.Vector3(0, -150, 0)
+    camera.lookAt(lookAtTarget)
+    
+    // Create renderer
+    const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
       powerPreference: "high-performance"
@@ -125,8 +269,8 @@ export default function SceneBackground() {
     canvas.style.zIndex = '-1'
     
     containerRef.current.appendChild(canvas)
-
-    // Create grid with shader material
+    
+    // Create grid
     const gridGeometry = new THREE.PlaneGeometry(4000, 4000, 100, 100)
     const gridMaterial = new THREE.ShaderMaterial({
       vertexShader: gridVertexShader,
@@ -137,118 +281,135 @@ export default function SceneBackground() {
       transparent: true,
       side: THREE.DoubleSide
     })
-
+    
     const grid = new THREE.Mesh(gridGeometry, gridMaterial)
+    gridRef.current = grid
     grid.rotation.x = -Math.PI / 2
     grid.position.y = -150
     scene.add(grid)
-
-    // Initial scroll position
-    let currentScrollY = window.scrollY
-    let targetScrollY = currentScrollY
-
-    // Check if we should enable scroll effects based on Tailwind's md breakpoint
-    const checkResponsiveBreakpoint = () => {
-      // This approach uses a CSS media query matching Tailwind's md breakpoint
-      shouldEnableScrollEffects.current = window.matchMedia('(min-width: 768px)').matches
-      
-      // If we're switching to mobile view, reset camera position
-      if (!shouldEnableScrollEffects.current) {
-        camera.position.set(targetCameraX.current, initialCameraY.current, 300)
-        currentScrollY = 0
-        targetScrollY = 0
-      }
-    }
-    
-    // Initial check
-    checkResponsiveBreakpoint()
-
-    // Scroll handling
-    const handleScroll = () => {
-      if (shouldEnableScrollEffects.current) {
-        targetScrollY = window.scrollY
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-
-    // Animation loop
-    function animate() {
-      if (!scene || !camera || !renderer) return
-      
-      animationFrameRef.current = requestAnimationFrame(animate)
-
-      // Update time uniform for pulsation (keep this for all screen sizes)
-      gridMaterial.uniforms.time.value += 0.01
-
-      // Only apply scroll effects if enabled (desktop)
-      if (shouldEnableScrollEffects.current) {
-        // Smoothly interpolate scroll position
-        currentScrollY += (targetScrollY - currentScrollY) * 0.05
-        const limitedScrollY = Math.min(currentScrollY, maxScrollDistance.current)
-        
-        // Base camera position
-        const baseY = initialCameraY.current + (-limitedScrollY * 0.15)
-        
-        // Calculate additional z-axis movement after max scroll
-        const extraScroll = Math.max(0, currentScrollY - maxScrollDistance.current)
-        const zOffset = -extraScroll * 0.03 // Move camera forward along z-axis
-        
-        // Smoothly interpolate camera position for navigation
-        currentCameraX.current += (targetCameraX.current - currentCameraX.current) * 0.05
-        
-        // Set camera position with scroll effects
-        camera.position.set(
-          currentCameraX.current,
-          baseY,
-          300 + zOffset
-        )
-      } else {
-        // Fixed camera position for mobile - no scroll or interpolation effects
-        // We directly set the position without any interpolation to ensure it doesn't move
-        camera.position.set(
-          targetCameraX.current,
-          initialCameraY.current,
-          300
-        )
-      }
-          
-      camera.lookAt(0, -150, 0)
-      renderer.render(scene, camera)
-    }
     
     // Handle resize
     const handleResize = () => {
-      if (!camera || !renderer) return
+      if (!cameraRef.current || !rendererRef.current) return
       
       const width = window.innerWidth
       const height = window.innerHeight
       
-      camera.aspect = width / height
-      camera.updateProjectionMatrix()
+      cameraRef.current.aspect = width / height
+      cameraRef.current.updateProjectionMatrix()
       
-      renderer.setSize(width, height)
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-      
-      // Update responsive state on resize
-      checkResponsiveBreakpoint()
+      rendererRef.current.setSize(width, height)
+      rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     }
     
     window.addEventListener('resize', handleResize)
     
+    // Animation loop - this is where the magic happens
+    const animate = () => {
+      if (!gridRef.current || !cameraRef.current || !rendererRef.current || !sceneRef.current) return
+      
+      animationFrameRef.current = requestAnimationFrame(animate)
+      
+      // Update time uniform for pulsation (all devices)
+      gridMaterial.uniforms.time.value += 0.01
+      
+      // For desktop: apply scroll and rotation effects
+      if (isDesktop) {
+        // Calculate the difference between current and target positions
+        const xDiff = Math.abs(cameraPositionRef.current.targetX - cameraPositionRef.current.currentX)
+        const rotXDiff = Math.abs(cameraPositionRef.current.targetRotationX - cameraPositionRef.current.currentRotationX)
+        const rotZDiff = Math.abs(cameraPositionRef.current.targetRotationZ - cameraPositionRef.current.currentRotationZ)
+        
+        // Log if we're in a transition (for debugging)
+        if (xDiff > 0.1 || rotXDiff > 0.001 || rotZDiff > 0.001) {
+          console.log('Transitioning...', { xDiff, rotXDiff, rotZDiff })
+        }
+        
+        // Smoothly update scroll position
+        scrollStateRef.current.current += (scrollStateRef.current.target - scrollStateRef.current.current) * 0.05
+        const limitedScrollY = Math.min(scrollStateRef.current.current, scrollStateRef.current.max)
+        
+        // Calculate camera Y position based on scroll
+        const baseY = cameraPositionRef.current.y + (-limitedScrollY * 0.15)
+        
+        // Calculate Z offset for deep scrolling
+        const extraScroll = Math.max(0, scrollStateRef.current.current - scrollStateRef.current.max)
+        const zOffset = -extraScroll * 0.03
+        
+        // Smoothly update camera position and rotation with easing
+        // Using a slower factor for smoother transitions between pages
+        const transitionFactor = 0.03
+        
+        // Update X position
+        cameraPositionRef.current.currentX += (cameraPositionRef.current.targetX - cameraPositionRef.current.currentX) * transitionFactor
+        
+        // Update rotations
+        cameraPositionRef.current.currentRotationX += (cameraPositionRef.current.targetRotationX - cameraPositionRef.current.currentRotationX) * transitionFactor
+        cameraPositionRef.current.currentRotationZ += (cameraPositionRef.current.targetRotationZ - cameraPositionRef.current.currentRotationZ) * transitionFactor
+        
+        // Update camera position
+        cameraRef.current.position.set(
+          cameraPositionRef.current.currentX,
+          baseY,
+          cameraPositionRef.current.z + zOffset
+        )
+        
+        // Apply the rotation directly to the camera
+        cameraRef.current.rotation.x = cameraPositionRef.current.currentRotationX
+        cameraRef.current.rotation.z = cameraPositionRef.current.currentRotationZ
+        
+        // Keep the camera looking at the center
+        cameraRef.current.lookAt(lookAtTarget)
+      } else {
+        // For mobile: we still want smooth transitions between pages
+        const transitionFactor = 0.03
+        
+        // Smoothly update camera position for page transitions
+        cameraPositionRef.current.currentX += (cameraPositionRef.current.targetX - cameraPositionRef.current.currentX) * transitionFactor
+        cameraPositionRef.current.currentRotationX += (cameraPositionRef.current.targetRotationX - cameraPositionRef.current.currentRotationX) * transitionFactor
+        cameraPositionRef.current.currentRotationZ += (cameraPositionRef.current.targetRotationZ - cameraPositionRef.current.currentRotationZ) * transitionFactor
+        
+        // Update camera with interpolated values
+        cameraRef.current.position.set(
+          cameraPositionRef.current.currentX,
+          cameraPositionRef.current.y,
+          cameraPositionRef.current.z
+        )
+        
+        // Apply the interpolated rotation
+        cameraRef.current.rotation.x = cameraPositionRef.current.currentRotationX
+        cameraRef.current.rotation.z = cameraPositionRef.current.currentRotationZ
+        
+        // Keep the camera looking at the center
+        cameraRef.current.lookAt(lookAtTarget)
+      }
+      
+      rendererRef.current.render(sceneRef.current, cameraRef.current)
+    }
+    
+    // Start animation
     animate()
-
+    
+    // Log initial state
+    console.log('Initial camera settings:', { targetX, targetRotationX, targetRotationZ })
+    
+    // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize)
-      window.removeEventListener('scroll', handleScroll)
+      
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
-      scene.remove(grid)
-      renderer.dispose()
-      canvas.remove()
+      
+      if (rendererRef.current) {
+        rendererRef.current.dispose()
+      }
+      
+      if (sceneRef.current && gridRef.current) {
+        sceneRef.current.remove(gridRef.current)
+      }
     }
-  }, [pathname])
+  }, [isDesktop]) // Only depend on isDesktop, not pathname
   
   return (
     <div 
