@@ -170,7 +170,7 @@ function MobileNavigation({
         {/* Hamburger menu button - positioned with higher z-index */}
         <button
           onClick={toggleMobileMenu}
-          className="flex items-center justify-center p-2 rounded-md focus:outline-none relative z-50"
+          className="cursor-pointer flex items-center justify-center p-2 rounded-md focus:outline-none relative z-50"
           aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? (
