@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { usePathname } from 'next/navigation'
 
@@ -69,7 +69,7 @@ export default function SceneBackground() {
   const targetCameraX = useRef(0)
   const currentCameraX = useRef(0)
   const pathname = usePathname()
-  const [isMobileView, setIsMobileView] = useState(false)
+  const shouldEnableScrollEffects = useRef(false)
 
   useEffect(() => {
     // Set target camera position based on current page
@@ -101,7 +101,7 @@ export default function SceneBackground() {
     
     // CAMERA VALUES
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000)
-    camera.position.set(100, initialCameraY.current, 300)
+    camera.position.set(targetCameraX.current, initialCameraY.current, 300)
     camera.lookAt(0, -150, 0)
     cameraRef.current = camera
     
@@ -147,17 +147,25 @@ export default function SceneBackground() {
     let currentScrollY = window.scrollY
     let targetScrollY = currentScrollY
 
-    // Check if mobile view (md breakpoint is 768px in Tailwind by default)
-    const checkIfMobile = () => {
-      setIsMobileView(window.innerWidth < 768)
+    // Check if we should enable scroll effects based on Tailwind's md breakpoint
+    const checkResponsiveBreakpoint = () => {
+      // This approach uses a CSS media query matching Tailwind's md breakpoint
+      shouldEnableScrollEffects.current = window.matchMedia('(min-width: 768px)').matches
+      
+      // If we're switching to mobile view, reset camera position
+      if (!shouldEnableScrollEffects.current) {
+        camera.position.set(targetCameraX.current, initialCameraY.current, 300)
+        currentScrollY = 0
+        targetScrollY = 0
+      }
     }
     
-    // Run initial check
-    checkIfMobile()
+    // Initial check
+    checkResponsiveBreakpoint()
 
     // Scroll handling
     const handleScroll = () => {
-      if (!isMobileView) {
+      if (shouldEnableScrollEffects.current) {
         targetScrollY = window.scrollY
       }
     }
@@ -170,11 +178,11 @@ export default function SceneBackground() {
       
       animationFrameRef.current = requestAnimationFrame(animate)
 
-      // Update time uniform - keep pulsation effect for all screen sizes
+      // Update time uniform for pulsation (keep this for all screen sizes)
       gridMaterial.uniforms.time.value += 0.01
 
-      // Only apply scroll effects on desktop
-      if (!isMobileView) {
+      // Only apply scroll effects if enabled (desktop)
+      if (shouldEnableScrollEffects.current) {
         // Smoothly interpolate scroll position
         currentScrollY += (targetScrollY - currentScrollY) * 0.05
         const limitedScrollY = Math.min(currentScrollY, maxScrollDistance.current)
@@ -193,10 +201,11 @@ export default function SceneBackground() {
         camera.position.set(
           currentCameraX.current,
           baseY,
-          300 + zOffset // Start at 300 and move back as we scroll further
+          300 + zOffset
         )
       } else {
-        // Fixed camera position for mobile - no scroll effects
+        // Fixed camera position for mobile - no scroll or interpolation effects
+        // We directly set the position without any interpolation to ensure it doesn't move
         camera.position.set(
           targetCameraX.current,
           initialCameraY.current,
@@ -205,7 +214,6 @@ export default function SceneBackground() {
       }
           
       camera.lookAt(0, -150, 0)
-
       renderer.render(scene, camera)
     }
     
@@ -222,8 +230,8 @@ export default function SceneBackground() {
       renderer.setSize(width, height)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       
-      // Update mobile state on resize
-      checkIfMobile()
+      // Update responsive state on resize
+      checkResponsiveBreakpoint()
     }
     
     window.addEventListener('resize', handleResize)
@@ -240,7 +248,7 @@ export default function SceneBackground() {
       renderer.dispose()
       canvas.remove()
     }
-  }, [pathname, isMobileView])
+  }, [pathname])
   
   return (
     <div 
