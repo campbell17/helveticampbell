@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { usePathname } from 'next/navigation'
 
@@ -69,6 +69,7 @@ export default function SceneBackground() {
   const targetCameraX = useRef(0)
   const currentCameraX = useRef(0)
   const pathname = usePathname()
+  const [isMobileView, setIsMobileView] = useState(false)
 
   useEffect(() => {
     // Set target camera position based on current page
@@ -146,9 +147,19 @@ export default function SceneBackground() {
     let currentScrollY = window.scrollY
     let targetScrollY = currentScrollY
 
+    // Check if mobile view (md breakpoint is 768px in Tailwind by default)
+    const checkIfMobile = () => {
+      setIsMobileView(window.innerWidth < 768)
+    }
+    
+    // Run initial check
+    checkIfMobile()
+
     // Scroll handling
     const handleScroll = () => {
-      targetScrollY = window.scrollY
+      if (!isMobileView) {
+        targetScrollY = window.scrollY
+      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -159,29 +170,39 @@ export default function SceneBackground() {
       
       animationFrameRef.current = requestAnimationFrame(animate)
 
-      // Update time uniform
+      // Update time uniform - keep pulsation effect for all screen sizes
       gridMaterial.uniforms.time.value += 0.01
 
-      // Smoothly interpolate scroll position
-      currentScrollY += (targetScrollY - currentScrollY) * 0.05
-      const limitedScrollY = Math.min(currentScrollY, maxScrollDistance.current)
-      
-      // Base camera position
-      const baseY = initialCameraY.current + (-limitedScrollY * 0.15)
-      
-      // Calculate additional z-axis movement after max scroll
-      const extraScroll = Math.max(0, currentScrollY - maxScrollDistance.current)
-      const zOffset = -extraScroll * 0.03 // Move camera forward along z-axis
-      
-      // Smoothly interpolate camera position for navigation
-      currentCameraX.current += (targetCameraX.current - currentCameraX.current) * 0.05
-      
-      // Set camera position
-      camera.position.set(
-        currentCameraX.current,
-        baseY,
-        300 + zOffset // Start at 300 and move back as we scroll further
-      )
+      // Only apply scroll effects on desktop
+      if (!isMobileView) {
+        // Smoothly interpolate scroll position
+        currentScrollY += (targetScrollY - currentScrollY) * 0.05
+        const limitedScrollY = Math.min(currentScrollY, maxScrollDistance.current)
+        
+        // Base camera position
+        const baseY = initialCameraY.current + (-limitedScrollY * 0.15)
+        
+        // Calculate additional z-axis movement after max scroll
+        const extraScroll = Math.max(0, currentScrollY - maxScrollDistance.current)
+        const zOffset = -extraScroll * 0.03 // Move camera forward along z-axis
+        
+        // Smoothly interpolate camera position for navigation
+        currentCameraX.current += (targetCameraX.current - currentCameraX.current) * 0.05
+        
+        // Set camera position with scroll effects
+        camera.position.set(
+          currentCameraX.current,
+          baseY,
+          300 + zOffset // Start at 300 and move back as we scroll further
+        )
+      } else {
+        // Fixed camera position for mobile - no scroll effects
+        camera.position.set(
+          targetCameraX.current,
+          initialCameraY.current,
+          300
+        )
+      }
           
       camera.lookAt(0, -150, 0)
 
@@ -200,6 +221,9 @@ export default function SceneBackground() {
       
       renderer.setSize(width, height)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+      
+      // Update mobile state on resize
+      checkIfMobile()
     }
     
     window.addEventListener('resize', handleResize)
@@ -216,7 +240,7 @@ export default function SceneBackground() {
       renderer.dispose()
       canvas.remove()
     }
-  }, [])
+  }, [pathname, isMobileView])
   
   return (
     <div 
