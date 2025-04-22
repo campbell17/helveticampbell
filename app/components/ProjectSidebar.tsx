@@ -751,7 +751,7 @@ export default function ProjectSidebar({
               x: "100%", // Slide to the right on exit
               opacity: 1, // Keep opacity at 1 during slide
               transition: { 
-                duration: 0.25, // Explicit hardcoded value - EDIT THIS NUMBER
+                duration: 0.25, // Explicit hardcoded value
                 ease: "easeOut" 
               }
             }}
@@ -763,8 +763,26 @@ export default function ProjectSidebar({
               ease: SIDEBAR_TIMING.enter.ease,
               delay: 0, // No delay for entrance
             }}
-            className="fixed inset-0 bg-[#f5f6f7] backdrop-blur-xs shadow-xl z-sidebar overflow-hidden"
+            className="fixed inset-0 bg-[#f7f8fa] backdrop-blur-xs shadow-xl z-sidebar overflow-hidden"
           >
+            {/* Simple grid background pattern */}
+            <div 
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundSize: '50px 50px',
+                backgroundImage: `
+                  linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)
+                `,
+                zIndex: -1,
+                pointerEvents: 'none'
+              }}
+            />
+
             {/* Close Button */}
             <motion.button
               initial={{ opacity: 0 }}
