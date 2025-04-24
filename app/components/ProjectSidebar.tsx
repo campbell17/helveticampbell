@@ -76,47 +76,6 @@ interface VignetteData {
   };
 }
 
-// Define content block types for a more flexible content structure
-type ContentBlockType = 'text' | 'callout' | 'vignette' | 'image-grid' | 'full-width-image';
-
-interface ContentBlock {
-  type: ContentBlockType;
-  id: string;
-  data: any; // Will be typed based on the block type
-}
-
-interface TextBlock extends ContentBlock {
-  type: 'text';
-  data: {
-    content: React.ReactNode;
-  };
-}
-
-interface CalloutBlock extends ContentBlock {
-  type: 'callout';
-  data: CalloutData;
-}
-
-interface VignetteBlock extends ContentBlock {
-  type: 'vignette';
-  data: VignetteData;
-}
-
-interface ImageGridBlock extends ContentBlock {
-  type: 'image-grid';
-  data: {
-    images: ImageData[];
-    columns?: number;
-  };
-}
-
-interface FullWidthImageBlock extends ContentBlock {
-  type: 'full-width-image';
-  data: {
-    image: ImageData;
-  };
-}
-
 interface ProjectDetails {
   title: string;
   description?: string;
