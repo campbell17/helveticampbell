@@ -35,7 +35,7 @@ export function H3({ children, className = '', style = {} }: TextProps) {
 
 export function Caption({ children, className = '', style = {} }: TextProps) {
   return (
-    <div style={style} className={`text-sm font-body font-[500] text-text-secondary ${className}`}>
+    <div style={style} className={`text-sm font-[500] text-text-secondary ${className}`}>
       {children}
     </div>
   );
@@ -43,9 +43,9 @@ export function Caption({ children, className = '', style = {} }: TextProps) {
 
 export function Overline({ children, className = '', style = {} }: TextProps) {
   return (
-    <p style={style} className={`text-xs uppercase tracking-wider text-text-tertiary ${className}`}>
+    <div style={style} className={`text-xs uppercase tracking-wider mb-2 text-text-tertiary ${className}`}>
       {children}
-    </p>
+    </div>
   );
 }
 

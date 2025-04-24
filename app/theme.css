@@ -1,18 +1,22 @@
 @theme {
   
   /* Fonts  */
-  --font-display: "Merriweather", sans-serif;
-  --font-body: "Bitter", serif;
-  --font-helveticampbell: "Lobster", sans-serif;
-  --font-merriweather: "Merriweather", serif;
+  --font-display: var(--font-merriweather);
+  --font-body: var(--font-bitter);
+  --font-helveticampbell: var(--font-lobster);
+  --font-merriweather: var(--font-merriweather);
+  --font-lato: var(--font-sans);
+  --font-mono: var(--font-mono);
 
   --color-text-primary: oklch(37.1% 0 0);
   --color-text-secondary: oklch(55.6% 0 0);
+  --color-text-tertiary: oklch(25% 0.1 220);
 
   /* Links */
   --color-link: oklch(65.6% 0.241 354.308);
   --color-link-hover: oklch(10% 0.1 220);
 
+  --color-border: oklch(92.8% 0.006 264.531);
 
 }
 

@@ -9,7 +9,7 @@ import AnimatedLayout from './components/AnimatedLayout'
 import CustomScrollbar from './components/CustomScrollbar'
 import BackToTop from './components/BackToTop'
 import { cn } from './lib/utils'
-import { font } from './lib/fonts'
+import { fontVariables } from './lib/fonts'
 import { ProjectSidebarProvider } from './contexts/ProjectSidebarContext'
 
 export const metadata: Metadata = {
@@ -35,7 +35,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
         'relative min-h-screen bg-white font-sans antialiased',
-        font.variable
+        fontVariables.bitter,
+        fontVariables.merriweather,
+        fontVariables.lato,
+        fontVariables.mono,
+        fontVariables.lobster
       )}>
         <ThemeProvider 
           attribute="data-theme" 

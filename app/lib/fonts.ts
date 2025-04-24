@@ -1,8 +1,51 @@
-import { Inter } from 'next/font/google';
+import { Bitter, Merriweather, JetBrains_Mono, Lobster, Lato } from 'next/font/google';
 
-// Define the default font
-export const font = Inter({
+// Serif fonts
+export const bitter = Bitter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+});
+
+export const merriweather = Merriweather({
+  weight: ['300', '400', '700', '900'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+});
+
+// Sans-serif fonts
+export const lato = Lato({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
-}); 
+  weight: '400',
+});
+
+// Monospace font
+export const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
+
+// Display font
+export const lobster = Lobster({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-helveticampbell',
+  weight: '400',
+});
+
+// Default font (for backward compatibility)
+export const font = bitter;
+
+// Export font variables object to easily apply multiple fonts
+export const fontVariables = {
+  bitter: bitter.variable,
+  merriweather: merriweather.variable,
+  lato: lato.variable,
+  mono: jetbrainsMono.variable,
+  lobster: lobster.variable,
+}; 
+

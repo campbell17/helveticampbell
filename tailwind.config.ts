@@ -9,9 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Merriweather', 'serif'],
-        body: ['Bitter', 'serif'],
-        helveticampbell: ['Lobster', 'sans-serif'],
+        display: ['var(--font-display)'],
+        body: ['var(--font-body)'],
+        helveticampbell: ['var(--font-helveticampbell)'],
+        lato: ['var(--font-sans)'],
+        mono: ['var(--font-mono)'],
       },
     },
   },
