@@ -67,18 +67,12 @@ function WorkItem({ image, onImageClick, index }: {
 
 export default function WorkPage() {
   const { openProject } = useOpenProject();
-  const [lightboxImageIndex, setLightboxImageIndex] = useState<number | null>(null);
-  const [currentGallery, setCurrentGallery] = useState<string | null>(null);
 
-  // Handler for image clicks
+  // Handler for image clicks - simplified to only open projects
   const handleImageClick = (index: number) => {
     const clickedImage = workImages[index];
     if (clickedImage.projectKey) {
       openProject(clickedImage.projectKey);
-    } else {
-      // For images without a project key, show in lightbox
-      setCurrentGallery(`gallery-${clickedImage.gallery}`);
-      setLightboxImageIndex(index);
     }
   };
 

@@ -16,7 +16,6 @@ const ProjectSidebarContext = createContext<ProjectSidebarContextType | undefine
 export const ProjectSidebarProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [currentProject, setCurrentProject] = useState<string | null>(null)
-  const [lightboxImageIndex, setLightboxImageIndex] = useState<number | null>(null)
   const [currentGallery, setCurrentGallery] = useState<string | null>(null)
 
   const openProject = (projectKey: string) => {
@@ -47,8 +46,6 @@ export const ProjectSidebarProvider = ({ children }: { children: ReactNode }) =>
         isOpen={isOpen}
         onClose={closeProject}
         projectKey={currentProject}
-        lightboxImageIndex={lightboxImageIndex}
-        setLightboxImageIndex={setLightboxImageIndex}
         currentGallery={currentGallery}
         setCurrentGallery={setCurrentGallery}
         onNavigateToProject={(projectKey) => setCurrentProject(projectKey)}
