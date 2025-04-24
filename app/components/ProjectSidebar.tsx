@@ -162,7 +162,7 @@ const projectDetails: Record<string, ProjectDetails> = {
         </div>
         
         {/* Main Content Part 1 */}
-        <div className="p-20 pt-8 pb-8">
+        <div className="p-20">
           <div className="prose prose-lg prose-slate max-w-none">
             <div className="project-content">
               <H2>Major Design Evolutions</H2>
@@ -207,7 +207,7 @@ const projectDetails: Record<string, ProjectDetails> = {
         </div>
         
         {/* Main Content Part 2 */}
-        <div className="p-20 pt-8 pb-8">
+        <div className="p-20 pb-28">
           <div className="prose prose-lg prose-slate max-w-none">
             <div className="project-content">
               <H3>New Editor Interface (2017)</H3>
@@ -250,7 +250,7 @@ const projectDetails: Record<string, ProjectDetails> = {
         </div>
         
         {/* Main Content Part 3 */}
-        <div className="p-20 pt-8 pb-8">
+        <div className="p-20 pb-28">
           <div className="prose prose-lg prose-slate max-w-none">
             <div className="project-content">
               <H2>Key Feature Additions</H2>
@@ -1192,7 +1192,7 @@ export default function ProjectSidebar({
               }}
             >
               {/* Hero section with title and intro */}
-              <div className={`p-20 pb-8`}>
+              <div className={`p-20 pb-28`}>
                 <div className="mx-auto">
                   {/* Project Title */}
                   <motion.div 
