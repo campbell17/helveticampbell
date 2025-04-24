@@ -90,17 +90,6 @@ export default function SceneBackground() {
     max: 2800
   })
   
-  // Log for debugging
-  const logState = () => {
-    console.log('Camera state:', {
-      currentX: cameraPositionRef.current.currentX,
-      targetX: cameraPositionRef.current.targetX,
-      currentRotationX: cameraPositionRef.current.currentRotationX,
-      targetRotationX: cameraPositionRef.current.targetRotationX,
-      currentRotationZ: cameraPositionRef.current.currentRotationZ,
-      targetRotationZ: cameraPositionRef.current.targetRotationZ
-    })
-  }
   
   // Helper to get camera settings for a specific pathname
   const getCameraSettingsForPath = (path: string) => {
@@ -147,11 +136,7 @@ export default function SceneBackground() {
     cameraPositionRef.current.targetX = targetX
     cameraPositionRef.current.targetRotationX = targetRotationX
     cameraPositionRef.current.targetRotationZ = targetRotationZ
-    
-    // Log the change for debugging
-    console.log(`Path changed from ${prevPathRef.current} to ${pathname}`)
-    console.log('New targets:', { targetX, targetRotationX, targetRotationZ })
-    
+ 
     prevPathRef.current = pathname
   }, [pathname])
   
@@ -333,12 +318,7 @@ export default function SceneBackground() {
         const xDiff = Math.abs(cameraPositionRef.current.targetX - cameraPositionRef.current.currentX)
         const rotXDiff = Math.abs(cameraPositionRef.current.targetRotationX - cameraPositionRef.current.currentRotationX)
         const rotZDiff = Math.abs(cameraPositionRef.current.targetRotationZ - cameraPositionRef.current.currentRotationZ)
-        
-        // Log if we're in a transition (for debugging)
-        if (xDiff > 0.1 || rotXDiff > 0.001 || rotZDiff > 0.001) {
-          console.log('Transitioning...', { xDiff, rotXDiff, rotZDiff })
-        }
-        
+       
         // Smoothly update scroll position
         scrollStateRef.current.current += (scrollStateRef.current.target - scrollStateRef.current.current) * 0.05
         const limitedScrollY = Math.min(scrollStateRef.current.current, scrollStateRef.current.max)
@@ -403,9 +383,6 @@ export default function SceneBackground() {
     
     // Start animation
     animate()
-    
-    // Log initial state
-    console.log('Initial camera settings:', { targetX, targetRotationX, targetRotationZ })
     
     // Cleanup
     return () => {

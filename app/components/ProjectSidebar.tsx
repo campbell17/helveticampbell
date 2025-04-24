@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import Lightbox from './Lightbox';
-import { H1, H2 } from './Typography';
+import { H1, H2, H3, Overline } from './Typography';
 import { MagnifyingGlassPlusIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 // Animation timing constants
@@ -57,56 +57,152 @@ interface ImageData {
   aspectRatio?: string;
 }
 
+interface CalloutData {
+  overline: string;
+  title: string;
+  description: string;
+  stats: {
+    value: string;
+    label: string;
+  }[];
+}
+
 interface ProjectDetails {
   title: string;
   description?: string;
-  images: ImageData[];
+  callout?: CalloutData;
+  images?: ImageData[];
   content?: React.ReactNode;
 }
 
 // Project data from the original Sidebar component
 const projectDetails: Record<string, ProjectDetails> = {
   "Fulcrum": {
-    title: "Fulcrum",
-    description: "Here's a taste of some work I've done over the years at Fulcrum. More to come...",
+    title: "Fulcrum: Designing a Field Operations Platform",
+    description: "As the sole designer for Fulcrum from its early stages, I led the product's visual and user experience evolution over several years, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
+    callout: {
+      overline: "Company Overview",
+      title: "From Startup to Enterprise Platform",
+      description: "Fulcrum evolved from a small Florida startup to a global leader in field operations software, serving thousands of organizations across diverse industries.",
+      stats: [
+        { value: "190+", label: "Countries with active users" },
+        { value: "3000+", label: "Organizations worldwide" },
+        { value: "$12M+", label: "Annual recurring revenue" },
+        { value: "60+", label: "Team members" }
+      ]
+    },
     content: (
       <>
-        <p>
-          Fourteen years ago, a geospatial technology company named Spatial Networks hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.
-        </p>
+        <div className="project-content">
+          <H2>Major Design Evolutions</H2>
 
-        <p>
-          Before that, I founded a design agency called Whiteshark Creations with an engineering colleague. We worked with some great clients in our first year, but I realized agency life wasn&apos;t my calling and I left for other design pursuits.
-        </p>
+          <H3>Complete Brand Redesign (2019)</H3>
+          <p>After 8 years with the original logo, I led a complete brand refresh that unified Fulcrum (product) and Spatial Networks (company) under a consistent design language. This included redesigning the logo, website, and all marketing materials to create a cohesive ecosystem as the company expanded its product offerings.</p>
+          <p><em>Reference: 2019-3-28-fulcrum-new-look.md</em></p>
+          <p>The redesigned website featured improved navigation, stronger messaging, and more intuitive user flows, creating clearer paths for both prospective customers and existing users.</p>
 
-        <p>
-          Prior to going solo, my design career began its infancy, when Macromedia was still a household name and Web 2.0 was hitting it&apos;s bubbly prime. I started as a web designer and this is where I first clapped eyes on naked HTML & CSS - No WYSIWYG editor to hide all the crimes. We had dedicated developers to write all the code, so my exposure and practice only came in fits and starts. I wouldn&apos;t feel the power of `git push origin master` until my first year working at Spatial Networks.
-        </p>
+          <H3>Figma Design System Implementation (2019)</H3>
+          <p>I implemented Figma as our primary UI/UX design tool, developing a structured design and prototyping workflow that significantly improved our ability to design, test, and communicate with our development team.</p>
+          <p><em>Reference: 2019-02-19-designing-with-figma.md</em></p>
+          <p>This included creating reusable design components and establishing a collaborative design process that accelerated our product development lifecycle.</p>
 
-        <p>
-          When you&apos;re the only designer for a company with big ambitions, becoming a generalist is a matter of survival. I have sketchbooks with pages chock full of logos, mobile app screens, mobile app icons, and trade show pull-up banners for offshoots of ideas that didn&apos;t (and never would) exist.
-        </p>
+          <H3>New Editor Interface (2017)</H3>
+          <p>I led the complete rebuild of our data viewing and editing tool, focusing on speed, performance, and usability. The new interface introduced advanced filtering and sorting capabilities, customizable column displays, and significant performance improvements for handling large datasets.</p>
+          <p><em>Reference: 2017-04-18-introducing-the-new-editor.md</em></p>
 
-        <p>
-          I loved it.
-        </p>
+          <H3>Multilingual Support (2014)</H3>
+          <p>I designed the localization framework for Fulcrum, enabling the mobile application to function in multiple languages. This significant user experience enhancement made the platform accessible to international users, supporting Spanish, French, and Portuguese interfaces with a design that could scale to additional languages.</p>
+          <p><em>Reference: 2014-03-04-fulcrum-mobile-in-spanish-french-portuguese.md</em></p>
 
-        <p>
-          But what I loved most was working on the web apps and the marketing websites. Since we were so small, everyone had to be trusted to make what they were doing count without much (or any) oversight. This was the first time I was encouraged to simply address the customer problem and build. There was no time for hand-wringing. 
-        </p>
+          <H2>Key Feature Additions</H2>
 
-        <p>
-          We took a few cracks at different product ideas. Allinspections, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be my final meeting at Spatial Networks. Instead, he offered me the opportunity to head up something new: Fulcrum.
-        </p>
+          <H3>Interactive Offline Maps (2014)</H3>
+          <p>Designed the user experience for Fulcrum's interactive offline map capabilities, enhancing the MBTiles support with UTFGrid integration. This allowed users to access clickable offline map features with attribute viewing, significantly improving field usability in areas with poor connectivity.</p>
+          <p><em>Reference: 2014-01-16-interactive-offline-maps.md</em></p>
 
-        <p>
-          Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.
-        </p>
+          <H3>Photo Annotations (2018)</H3>
+          <p>Designed the interface for our custom-built image annotation engine, enabling users to sketch graphics and add text to photos within the app. The intuitive mobile-first design simplified field documentation and communication.</p>
+          <p><em>Reference: 2018-12-13-introducing-photo-annotations.md</em></p>
 
-        <p>
-          Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.
-        </p>
+          <H3>Data Events System (2016)</H3>
+          <p>Created the user interface for Fulcrum's Data Events system, a powerful scripting framework that enables complex workflow automation. The design challenge was making advanced functionality accessible to non-developers, resulting in an intuitive interface for creating conditional logic, data validation, and dynamic calculations that streamlined field operations.</p>
+          <p><em>Reference: 2016-03-30-introducing-data-events.md</em></p>
 
+          <H3>Fulcrum Styler (2015)</H3>
+          <p>Created the web dashboard interface for customizing map appearance, enabling users to personalize their data visualization with custom colors, styles, and basemaps. The design focused on making complex styling accessible to non-technical users.</p>
+          <p><em>Reference: 2015-09-08-fulcrum-styler.md</em></p>
+
+          <H3>Calculated Fields (2015)</H3>
+          <p>Designed an intuitive expression builder interface that allowed users to create formulas for dynamic data calculation. The system included a formula creation system with live calculation preview, making sophisticated data relationships accessible to everyday users.</p>
+          <p><em>Reference: 2015-02-02-introducing-calculated-fields.md</em></p>
+
+          <H3>One-to-Many Data Relationships (2014)</H3>
+          <p>Developed the UI for implementing repeatable fields and nested forms, enabling complex parent-child data relationships while maintaining simplicity in the form builder interface.</p>
+          <p><em>Reference: 2014-01-13-parent-child-data-and-new-exports.md</em></p>
+
+          <H3>Search and Filtering (2013)</H3>
+          <p>Redesigned the data management dashboard to incorporate full-text search and smart filtering interfaces, simplifying how users locate and manage their field data.</p>
+          <p><em>Reference: 2013-11-19-searching-and-filtering.md</em></p>
+
+          <H3>Mobile Widgets (2017)</H3>
+          <p>Designed the mobile widget experience that allowed users quick access to their most frequently used Fulcrum apps directly from their device home screen. This enhanced the daily workflow for field users by reducing the time to begin data collection tasks.</p>
+          <p><em>Reference: 2017-04-20-mobile-widgets.md</em></p>
+
+          <H2>Integration &amp; Workflow Design</H2>
+
+          <H3>Integration Ecosystem</H3>
+          <p>I created a cohesive design language for Fulcrum's integration touchpoints, ensuring that connections with third-party platforms were intuitive and consistent. This included designing webhook configuration interfaces, API documentation, and integration setup workflows for services like Zapier, Google Calendar, CARTO, Tableau, and Slack.</p>
+          <p><em>References: 2015-03-20-connect-fulcrum-to-other-services-with-zapier.md, 2019-01-25-integrating-with-google-calendar.md</em></p>
+
+          <H3>Workflow Management</H3>
+          <p>Designed enterprise workflow capabilities including record assignment, status tracking, and approval processes. These features transformed Fulcrum from a data collection tool into a complete field operations platform by providing supervisors with visibility into team activities and enabling structured data review processes.</p>
+          <p><em>References: 2013-03-20-record-assignment.md, 2016-09-29-workflow-solutions-for-timed-status.md</em></p>
+
+          <H3>PDF Report Generation</H3>
+          <p>Created the interface for customizing and generating PDF reports from field data. The design balanced flexibility with ease of use, allowing non-technical users to create professional documentation directly from mobile devices, even in offline environments.</p>
+          <p><em>Reference: 2013-06-26-custom-pdf-report-templates.md</em></p>
+
+          <H2>Design Philosophy and Process</H2>
+          <p>My approach to Fulcrum's design was guided by a deep understanding of user needs and field conditions. I consistently advocated for:</p>
+          <ul>
+            <li><strong>User-Centered Design</strong>: Focusing on understanding user problems before designing solutions</li>
+            <li><strong>Mobile-First Thinking</strong>: Designing for the constraints of mobile devices and field conditions</li>
+            <li><strong>Offline-First Architecture</strong>: Ensuring functionality regardless of connectivity</li>
+            <li><strong>Visual Simplicity</strong>: Creating interfaces that work in bright sunlight and adverse conditions</li>
+          </ul>
+          <p><em>Reference: 2017-02-14-shipping-the-right-product.md</em></p>
+
+          <H3>Design Process Evolution</H3>
+          <p>Throughout my tenure, I evolved our design process from basic wireframing to a comprehensive system that included:</p>
+          <ol>
+            <li>User research and pain point identification</li>
+            <li>Low-fidelity wireframing and quick validation</li>
+            <li>High-fidelity prototyping in Figma</li>
+            <li>User testing with field personnel</li>
+            <li>Iterative refinement based on feedback</li>
+            <li>Design system maintenance and documentation</li>
+          </ol>
+
+          <H3>Balancing Power and Usability</H3>
+          <p>A core challenge throughout Fulcrum's evolution was balancing powerful functionality with intuitive interfaces. My approach focused on progressive disclosure of complexity, ensuring that basic tasks remained simple while advanced capabilities were available when needed, making the platform accessible to users of varying technical abilities.</p>
+          <p><em>Reference: 2016-04-04-balancing-power-vs-usability.md</em></p>
+
+          <H2>Impact</H2>
+          <p>Fulcrum grew from a small startup product to an enterprise solution used in over 190 countries. My design contributions helped:</p>
+          <ul>
+            <li>Increase user adoption across diverse industries</li>
+            <li>Reduce training time for new users</li>
+            <li>Enable complex workflows while maintaining simplicity</li>
+            <li>Support scaling from individual users to enterprise teams</li>
+            <li>Create a distinctive product identity in a competitive market</li>
+          </ul>
+          <p><em>References: 2017-05-17-fulcrum-live.md, 2013-07-17-fulcrum-for-county-government.md</em></p>
+          <p>The design language and systems I established for Fulcrum continue to influence the product direction and user experience to this day.</p>
+
+          <H2>Conclusion</H2>
+          <p>My work on Fulcrum demonstrates how thoughtful design can transform complex technical capabilities into intuitive user experiences. By focusing relentlessly on user needs and maintaining design consistency through rapid feature expansion, I helped create a product that stands out for its usability in challenging field conditions.</p>
+
+        </div>
       </>
     ),    
     images: [
@@ -736,7 +832,7 @@ export default function ProjectSidebar({
         onExitComplete={handlePreTransitionExitComplete}
       />
 
-      {/* Main Sidebar */}
+      {/* Top Container */}
       <AnimatePresence mode="sync">
         {showSidebar && (
           <motion.div
@@ -797,7 +893,7 @@ export default function ProjectSidebar({
             </motion.button>
 
             {/* Sticky Header - with data attributes for debugging */}
-            <div
+            {/* <div
               data-scrolled={isScrolled ? "true" : "false"}
               data-testid="sticky-header"
               className={`fixed top-0 left-0 right-0 z-modal transition-all duration-500 ease-in-out container-glass backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
@@ -815,7 +911,7 @@ export default function ProjectSidebar({
                   )}
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <motion.div 
               ref={sidebarContentRef}
@@ -828,9 +924,9 @@ export default function ProjectSidebar({
                 ease: "easeOut"
               }}
             >
-              <div className="p-6 pt-20 md:p-12 lg:p-16 xl:p-20">
-                {/* Hero section with title and intro */}
-                <div className="max-w-7xl mx-auto mb-16">
+              {/* Hero section with title and intro */}
+              <div className={`p-20 ${project?.callout ? 'pb-32' : 'pb-0'}`}>
+                <div className="mx-auto">
                   {/* Project Title */}
                   <motion.div 
                     key={`title-${projectKey}`}
@@ -842,11 +938,11 @@ export default function ProjectSidebar({
                       ease: "easeInOut"
                     }}
                   >
-                    <H1>{project.title}</H1>
+                    <H1>{project?.title}</H1>
                   </motion.div>
 
                   {/* Project Description */}
-                  {project.description && (
+                  {project?.description && (
                     <motion.p 
                       key={`description-${projectKey}`}
                       initial={{ opacity: 0 }}
@@ -862,12 +958,46 @@ export default function ProjectSidebar({
                     </motion.p>
                   )}
                 </div>
+              </div>
 
+              {/* Full width callout section */}
+              {project?.callout && (
+                <motion.div 
+                  className="w-full bg-indigo-50 py-12 px-6 md:px-12 lg:px-16 xl:px-20 mb-8 border-y border-indigo-100"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isTransitioning ? 0 : 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ 
+                    duration: 0.4,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <div className="max-w-7xl mx-auto">
+                    <Overline>{project.callout.overline}</Overline>
+                    <H2>{project.callout.title}</H2>
+                    <p className="text-lg text-indigo-900/80 max-w-3xl mb-8">
+                      {project.callout.description}
+                    </p>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                      {project.callout.stats.map((stat, index) => (
+                        <div key={index} className="bg-white p-6 rounded-xl border border-indigo-100 shadow-sm">
+                          <p className="text-4xl font-bold text-indigo-600 mb-1">{stat.value}</p>
+                          <p className="text-sm text-indigo-900/70">{stat.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Main content area */}
+              <div className="p-20">
                 {/* Main content area - two column layout with the docs site approach */}
-                {project.content && (
-                  <div className="max-w-7xl mx-auto relative">
-                    <div className="flex flex-col lg:flex-row lg:gap-16 xl:gap-24">
-                      {/* Left column - Sticky content that remains visible */}
+                {project?.content && (
+                  <div className="max-w-full mx-auto relative">
+                    <div className="grid gap-8 grid-cols-2">
+                      {/* Left column - Content */}
                       <motion.div 
                         key={`content-${projectKey}`}
                         initial={{ opacity: 0 }}
@@ -877,14 +1007,14 @@ export default function ProjectSidebar({
                           duration: 0.4,
                           ease: "easeInOut"
                         }}
-                        className="lg:w-7/12 xl:w-5/12 mb-12 lg:mb-0"
+                        className="mb-12 md:mb-0"
                       >
-                        <div className="lg:sticky lg:top-24 prose prose-lg prose-slate max-w-none pr-4">
+                        <div className="prose prose-lg prose-slate max-w-none pr-4">
                           {project.content}
                         </div>
                       </motion.div>
 
-                      {/* Right column - Images that scroll normally */}
+                      {/* Right column - Images */}
                       <motion.div 
                         key={`images-${projectKey}`}
                         initial={{ opacity: 0 }}
@@ -895,11 +1025,11 @@ export default function ProjectSidebar({
                           ease: "easeInOut",
                           delay: 0.1
                         }}
-                        className="lg:w-5/12 xl:w-7/12"
+                        className=""
                       >
-                        <div className="@container lg:sticky lg:top-24 pb-8">
+                        <div className="@container pb-8">
                           <div className="grid grid-cols-1 @md:grid-cols-2 gap-4 lg:gap-8">
-                            {project.images.map((image, index) => (
+                            {project.images?.map((image, index) => (
                               <div 
                                 key={index} 
                                 className={`${image.fullWidth ? '@md:col-span-2' : ''}`}
@@ -941,7 +1071,7 @@ export default function ProjectSidebar({
                 )}
 
                 {/* Fallback for projects without content - just show images in a grid */}
-                {!project.content && (
+                {!project?.content && (
                   <div className="max-w-7xl mx-auto">
                     <motion.div
                       key={`grid-${projectKey}`}
@@ -954,7 +1084,7 @@ export default function ProjectSidebar({
                       }}
                       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
                     >
-                      {project.images.map((image, index) => (
+                      {project.images?.map((image, index) => (
                         <div 
                           key={index} 
                           className={`${image.fullWidth ? 'md:col-span-2 lg:col-span-3' : ''}`}

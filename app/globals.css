@@ -134,6 +134,12 @@ nav a {
   @apply font-display text-2xl lg:text-4xl leading-normal mb-24 text-text-secondary;
 }
 
+.project-sidebar-content {
+  .subheading {
+    @apply mb-0;
+  }
+}
+
 /* Navigation */
 .nav-link {
   @apply font-helveticampbell border-1 border-transparent block px-4 py-2 rounded-full transition-all duration-50 ease-in-out;
