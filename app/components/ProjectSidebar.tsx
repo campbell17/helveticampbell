@@ -56,26 +56,6 @@ interface ImageData {
   aspectRatio?: string;
 }
 
-interface CalloutData {
-  overline: string;
-  title: string;
-  description: string;
-  stats: {
-    value: string;
-    label: string;
-  }[];
-}
-
-interface VignetteData {
-  overline: string;
-  title: string;
-  description: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-}
-
 interface ProjectDetails {
   title: string;
   description?: string;
