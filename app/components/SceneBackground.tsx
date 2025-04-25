@@ -403,7 +403,7 @@ export default function SceneBackground() {
         sceneRef.current.remove(gridRef.current)
       }
     }
-  }, [isDesktop]) // Only depend on isDesktop, not pathname
+  }, [isDesktop, pathname]) // Include both isDesktop and pathname
   
   return (
     <div 

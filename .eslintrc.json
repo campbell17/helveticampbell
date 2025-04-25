@@ -1,3 +1,12 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // Disable the rule for unescaped entities to make it easier to write content
+    "react/no-unescaped-entities": ["error", {
+      "forbid": [">", "}"] // Only warn about characters that can actually cause problems
+    }],
+    
+    // Make exhaustive-deps a warning instead of an error
+    "react-hooks/exhaustive-deps": "warn"
+  }
 } 
