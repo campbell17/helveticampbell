@@ -16,7 +16,7 @@ export default function WritingPage() {
 
   // Separate essays by tags
   const businessEssays = essays.filter(essay => 
-    essay.tags && essay.tags.includes("Business")
+    essay.tags && essay.tags.includes("Productivity")
   );
   
   const personalEssays = essays.filter(essay => 
@@ -35,7 +35,7 @@ export default function WritingPage() {
         <div className="md:col-span-2">
           <h2 className="text-xl font-bold mb-6">Productivity</h2>
           {businessEssays.length > 0 ? (
-            <div className="divide-y divide-neutral-200/80">
+            <div className="flex flex-col gap-4">
               {businessEssays.map((essay) => {
                 const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -44,13 +44,13 @@ export default function WritingPage() {
                 });
                 
                 return (
-                  <article key={essay.slug} className="p-10 rounded-lg hover:bg-neutral-200/50 transition-all duration-100">
-                    <Link href={`/writing/${essay.slug}`} className="group block">
+                  <article key={essay.slug} className="">
+                    <Link href={`/writing/${essay.slug}`} className="group block bg-white p-10 shadow-2xl hover:shadow-xs rounded-lg hover:bg-neutral-50 transition-all duration-100">
                       <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
                         {essay.title}
                       </h3>
                       
-                      <time dateTime={essay.date} className="text-sm text-text-secondary mb-4 block">
+                      <time dateTime={essay.date} className="text-sm text-text-secondary block">
                         {formattedDate}
                       </time>
 
@@ -66,13 +66,11 @@ export default function WritingPage() {
                         </div>
                       )}
 
-                      <div className="prose prose-invert max-w-none line-clamp-3 mb-4">
-                        <p>{essay.excerpt}</p>
-                      </div>
-                      
-                      <div className="inline-flex items-center text-primary font-medium transition-all group-hover:gap-1 duration-300">
-                        Read more <span className="transition-transform group-hover:translate-x-0.5">→</span>
-                      </div>
+                      {essay.excerpt && (
+                        <div className="prose prose-invert max-w-none line-clamp-3 mb-4">
+                          <p>{essay.excerpt}</p>
+                        </div>
+                      )}
                     </Link>
                   </article>
                 );
@@ -81,7 +79,7 @@ export default function WritingPage() {
           ) : (
             <div className="prose prose-invert max-w-none">
               <p>
-                Business essays coming soon. Check back later for updates.
+                Productivity essays coming soon. Check back later for updates.
               </p>
             </div>
           )}

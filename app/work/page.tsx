@@ -47,7 +47,7 @@ function WorkItem({ image, onImageClick, index }: {
         />
         
         {/* Simple hover overlay */}
-        <div className="absolute inset-0 bg-slate-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
+        <div className="absolute inset-0 bg-neutral-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
         
         {/* Project icon indicator */}
         {image.projectKey && (
