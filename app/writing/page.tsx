@@ -1,64 +1,101 @@
+import Link from 'next/link';
 import { H1 } from '../components/Typography';
+import { getAllEssays } from '../lib/markdown';
 
 export default function WritingPage() {
+  const essays = getAllEssays();
+
   return (
     <>
       <H1>Writing</H1>
 
-      <div className="subheading">
+      <div className="subheading mb-8">
         A collection of essays, articles, and other writing.
       </div>
       
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae massa fermentum efficitur.
-        Integer eget ligula in nisi pellentesque tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus 
-        et ultrices posuere cubilia curae.
-      </p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="md:col-span-2">
+          {essays.length > 0 ? (
+            <div className="space-y-12">
+              {essays.slice(0, 3).map((essay) => {
+                const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                });
+                
+                return (
+                  <article key={essay.slug} className="relative">
+                    <Link href={`/writing/${essay.slug}`} className="group">
+                      <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                        {essay.title}
+                      </h2>
+                      
+                      <time dateTime={essay.date} className="text-sm text-text-secondary mb-4 block">
+                        {formattedDate}
+                      </time>
 
-      <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 mb-12">
-        <div className="absolute inset-0 flex items-center justify-center text-text-secondary">
-          Hero Image
+                      {essay.cover_image && (
+                        <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 my-6">
+                          <img 
+                            src={essay.cover_image} 
+                            alt={essay.title}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      )}
+
+                      <div className="prose prose-invert max-w-none line-clamp-3 mb-4">
+                        <p>{essay.excerpt}</p>
+                      </div>
+                      
+                      <div className="text-primary font-medium">
+                        Read more →
+                      </div>
+                    </Link>
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="prose prose-invert max-w-none">
+              <p>
+                Essay content coming soon. Check back later for updates.
+              </p>
+            </div>
+          )}
         </div>
-      </div>
 
-      <div className="prose prose-invert max-w-none">
-        <p>
-          Nullam eget felis eget nunc lobortis mattis aliquam faucibus. Vivamus magna justo, lacinia eget 
-          consectetur sed, convallis at tellus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-          Curabitur aliquet quam id dui posuere blandit. Nulla quis lorem ut libero malesuada feugiat.
-        </p>
-
-        <p>
-          Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-          Curabitur aliquet quam id dui posuere blandit. Vestibulum ante ipsum primis in faucibus orci luctus et 
-          ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-        </p>
-
-        <p>
-          Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis in 
-          faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque, auctor sit amet aliquam vel.
-          Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.
-        </p>
-
-        <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 my-12">
-          <div className="absolute inset-0 flex items-center justify-center text-text-secondary">
-            Secondary Image
-          </div>
+        <div className="md:col-span-1">
+          <h2 className="text-xl font-bold mb-6">All Essays</h2>
+          
+          {essays.length > 0 ? (
+            <div className="space-y-6">
+              {essays.map((essay) => {
+                const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                });
+                
+                return (
+                  <div key={essay.slug} className="group">
+                    <Link href={`/writing/${essay.slug}`} className="block">
+                      <h3 className="font-medium group-hover:text-primary transition-colors">
+                        {essay.title}
+                      </h3>
+                      <time dateTime={essay.date} className="text-sm text-text-secondary">
+                        {formattedDate}
+                      </time>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="text-text-secondary">No essays found.</p>
+          )}
         </div>
-
-        <p>
-          Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Vestibulum ac diam sit amet quam 
-          vehicula elementum sed sit amet dui. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor 
-          accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-        </p>
-
-        <p>
-          Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. 
-          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
-          Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Nulla porttitor 
-          accumsan tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere 
-          cubilia curae.
-        </p>
       </div>
     </>
   )

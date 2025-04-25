@@ -74,7 +74,7 @@ export default function RootLayout({
                 {/* Main content area - wrap in AnimatedLayout for transitions 
                      Adjust padding based on screen size */}
                 <main className="pt-20 pb-16 pl-4 pr-4 md:pt-16 md:pl-72 md:pr-[clamp(16px,calc(8px+0vw),288px)] 2xl:pr-72">
-                  <div className="max-w-[1200px] mx-auto">
+                  <div className="mx-auto">
                     <AnimatedLayout>
                       {children}
                     </AnimatedLayout>

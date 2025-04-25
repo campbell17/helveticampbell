@@ -20,9 +20,9 @@ export default function AnimatedLayout({ children }: AnimatedLayoutProps) {
   // Add more paths to this array as needed
 
   // Not yet...
-  // const wideLayoutPaths = ['/work']
-  // const useWideLayout = wideLayoutPaths.includes(pathname)
-  // const maxWidthClass = useWideLayout ? 'max-w-6xl' : 'max-w-4xl'
+  const wideLayoutPaths = ['/writing']
+  const useWideLayout = wideLayoutPaths.includes(pathname)
+  const maxWidthClass = useWideLayout ? 'max-w-full' : 'max-w-4xl'
   
 
   return (
@@ -30,7 +30,7 @@ export default function AnimatedLayout({ children }: AnimatedLayoutProps) {
       {/* Key on pathname to trigger animation when route changes */}
       <div 
         key={pathname}
-        className="max-w-4xl mx-auto px-0 sm:px-4 md:px-8 py-6 md:py-12"
+        className={`${maxWidthClass} mx-auto px-0 sm:px-4 md:px-8 py-6 md:py-12`}
       >
         {children}
       </div>

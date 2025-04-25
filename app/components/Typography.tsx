@@ -43,7 +43,7 @@ export function Caption({ children, className = '', style = {} }: TextProps) {
 
 export function Overline({ children, className = '', style = {} }: TextProps) {
   return (
-    <div style={style} className={`text-xs uppercase tracking-wider mb-2 text-text-tertiary ${className}`}>
+    <div style={style} className={`text-xs uppercase font-sans tracking-wider mb-2 text-text-tertiary ${className}`}>
       {children}
     </div>
   );

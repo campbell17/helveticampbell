@@ -1203,7 +1203,17 @@ export default function ProjectSidebar({
             >
               {/* Hero section with title and intro */}
               <div className={`p-20 pb-28`}>
-                <div className="mx-auto">
+                <div className="mx-auto">               
+
+                  {/* Role Details */}
+                  <div className="flex gap-8 mb-8">
+                    <Overline className="!text-lg">Case Study</Overline>
+                    <Overline className="!text-lg">UI/UX</Overline>
+                    <Overline className="!text-lg">Branding</Overline>
+                    <Overline className="!text-lg">App Design</Overline>
+                    <Overline className="!text-lg">Marketing</Overline>
+                  </div>
+
                   {/* Project Title */}
                   <motion.div 
                     key={`title-${projectKey}`}
