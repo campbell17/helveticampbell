@@ -35,7 +35,7 @@ export default function WritingPage() {
         <div className="md:col-span-2">
           <h2 className="text-xl font-bold mb-6">Productivity</h2>
           {businessEssays.length > 0 ? (
-            <div className="space-y-12">
+            <div className="divide-y divide-neutral-200/80">
               {businessEssays.map((essay) => {
                 const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -44,9 +44,9 @@ export default function WritingPage() {
                 });
                 
                 return (
-                  <article key={essay.slug} className="relative">
-                    <Link href={`/writing/${essay.slug}`} className="group">
-                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  <article key={essay.slug} className="p-10 rounded-lg hover:bg-neutral-200/50 transition-all duration-100">
+                    <Link href={`/writing/${essay.slug}`} className="group block">
+                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
                         {essay.title}
                       </h3>
                       
@@ -55,7 +55,7 @@ export default function WritingPage() {
                       </time>
 
                       {essay.cover_image && (
-                        <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 my-6">
+                        <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 my-6 group-hover:ring-1 group-hover:ring-primary/40 transition-all duration-300">
                           <Image 
                             src={essay.cover_image}
                             alt={essay.title}
@@ -70,8 +70,8 @@ export default function WritingPage() {
                         <p>{essay.excerpt}</p>
                       </div>
                       
-                      <div className="text-primary font-medium">
-                        Read more →
+                      <div className="inline-flex items-center text-primary font-medium transition-all group-hover:gap-1 duration-300">
+                        Read more <span className="transition-transform group-hover:translate-x-0.5">→</span>
                       </div>
                     </Link>
                   </article>
@@ -91,7 +91,7 @@ export default function WritingPage() {
           <h2 className="text-xl font-bold mb-6">Story Time</h2>
           
           {personalEssays.length > 0 ? (
-            <div className="space-y-6">
+            <div className="divide-y divide-neutral-200/80">
               {personalEssays.map((essay) => {
                 const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -100,9 +100,9 @@ export default function WritingPage() {
                 });
                 
                 return (
-                  <div key={essay.slug} className="group">
-                    <Link href={`/writing/${essay.slug}`} className="block">
-                      <h3 className="font-medium group-hover:text-primary transition-colors">
+                  <div key={essay.slug} className="py-4 first:pt-0">
+                    <Link href={`/writing/${essay.slug}`} className="block group">
+                      <h3 className="font-medium group-hover:text-primary transition-colors duration-300">
                         {essay.title}
                       </h3>
                       <time dateTime={essay.date} className="text-sm text-text-secondary">
