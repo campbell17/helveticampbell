@@ -4,7 +4,7 @@ title: "Sample Essay Migrated from Jekyll"
 date: 2023-07-15
 excerpt: "This is a sample essay that demonstrates how Jekyll-formatted markdown files can be used in Next.js."
 cover_image: "/images/sample-cover.jpg"
-tags: [nextjs, markdown, jekyll]
+tags: [nextjs, markdown, jekyll, "Business"]
 ---
 
 # Sample Essay

@@ -1,8 +1,9 @@
 ---
 layout: post
 category: writing
-title: 'Fix-it Friday'
-date: '2020-09-25'
+title: '🛠 Fix-it Friday'
+date: '2020-09-30'
+tags: ["Business"]
 ---
 
 In a recent [CSS Tricks newsletter](https://css-tricks.com/newsletter/217-small-changes-in-the-right-direction/), [Robin Rendle](https://twitter.com/robinrendle) explains how he practices incremental improvements by scrutinizing Sentry's CSS every Friday afternoon.
@@ -19,7 +20,7 @@ I didn't initially set out to make this a regular practice, but that's exactly w
 
 Further down in the newsletter, Robin wrote something that made me look over my shoulder to see if he was reading my Slack messages:
 
-> This list of tasks isn’t really meant to be added to a Jira board or anything, it’s really just to inspire me to break up my pull requests into tiny chunks and then ship code every Friday afternoon. Each list item should ideally be one shippable chunk of code.
+> This list of tasks isn't really meant to be added to a Jira board or anything, it's really just to inspire me to break up my pull requests into tiny chunks and then ship code every Friday afternoon. Each list item should ideally be one shippable chunk of code.
 
 With a few exceptions (sorry devs 😬), I've been making a habit of creating tiny PR's to make them easier to review and more likely to get deployed as soon as possible. The UI Audits go hand in hand with this, and the consistent routine has made things a lot more manageable that they used to be when I wrote giant spaghetti-monster PR's with dozens of file changes.
 

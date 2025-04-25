@@ -3,6 +3,7 @@ layout: post
 category: writing
 title: '👟 Hitting Your Stride Late'
 date: '2020-10-16'
+tags: ["Personal"]
 ---
 
 My mother tells me I've always been a late bloomer. I think that's a generous way of saying it takes me longer to do what most people figure out in short order. I'm not talking about an individual task or skill, more of an acceptance of the way things are and the adaptations and adjustments that go with it. When I was in college, the last thing I wanted to do was think about what I was going to do when I got out. Sounds ridiculous when I write it out, but I've always just picked up necessary responsibilities along the way and that hasn't steered me wrong. Some part of me always trusted I would settle into the rhythm required to succeed without having to rush.

@@ -14,6 +14,15 @@ export default function WritingPage() {
     // Continue with empty essays array
   }
 
+  // Separate essays by tags
+  const businessEssays = essays.filter(essay => 
+    essay.tags && essay.tags.includes("Business")
+  );
+  
+  const personalEssays = essays.filter(essay => 
+    essay.tags && essay.tags.includes("Personal")
+  );
+
   return (
     <>
       <H1>Writing</H1>
@@ -24,9 +33,10 @@ export default function WritingPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="md:col-span-2">
-          {essays.length > 0 ? (
+          <h2 className="text-xl font-bold mb-6">Productivity</h2>
+          {businessEssays.length > 0 ? (
             <div className="space-y-12">
-              {essays.slice(0, 3).map((essay) => {
+              {businessEssays.map((essay) => {
                 const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
@@ -36,9 +46,9 @@ export default function WritingPage() {
                 return (
                   <article key={essay.slug} className="relative">
                     <Link href={`/writing/${essay.slug}`} className="group">
-                      <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
                         {essay.title}
-                      </h2>
+                      </h3>
                       
                       <time dateTime={essay.date} className="text-sm text-text-secondary mb-4 block">
                         {formattedDate}
@@ -71,18 +81,18 @@ export default function WritingPage() {
           ) : (
             <div className="prose prose-invert max-w-none">
               <p>
-                Essay content coming soon. Check back later for updates.
+                Business essays coming soon. Check back later for updates.
               </p>
             </div>
           )}
         </div>
 
         <div className="md:col-span-1">
-          <h2 className="text-xl font-bold mb-6">All Essays</h2>
+          <h2 className="text-xl font-bold mb-6">Story Time</h2>
           
-          {essays.length > 0 ? (
+          {personalEssays.length > 0 ? (
             <div className="space-y-6">
-              {essays.map((essay) => {
+              {personalEssays.map((essay) => {
                 const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
@@ -104,7 +114,7 @@ export default function WritingPage() {
               })}
             </div>
           ) : (
-            <p className="text-text-secondary">No essays found.</p>
+            <p className="text-text-secondary">No personal essays found.</p>
           )}
         </div>
       </div>

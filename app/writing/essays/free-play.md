@@ -1,8 +1,9 @@
 ---
 layout: post
 category: writing
-title: "I Ruined My Child's Fun. Again."
-date: '2020-10-09'
+title: '🎮 Free Play'
+date: '2020-09-25'
+tags: ["Personal"]
 ---
 
 Yesterday I did something I want to take back. I ruined the fun of my 8 year old when we were playing in the driveway. I wish I could say this is the first and last time that will happen, but I've done this before. I always do this. I played sports as a kid and I loved nothing more than practicing by myself in the driveway, making up drills and challenges that were fun but stretched me beyond my immediate skill level. My youngest son isn't like me. He likes playing sports, but doesn't really want to get better. He says he does, but he doesn't have that knack for practice that will lead to actual improvement. He has natural ability so he's more than capable, but he tends to stop quickly when things get a little tough.
@@ -19,6 +20,6 @@ I'm going to try again today after work and this time, we're going to play how h
 
 I'd like to share an excerpt from a commencement speech referenced in the aforementioned book I was reading, The Coddling of the American Mind by Greg Lukianoff and Jonathan Haidt:
 
-> From time to time in the years to come, I hope you will be treated unfairly, so that you will come to know the value of justice. I hope that you will suffer betrayal because that will teach you the importance of loyalty. Sorry to say, but I hope you will be lonely from time to time so that you don’t take friends for granted. I wish you bad luck, again, from time to time so that you will be conscious of the role of chance in life and understand that your success is not completely deserved and that the failure of others is not completely deserved either. And when you lose, as you will from time to time, I hope every now and then, your opponent will gloat over your failure. It is a way for you to understand the importance of sportsmanship. I hope you’ll be ignored so you know the importance of listening to others, and I hope you will have just enough pain to learn compassion. Whether I wish these things or not, they’re going to happen. And whether you benefit from them or not will depend upon your ability to see the message in your misfortunes.
+> From time to time in the years to come, I hope you will be treated unfairly, so that you will come to know the value of justice. I hope that you will suffer betrayal because that will teach you the importance of loyalty. Sorry to say, but I hope you will be lonely from time to time so that you don't take friends for granted. I wish you bad luck, again, from time to time so that you will be conscious of the role of chance in life and understand that your success is not completely deserved and that the failure of others is not completely deserved either. And when you lose, as you will from time to time, I hope every now and then, your opponent will gloat over your failure. It is a way for you to understand the importance of sportsmanship. I hope you'll be ignored so you know the importance of listening to others, and I hope you will have just enough pain to learn compassion. Whether I wish these things or not, they're going to happen. And whether you benefit from them or not will depend upon your ability to see the message in your misfortunes.
 
 This passage speaks to the value of the personal experiences that occur organically throughout our lives. It's also more evidence of how little control I really have over the lives of my kids. I can guide them up to a point, but most of the things I've learned have come from the things I experienced over time, many of which were painful mistakes. Letting go of control is a hard fought concept, and I hope someday I figure out how to do it.

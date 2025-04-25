@@ -89,6 +89,10 @@ body {
   overflow-x: hidden;
 }
 
+h2 { 
+  @apply mb-6 text-5xl font-bold font-display;
+}
+
 p, ul, ol {
   @apply mb-12 font-body font-[400] leading-loose;
 }
