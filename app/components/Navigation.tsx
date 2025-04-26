@@ -46,7 +46,7 @@ export default function Navigation() {
   const [isFirstLoad, setIsFirstLoad] = useState(true)
   const [isDisclosureOpen, setIsDisclosureOpen] = useState(false)
   const { openProject } = useProjectSidebar()
-  const { setIsLoading } = useLoading()
+  const { initiateLoading } = useLoading()
 
   // Animation constants
   const ENTER_DELAY = 0.15
@@ -79,13 +79,11 @@ export default function Navigation() {
     localStorage.setItem('projectDisclosureOpen', newState.toString())
   }
 
-  // Update handleLinkClick to accept href
+  // Update handleLinkClick to call initiateLoading
   const handleLinkClick = (href: string) => {
-    // Only set loading if the target href is different from the current pathname
     if (href !== pathname) {
-      setIsLoading(true);
+      initiateLoading(300);
     }
-    // If href === pathname, do nothing, letting the link click proceed normally (no visual loading state)
   };
 
   // Project links for the Work disclosure

@@ -8,7 +8,7 @@ import { useLoading } from '../contexts/LoadingContext'
 export function NavigationEvents() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const { setIsLoading } = useLoading();
+  const { completeLoading } = useLoading();
   // Store previous path to compare
   const previousPathRef = useRef<string | null>(null);
 
@@ -18,29 +18,32 @@ export function NavigationEvents() {
     const currentPath = `${pathname}?${searchParams}`;
     const previousPath = previousPathRef.current;
 
-    // This effect now only handles the completion/cleanup side.
-    // When the component renders for the new path, we assume navigation is done
-    // (or finishing) and clean up the loading state.
+    // Start NProgress immediately if path changed (visual only, no state change here)
+    if (previousPath !== null && previousPath !== currentPath) {
+        NProgress.start(); 
+        // We no longer set isLoading=true here
+    }
+
+    // When the component renders for the new path, call completeLoading.
     const timer = setTimeout(() => {
         if (NProgress.isStarted()) {
-            NProgress.done(); // Ensure NProgress bar finishes
+            NProgress.done(); 
         }
-        setIsLoading(false); // Ensure our spinner hides
-    }, 1); // Use a very small delay
+        completeLoading(); // <-- Call completeLoading
+    }, 1); 
 
-    // Update previous path ref
     previousPathRef.current = currentPath;
 
-    // Cleanup: Still useful if component unmounts unexpectedly mid-transition.
+    // Cleanup
     return () => {
         clearTimeout(timer);
         if (NProgress.isStarted()) {
             NProgress.done();
         }
-        setIsLoading(false);
+        completeLoading(); // <-- Call completeLoading on cleanup too
     };
-  // Include setIsLoading in dependencies
-  }, [pathname, searchParams, setIsLoading]); 
+  // Add completeLoading to dependencies
+  }, [pathname, searchParams, completeLoading]); 
 
   return null; // This component is only for side effects
 } 
