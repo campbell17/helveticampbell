@@ -19,7 +19,7 @@ const gridFragmentShader = `
   
   void main() {
     vec2 uv = vUv * 180.0;
-    float t = time * 0.15;
+    float t = time * 0.05;
     
     // Create a grid pattern
     vec2 grid = fract(uv);
