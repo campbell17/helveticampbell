@@ -206,8 +206,9 @@ export default function SceneBackground() {
     grid.position.y = -150
     scene.add(grid)
     
-    // --- Event Listeners & Animation Loop --- 
-
+    // Capture containerRef.current for cleanup
+    const currentContainer = containerRef.current;
+    
     // Scroll handler (now unconditional)
     const handleScroll = () => {
       scrollStateRef.current.target = window.scrollY
@@ -323,13 +324,19 @@ export default function SceneBackground() {
          cameraRef.current = null
       }
       
-      // Remove canvas
-      if (containerRef.current) {
-         const existingCanvas = containerRef.current.querySelector('canvas')
+      // Remove canvas using the captured reference
+      if (currentContainer) { // Check if the captured ref exists
+         const existingCanvas = currentContainer.querySelector('canvas')
          if (existingCanvas) {
-           containerRef.current.removeChild(existingCanvas)
+           currentContainer.removeChild(existingCanvas)
          }
       }
+      // Nullify refs
+      rendererRef.current = null;
+      sceneRef.current = null;
+      gridRef.current = null;
+      cameraRef.current = null;
+      animationFrameRef.current = null;
     }
   }, [lookAtTarget]) // Run only ONCE on mount (lookAtTarget is stable)
   
