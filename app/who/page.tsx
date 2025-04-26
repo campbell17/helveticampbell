@@ -4,9 +4,9 @@ import { H1, H2, H3 } from '../components/Typography'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function HomePage() {
+export default function WhoPage() {
   return (
-    <>
+    <div className="max-w-4xl">
       <H1>Tim Campbell</H1>
       
       <div className="subheading">
@@ -47,6 +47,6 @@ export default function HomePage() {
       <p>Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.</p>
       <p>Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.</p>
 
-    </>
+    </div>
   )
 } 

@@ -37,21 +37,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// Function to replace image tags with Next.js Image components
-function replaceImagesWithNextImage(html: string, images: ImageReference[]): string {
-  if (!html || images.length === 0) return html;
-  
-  let updatedHtml = html;
-  
-  // Replace markdown image syntax
-  images.forEach(image => {
-    const imgRegex = new RegExp(`<img[^>]*src=["']${image.src.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}["'][^>]*>`, 'g');
-    updatedHtml = updatedHtml.replace(imgRegex, `<span class="next-image" data-src="${image.src}" data-alt="${image.alt}"></span>`);
-  });
-  
-  return updatedHtml;
-}
-
 // Page component - updated to handle params as a Promise
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   let essay;
@@ -69,9 +54,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     month: 'long',
     day: 'numeric',
   });
-  
-  // Process HTML to replace image tags with placeholders
-  const processedHtml = replaceImagesWithNextImage(essay.html, essay.images);
   
   return (
     <>
@@ -105,53 +87,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       
       <div 
         className="prose prose-invert max-w-none essay-content"
-        dangerouslySetInnerHTML={{ __html: processedHtml }}
-      />
-      
-      {/* Render each image using Next.js Image component */}
-      {essay.images.map((image, index) => (
-        <Image
-          key={`${image.src}-${index}`}
-          src={image.src}
-          alt={image.alt}
-          width={800}
-          height={600}
-          className="hidden next-image-component"
-          data-src={image.src}
-        />
-      ))}
-      
-      {/* Client-side script to replace image placeholders with actual Next.js Image components */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function() {
-              document.addEventListener('DOMContentLoaded', function() {
-                const placeholders = document.querySelectorAll('.next-image');
-                const nextImages = document.querySelectorAll('.next-image-component');
-                const nextImagesMap = {};
-                
-                // Create a map of images by src
-                nextImages.forEach(img => {
-                  const src = img.getAttribute('data-src');
-                  if (src) {
-                    nextImagesMap[src] = img.cloneNode(true);
-                  }
-                });
-                
-                // Replace placeholders with actual images
-                placeholders.forEach(placeholder => {
-                  const src = placeholder.getAttribute('data-src');
-                  if (src && nextImagesMap[src]) {
-                    const img = nextImagesMap[src];
-                    img.className = 'next-image-rendered';
-                    placeholder.parentNode.replaceChild(img, placeholder);
-                  }
-                });
-              });
-            })();
-          `,
-        }}
+        dangerouslySetInnerHTML={{ __html: essay.html }}
       />
     </>
   );
