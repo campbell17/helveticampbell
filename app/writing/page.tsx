@@ -46,7 +46,7 @@ export default function WritingPage() {
                 return (
                   <article key={essay.slug} className="">
                     <Link href={`/writing/${essay.slug}`} className="group block bg-white p-10 shadow-2xl hover:shadow-xs rounded-lg hover:bg-neutral-50 transition-all duration-100">
-                      <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="!text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
                         {essay.title}
                       </h3>
                       
@@ -86,7 +86,7 @@ export default function WritingPage() {
         </div>
 
         <div className="md:col-span-1">
-          <h2 className="text-xl font-bold mb-6">Story Time</h2>
+          <h2 className="!text-3xl font-bold mb-6">Story Time</h2>
           
           {personalEssays.length > 0 ? (
             <div className="divide-y divide-neutral-200/80">
@@ -98,9 +98,9 @@ export default function WritingPage() {
                 });
                 
                 return (
-                  <div key={essay.slug} className="py-4 first:pt-0">
-                    <Link href={`/writing/${essay.slug}`} className="block group">
-                      <h3 className="font-medium group-hover:text-primary transition-colors duration-300">
+                  <div key={essay.slug} className="">
+                    <Link href={`/writing/${essay.slug}`} className="block group p-4 hover:bg-neutral-50 ">
+                      <h3 className="font-medium !text-lg !mb-0 group-hover:text-primary transition-colors duration-300">
                         {essay.title}
                       </h3>
                       <time dateTime={essay.date} className="text-sm text-text-secondary">
