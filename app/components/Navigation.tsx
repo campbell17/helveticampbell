@@ -82,7 +82,7 @@ export default function Navigation() {
   // Update handleLinkClick to call initiateLoading
   const handleLinkClick = (href: string) => {
     if (href !== pathname) {
-      initiateLoading(300);
+      initiateLoading(600);
     }
   };
 
