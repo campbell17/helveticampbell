@@ -9,6 +9,8 @@ import Image from 'next/image'
 import { ChevronUpDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline'
 import { useProjectSidebar } from '../contexts/ProjectSidebarContext'
+import { useLoading } from '../contexts/LoadingContext'
+import LoadingLogo from './LoadingLogo'
 
 // Define types for project items
 interface ProjectItem {
@@ -36,16 +38,16 @@ interface NavigationComponentProps {
   handleDisclosureChange: () => void;
   openProject: (key: string) => void;
   animationConstants: AnimationConstants;
+  handleLinkClick: () => void;
 }
 
 export default function Navigation() {
   const pathname = usePathname()
   const [isFirstLoad, setIsFirstLoad] = useState(true)
   const [isDisclosureOpen, setIsDisclosureOpen] = useState(false)
-  
-  // Get the openProject function from context
   const { openProject } = useProjectSidebar()
-  
+  const { setIsLoading } = useLoading()
+
   // Animation constants
   const ENTER_DELAY = 0.15
   const ENTER_DURATION = 0.15
@@ -61,7 +63,6 @@ export default function Navigation() {
   
   // Load disclosure state from localStorage on initial render
   useEffect(() => {
-    // Only run in the browser, not during SSR
     if (typeof window !== 'undefined') {
       const savedState = localStorage.getItem('projectDisclosureOpen')
       if (savedState !== null) {
@@ -77,6 +78,15 @@ export default function Navigation() {
     setIsDisclosureOpen(newState)
     localStorage.setItem('projectDisclosureOpen', newState.toString())
   }
+
+  // Handler to set loading state on click
+  const handleLinkClick = () => {
+    // Don't set loading if navigating to the same page
+    // (though NProgress would handle this too)
+    // This check is mainly for visual consistency if needed.
+    // For now, let's always trigger it, NavigationEvents will clear it.
+    setIsLoading(true);
+  };
 
   // Project links for the Work disclosure
   const projects: ProjectItem[] = [
@@ -105,6 +115,7 @@ export default function Navigation() {
             disclosureDuration: DISCLOSURE_DURATION,
             disclosureEase: DISCLOSURE_EASE
           }}
+          handleLinkClick={handleLinkClick}
         />
       </div>
 
@@ -125,6 +136,7 @@ export default function Navigation() {
             disclosureDuration: DISCLOSURE_DURATION,
             disclosureEase: DISCLOSURE_EASE
           }}
+          handleLinkClick={handleLinkClick}
         />
       </div>
     </>
@@ -138,12 +150,18 @@ function MobileNavigation({
   isDisclosureOpen, 
   handleDisclosureChange, 
   openProject,
-  animationConstants
+  animationConstants,
+  handleLinkClick
 }: NavigationComponentProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
+  const closeAndNavigate = () => {
+    handleLinkClick();
+    setMobileMenuOpen(false);
   };
   
   return (
@@ -160,16 +178,14 @@ function MobileNavigation({
           }
         }}
       >
-        {/* Site logo */}
-        <Link href="/">
-          <div className="relative transition-colors duration-200 h-8 w-10">
+        <Link href="/" onClick={handleLinkClick}>
+          <LoadingLogo sizeClasses="h-8 w-10" className="transition-colors duration-200">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.87 51.26" className="h-full w-full">
               <path d="M61.73,31.25c.47-4.22-.3-7.16-2.31-8.82-2-1.66-4.86-2.49-8.56-2.5h0s-5.94,0-5.94,0L49.16,0h-9.63l-4.28,19.93h-9.83L29.71,0h-12.32c-2.41,0-4.67.39-6.77,1.19C6.71,2.69,3.79,5.39,1.84,9.29.18,12.61-.36,15.54.23,18.08c.59,2.54,2.88,4.55,6.86,6.01l3.55-7.09c-1.03-.41-1.85-1-2.45-1.77-.79-1.08-.78-2.44.04-4.08,1.17-2.33,3.24-3.59,6.23-3.78,1.16-.07,2.5.04,4.02.34l-9.02,42.31h9.63l5.01-23.55h9.83l-5.01,23.55h8.84c1.66.82,3.75,1.24,6.31,1.24,4.76,0,8.71-1.69,11.86-5.08,1.97-2.1,3.29-4.33,3.96-6.68h-7.9c-.49,1.56-1.22,2.82-2.19,3.8-.97.98-2.36,1.47-4.17,1.47-2.55,0-4.03-1.23-4.43-3.69-.22-1.32-.1-3.07.35-5.24.49-2.28,1.13-4.11,1.93-5.48,1.5-2.59,3.56-3.88,6.16-3.88,1.83,0,3.05.6,3.67,1.79.42.89.58,1.88.49,2.99h7.93Z"/>
             </svg>
-          </div>
+          </LoadingLogo>
         </Link>
         
-        {/* Hamburger menu button - positioned with higher z-index */}
         <button
           onClick={toggleMobileMenu}
           className="cursor-pointer flex items-center justify-center p-2 rounded-md focus:outline-none relative z-50"
@@ -183,7 +199,6 @@ function MobileNavigation({
         </button>
       </motion.div>
       
-      {/* Full screen mobile navigation menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
@@ -208,21 +223,21 @@ function MobileNavigation({
               <Link 
                 href="/work" 
                 className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/work" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={closeAndNavigate}
               >
                 Work
               </Link>
               <Link 
                 href="/writing" 
                 className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/writing" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={closeAndNavigate}
               >
                 Writing
               </Link>
               <Link 
                 href="/who" 
                 className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/who" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={closeAndNavigate}
               >
                 Who
               </Link>
@@ -241,7 +256,8 @@ function DesktopNavigation({
   isDisclosureOpen, 
   handleDisclosureChange, 
   openProject,
-  animationConstants
+  animationConstants,
+  handleLinkClick
 }: NavigationComponentProps) {
   const textStyles = 'font-helveticampbell font-[900] tracking-normal text-xl relative px-1 transition-colors duration-200 p-1'
   
@@ -258,21 +274,20 @@ function DesktopNavigation({
         }
       }}
     >
-      {/* Site logo */}
-      <Link href="/">
-        <div className="relative transition-colors duration-200 h-9 w-12">
+      <Link href="/" onClick={handleLinkClick}>
+        <LoadingLogo sizeClasses="h-9 w-12" className="transition-colors duration-200">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.87 51.26" className="h-full w-full">
             <path d="M61.73,31.25c.47-4.22-.3-7.16-2.31-8.82-2-1.66-4.86-2.49-8.56-2.5h0s-5.94,0-5.94,0L49.16,0h-9.63l-4.28,19.93h-9.83L29.71,0h-12.32c-2.41,0-4.67.39-6.77,1.19C6.71,2.69,3.79,5.39,1.84,9.29.18,12.61-.36,15.54.23,18.08c.59,2.54,2.88,4.55,6.86,6.01l3.55-7.09c-1.03-.41-1.85-1-2.45-1.77-.79-1.08-.78-2.44.04-4.08,1.17-2.33,3.24-3.59,6.23-3.78,1.16-.07,2.5.04,4.02.34l-9.02,42.31h9.63l5.01-23.55h9.83l-5.01,23.55h8.84c1.66.82,3.75,1.24,6.31,1.24,4.76,0,8.71-1.69,11.86-5.08,1.97-2.1,3.29-4.33,3.96-6.68h-7.9c-.49,1.56-1.22,2.82-2.19,3.8-.97.98-2.36,1.47-4.17,1.47-2.55,0-4.03-1.23-4.43-3.69-.22-1.32-.1-3.07.35-5.24.49-2.28,1.13-4.11,1.93-5.48,1.5-2.59,3.56-3.88,6.16-3.88,1.83,0,3.05.6,3.67,1.79.42.89.58,1.88.49,2.99h7.93Z"/>
           </svg>
-        </div>
+        </LoadingLogo>
       </Link>
 
-      {/* Work link with dropdown */}
       <div className="relative w-full">
         <div className="flex flex-col items-start w-full">
           <Link 
             href="/work" 
             className={`${textStyles} w-full ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+            onClick={handleLinkClick}
           >
             Work
             <AnimatePresence mode="wait">
@@ -299,7 +314,6 @@ function DesktopNavigation({
             </AnimatePresence>
           </Link>
           
-          {/* Dropdown toggle button */}
           <button
             onClick={handleDisclosureChange}
             className="cursor-pointer absolute right-0 top-1 flex items-start p-1"
@@ -313,7 +327,6 @@ function DesktopNavigation({
             </motion.div>
           </button>
           
-          {/* Projects dropdown */}
           <AnimatePresence initial={false}>
             {isDisclosureOpen && (
               <motion.div 
@@ -373,6 +386,7 @@ function DesktopNavigation({
       <Link 
         href="/writing" 
         className={`${textStyles} ${pathname === "/writing" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+        onClick={handleLinkClick}
       >
         Writing
         <AnimatePresence mode="wait">
@@ -403,6 +417,7 @@ function DesktopNavigation({
       <Link 
         href="/who" 
         className={`${textStyles} ${pathname === "/who" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+        onClick={handleLinkClick}
       >
         Who
         <AnimatePresence mode="wait">
