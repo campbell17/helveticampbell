@@ -95,31 +95,28 @@ export default function SceneBackground() {
     let targetRotationX = 0
     let targetRotationZ = 0
     
-    switch (path) {
-      case '/':
-        targetX = 50
-        targetRotationX = 0
-        targetRotationZ = 0
-        break
-      case '/work':
-        targetX = 100
-        targetRotationX = -0.05
-        targetRotationZ = 0.02
-        break
-      case '/writing':
-        targetX = 160
-        targetRotationX = 0.05
-        targetRotationZ = -0.02
-        break
-      case '/who':
-        targetX = 220
-        targetRotationX = 0.03
-        targetRotationZ = 0.04
-        break
-      default:
-        targetX = 50
-        targetRotationX = 0
-        targetRotationZ = 0
+    // Use if/else if to handle path patterns
+    if (path === '/') {
+      targetX = 50
+      targetRotationX = 0
+      targetRotationZ = 0
+    } else if (path === '/work') {
+      targetX = 100
+      targetRotationX = -0.05
+      targetRotationZ = 0.02
+    } else if (path.startsWith('/writing')) { // Check if path starts with /writing
+      targetX = 160
+      targetRotationX = 0.05
+      targetRotationZ = -0.02
+    } else if (path === '/who') {
+      targetX = 220
+      targetRotationX = 0.03
+      targetRotationZ = 0.04
+    } else {
+      // Default to home settings for any other path
+      targetX = 50
+      targetRotationX = 0
+      targetRotationZ = 0
     }
     
     return { targetX, targetRotationX, targetRotationZ }
