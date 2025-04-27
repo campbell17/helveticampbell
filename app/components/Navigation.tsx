@@ -144,10 +144,6 @@ export default function Navigation() {
 // Mobile Navigation Component
 function MobileNavigation({ 
   pathname, 
-  projects, 
-  isDisclosureOpen, 
-  handleDisclosureChange, 
-  openProject,
   animationConstants,
   handleLinkClick
 }: NavigationComponentProps) {
@@ -257,7 +253,7 @@ function DesktopNavigation({
   animationConstants,
   handleLinkClick
 }: NavigationComponentProps) {
-  const textStyles = 'font-helveticampbell font-[900] tracking-normal text-xl relative px-1 transition-colors duration-200 p-1'
+  const textStyles = 'rounded-md font-helveticampbell font-[900] tracking-normal text-xl relative px-1 transition-colors duration-200 p-1'
   
   return (
     <motion.div 
@@ -291,7 +287,7 @@ function DesktopNavigation({
             <AnimatePresence mode="wait">
               {pathname === "/work" && (
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-black rounded-full"
+                  className="absolute bottom-4 left-16 right-8 h-[2px] bg-black rounded-full"
                   style={{ transformOrigin: 'left' }}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -328,7 +324,7 @@ function DesktopNavigation({
           <AnimatePresence initial={false}>
             {isDisclosureOpen && (
               <motion.div 
-                className="mt-4 space-y-2 w-full overflow-hidden"
+                className="mt-4 space-y-2 w-full"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ 
                   height: 'auto', 
@@ -367,7 +363,7 @@ function DesktopNavigation({
                         }
                       }}
                       onClick={() => openProject(project.key)}
-                      className={`cursor-pointer flex items-center pl-2 rounded-full hover:bg-gradient-to-tr from-slate-50/50 via-teal-50/50 to-red-50/50 justify-between text-xs font-bold py-1 uppercase !font-body ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group w-full`}
+                      className={`cursor-pointer flex items-center pl-2 rounded-md hover:bg-gradient-to-tr from-slate-50/50 via-teal-50/50 to-red-50/50 justify-between text-xs font-bold py-1 uppercase !font-body ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group w-full`}
                     >
                       {project.name}
                       <ArrowLeftStartOnRectangleIcon className="opacity-0 group-hover:opacity-100 mr-1.5 h-4 w-4 transition-opacity" />
@@ -390,7 +386,7 @@ function DesktopNavigation({
         <AnimatePresence mode="wait">
           {pathname === "/writing" && (
             <motion.div
-              className="absolute bottom-0 left-0 right-0 h-[2px] bg-black rounded-full"
+              className="absolute bottom-4 left-20 right-0 h-[2px] bg-black rounded-full"
               style={{ transformOrigin: 'left' }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
@@ -421,7 +417,7 @@ function DesktopNavigation({
         <AnimatePresence mode="wait">
           {pathname === "/who" && (
             <motion.div
-              className="absolute bottom-0 left-0 right-0 h-[2px] bg-black rounded-full"
+              className="absolute bottom-4 left-14 right-0 h-[2px] bg-black"
               style={{ transformOrigin: 'left' }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}

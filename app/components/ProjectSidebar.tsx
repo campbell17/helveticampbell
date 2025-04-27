@@ -61,11 +61,13 @@ interface ProjectDetails {
   description?: string;
   content?: React.ReactNode;
   images?: ImageData[];
+  roles?: string[];
 }
 
 // Project data from the original Sidebar component
 const projectDetails: Record<string, ProjectDetails> = {
   "Fulcrum": {
+    roles: ["Case Study", "UI/UX", "Branding", "Product Design", "Marketing"],
     title: "Fulcrum: Designing a Field Operations Platform",
     description: "As the sole designer for Fulcrum from its early stages, I led the product's visual and user experience evolution over several years, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
     content: (
@@ -1206,13 +1208,22 @@ export default function ProjectSidebar({
                 <div className="mx-auto">               
 
                   {/* Role Details */}
-                  <div className="flex gap-8 mb-8">
-                    <Overline className="!text-lg">Case Study</Overline>
-                    <Overline className="!text-lg">UI/UX</Overline>
-                    <Overline className="!text-lg">Branding</Overline>
-                    <Overline className="!text-lg">App Design</Overline>
-                    <Overline className="!text-lg">Marketing</Overline>
-                  </div>
+                  <motion.div 
+                    key={`roles-${projectKey}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: isTransitioning ? 0 : 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ 
+                      duration: 0.4,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <div className="flex flex-wrap mb-8">
+                      {project?.roles?.map((role, index) => (
+                        <Overline key={`role-${index}`} className="!text-lg mr-8">{role}</Overline>
+                      ))}
+                    </div>
+                  </motion.div>
 
                   {/* Project Title */}
                   <motion.div 

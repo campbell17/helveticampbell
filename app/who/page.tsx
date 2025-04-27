@@ -10,20 +10,20 @@ export default function WhoPage() {
       <H1>Tim Campbell</H1>
       
       <div className="subheading">
-        The TL;DR and the TL;S<em>(still)</em>R.
+        The TL;DR and the Long Version.
       </div>
 
       <H2 className="mb-8">The Short Version</H2>
 
       <ul className="space-y-4 list-disc list-outside ml-5">
         <li>
-          I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer">Fulcrum</Link> for its first 10 years while it grew from a simple idea to $12M+ ARR with 2,000+ customers.
+          I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer">Fulcrum</Link> for its first 10 years while it grew from an idea on a whiteboard to $12M+ in ARR with 2,000+ customers.
         </li>
         <li>
           This included web app, mobile Apps, branding, marketing website, print materials.
         </li>
         <li>
-          I&apos;m used to working with Rails, HTML, CSS, as well as JS/React. They didn&apos;t ask me to learn how to code. I did it to speed us up. 
+          I&apos;m comfortable working with Rails, HTML, CSS, as well as JS/React. They didn&apos;t ask me to learn how to code. I did it to speed us up. 
         </li>
         <li>
           In addition to working on Fulcrum, I was also solely responsible for designing and shipping the branding, website, and print / trade show materials for our parent company, Spatial Networks.
