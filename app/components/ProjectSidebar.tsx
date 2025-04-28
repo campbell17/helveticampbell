@@ -98,7 +98,7 @@ const PreTransition = ({
             ease: "easeInOut",
             exit: PRE_TRANSITION_TIMING.exit
           }}
-          className="fixed inset-0 xl:inset-y-0 xl:right-0 xl:left-auto xl:w-4/5 bg-black z-sidebar flex items-center justify-center"
+          className="fixed inset-0 bg-black z-sidebar flex items-center justify-center"
         >
           <motion.h1 
             initial={{ opacity: 0 }}
@@ -309,7 +309,7 @@ export default function ProjectSidebar({
               ease: SIDEBAR_TIMING.enter.ease,
               delay: 0, // No delay for entrance
             }}
-            className="fixed inset-0 xl:inset-y-0 xl:right-0 xl:left-auto xl:w-4/5 bg-[#f7f8fa] backdrop-blur-xs  shadow-2xl shadow-black z-sidebar overflow-hidden"
+            className="fixed inset-0 bg-[#f7f8fa] backdrop-blur-xs  shadow-2xl shadow-black z-sidebar overflow-hidden"
           >
             {/* Simple grid background pattern */}
             <div 
@@ -335,7 +335,7 @@ export default function ProjectSidebar({
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
               onClick={handleClose}
-              className={`cursor-pointer fixed xl:absolute right-6 text-black/60 hover:text-black transition-all z-[1000] flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10 ${isScrolled ? 'top-6 w-12 h-12' : ' top-6 w-12 h-12'}`}
+              className={`cursor-pointer fixed right-6 text-black/60 hover:text-black transition-all z-[1000] flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10 ${isScrolled ? 'top-6 w-12 h-12' : ' top-6 w-12 h-12'}`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -460,7 +460,7 @@ export default function ProjectSidebar({
                 // Navigate to previous project with transition
                 handleProjectTransition(prevProjectKey);
               }}
-              className="cursor-pointer fixed xl:absolute left-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+              className="cursor-pointer fixed left-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
               aria-label="Previous Project"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -490,7 +490,7 @@ export default function ProjectSidebar({
                 // Navigate to next project with transition
                 handleProjectTransition(nextProjectKey);
               }}
-              className="cursor-pointer fixed xl:absolute right-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+              className="cursor-pointer fixed right-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
               aria-label="Next Project"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -131,8 +131,12 @@ export const projectDetails: Record<string, ProjectDetails> = {
   "Branding": {
     content: BrandingContent, 
     images: [
-      { src: "/images/work/isolated/iso-allinspections-icon.jpg", alt: "Allinspections Icon" },
-      { src: "/images/work/isolated/iso-allinspections-logo.jpg", alt: "Allinspections Logo" },
+      { src: "/images/work/isolated/iso-liminallab-icon.jpg", alt: "Liminal Lab mark" },
+      { src: "/images/work/isolated/iso-liminallab-logo.jpg", alt: "Liminal Lab Logo" },
+      { src: "/images/work/isolated/iso-cercana-icon.jpg", alt: "Cercana Systems mark" },
+      { src: "/images/work/isolated/iso-cercana-logo.jpg", alt: "Cercana Systems Logo" },
+      { src: "/images/work/isolated/iso-exploding-tuba-icon.jpg", alt: "Exploding Tuba Studios mark" },
+      { src: "/images/work/isolated/iso-exploding-tuba-logo.jpg", alt: "Exploding Tuba Studios Logo" },      
       { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks Icon" },
       { src: "/images/work/isolated/iso-sni-logo.jpg", alt: "Spatial Networks Logo" },
       { src: "/images/work/isolated/iso-foresight-icon.jpg", alt: "Foresight Icon" },
@@ -141,14 +145,10 @@ export const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/isolated/iso-fulcrum-logo.jpg", alt: "Fulcrum Logo" },
       { src: "/images/work/isolated/iso-fulcrum-icon-og.jpg", alt: "Fulcrum Icon OG" },
       { src: "/images/work/isolated/iso-fulcrum-logo-og.jpg", alt: "Fulcrum Logo OG" },
+      { src: "/images/work/isolated/iso-allinspections-icon.jpg", alt: "Allinspections Icon" },
+      { src: "/images/work/isolated/iso-allinspections-logo.jpg", alt: "Allinspections Logo" },
       { src: "/images/work/isolated/iso-fulcrum-logo-live.jpg", alt: "Fulcrum Logo Live" },
       { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide Logo" },
-      { src: "/images/work/isolated/iso-liminallab-icon.jpg", alt: "Liminal Lab mark" },
-      { src: "/images/work/isolated/iso-liminallab-logo.jpg", alt: "Liminal Lab Logo" },
-      { src: "/images/work/isolated/iso-cercana-icon.jpg", alt: "Cercana Systems mark" },
-      { src: "/images/work/isolated/iso-cercana-logo.jpg", alt: "Cercana Systems Logo" },
-      { src: "/images/work/isolated/iso-exploding-tuba-icon.jpg", alt: "Exploding Tuba Studios mark" },
-      { src: "/images/work/isolated/iso-exploding-tuba-logo.jpg", alt: "Exploding Tuba Studios Logo" },      
     ]
   },
   "Personal": {
