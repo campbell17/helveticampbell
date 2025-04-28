@@ -7,40 +7,10 @@ const PersonalContent: React.FC = () => {
   return (
     <>
       <div className="p-20 pb-28">
-        <div className="flex flex-wrap mb-8">
-          <Overline className="!text-lg mr-8">Drawing</Overline>
-          <Overline className="!text-lg mr-8">Painting</Overline>
-          <Overline className="!text-lg mr-8">Photography</Overline>
-        </div>
         <H1 className="mb-4">Personal</H1>
         <p className="subheading">As the primary designer for Fulcrum's first decade, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
       </div>
-      {/* <div className="p-20 pt-0"> */}
-      {/* Stats Callout */}
-      <div className="w-full bg-rose-50 pt-12 pb-16 px-20 border-y border-rose-100">
-        <div className="w-full 2xl:max-w-7xl mx-auto">
-          <Overline>Company Overview</Overline>
-          <H2>From Startup to Enterprise Platform</H2>
-          <p className="text-lg max-w-3xl mb-8">
-            Fulcrum evolved from a small Florida startup to a global leader in field operations software, serving thousands of organizations across diverse industries.
-          </p>        
 
-          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
-              <p className="text-4xl font-bold mb-1">3,000+</p>
-              <p className="text-sm text-pink-900/70">Organizations</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
-              <p className="text-4xl">50,000+</p>
-              <p className="text-sm text-pink-900/70">Users</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
-              <p className="text-4xl font-bold mb-1">100+</p>
-              <p className="text-sm text-pink-900/70">Countries</p>
-            </div>
-          </div> */}
-        </div>
-      </div>
       <div className="bg-white border-b border-border">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6">
           {/* First row */}
