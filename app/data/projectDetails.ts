@@ -17,19 +17,13 @@ export interface ImageData {
 }
 
 export interface ProjectDetails {
-  title: string;
-  description?: string;
   content?: React.ComponentType<any>; // Reference to a component type
   images?: ImageData[];
-  roles?: string[];
 }
 
 // Project data moved from ProjectSidebar.tsx
 export const projectDetails: Record<string, ProjectDetails> = {
   "Fulcrum": {
-    roles: ["UI/UX", "Branding", "Product Design", "Marketing Design"],
-    title: "Fulcrum: Designing a Field Operations Platform",
-    description: "As the sole designer for Fulcrum's first decade, I led the product's visual and user experience evolution over several years, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
     content: FulcrumContent, 
     images: [
       { src: "/images/work/isolated/iso-fulcrum-icon-og.jpg", alt: "Fulcrum Icon OG" },
@@ -66,8 +60,6 @@ export const projectDetails: Record<string, ProjectDetails> = {
     ]
   },
   "Spatial Networks": {
-    title: "Spatial Networks",
-    description: "Our parent company and Fulcrum's first customer.",
     content: SpatialNetworksContent, 
     images: [
       { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks Icon" },
@@ -89,8 +81,6 @@ export const projectDetails: Record<string, ProjectDetails> = {
     ]
   },
   "Allinspections": {
-    title: "Allinspections",
-    description: "Precursor to Fulcrum and my first product at Spatial Networks.",
     content: AllinspectionsContent, 
     images: [
       { src: "/images/work/isolated/iso-allinspections-icon.jpg", alt: "Allinspections Icon" },
@@ -115,8 +105,6 @@ export const projectDetails: Record<string, ProjectDetails> = {
     ]
   },
   "Divide": {
-    title: "Divide",
-    description: "Branding, UI, game menus, HUD, icons, AR assets, world-building design.",
     content: DivideContent, 
     images: [
       { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide Logo" },
@@ -141,8 +129,6 @@ export const projectDetails: Record<string, ProjectDetails> = {
     ]
   },
   "Branding": {
-    title: "Branding",
-    description: "Various logos and identity work.",
     content: BrandingContent, 
     images: [
       { src: "/images/work/isolated/iso-allinspections-icon.jpg", alt: "Allinspections Icon" },
@@ -166,8 +152,6 @@ export const projectDetails: Record<string, ProjectDetails> = {
     ]
   },
   "Personal": {
-    title: "Personal",
-    description: "Drawing, painting, photography, creative side projects, and the like.",
     content: PersonalContent, 
     images: [
       { src: "/images/work/full/full-personal-painting-1.jpg", alt: "Painting 1" },

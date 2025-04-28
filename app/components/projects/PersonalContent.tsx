@@ -1,12 +1,15 @@
 import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
-// Import necessary components like Image, H1, H2 etc.
-// import { H1, H2, H3, Overline } from '../Typography';
+import Image from 'next/image';
 
-export default function PersonalContent() {
+const PersonalContent: React.FC = () => {
   return (
-    <>
-      {/* Content extracted from ProjectSidebar.tsx */}
+    <div className="p-20 pt-0">
+      <div className="mb-16">
+        <H1 className="mb-4">Personal</H1>
+        <p className="subheading">Drawing, painting, photography, creative side projects, and the like.</p>
+      </div>
+
       <div className="p-20 prose prose-lg prose-slate max-w-none">
         <p>
           Fourteen years ago, a geospatial technology company named Spatial Networks hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.
@@ -44,6 +47,8 @@ export default function PersonalContent() {
           Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.
         </p>
       </div>
-    </>
+    </div>
   );
-} 
+}
+
+export default PersonalContent; 

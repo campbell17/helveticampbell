@@ -1,53 +1,71 @@
 import React from 'react';
 import Image from 'next/image';
 import { H1, H2, H3, Overline } from '../Typography';
+import { projectDetails } from '../../data/projectDetails'; // Import project details
 
-export default function FulcrumContent() {
+const FulcrumContent: React.FC = () => {
+
+  const stats = [
+    { name: 'Organizations', stat: '3,000+' },
+    { name: 'Users', stat: '50,000+' },
+    { name: 'Countries', stat: '100+' },
+  ]
+
+
+  const shadowStyles = "shadow-slate-200/50 shadow-md"
+
   return (
     <>
+      <div className="p-20 pb-28">
+        <div className="flex flex-wrap mb-8">
+          <Overline className="!text-lg mr-8">UI/UX</Overline>
+          <Overline className="!text-lg mr-8">Branding</Overline>
+          <Overline className="!text-lg mr-8">Product Design</Overline>
+          <Overline className="!text-lg mr-8">Marketing Design</Overline>
+        </div>
+        <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Designing a Field Operations Platform</span></H1>
+        <p className="subheading">As the primary designer for Fulcrum's first decade, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
+      </div>
+      {/* <div className="p-20 pt-0"> */}
       {/* Stats Callout */}
-      <div className="w-full bg-indigo-50 pt-12 pb-16 px-20 border-y border-indigo-100">
+      <div className="w-full bg-rose-50 pt-12 pb-16 px-20 border-y border-rose-100">
         <div className="max-w-7xl mx-auto">
           <Overline>Company Overview</Overline>
           <H2>From Startup to Enterprise Platform</H2>
-          <p className="text-lg text-indigo-900/80 max-w-3xl mb-8">
+          <p className="text-lg max-w-3xl mb-8">
             Fulcrum evolved from a small Florida startup to a global leader in field operations software, serving thousands of organizations across diverse industries.
           </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl border border-indigo-100 shadow-sm">
-              <p className="text-4xl font-bold text-indigo-600 mb-1">190+</p>
-              <p className="text-sm text-indigo-900/70">Countries with active users</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-indigo-100 shadow-sm">
-              <p className="text-4xl font-bold text-indigo-600 mb-1">3000+</p>
-              <p className="text-sm text-indigo-900/70">Organizations worldwide</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-indigo-100 shadow-sm">
-              <p className="text-4xl font-bold text-indigo-600 mb-1">$12M+</p>
-              <p className="text-sm text-indigo-900/70">Annual recurring revenue</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-indigo-100 shadow-sm">
-              <p className="text-4xl font-bold text-indigo-600 mb-1">60+</p>
-              <p className="text-sm text-indigo-900/70">Team members</p>
-            </div>
+          <div>
+            <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3 font-sans">
+              {stats.map((item) => (
+                <div key={item.name} className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow shadow-rose-200/50 sm:p-6">
+                  <dt className="truncate text-sm font-medium text-neutral-500">{item.name}</dt>
+                  <dd className="mt-1 text-xl md:text-3xl font-semibold text-neutral-900">{item.stat}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
+
+          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
+              <p className="text-4xl font-bold mb-1">3,000+</p>
+              <p className="text-sm text-pink-900/70">Organizations</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
+              <p className="text-4xl">50,000+</p>
+              <p className="text-sm text-pink-900/70">Users</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
+              <p className="text-4xl font-bold mb-1">100+</p>
+              <p className="text-sm text-pink-900/70">Countries</p>
+            </div>
+          </div> */}
         </div>
       </div>
       <div className="bg-white border-b border-border">
-        <div className="px-4 grid grid-cols-1 sm:grid-cols-4 gap-4 lg:gap-6">
+        <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6">
           {/* First row */}
-          <div className="cursor-default relative group overflow-hidden rounded-xl">
-            <div className="relative" style={{ aspectRatio: '1' }}>
-              <Image 
-                src="/images/work/isolated/iso-fulcrum-icon-og.jpg"
-                alt="Fulcrum Icon OG"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
           
           <div className="cursor-default relative group overflow-hidden rounded-xl">
             <div className="relative" style={{ aspectRatio: '1' }}>
@@ -63,6 +81,28 @@ export default function FulcrumContent() {
           <div className="cursor-default relative group overflow-hidden rounded-xl">
             <div className="relative" style={{ aspectRatio: '1' }}>
               <Image 
+                src="/images/work/isolated/iso-fulcrum-logo-live.jpg"
+                alt="Fulcrum Logo Live"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          {/* <div className="cursor-default relative group overflow-hidden rounded-xl">
+            <div className="relative" style={{ aspectRatio: '1' }}>
+              <Image 
+                src="/images/work/isolated/iso-fulcrum-icon-og.jpg"
+                alt="Fulcrum Icon OG"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+          </div> */}
+          <div className="cursor-default relative group overflow-hidden rounded-xl">
+            <div className="relative" style={{ aspectRatio: '1' }}>
+              <Image 
                 src="/images/work/isolated/iso-fulcrum-logo.jpg"
                 alt="Fulcrum Logo"
                 fill
@@ -75,6 +115,41 @@ export default function FulcrumContent() {
           <div className="cursor-default relative group overflow-hidden rounded-xl">
             <div className="relative" style={{ aspectRatio: '1' }}>
               <Image 
+                src="/images/work/isolated/iso-fulcrum-sticker-1.jpg"
+                alt="Fulcrum Sticker 1"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          
+          <div className="cursor-default relative group overflow-hidden rounded-xl">
+            <div className="relative" style={{ aspectRatio: '1' }}>
+              <Image 
+                src="/images/work/isolated/iso-fulcrum-sticker-2.jpg"
+                alt="Fulcrum Sticker 2"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <div className="cursor-default relative group overflow-hidden rounded-xl">
+            <div className="relative" style={{ aspectRatio: '1' }}>
+              <Image 
+                src="/images/work/isolated/iso-fulcrum-button.jpg"
+                alt="Fulcrum Button"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          
+          {/* <div className="cursor-default relative group overflow-hidden rounded-xl">
+            <div className="relative" style={{ aspectRatio: '1' }}>
+              <Image 
                 src="/images/work/isolated/iso-fulcrum-icon.jpg"
                 alt="Fulcrum Logo"
                 fill
@@ -82,10 +157,109 @@ export default function FulcrumContent() {
                 className="object-cover"
               />
             </div>
-          </div>
-
+          </div> */}
         </div>
       </div>
+
+      {/* Feature Group */ }
+
+      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-0">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
+          <div className="relative lg:col-span-3">
+            <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]">
+              <img
+                alt=""
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-performance.png"
+                className="h-80 object-cover object-left"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-indigo-600">Performance</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">Lightning-fast builds</p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida justo et nulla efficitur, maximus
+                  egestas sem pellentesque.
+                </p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
+          </div>
+          <div className="relative lg:col-span-3">
+            <div className="absolute inset-px rounded-lg bg-white lg:rounded-tr-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-tr-[calc(2rem+1px)]">
+              <img
+                alt=""
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-releases.png"
+                className="h-80 object-cover object-left lg:object-right"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-indigo-600">Releases</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">Push to deploy</p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
+                  Curabitur auctor, ex quis auctor venenatis, eros arcu rhoncus massa, laoreet dapibus ex elit vitae
+                  odio.
+                </p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-tr-[2rem]" />
+          </div>
+          <div className="relative lg:col-span-2">
+            <div className="absolute inset-px rounded-lg bg-white lg:rounded-bl-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]">
+              <img
+                alt=""
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-speed.png"
+                className="h-80 object-cover object-left"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-indigo-600">Speed</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">Built for power users</p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
+                  Sed congue eros non finibus molestie. Vestibulum euismod augue.
+                </p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-bl-[2rem]" />
+          </div>
+          <div className="relative lg:col-span-2">
+            <div className="absolute inset-px rounded-lg bg-white" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
+              <img
+                alt=""
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-integrations.png"
+                className="h-80 object-cover"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-indigo-600">Integrations</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">Connect your favorite tools</p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
+                  Maecenas at augue sed elit dictum vulputate, in nisi aliquam maximus arcu.
+                </p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5" />
+          </div>
+          <div className="relative lg:col-span-2">
+            <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
+              <img
+                alt=""
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-network.png"
+                className="h-80 object-cover"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-indigo-600">Network</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950">Globally distributed CDN</p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
+                  Aenean vulputate justo commodo auctor vehicula in malesuada semper.
+                </p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
+          </div>
+        </div>
+      </div>
+    
 
       {/* Main Content Part 1 */}
       <div className="p-20">
@@ -165,9 +339,6 @@ export default function FulcrumContent() {
             <p>I led the complete rebuild of our data viewing and editing tool, focusing on speed, performance, and usability. The new interface introduced advanced filtering and sorting capabilities, customizable column displays, and significant performance improvements for handling large datasets.</p>
             <p><em>Reference: 2017-04-18-introducing-the-new-editor.md</em></p>
 
-            <H3>Multilingual Support (2014)</H3>
-            <p>I designed the localization framework for Fulcrum, enabling the mobile application to function in multiple languages. This significant user experience enhancement made the platform accessible to international users, supporting Spanish, French, and Portuguese interfaces with a design that could scale to additional languages.</p>
-            <p><em>Reference: 2014-03-04-fulcrum-mobile-in-spanish-french-portuguese.md</em></p>
           </div>
         </div>
       </div>
@@ -305,131 +476,46 @@ export default function FulcrumContent() {
       <div className="p-20 pb-28">
         <div className="max-w-none">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            {/* First row */}
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/isolated/iso-fulcrum-icon-og.jpg"
-                  alt="Fulcrum Icon OG"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
+          {/* Dynamically generated grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            {
+              // Filter out fullWidth images and map over the rest
+              projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).map((image, index) => (
+                <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
+                  <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
+                    <Image 
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              ))
+            }
             
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/isolated/iso-fulcrum-logo.jpg"
-                  alt="Fulcrum Logo"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
+            {/* Keep the specific full-width item if desired, or manage separately */}
+            {/* Example of manually including a specific full-width image if needed */}
+            {projectDetails.Fulcrum.images?.find(img => img.src === "/images/work/isolated/iso-fulcrum-packaging-holidaybox.jpg") && (
+              <div className="md:col-span-2 lg:col-span-3 cursor-default relative group overflow-hidden rounded-xl shadow-md">
+                <div className="relative" style={{ aspectRatio: projectDetails.Fulcrum.images.find(img => img.src === "/images/work/isolated/iso-fulcrum-packaging-holidaybox.jpg")?.aspectRatio || '21/9' }}>
+                  <Image 
+                    src="/images/work/isolated/iso-fulcrum-packaging-holidaybox.jpg"
+                    alt={projectDetails.Fulcrum.images.find(img => img.src === "/images/work/isolated/iso-fulcrum-packaging-holidaybox.jpg")?.alt || "Fulcrum Holiday Box"}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
               </div>
-            </div>
-            
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/isolated/iso-fulcrum-logo-og.jpg"
-                  alt="Fulcrum Logo OG"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/browser/browser-fulcrum-modern-builder-empty.jpg"
-                  alt="Fulcrum Modern Builder Empty"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/browser/browser-fulcrum-modern-builder-selected.jpg"
-                  alt="Fulcrum Modern Builder Selected"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/browser/browser-fulcrum-modern-apps-empty.jpg"
-                  alt="Fulcrum Modern Apps Empty"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            
-            {/* Second row with full width */}
-            <div className="md:col-span-2 lg:col-span-3 cursor-default relative rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '21/9' }}>
-                <Image 
-                  src="/images/work/isolated/iso-fulcrum-packaging-holidaybox.jpg"
-                  alt="Fulcrum Holiday Box"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/full/full-fulcrum-book-cover.jpg"
-                  alt="Fulcrum Book Cover"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/full/full-fulcrum-book-fundamentals.jpg"
-                  alt="Fulcrum Book Fundamentals"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            
-            <div className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-              <div className="relative" style={{ aspectRatio: '4/3' }}>
-                <Image 
-                  src="/images/work/full/full-fulcrum-book-data.jpg"
-                  alt="Fulcrum Book Data"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
+    {/* </div> */}
     </>
   );
-} 
+}
+
+export default FulcrumContent; 

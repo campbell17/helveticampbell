@@ -374,60 +374,7 @@ export default function ProjectSidebar({
                 ease: "easeOut"
               }}
             >
-              {/* Hero section with title and intro */}
-              <div className={`p-20 pb-28`}>
-                <div className="mx-auto">               
 
-                  {/* Role Details */}
-                  <motion.div 
-                    key={`roles-${projectKey}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: isTransitioning ? 0 : 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ 
-                      duration: 0.4,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <div className="flex flex-wrap mb-8">
-                      {project?.roles?.map((role, index) => (
-                        <Overline key={`role-${index}`} className="!text-lg mr-8">{role}</Overline>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  {/* Project Title */}
-                  <motion.div 
-                    key={`title-${projectKey}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: isTransitioning ? 0 : 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ 
-                      duration: 0.4,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <H1>{project?.title}</H1>
-                  </motion.div>
-
-                  {/* Project Description */}
-                  {project?.description && (
-                    <motion.p 
-                      key={`description-${projectKey}`}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: isTransitioning ? 0 : 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ 
-                        duration: 0.4,
-                        ease: "easeInOut"
-                      }}
-                      className="subheading"
-                    >
-                      {project.description}
-                    </motion.p>
-                  )}
-                </div>
-              </div>
 
               {/* Main Content */}
               {project?.content && (
@@ -441,7 +388,7 @@ export default function ProjectSidebar({
                     ease: "easeInOut"
                   }}
                 >
-                  {/* Updated rendering logic */}
+                  {/* Updated rendering logic - no longer passing project prop */}
                   {React.createElement(project.content)} 
                 </motion.div>
               )}
