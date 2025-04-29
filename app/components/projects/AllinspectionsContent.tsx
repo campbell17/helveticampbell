@@ -13,8 +13,8 @@ const AllinspectionsContent: React.FC = () => {
           <Overline className="!text-lg mr-8">Product Design</Overline>
           <Overline className="!text-lg mr-8">Marketing Design</Overline>
         </div>
-        <H1 className="mb-4">Allinspections</H1>
-        <p className="subheading">As the primary designer for Fulcrum's first decade, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
+        <H1 className="mb-4">Allinspections<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Inspection Management Software</span></H1>
+        <p className="subheading">Inspection management software focused on the home inspections market. I led the design of the branding, marketing, web & mobile apps, and environmental/tradeshow materials.</p>
       </div>
       <div className="bg-white border-b border-border">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 lg:gap-6">

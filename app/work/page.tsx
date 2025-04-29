@@ -1,12 +1,14 @@
 'use client'
 
 import Link from 'next/link'
+import React from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import { H1, Caption, H2, H3 } from '../components/Typography'
+import { H1, Caption, H2, H3, Overline } from '../components/Typography'
 import Image from 'next/image'
 import Testimonials from '../components/Testimonials'
 import { useOpenProject } from '../hooks/useOpenProject'
 import { useState } from 'react'
+import { projectDetails } from '../data/projectDetails'
 // Work images from Sidebar component
 const workImages = [
   // Gallery 1: My Work
@@ -19,7 +21,19 @@ const workImages = [
 ];
 
 function WorkItem({ image, onImageClick, index }: { 
-  image: { src: string; alt: string; projectKey: string; gallery: number; fullWidth?: boolean }; 
+  image: { 
+    src: string; 
+    alt: string; 
+    projectKey: string; 
+    gallery: number; 
+    fullWidth?: boolean;
+    roles?: string;
+    title?: string;
+    description?: string;
+    heading?: string;
+    headingAlt?: string;
+    subheading?: string;
+  }; 
   onImageClick: (index: number) => void;
   index: number;
 }) {
@@ -27,40 +41,51 @@ function WorkItem({ image, onImageClick, index }: {
   return (
     <div 
       className={`
-        flex flex-col gap-2 
+        flex flex-col
         transition-all
         duration-[var(--duration-300)]        
         ${image.fullWidth ? 'md:col-span-2' : ''}
       `}
     >
       <div 
-        className="cursor-pointer relative group shadow-2xl hover:shadow-xs shadow-slate-900/20 overflow-hidden rounded-[var(--container-radius)]" 
+        className="cursor-pointer h-full rounded-[var(--container-radius)] overflow-hidden shadow-2xl hover:shadow-xs shadow-slate-900/20 bg-white/60"
         onClick={() => onImageClick(index)}
       >
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width={1000}
-          height={1000}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="transition-all duration-200"
-        />
-        
-        {/* Simple hover overlay */}
-        <div className="absolute inset-0 bg-neutral-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
-        
-        {/* Project icon indicator */}
-        {image.projectKey && (
-          <div className="absolute bottom-2 left-2">
-            <div className="p-2 text-gray-300/90">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-8 w-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6" />
-              </svg>
-            </div>
+        {/* Cover image - 16:9 aspect ratio */}
+        {projectDetails[image.projectKey]?.coverImage && (
+          <div className="aspect-video w-full overflow-hidden">
+            <Image
+              src={projectDetails[image.projectKey]?.coverImage || ''}
+              alt={`Cover for ${image.alt}`}
+              width={1920}
+              height={1080}
+              className="object-cover w-full h-full"
+            />
           </div>
         )}
+        
+        {/* Content area */}
+        <div className="p-6">
+          {/* Tags */}
+          <div className="flex flex-wrap gap-x-2 gap-y-1 mb-3">
+            {projectDetails[image.projectKey]?.tags?.map((tag: string, i: number) => (
+              <React.Fragment key={tag}>
+                <Overline className="flex items-center text-xs uppercase font-medium text-secondary">{tag}</Overline>
+                {i < (projectDetails[image.projectKey]?.tags?.length || 0) - 1 && (
+                  <span className="text-xs mx-1 text-primary">|</span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+          
+          {/* Title */}
+          <h3 className="text-primary text-lg font-medium mb-2">{projectDetails[image.projectKey]?.heading}<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> {projectDetails[image.projectKey]?.headingAlt}</span></h3>
+          
+          {/* Description */}
+          <p className="!mb-0 text-primary text-base">{projectDetails[image.projectKey]?.subheading || 'A comprehensive design solution that combines intuitive user experience with compelling visual identity and strategic marketing assets.'}</p>
+        </div>
+
       </div>
-      <Caption className="text-sm text-text-secondary">{image.alt}</Caption>
     </div>
   )
 }
@@ -89,7 +114,7 @@ export default function WorkPage() {
         <div>
           {/* Work gallery grid */}
           <div className="@container mb-16">
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-4 md:gap-8">
               {workImages.map((image, index) => (
                 <WorkItem
                   key={index}

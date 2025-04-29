@@ -93,7 +93,7 @@ export default function Navigation() {
     { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
     { name: 'Divide', href: '/work/divide', key: 'Divide' },
     { name: 'Branding', href: '/work/branding', key: 'Branding' },
-    { name: 'Personal', href: '/work/personal', key: 'Personal' },
+    { name: 'Art', href: '/work/personal', key: 'Personal' },
   ]
 
   // Determine which navigation to show based on screen size

@@ -15,12 +15,12 @@ const SpatialNetworksContent: React.FC = () => {
     <>
       <div className="p-20 pb-28">
         <div className="flex flex-wrap mb-8">
-          <Overline className="!text-lg mr-8">Tradeshow</Overline>
           <Overline className="!text-lg mr-8">Branding</Overline>
+          <Overline className="!text-lg mr-8">Product Design</Overline>
           <Overline className="!text-lg mr-8">Marketing Design</Overline>
         </div>
-        <H1 className="mb-4">Spatial Networks</H1>
-        <p className="subheading">As the primary designer for Fulcrum's first decade, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
+        <H1 className="mb-4">Spatial Networks<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Geospatial Intelligence Platform</span></H1>
+        <p className="subheading">Geospatial intelligence specializing in technology, analytics, and ground-truthing. I led design for all aspects of the company, including marketing, branding, and product design of its software products.</p>
       </div>
       <div className="bg-white border-b border-border">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">

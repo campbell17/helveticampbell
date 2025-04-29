@@ -2,7 +2,7 @@ import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
 import { projectDetails } from '../../data/projectDetails';
-
+import Link from 'next/link';
 const PersonalContent: React.FC = () => {
   return (
     <>
@@ -12,8 +12,8 @@ const PersonalContent: React.FC = () => {
           <Overline className="!text-lg mr-8">Painting</Overline>
           <Overline className="!text-lg mr-8">Photography</Overline>
         </div>
-        <H1 className="mb-4">Personal</H1>
-        <p className="subheading">As the primary designer for Fulcrum's first decade, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
+        <H1 className="mb-4">Traditional Art</H1>
+        <p className="subheading">I studied traditional illustration and photography before I became a designer and I still practice when I can. My macro photography pulls double-duty as the cover images for my <Link href="https://campbellseventeen.substack.com" target="_blank" rel="noreferrer noopener">Substack essays</Link>. I write fresh ones weekly and publish on Fridays.</p>
       </div>
 
       {/* Gallery Section */}
@@ -22,7 +22,7 @@ const PersonalContent: React.FC = () => {
           
           {/* Row */}
           <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
               {
                 projectDetails.Personal.images?.filter(img => !img.fullWidth).slice(0, 34).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">

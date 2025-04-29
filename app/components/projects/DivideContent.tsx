@@ -14,8 +14,8 @@ const DivideContent: React.FC = () => {
           <Overline className="!text-lg mr-8">Icon Design</Overline>
           <Overline className="!text-lg mr-8">Marketing Design</Overline>
         </div>
-        <H1 className="mb-4">Divide</H1>
-        <p className="subheading">A character-driven, science fiction action/adventure game with a modern take on isometric adventures of the past.</p>
+        <H1 className="mb-4">Divide<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Action / Adventure Game (PS4)</span></H1>
+        <p className="subheading">A character-driven, science fiction action/adventure game with a modern take on isometric adventures of the past. I designed the logo, UI assets, icons, menus, HUD, and map, as well as posters and branding for the in-game world.</p>
       </div>
 
 

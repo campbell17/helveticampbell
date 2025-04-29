@@ -8,7 +8,7 @@ const BrandingContent: React.FC = () => {
     <>
       <div className="p-20 pb-28">
         <H1 className="mb-4">Branding</H1>
-        <p className="subheading">As the primary designer for Fulcrum's first decade, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
+        <p className="subheading">A collection of logo and identity work. It's a mix between new brands, redesigns, refreshes, and logos for companies that would never come to be. Each involved tight collaboration and constant communication with the owners, achieving results we both loved.</p>
       </div>
 
       {/* Gallery Section */}
@@ -17,9 +17,9 @@ const BrandingContent: React.FC = () => {
           
           {/* Row */}
           <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 lg:gap-6">
               {
-                projectDetails.Branding.images?.filter(img => !img.fullWidth).slice(0, 18).map((image, index) => (
+                projectDetails.Branding.images?.filter(img => !img.fullWidth).slice(0, 20).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 

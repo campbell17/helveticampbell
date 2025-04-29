@@ -20,8 +20,8 @@ const FulcrumContent: React.FC = () => {
           <Overline className="!text-lg mr-8">Product Design</Overline>
           <Overline className="!text-lg mr-8">Marketing Design</Overline>
         </div>
-        <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Designing a Field Operations Platform</span></H1>
-        <p className="subheading">As the primary designer for Fulcrum's first decade, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
+        <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
+        <p className="subheading">As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
       </div>
       {/* <div className="p-20 pt-0"> */}
       {/* Stats Callout */}
@@ -189,7 +189,7 @@ const FulcrumContent: React.FC = () => {
 
       {/* Vignette Section 1 */}
       <div className="w-full bg-slate-100 border-y border-slate-200">
-        <div className="grid md:grid-cols-2 items-center">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center">
           {/* Left column - Full-bleed image */}
           <div className="relative h-60 md:h-full min-h-[320px] aspect-square">
             <Image 
@@ -220,9 +220,9 @@ const FulcrumContent: React.FC = () => {
           
           {/* Row */}
           <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 md:col-start-2 gap-4 lg:gap-6">
               {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(6, 8).map((image, index) => (
+                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(6, 10).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 
@@ -239,29 +239,9 @@ const FulcrumContent: React.FC = () => {
             </div>
           </div>
           
-          {/* Row */}
-          <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-              {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(8, 10).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
-                      <Image 
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
+    
           </div>
-          
-                </div>
-              </div>
+        </div>
 
 
           {/* Vignette Section 2 */}
