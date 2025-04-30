@@ -335,33 +335,30 @@ export default function ProjectSidebar({
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
               onClick={handleClose}
-              className={`cursor-pointer fixed right-6 text-black/60 hover:text-black transition-all z-[1000] flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10 ${isScrolled ? 'top-6 w-12 h-12' : ' top-6 w-12 h-12'}`}
+              className={`cursor-pointer fixed right-6 text-black/60 hover:text-black transition-all z-[1000] flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10 top-4 w-8 h-8 md:top-6 md:w-12 md:h-12`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </motion.button>
 
-            {/* Sticky Header - Commented out for now, can be re-enabled if needed */}
-            {/* <div
+            {/* Sticky Header */}
+             <div
               data-scrolled={isScrolled ? "true" : "false"}
               data-testid="sticky-header"
-              className={`fixed top-0 left-0 right-0 z-modal transition-all duration-500 ease-in-out container-glass backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
-              style={{
-                // Force important styles to ensure visibility if needed
-                zIndex: 110,
-                opacity: isTransitioning ? 0 : (isScrolled ? 1 : 0)
-              }}
+              className={`opacity-100 md:opacity-0 h-16 fixed top-0 left-0 right-0 z-modal transition-all bg-white/80 duration-500 ease-in-out backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm`}
+              // style={{
+              //   // Force important styles to ensure visibility if needed
+              //   zIndex: 110,
+              //   opacity: isTransitioning ? 0 : (isScrolled ? 1 : 0)
+              // }}
             >
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-6">
-                  <span style={{ marginBottom: '0px' }} className="font-semibold text-gray-900 text-3xl font-merriweather">{project?.title}</span>
-                  {project?.description && (
-                    <p className="hidden md:block text-sm text-text-secondary truncate" style={{ marginBottom: '0px' }}>{project.description}</p>
-                  )}
+                  {/* <span style={{ marginBottom: '0px' }} className="font-semibold text-gray-900 text-3xl font-merriweather">test</span> */}
                 </div>
               </div>
-            </div> */}
+            </div> 
 
             <motion.div 
               ref={sidebarContentRef}
@@ -460,7 +457,7 @@ export default function ProjectSidebar({
                 // Navigate to previous project with transition
                 handleProjectTransition(prevProjectKey);
               }}
-              className="cursor-pointer fixed left-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+              className="cursor-pointer fixed left-4 top-4 md:top-1/2 md:-translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
               aria-label="Previous Project"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -490,7 +487,7 @@ export default function ProjectSidebar({
                 // Navigate to next project with transition
                 handleProjectTransition(nextProjectKey);
               }}
-              className="cursor-pointer fixed right-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+              className="cursor-pointer fixed left-20 md:left-auto md:right-6 top-4 md:top-1/2 md:-translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
               aria-label="Next Project"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
