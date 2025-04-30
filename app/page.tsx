@@ -3,8 +3,11 @@
 import { H1, H2, H3 } from './components/Typography'
 import WorkItem from './components/WorkItem'
 import EssayItem from './components/EssayItem'
+import SubstackPostItem from './components/SubstackPostItem'
 import { useOpenProject } from './hooks/useOpenProject'
+import { useSubstackPosts } from './hooks/useSubstackPosts'
 import { essays } from './data/essays'
+import { config } from './config/environment'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -21,6 +24,10 @@ const workImages = [
 
 export default function HomePage() {
   const { openProject } = useOpenProject();
+  const { posts, isLoading, error } = useSubstackPosts({
+    publicationUrl: config.substackUrl,
+    limit: 3
+  });
 
   // Handler for image clicks - simplified to only open projects
   const handleImageClick = (index: number) => {
@@ -69,9 +76,24 @@ export default function HomePage() {
         </div>
         
         <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
-            {essays.map(essay => (
+          {isLoading ? (
+            <div className="p-6 text-center">Loading posts...</div>
+          ) : error ? (
+            // Fallback to local essays data if API fails
+            essays.map(essay => (
               <EssayItem key={essay.id} essay={essay} />
-            ))}
+            ))
+          ) : posts.length > 0 ? (
+            // Show Substack posts if available
+            posts.map(post => (
+              <SubstackPostItem key={post.slug} post={post} />
+            ))
+          ) : (
+            // Fallback to local essays data if no posts
+            essays.map(essay => (
+              <EssayItem key={essay.id} essay={essay} />
+            ))
+          )}
         </div>
       </div>
       

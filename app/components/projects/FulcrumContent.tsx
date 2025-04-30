@@ -13,7 +13,7 @@ const FulcrumContent: React.FC = () => {
 
   return (
     <>
-      <div className="p-20 pb-28">
+      <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
         <div className="flex flex-wrap mb-8">
           <Overline className="!text-lg mr-8">UI/UX</Overline>
           <Overline className="!text-lg mr-8">Branding</Overline>
@@ -27,7 +27,7 @@ const FulcrumContent: React.FC = () => {
       </div>
       {/* <div className="p-20 pt-0"> */}
       {/* Stats Callout */}
-      <div className="w-full bg-rose-50 pt-12 pb-16 px-20 border-y border-rose-100">
+      <div className="w-full bg-rose-50 pt-12 pb-16 px-8 md:px-20 border-y border-rose-100">
         <div className="w-full 2xl:max-w-7xl mx-auto">
           <Overline className="mb-4">Company Overview</Overline>
           <H2>From Startup to Enterprise Platform</H2>
@@ -161,7 +161,7 @@ const FulcrumContent: React.FC = () => {
       </div>
 
       {/* Gallery Section */}
-      <div className="p-20 pb-28">
+      <div className="p-8 pb-10 md:p-20 md:pb-28">
         <div className="max-w-none">
           
           {/* Row */}
@@ -217,12 +217,12 @@ const FulcrumContent: React.FC = () => {
 
               
       {/* Gallery Section */}
-      <div className="p-20 pb-28">
+      <div className="p-8 pb-10 md:p-20 md:pb-28">
         <div className="max-w-none">
           
           {/* Row */}
           <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 md:col-start-2 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:col-start-2 gap-4 lg:gap-6">
               {
                 projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(6, 10).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
@@ -270,7 +270,7 @@ const FulcrumContent: React.FC = () => {
             </div>
           </div>
 
-      <div className="p-20 pb-28">
+      <div className="p-8 pb-10 md:p-20 md:pb-28">
         <div className="max-w-none">
 
           {/* Row */}

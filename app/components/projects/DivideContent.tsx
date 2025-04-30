@@ -6,7 +6,7 @@ import Link from 'next/link';
 const DivideContent: React.FC = () => {
   return (
     <>
-      <div className="p-20 pb-28">
+      <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
         <div className="flex flex-wrap mb-8">
           <Overline className="!text-lg mr-8">UI</Overline>
           <Overline className="!text-lg mr-8">Branding</Overline>
@@ -20,7 +20,7 @@ const DivideContent: React.FC = () => {
 
 
       {/* Gallery Section */}
-      <div className="p-20 pb-28 pt-0">
+      <div className="p-8 pb-10 md:p-20 md:pb-28 pt-0">
         <div className="max-w-none">
           
           {/* Row */}
@@ -142,7 +142,7 @@ const DivideContent: React.FC = () => {
       </div>
 
       {/* Gallery Section */}
-      <div className="p-20 pb-28">
+      <div className="p-8 pb-10 md:p-20 md:pb-28">
         <div className="max-w-none">
           
           {/* Row */}

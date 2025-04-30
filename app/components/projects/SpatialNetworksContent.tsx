@@ -13,7 +13,7 @@ const SpatialNetworksContent: React.FC = () => {
 
   return (
     <>
-      <div className="p-20 pb-28">
+      <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
         <div className="flex flex-wrap mb-8">
           <Overline className="!text-lg mr-8">Branding</Overline>
           <Overline className="!text-lg mr-8">Product Design</Overline>
@@ -76,7 +76,7 @@ const SpatialNetworksContent: React.FC = () => {
       </div>
 
       {/* Gallery Section */}
-      <div className="p-20 pb-28">
+      <div className="p-8 pb-10 md:p-20 md:pb-28">
         <div className="max-w-none">
           
           {/* Row */}
