@@ -19,7 +19,7 @@ const BrandingContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 lg:gap-6">
               {
-                projectDetails.Branding.images?.filter(img => !img.fullWidth).slice(0, 20).map((image, index) => (
+                projectDetails.Branding.images?.filter(img => !img.fullWidth).slice(0, 23).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 

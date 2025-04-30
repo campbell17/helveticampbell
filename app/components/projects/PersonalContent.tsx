@@ -18,13 +18,16 @@ const PersonalContent: React.FC = () => {
 
       {/* Gallery Section */}
       <div className="p-20 pb-28 pt-0">
-        <div className="max-w-none">
+        <div className="max-w-none flex flex-col gap-20">
           
+          <div>
+            <H2 className="mb-8">Drawing & Painting</H2>          
+            
           {/* Row */}
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
               {
-                projectDetails.Personal.images?.filter(img => !img.fullWidth).slice(0, 34).map((image, index) => (
+                projectDetails.Personal.images?.filter(img => !img.fullWidth).slice(0, 8).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 
@@ -39,6 +42,34 @@ const PersonalContent: React.FC = () => {
                 ))
               }
             </div>
+          </div>
+          </div>
+
+          <div>
+
+          <H2 className="mb-8">Photography</H2>          
+
+          {/* Row */}
+          <div className="mb-4 lg:mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+              {
+                projectDetails.Personal.images?.filter(img => !img.fullWidth).slice(8, 33).map((image, index) => (
+                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
+                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
+                      <Image 
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
           </div>
         </div>
       </div>
