@@ -18,6 +18,27 @@ export interface SubstackPost {
   author: string;
 }
 
+interface SubstackApiResponse {
+  data: {
+    data: SubstackPost[];
+    metadata: {
+      timestamp: number;
+      source: string;
+      publication_url: string;
+      posts_count: number;
+      offset: number;
+      limit: number;
+    }
+  };
+  metadata: {
+    timestamp: number;
+    source: string;
+    publication_url: string;
+    limit: number;
+    offset: number;
+  }
+}
+
 interface UseSubstackPostsProps {
   publicationUrl: string;
   limit?: number;
@@ -32,48 +53,98 @@ export const useSubstackPosts = ({
   const [posts, setPosts] = useState<SubstackPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [rawResponse, setRawResponse] = useState<any>(null);
   
   useEffect(() => {
+    let isMounted = true;
+    
     const fetchPosts = async () => {
+      if (!isMounted) return;
+      
       setIsLoading(true);
       setError(null);
       
+      if (!publicationUrl) {
+        setError('Publication URL is required');
+        setIsLoading(false);
+        return;
+      }
+      
       try {
-        // NOTE: In production, you would call your own backend API
-        // that securely handles the API key. Never expose API keys in client code.
-        const apiUrl = new URL('https://api.substackapi.dev/posts/latest');
+        // console.log(`Attempting to fetch posts from ${publicationUrl}`);
+        
+        // Using GET request instead of POST
+        const apiUrl = new URL('/api/substack-posts', window.location.origin);
         apiUrl.searchParams.append('publication_url', publicationUrl);
         apiUrl.searchParams.append('limit', limit.toString());
         apiUrl.searchParams.append('offset', offset.toString());
         
-        const response = await fetch('/api/substack-posts', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            publicationUrl,
-            limit,
-            offset
-          }),
-        });
+        // console.log(`Fetching from: ${apiUrl.toString()}`);
+        
+        const response = await fetch(apiUrl.toString());
         
         if (!response.ok) {
-          throw new Error(`Failed to fetch posts: ${response.statusText}`);
+          const errorData = await response.json().catch(() => null);
+          const errorMessage = errorData?.error || response.statusText;
+          throw new Error(`Failed to fetch posts: ${errorMessage}`);
         }
         
-        const data = await response.json();
-        setPosts(data);
+        const responseData = await response.json();
+        // console.log('Raw API response:', responseData);
+        
+        // Save raw response for debugging
+        if (isMounted) {
+          setRawResponse(responseData);
+        }
+        
+        // Handle various possible response formats
+        if (responseData) {
+          // Case 1: Double nested structure - {data: {data: [...posts]}}
+          if (responseData.data && responseData.data.data && Array.isArray(responseData.data.data)) {
+            // console.log(`Found double-nested data structure with ${responseData.data.data.length} posts`);
+            setPosts(responseData.data.data);
+            return;
+          }
+          
+          // Case 2: Standard structure - {data: [...posts]}
+          if (responseData.data && Array.isArray(responseData.data)) {
+            // console.log(`Found standard data structure with ${responseData.data.length} posts`);
+            setPosts(responseData.data);
+            return;
+          }
+          
+          // Case 3: Direct array - [...posts]
+          if (Array.isArray(responseData)) {
+            // console.log(`Found direct array with ${responseData.length} posts`);
+            setPosts(responseData);
+            return;
+          }
+          
+          // No valid structure found
+          console.error('Unexpected data format:', responseData);
+          throw new Error('Invalid response format from API');
+        } else {
+          throw new Error('Empty response from API');
+        }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch Substack posts');
-        console.error('Error fetching Substack posts:', err);
+        if (isMounted) {
+          const errorMessage = err instanceof Error ? err.message : 'Failed to fetch Substack posts';
+          setError(errorMessage);
+          console.error('Error fetching Substack posts:', err);
+        }
       } finally {
-        setIsLoading(false);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     };
     
     fetchPosts();
+    
+    return () => {
+      isMounted = false;
+    };
   }, [publicationUrl, limit, offset]);
   
-  return { posts, isLoading, error };
+  return { posts, isLoading, error, rawResponse };
 }; 

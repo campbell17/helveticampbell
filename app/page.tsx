@@ -10,6 +10,7 @@ import { essays } from './data/essays'
 import { config } from './config/environment'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 // Work images from Sidebar component
 const workImages = [
@@ -24,10 +25,24 @@ const workImages = [
 
 export default function HomePage() {
   const { openProject } = useOpenProject();
-  const { posts, isLoading, error } = useSubstackPosts({
+  const { posts, isLoading, error, rawResponse } = useSubstackPosts({
     publicationUrl: config.substackUrl,
     limit: 3
   });
+  
+  // const [showDebug, setShowDebug] = useState(false);
+
+  // Debug output
+  // useEffect(() => {
+  //   if (posts && posts.length > 0) {
+  //     console.log('Posts available for rendering:', posts.length);
+  //     console.log('First post sample:', posts[0]);
+  //   }
+
+  //   if (rawResponse) {
+  //     console.log('Raw API response stored:', rawResponse);
+  //   }
+  // }, [posts, rawResponse]);
 
   // Handler for image clicks - simplified to only open projects
   const handleImageClick = (index: number) => {
@@ -76,26 +91,98 @@ export default function HomePage() {
         </div>
         
         <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
+            {essays.map(essay => (
+              <EssayItem key={essay.id} essay={essay} />
+            ))}
+        </div>
+      </div>
+      
+      {/* Writing Section w/ Substack posts */}
+      {/* <div className="mt-20">
+        <div className="flex items-center justify-between mb-8">
+          <H2>Recent Writing</H2>
+          <div className="flex items-center gap-4">
+            {process.env.NODE_ENV === 'development' && (
+              <button 
+                onClick={() => setShowDebug(!showDebug)} 
+                className="text-xs px-2 py-1 bg-slate-700/50 hover:bg-slate-700/80 rounded transition"
+              >
+                {showDebug ? 'Hide Debug' : 'Debug'}
+              </button>
+            )}
+            <Link 
+              href="/writing" 
+              className="text-secondary hover:text-primary transition-colors duration-300"
+            >
+              View all
+            </Link>
+          </div>
+        </div> */}
+        
+        {/* {process.env.NODE_ENV === 'development' && showDebug && (
+          <div className="mb-4 p-4 bg-slate-800/50 rounded-lg overflow-auto max-h-96 text-xs font-mono">
+            <h3 className="text-white mb-2">Debug Info</h3>
+            <div>
+              <p className="text-green-400">Publication URL: {config.substackUrl}</p>
+              <p className="text-green-400">Loading: {isLoading ? 'true' : 'false'}</p>
+              <p className="text-green-400">Error: {error || 'none'}</p>
+              <p className="text-green-400">Posts: {posts?.length || 0}</p>
+              {rawResponse && (
+                <div className="mt-2">
+                  <p className="text-yellow-400">Raw Response:</p>
+                  <pre className="text-white mt-2 whitespace-pre-wrap">
+                    {JSON.stringify(rawResponse, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
+          </div>
+        )} */}
+        
+        {/* <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
           {isLoading ? (
             <div className="p-6 text-center">Loading posts...</div>
           ) : error ? (
-            // Fallback to local essays data if API fails
-            essays.map(essay => (
-              <EssayItem key={essay.id} essay={essay} />
-            ))
-          ) : posts.length > 0 ? (
-            // Show Substack posts if available
-            posts.map(post => (
-              <SubstackPostItem key={post.slug} post={post} />
-            ))
+            <> */}
+              {/* Show error message in dev mode */}
+              {/* {process.env.NODE_ENV === 'development' && (
+                <div className="p-6 mb-4 bg-red-500/10 text-red-400 rounded-md">
+                  <p>Error loading Substack posts: {error}</p>
+                  <p className="text-sm mt-2">Check the console for more details.</p>
+                </div>
+              )} */}
+              {/* Always fall back to local essays data when there's an error */}
+              {/* {essays.map(essay => (
+                <EssayItem key={essay.id} essay={essay} />
+              ))}
+            </>
+          ) : posts && posts.length > 0 ? (
+            // Show Substack posts if available */}
+            {/* <>
+              {process.env.NODE_ENV === 'development' && (
+                <div className="p-2 bg-green-500/10 text-green-400 text-xs">
+                  {posts.length} posts loaded successfully
+                </div>
+              )}
+              {posts.map(post => (
+                <SubstackPostItem key={post.slug} post={post} />
+              ))}
+            </>
           ) : (
             // Fallback to local essays data if no posts
-            essays.map(essay => (
-              <EssayItem key={essay.id} essay={essay} />
-            ))
+            <>
+              {process.env.NODE_ENV === 'development' && (
+                <div className="p-2 bg-yellow-500/10 text-yellow-400 text-xs">
+                  No Substack posts found, showing fallback content
+                </div>
+              )}
+              {essays.map(essay => (
+                <EssayItem key={essay.id} essay={essay} />
+              ))}
+            </>
           )}
         </div>
-      </div>
+      </div> */}
       
       {/* About Section */}
       <div className="mt-20">

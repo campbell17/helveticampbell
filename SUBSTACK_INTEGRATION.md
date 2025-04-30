@@ -61,4 +61,38 @@ The Substack posts are displayed using the `SubstackPostItem` component in `app/
 
 ## Fallback Behavior
 
-If the Substack API is unavailable or returns an error, the website will automatically fall back to displaying the local essays defined in `app/data/essays.ts`. 
+If the Substack API is unavailable or returns an error, the website will automatically fall back to displaying the local essays defined in `app/data/essays.ts`.
+
+## Troubleshooting
+
+If you're experiencing issues with the Substack integration, try these troubleshooting steps:
+
+### 1. Check your Substack URL
+
+Make sure your Substack URL is correct in the environment variables. It should be in the format `yourdomain.substack.com` without any `https://` prefix or trailing slashes.
+
+### 2. Verify your API key
+
+Ensure your Substack API key is valid and correctly set in your environment variables.
+
+### 3. Use the Debug Page
+
+Visit `/debug/substack` in your application to access a debug page that tests the API connection directly and displays detailed information about any errors.
+
+### 4. Check Server Logs
+
+Look at your server logs for any errors related to the Substack API requests. The integration includes detailed logging to help diagnose issues.
+
+### 5. Test with a known working Substack URL
+
+Try using a known public Substack URL to test if the API is working correctly. You can do this on the debug page.
+
+### 6. Common Issues
+
+- **Empty Response**: Some Substack publications might not have any public posts
+- **CORS Errors**: Make sure you're using the server-side API route and not calling the Substack API directly from the client
+- **Rate Limiting**: The Substack API may have rate limits that are affecting your requests
+
+### 7. Check CORS settings
+
+If you're hosting your application on a different domain than your API, you may need to configure CORS settings in your API route. 
