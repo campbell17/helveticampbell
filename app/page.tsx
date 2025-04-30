@@ -81,7 +81,7 @@ export default function HomePage() {
       {/* Writing Section */}
       <div className="mt-20">
         <div className="flex items-center justify-between mb-8">
-          <H2>Recent Writing</H2>
+          <H2>Writing</H2>
           <Link 
             href="/writing" 
             className="text-secondary hover:text-primary transition-colors duration-300"

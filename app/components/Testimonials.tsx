@@ -142,7 +142,7 @@ export default function Testimonials({ className }: TestimonialsProps) {
           {testimonials.flat(2).map((testimonial) => (
             <figure
               key={testimonial.author.handle}
-              className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 container-glass relative overflow-hidden"
+              className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 relative overflow-hidden"
             >
               {/* Large quote mark pseudo-element (top) */}
               <div className="absolute top-20 left-0 text-neutral-400 opacity-10 text-[224px] font-body z-0 -tracking-[20px] leading-16 pointer-events-none select-none">
