@@ -19,15 +19,17 @@ const FulcrumContent: React.FC = () => {
           <Overline className="!text-lg mr-8">Branding</Overline>
           <Overline className="!text-lg mr-8">Product Design</Overline>
           <Overline className="!text-lg mr-8">Marketing Design</Overline>
+          <Overline className="!text-lg mr-8">Icon Design</Overline>
+          <Overline className="!text-lg mr-8">Illustration</Overline>
         </div>
         <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
-        <p className="subheading">As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
+        <p className="subheading">(2012 - 2025) As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
       </div>
       {/* <div className="p-20 pt-0"> */}
       {/* Stats Callout */}
       <div className="w-full bg-rose-50 pt-12 pb-16 px-20 border-y border-rose-100">
         <div className="w-full 2xl:max-w-7xl mx-auto">
-          <Overline>Company Overview</Overline>
+          <Overline className="mb-4">Company Overview</Overline>
           <H2>From Startup to Enterprise Platform</H2>
           <p className="text-lg max-w-3xl mb-8">
             Fulcrum evolved from a small Florida startup to a global leader in field operations software, serving thousands of organizations across diverse industries.

@@ -9,13 +9,14 @@ import Testimonials from '../components/Testimonials'
 import { useOpenProject } from '../hooks/useOpenProject'
 import { useState } from 'react'
 import { projectDetails } from '../data/projectDetails'
+
 // Work images from Sidebar component
 const workImages = [
   // Gallery 1: My Work
   { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum", gallery: 1 },
   { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks", projectKey: "Spatial Networks", gallery: 1 },
-  { src: "/images/work/isolated/iso-allinspections-icon-alt.jpg", alt: "Allinspections", projectKey: "Allinspections", gallery: 1 },
   { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide for PS4", projectKey: "Divide", gallery: 1 },
+  { src: "/images/work/isolated/iso-allinspections-icon-alt.jpg", alt: "Allinspections", projectKey: "Allinspections", gallery: 1 },
   { src: "/images/work/gridded/grid-icons-all.jpg", alt: "Branding", projectKey: "Branding", gallery: 1 },
   { src: "/images/work/full/full-personal-drawing-1.jpg", alt: "Personal/Misc", projectKey: "Personal", gallery: 1 },
 ];
@@ -114,7 +115,7 @@ export default function WorkPage() {
         <div>
           {/* Work gallery grid */}
           <div className="@container mb-16">
-            <div className="grid grid-cols-2 gap-4 md:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
               {workImages.map((image, index) => (
                 <WorkItem
                   key={index}

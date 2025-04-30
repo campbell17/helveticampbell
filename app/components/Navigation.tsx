@@ -90,8 +90,8 @@ export default function Navigation() {
   const projects: ProjectItem[] = [
     { name: 'Fulcrum', href: '/work/fulcrum', key: 'Fulcrum' },
     { name: 'Spatial Networks', href: '/work/spatial-networks', key: 'Spatial Networks' },
-    { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
     { name: 'Divide', href: '/work/divide', key: 'Divide' },
+    { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
     { name: 'Branding', href: '/work/branding', key: 'Branding' },
     { name: 'Art', href: '/work/personal', key: 'Personal' },
   ]

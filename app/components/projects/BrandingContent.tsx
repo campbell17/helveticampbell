@@ -8,7 +8,7 @@ const BrandingContent: React.FC = () => {
     <>
       <div className="p-20 pb-28">
         <H1 className="mb-4">Branding</H1>
-        <p className="subheading">A collection of logo and identity work. It's a mix between new brands, redesigns, refreshes, and logos for companies that would never come to be. Each involved tight collaboration and constant communication with the owners, achieving results we both loved.</p>
+        <p className="subheading">A collection of logo and identity work, always executed with close collaboration and a tight communication loop with stakeholders. These are a mix of new brands, redesigns, and refreshes.</p>
       </div>
 
       {/* Gallery Section */}
