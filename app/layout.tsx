@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
-        'relative min-h-screen bg-white font-sans antialiased',
+        'relative min-h-screen bg-white font-sans antialiased overflow-x-hidden',
         fontVariables.bitter,
         fontVariables.merriweather,
         fontVariables.lato,
@@ -58,31 +58,32 @@ export default function RootLayout({
               </Suspense>
               <SceneBackground />
               
-              <div className="min-h-screen flex flex-col">
-                <div className="flex-1 relative">
-                  <div className="block top-0 left-0 right-0 z-50 md:hidden">
-                    <nav className="p-4">
-                      <Navigation />
-                    </nav>
-                  </div>
-
-                  <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
-                    <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
-                      <Navigation />
-                      <div className="flex-none mt-6">
-                        <ThemeSwitcher />
-                      </div>
-                    </nav>
-                  </div>
-
-                  <main className="pt-20 pb-16 pl-4 pr-4 md:pt-16 md:pl-72 md:pr-[clamp(16px,calc(8px+0vw),288px)] 2xl:pr-72">
-                    <div className="mx-auto">
-                      <AnimatedLayout>
-                        {children}
-                      </AnimatedLayout>
-                    </div>
-                  </main>
+              <div className="min-h-screen">
+                {/* Mobile navigation */}
+                <div className="block top-0 left-0 right-0 z-50 md:hidden">
+                  <nav className="p-4">
+                    <Navigation />
+                  </nav>
                 </div>
+
+                {/* Desktop sidebar navigation */}
+                <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
+                  <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
+                    <Navigation />
+                    {/* <div className="flex-none mt-6">
+                      <ThemeSwitcher />
+                    </div> */}
+                  </nav>
+                </div>
+
+                {/* Main content area with grid layout */}
+                <main className="pt-20 pb-16 pl-4 pr-4 md:pt-16 md:pl-64 2xl:pl-72 overflow-visible">
+                  <div className="grid grid-cols-12 gap-4 overflow-visible">
+                    <AnimatedLayout>
+                      {children}
+                    </AnimatedLayout>
+                  </div>
+                </main>
               </div>
               <CustomScrollbar />
               <BackToTop />

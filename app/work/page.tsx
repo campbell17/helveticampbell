@@ -42,9 +42,8 @@ export default function WorkPage() {
       </div>
 
       <div className="flex flex-col gap-20">
-
         <div>
-          {/* Work gallery grid */}
+          {/* Work gallery grid - using full width */}
           <div className="@container mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
               {workImages.map((image, index) => (
@@ -58,11 +57,11 @@ export default function WorkPage() {
             </div>
           </div>
         </div>
+        
         <div>
           <H2 className="mb-8">How It All Started</H2>
           {/* Additional text from "My Work" tile content */}
           <div className="mt-12">
-            {/* <p>I knew I wanted to be a designer when I realized I wasn't afraid to get paid. Let me explain...</p> */}
             <p>I went to art school where I majored in illustration and photography.</p>
             <p>After graduation I worked in sporting goods. A great start, I know.</p>
             <p>I spent my days fitting people for running shoes (I was damn good, by the way) and my nights working on my design portfolio. Despite the BFA(popover) in my posession and my love for making beautiful images, I never felt comfortable pursuing how to make money with my art. The idea of something so personal and subjective being scrutinized by someone else never squared with me.</p>
@@ -71,6 +70,7 @@ export default function WorkPage() {
             <p>If design called to my logical side, the web as a medium called to my preternatural lust for improvement. When I sent that file entitled "business-card-CEO-front_final-final2.pdf" to the printer for that run of 10,000, the click-event on the send button in Outlook was (popover: what the racing instructors used to call) a Pampers™ moment. On the web, however, I could fix a typo faster than that same PDF would load in Adobe Acrobat. I'm not condoning sloppiness, of course. Pampers™ are expensive. <Link href="/who">Read more about my work history.</Link></p>            
           </div>
         </div>
+        
         <div>
           {/* Working with Tim */}
           <div className="flex flex-col">

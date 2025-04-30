@@ -9,6 +9,23 @@
   color: var(--color-text-primary);
 }
 
+/* Grid layout helpers */
+.grid-content-container {
+  @apply grid grid-cols-12 gap-4;
+}
+
+.grid-narrow-content {
+  @apply col-span-12 md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3;
+}
+
+.grid-medium-content {
+  @apply col-span-12 md:col-span-10 md:col-start-2;
+}
+
+.grid-wide-content {
+  @apply col-span-12;
+}
+
 /* Custom scrollbar styles */
 :root {
   --scrollbar-width: 8px;
@@ -24,6 +41,44 @@ html {
 html::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
   width: 0px; /* Remove default width */
+}
+
+/* Ensure no additional scrollbars from grid containers */
+main, .grid-cols-12, [class^="grid-"], [class*=" grid-"] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: visible;
+}
+
+main::-webkit-scrollbar, 
+.grid-cols-12::-webkit-scrollbar, 
+[class^="grid-"]::-webkit-scrollbar, 
+[class*=" grid-"]::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+/* Grid layout utilities */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.grid-narrow {
+  grid-column: span 10 / span 10;
+  grid-column-start: 2;
+}
+
+.grid-wide {
+  grid-column: span 12 / span 12;
+}
+
+@media (min-width: 1280px) {
+  .grid-narrow {
+    grid-column: span 8 / span 8;
+    grid-column-start: 3;
+  }
 }
 
 /* Custom scrollbar styling */

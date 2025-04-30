@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function WhoPage() {
   return (
-    <div className="max-w-4xl">
+    <div>
       <H1>Tim Campbell</H1>
       
       <div className="subheading">

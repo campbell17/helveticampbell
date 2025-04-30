@@ -61,21 +61,18 @@ export default function HomePage() {
       </div>
       
       <H2 className="mb-8">Work</H2>
-      <div>
-          {/* Work gallery grid */}
-          <div className="@container mb-16">
-            <div className="grid grid-cols-1 gap-4 md:gap-8">
-              {workImages.map((image, index) => (
-                <WorkItem
-                  key={index}
-                  image={image}
-                  index={index}
-                  onImageClick={handleImageClick}
-                  imageAspectRatio="aspect-[21/6]" // Custom wider aspect ratio for homepage
-                />
-              ))}
-            </div>
-          </div>
+      <div className="@container mb-16">
+        <div className="grid grid-cols-1 gap-4 md:gap-8">
+          {workImages.map((image, index) => (
+            <WorkItem
+              key={index}
+              image={image}
+              index={index}
+              onImageClick={handleImageClick}
+              imageAspectRatio="aspect-[21/6]" // Custom wider aspect ratio for homepage
+            />
+          ))}
+        </div>
       </div>
       
       {/* Writing Section */}
@@ -181,8 +178,7 @@ export default function HomePage() {
               ))}
             </>
           )}
-        </div>
-      </div> */}
+        </div> */}
       
       {/* About Section */}
       <div className="mt-20">
