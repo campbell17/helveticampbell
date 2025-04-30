@@ -19,7 +19,7 @@ export function H1({ children, className = '', style = {} }: TextProps) {
 
 export function H2({ children, className = '', style = {} }: TextProps) {
   return (
-    <h2 style={style} className={`mb-6 text-5xl font-bold text-text-heading font-display ${className}`}>
+    <h2 style={style} className={`mb-6 text-2xl lg:text-5xl font-bold text-text-heading font-display ${className}`}>
       {children}
     </h2>
   );
@@ -27,7 +27,7 @@ export function H2({ children, className = '', style = {} }: TextProps) {
 
 export function H3({ children, className = '', style = {} }: TextProps) {
   return (
-    <h3 style={style} className={`mb-6 text-3xl font-bold text-text-heading font-display ${className}`}>
+    <h3 style={style} className={`mb-6 text-xl lg:text-3xl font-bold text-text-heading font-display ${className}`}>
       {children}
     </h3>
   );

@@ -76,9 +76,9 @@ const AllinspectionsContent: React.FC = () => {
 
       {/* Vignette Section 1 */}
       <div className="w-full bg-slate-100 border-y border-slate-200">
-        <div className="grid md:grid-cols-2 items-center">
+        <div className="vignette-container">
           {/* Left column - Full-bleed image */}
-          <div className="relative h-60 md:h-full min-h-[320px] aspect-square">
+          <div className="vignette-image-container">
             <Image 
               src="/images/work/full/full-allinspections-double-ad.jpg"
               alt="Allinspections Double Ad"
@@ -91,10 +91,10 @@ const AllinspectionsContent: React.FC = () => {
           
           {/* Right column - Text content */}
           <div className="p-10 md:p-16 lg:p-20">
-            <Overline>Print</Overline>
-            <H3>2-Page Spread</H3>
+            <Overline className="mb-4">Print Design | Advertising</Overline>
+            <H3>2-Page Trade Publication Ad</H3>
             <p className="text-base text-slate-700 max-w-xl mt-4">
-              A custom icon set I created for Fulcrum's drag & drop App Builder. One of the constraints for v3 was for each icon to be identical in width and height, leading to some unique design choices (see: the flattened mailbox icon for the Address Field).
+              One of the bolder ideas over my career, a simple concept for an ad for our home inspection software, Allinspections. Back when iPhones had "home" buttons, this made more sense. We encouraged home inspectors to take back their nights and weekends by streamlining their process with better software. "Go home" was a play on that concept. It didn't win any awards, but our CEO liked it so much he had it framed and put in the corporate office.
             </p>
           </div>
         </div>

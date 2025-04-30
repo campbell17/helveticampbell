@@ -90,11 +90,11 @@ body {
 }
 
 h2 { 
-  @apply mb-6 text-5xl font-bold font-display;
+  @apply mb-6 text-3xl lg:text-5xl font-bold font-display;
 }
 
 h3 { 
-  @apply mb-6 text-3xl font-bold font-display;
+  @apply mb-6 text-xl lg:text-3xl font-bold font-display;
 }
 
 p, ul, ol {
@@ -192,3 +192,10 @@ nav a {
   animation: spin 0.25s linear infinite; /* Changed back from 0.01s */
 }
 
+.vignette-container {
+  @apply grid lg:grid-cols-2 items-center;
+}
+
+.vignette-image-container {
+  @apply relative h-full min-h-[320px] aspect-square;
+}

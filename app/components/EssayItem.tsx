@@ -12,12 +12,12 @@ export default function EssayItem({ essay }: EssayItemProps) {
   return (
     <Link 
       href={`/writing/${essay.slug}`} 
-      className="block py-6 border-b border-primary/10 hover:bg-white/5 transition-colors duration-300 rounded-md -mx-4 px-4"
+      className="block py-6 border-b border-border hover:bg-neutral-50 transition-colors duration-150 px-4"
     >
       <div className="flex flex-col gap-2">
         <Overline className="text-secondary">{essay.date}</Overline>
-        <h3 className="font-medium text-xl text-primary">{essay.title}</h3>
-        <p className="text-base text-primary/80">{essay.excerpt}</p>
+        <h3 className="!mb-2 font-medium text-xl text-primary">{essay.title}</h3>
+        <p className="!mb-0 text-base text-primary/80">{essay.excerpt}</p>
       </div>
     </Link>
   )

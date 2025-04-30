@@ -191,9 +191,9 @@ const FulcrumContent: React.FC = () => {
 
       {/* Vignette Section 1 */}
       <div className="w-full bg-slate-100 border-y border-slate-200">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center">
+        <div className="vignette-container">
           {/* Left column - Full-bleed image */}
-          <div className="relative h-60 md:h-full min-h-[320px] aspect-square">
+          <div className="vignette-image-container">
             <Image 
               src="/images/work/gridded/grid-fulcrum-buildericons-v3.jpg"
               alt="Fulcrum App Builder Icons v3"
@@ -206,7 +206,7 @@ const FulcrumContent: React.FC = () => {
           
           {/* Right column - Text content */}
           <div className="p-10 md:p-16 lg:p-20">
-            <Overline>Icons</Overline>
+            <Overline className="mb-4">Icons</Overline>
             <H3>App Builder Icons v3</H3>
             <p className="text-base text-slate-700 max-w-xl mt-4">
               A custom icon set I created for Fulcrum's drag & drop App Builder. One of the constraints for v3 was for each icon to be identical in width and height, leading to some unique design choices (see: the flattened mailbox icon for the Address Field).
@@ -247,10 +247,10 @@ const FulcrumContent: React.FC = () => {
 
 
           {/* Vignette Section 2 */}
-          <div className="w-full bg-stone-100 border-y border-slate-200">
-            <div className="grid md:grid-cols-2 items-center">
+          <div className="w-full bg-slate-100 border-y border-slate-200">
+            <div className="vignette-container">
               {/* Left column - Full-bleed image */}
-              <div className="relative h-60 md:h-full min-h-[320px] aspect-square">
+              <div className="vignette-image-container">
                 <Image 
                   src="/images/work/full/full-fulcrum-brochure-mini-mockup.jpg"
                   alt="Fulcrum Brochure Mini Mockup"
@@ -263,11 +263,9 @@ const FulcrumContent: React.FC = () => {
               
               {/* Right column - Text content */}
               <div className="p-10 md:p-16 lg:p-20">
-                <Overline>Print | Illustration</Overline>
-                <H3>Features Mini Brochure</H3>
-                <p className="text-base text-slate-700 max-w-xl mt-4">
-                  A custom icon set I created for Fulcrum's drag & drop App Builder. One of the constraints for v3 was for each icon to be identical in width and height, leading to some unique design choices (see: the flattened mailbox icon for the Address Field).
-                </p>
+                <Overline className="mb-4">Illustration</Overline>
+                <H3>Mini Brochure</H3>
+                <p className="text-base text-slate-700 max-w-xl mt-4">I created custom illustrations for the Features section of the website. Each was unique enough to conceptually stand on its own, and the striking visuals left such an impression on the team, we decided to create a 4-panel brochure to hand out at trade shows and industry events. </p>
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
 import { projectDetails } from '../../data/projectDetails';
-
+import Link from 'next/link';
 const DivideContent: React.FC = () => {
   return (
     <>
@@ -91,9 +91,9 @@ const DivideContent: React.FC = () => {
 
       {/* Vignette Section 1 */}
       <div className="w-full bg-slate-100 border-y border-slate-200">
-        <div className="grid md:grid-cols-2 items-center">
+        <div className="vignette-container">
           {/* Left column - Full-bleed image */}
-          <div className="relative h-60 md:h-full min-h-[320px] aspect-square">
+          <div className="vignette-image-container">
             <Image 
               src="/images/work/gridded/grid-divide-icons.jpg"
               alt="Divide Icons"
@@ -106,10 +106,10 @@ const DivideContent: React.FC = () => {
           
           {/* Right column - Text content */}
           <div className="p-10 md:p-16 lg:p-20">
-            <Overline>Icons</Overline>
+            <Overline className="mb-4">Icons</Overline>
             <H3>Divide In-Game Icons</H3>
             <p className="text-base text-slate-700 max-w-xl mt-4">
-              A custom icon set I created for Fulcrum's drag & drop App Builder. One of the constraints for v3 was for each icon to be identical in width and height, leading to some unique design choices (see: the flattened mailbox icon for the Address Field).
+              We needed a custom icon set that matched the futuristic setting for Divide and the 'Vestige' corporation. These were used in-game as waypoints and item markers.
             </p>
           </div>
         </div>
@@ -117,9 +117,9 @@ const DivideContent: React.FC = () => {
 
       {/* Vignette Section 2 */}
       <div className="w-full bg-slate-100 border-b border-slate-200">
-        <div className="grid md:grid-cols-2 items-center">
+        <div className="vignette-container">
           {/* Left column - Full-bleed image */}
-          <div className="relative h-60 md:h-full min-h-[320px] aspect-square">
+          <div className="vignette-image-container">
             <Image 
               src="/images/work/full/full-divide-ps4.jpg"
               alt="Divide for Playstation"
@@ -132,10 +132,10 @@ const DivideContent: React.FC = () => {
           
           {/* Right column - Text content */}
           <div className="p-10 md:p-16 lg:p-20">
-            <Overline>Sony Playstation</Overline>
+            <Overline className="mb-4">Sony Playstation</Overline>
             <H3>Divide Playstation Assets</H3>
             <p className="text-base text-slate-700 max-w-xl mt-4">
-              A custom icon set I created for Fulcrum's drag & drop App Builder. One of the constraints for v3 was for each icon to be identical in width and height, leading to some unique design choices (see: the flattened mailbox icon for the Address Field).
+              One of the highlights of the project was knowing it would be released on the Playstation, allowing me to create the menu assets like the background poster and trophy icons I'd seen in so many other games I played.
             </p>
           </div>
         </div>
@@ -171,9 +171,9 @@ const DivideContent: React.FC = () => {
             
       {/* Vignette Section 2 */}
       <div className="w-full bg-slate-100 border-y mb-28 border-slate-200">
-        <div className="grid md:grid-cols-2 items-center">
+        <div className="vignette-container">
           {/* Left column - Full-bleed image */}
-          <div className="relative h-60 md:h-full min-h-[320px] aspect-square">
+          <div className="vignette-image-container">
             <Image 
               src="/images/work/snapshots/snapshot-divide-recording-1.jpg"
               alt="Divide Recording Session"
@@ -186,10 +186,10 @@ const DivideContent: React.FC = () => {
           
           {/* Right column - Text content */}
           <div className="p-10 md:p-16 lg:p-20">
-            <Overline>Soundtrack</Overline>
+            <Overline className="mb-4">Soundtrack</Overline>
             <H3>Divide Sountrack Cover</H3>
             <p className="text-base text-slate-700 max-w-xl mt-4">
-              A custom icon set I created for Fulcrum's drag & drop App Builder. One of the constraints for v3 was for each icon to be identical in width and height, leading to some unique design choices (see: the flattened mailbox icon for the Address Field).
+              In addition to the game design, Divide creator and musical composer Chris Tilton asked me to design the cover for the soundtrack and its EP and Deluxe Edition variants. This was toward the end of the project and it was rewarding to pull in some well-established design elements to tie everything together. This photo was captured during one of the recording sessions for the game's soundtrack (<Link href="https://open.spotify.com/album/7dxKI9RCXe3tL9WrmLknPe" rel="noopener noreferrer" target="_blank">check it out on Spotify</Link>).
             </p>
           </div>
         </div>

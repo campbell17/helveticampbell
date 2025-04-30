@@ -1,6 +1,6 @@
 'use client'
 
-import { H1, H2 } from './components/Typography'
+import { H1, H2, H3 } from './components/Typography'
 import WorkItem from './components/WorkItem'
 import EssayItem from './components/EssayItem'
 import { useOpenProject } from './hooks/useOpenProject'
@@ -68,41 +68,34 @@ export default function HomePage() {
           </Link>
         </div>
         
-        <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm p-6 shadow-md">
-          <div className="divide-primary/10 -mt-6">
+        <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
             {essays.map(essay => (
               <EssayItem key={essay.id} essay={essay} />
             ))}
-          </div>
         </div>
       </div>
       
       {/* About Section */}
       <div className="mt-20">
         <div className="flex items-center justify-between mb-8">
-          <H2>About</H2>
-          <Link 
-            href="/who" 
-            className="text-secondary hover:text-primary transition-colors duration-300"
-          >
-            Learn more
-          </Link>
+          <H2>Who</H2>
         </div>
         
-        <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm p-6 shadow-md">
-          <div className="flex flex-col md:flex-row gap-6 items-center">
-            <div className="w-32 h-32 -scale-x-100 relative rounded-[var(--container-radius)] overflow-hidden bg-white/30">
-              <Image
-                src="/images/tim.jpg"
-                alt="Tim Campbell"
-                width={250}
-                height={250}
-                sizes="(max-width: 768px) 100vw, 250px"
-                className="object-cover h-full w-full"
-              />
-            </div>
-            <p className="text-base">
-              I was the sole designer on Fulcrum for its first 10 years while it grew from an idea on a whiteboard to $12M+ in ARR with 2,000+ customers. I'm comfortable working with Rails, HTML, CSS, as well as JS/React to speed up development and deliver complete solutions.
+        <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+          <div className="aspect-[4/4] -scale-x-100 relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 min-w-[180px]">
+            <Image
+              src="/images/tim.jpg"
+              alt="Tim Campbell"
+              width={1000}
+              height={1000}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover h-full w-full"
+            />
+          </div>
+          <div className="flex flex-col"> 
+            <H3 className="!mb-0">Hi, I'm Tim.</H3>
+            <p className="!mb-2 !leading-8">
+              Currently designing, making art, writing, and solving problems. Adding clarity wherever possible. <Link href="/who">Learn more</Link>
             </p>
           </div>
         </div>
