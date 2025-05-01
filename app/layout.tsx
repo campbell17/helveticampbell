@@ -15,6 +15,7 @@ import { ProjectSidebarProvider } from './contexts/ProjectSidebarContext'
 import { LoadingProvider } from './contexts/LoadingContext'
 import { NavigationEvents } from './components/NavigationEvents'
 import { Suspense } from 'react'
+import Footer from './components/Footer'
 
 export const metadata: Metadata = {
   title: 'Helveticampbell',
@@ -84,6 +85,9 @@ export default function RootLayout({
                     </AnimatedLayout>
                   </div>
                 </main>
+                
+                {/* Footer */}
+                <Footer />
               </div>
               <CustomScrollbar />
               <BackToTop />
