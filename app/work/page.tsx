@@ -10,6 +10,11 @@ import { useOpenProject } from '../hooks/useOpenProject'
 import { useState } from 'react'
 import { projectDetails } from '../data/projectDetails'
 import WorkItem from '../components/WorkItem'
+import { Metadata } from 'next'
+import { generatePageMetadata } from '../lib/metadata'
+
+// Note: Metadata is defined in app/work/wrapper.tsx since this is a client component
+// and can't export metadata directly
 
 // Work images from Sidebar component
 const workImages = [

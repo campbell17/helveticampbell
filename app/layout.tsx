@@ -15,10 +15,10 @@ import { ProjectSidebarProvider } from './contexts/ProjectSidebarContext'
 import { LoadingProvider } from './contexts/LoadingContext'
 import { NavigationEvents } from './components/NavigationEvents'
 import { Suspense } from 'react'
+import { defaultMetadata } from './config/sitemap'
 
 export const metadata: Metadata = {
-  title: 'Helveticampbell',
-  description: 'Portfolio and creative works',
+  metadataBase: new URL('https://helveticampbell.com'),
   icons: {
     icon: [
       {
@@ -26,7 +26,9 @@ export const metadata: Metadata = {
         type: 'image/svg+xml',
       }
     ]
-  }
+  },
+  authors: [{ name: 'Tim Campbell' }],
+  creator: 'Tim Campbell',
 }
 
 export default function RootLayout({

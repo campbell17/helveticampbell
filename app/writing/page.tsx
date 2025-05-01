@@ -3,6 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { H1 } from '../components/Typography';
 import { getAllEssays } from '../lib/markdown';
+import { Metadata } from 'next';
+import { generatePageMetadata } from '../lib/metadata';
+
+// Note: Metadata is defined in app/writing/wrapper.tsx since this is a client component
+// and can't export metadata directly
 
 export default function WritingPage() {
   // Get all essays - with error handling

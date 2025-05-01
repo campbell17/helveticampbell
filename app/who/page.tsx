@@ -3,6 +3,11 @@
 import { H1, H2, H3 } from '../components/Typography'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Metadata } from 'next'
+import { generatePageMetadata } from '../lib/metadata'
+
+// Note: Metadata is defined in app/who/wrapper.tsx since this is a client component
+// and can't export metadata directly
 
 export default function WhoPage() {
   return (
@@ -43,7 +48,7 @@ export default function WhoPage() {
       <p>When you&apos;re the only designer for a company with big ambitions, being a generalist is mandatory. I have sketchbooks with pages chock full of logos, mobile app screens, mobile app icons, and trade show pull-up banners for offshoots of ideas that didn&apos;t (and never would) exist.</p>
       <p>I loved it.</p>
       <p>But what I loved most was working on the web apps and the marketing websites. Since we were so small, everyone had to be trusted to make what they were doing count without much (or any) oversight. This was the first time I was encouraged to simply address the customer problem and build. There was no time for hand-wringing.</p>
-      <p>We took a few cracks at different product ideas. Allinspections, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be our final meeting. Instead, he offered me the opportunity to head up something new: Fulcrum.</p>
+      <p>We took a few cracks at different product ideas. <Link href="#"> Allinspections</Link>, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be our final meeting. Instead, he offered me the opportunity to head up something new: Fulcrum.</p>
       <p>Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.</p>
       <p>Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.</p>
 
