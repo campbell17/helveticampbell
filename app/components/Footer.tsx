@@ -41,7 +41,7 @@ export default function Footer() {
     <AnimatePresence>
       <motion.footer 
         id="main-footer" 
-        className="relative mt-0 md:mt-24 py-16 md:pl-64 2xl:pl-72"
+        className="relative mt-0 pb-16 md:pl-64 2xl:pl-72"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
