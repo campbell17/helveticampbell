@@ -124,11 +124,16 @@ export default function SceneBackground() {
   
   // Effect 1: Update camera TARGETS when pathname changes
   useEffect(() => {
+    // Only update if cameraPositionRef is already initialized
+    if (!cameraPositionRef.current) return;
+    
+    // Get the new camera settings
     const { targetX, targetRotationX, targetRotationZ } = getCameraSettingsForPath(pathname)
     
-    cameraPositionRef.current.targetX = targetX
-    cameraPositionRef.current.targetRotationX = targetRotationX
-    cameraPositionRef.current.targetRotationZ = targetRotationZ
+    // Update only the target values, preserving current values
+    cameraPositionRef.current.targetX = targetX;
+    cameraPositionRef.current.targetRotationX = targetRotationX;
+    cameraPositionRef.current.targetRotationZ = targetRotationZ;
   }, [pathname]) // Only depends on pathname
   
   // Effect 2: Set up Three.js scene ONCE and run animation loop
@@ -141,16 +146,24 @@ export default function SceneBackground() {
     // Get initial camera settings based on the current path
     const { targetX, targetRotationX, targetRotationZ } = getCameraSettingsForPath(pathname)
     
-    // Initialize the camera position ref
-    cameraPositionRef.current = {
-      targetX,
-      currentX: targetX,
-      y: 300,
-      z: 300,
-      targetRotationX,
-      currentRotationX: targetRotationX,
-      targetRotationZ,
-      currentRotationZ: targetRotationZ
+    // Critical: Don't overwrite existing camera positions if they exist
+    // This preserves animation state during route changes
+    if (!cameraPositionRef.current) {
+      cameraPositionRef.current = {
+        targetX,
+        currentX: targetX, // Initial setup only - starts at target
+        y: 300,
+        z: 300,
+        targetRotationX,
+        currentRotationX: targetRotationX,
+        targetRotationZ,
+        currentRotationZ: targetRotationZ
+      }
+    } else {
+      // If current state exists, just update the target (not the current)
+      cameraPositionRef.current.targetX = targetX;
+      cameraPositionRef.current.targetRotationX = targetRotationX;
+      cameraPositionRef.current.targetRotationZ = targetRotationZ;
     }
     
     // Create new scene
@@ -252,8 +265,10 @@ export default function SceneBackground() {
       // Update time uniform
       gridMaterial.uniforms.time.value += 0.01
       
-      // Interpolate camera position/rotation towards targets
-      const transitionFactor = 0.03
+      // Interpolate camera position/rotation towards targets with a pleasing easing rate
+      const transitionFactor = 0.03  // Standard smooth transition
+      
+      // Update positions with smooth interpolation
       cameraPositionRef.current.currentX += (cameraPositionRef.current.targetX - cameraPositionRef.current.currentX) * transitionFactor
       cameraPositionRef.current.currentRotationX += (cameraPositionRef.current.targetRotationX - cameraPositionRef.current.currentRotationX) * transitionFactor
       cameraPositionRef.current.currentRotationZ += (cameraPositionRef.current.targetRotationZ - cameraPositionRef.current.currentRotationZ) * transitionFactor
