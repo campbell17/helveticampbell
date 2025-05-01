@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@floating-ui/react": "^0.27.8",
     "@formspree/react": "^3.0.0",
     "@headlessui/react": "^2.2.2",
     "@heroicons/react": "^2.2.0",

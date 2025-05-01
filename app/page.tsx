@@ -25,10 +25,10 @@ const workImages = [
 
 export default function HomePage() {
   const { openProject } = useOpenProject();
-  const { posts, isLoading, error, rawResponse } = useSubstackPosts({
-    publicationUrl: config.substackUrl,
-    limit: 3
-  });
+  // const { posts, isLoading, error, rawResponse } = useSubstackPosts({
+  //   publicationUrl: config.substackUrl,
+  //   limit: 3
+  // });
   
   // const [showDebug, setShowDebug] = useState(false);
 

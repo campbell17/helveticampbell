@@ -363,7 +363,7 @@ function DesktopNavigation({
                         }
                       }}
                       onClick={() => openProject(project.key)}
-                      className={`cursor-pointer flex items-center pl-2 rounded-md border border-transparent hover:border-neutral-200 hover:bg-neutral-100 justify-between text-xs tracking-wider font-[500] py-1 uppercase !font-sans ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group w-full`}
+                      className={`cursor-pointer flex items-center pl-2 rounded-md border border-transparent hover:border-neutral-200 hover:bg-neutral-100 justify-between text-sm tracking-wider font-[500] py-1 uppercase !font-sans ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group w-full`}
                     >
                       {project.name}
                       <ArrowLeftStartOnRectangleIcon className="opacity-0 group-hover:opacity-100 mr-1.5 h-4 w-4 transition-opacity" />
