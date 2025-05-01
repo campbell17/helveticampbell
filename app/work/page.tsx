@@ -43,9 +43,9 @@ export default function WorkPage() {
 
       <div className="flex flex-col gap-20">
         <div>
-          {/* Work gallery grid - using full width */}
+          {/* Work gallery grid  */}
           <div className="@container mb-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-8">
               {workImages.map((image, index) => (
                 <WorkItem
                   key={index}

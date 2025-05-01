@@ -28,28 +28,10 @@ export default function Footer() {
   }
   
   return (
-    <footer className="relative bg-white mt-24 py-16">
-      {/* Grid background pattern */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundSize: '50px 50px',
-          backgroundImage: `
-            linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)
-          `,
-          zIndex: 0,
-          pointerEvents: 'none'
-        }}
-      />
-      
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
-          {/* Left column */}
+    <footer id="main-footer" className="relative mt-24 py-16 md:pl-64 2xl:pl-72">
+      <div className="grid grid-cols-12 gap-4">
+        <div className="grid-narrow-content flex flex-col md:flex-row gap-6 lg:gap-24 px-8 py-6 md:py-12 overflow-visible">
+          {/* Column 1: Logo & Info */}
           <div className="flex flex-col space-y-8">
             {/* Logo */}
             <div className="h-12 w-16">
@@ -83,71 +65,68 @@ export default function Footer() {
             
             {/* Copyright */}
             <div className="text-gray-500 text-sm">
-              © 2010-2025 Tim Campbell
+              © 2025 Tim Campbell
             </div>
           </div>
           
-          {/* Right column */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Column 1: WORK */}
-            <div>
-              <Overline className="mb-2">Work</Overline>
-              <ul className="list-none p-0 !m-0">
-                {projects.map((project) => (
-                  <li key={project.key} className="leading-tight mb-1.5">
-                    <button
-                      onClick={() => openProject(project.key)}
-                      className="cursor-pointer text-gray-500 hover:text-black transition-colors text-sm p-0 m-0 inline bg-transparent border-0 font-normal"
-                    >
-                      {project.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Column 2: THE REST */}
-            <div>
-              <Overline className="mb-2">The Rest</Overline>
-              <ul className="list-none p-0 !m-0">
-                <li className="leading-tight mb-1.5">
-                  <Link 
-                    href="/" 
-                    onClick={() => handleLinkClick("/")}
-                    className="text-gray-500 hover:text-black transition-colors text-sm inline"
+          {/* Column 2: WORK */}
+          <div className="mt-8 sm:mt-0">
+            <Overline className="mb-2">Work</Overline>
+            <ul className="list-none p-0 !m-0">
+              {projects.map((project) => (
+                <li key={project.key} className="leading-tight mb-1.5">
+                  <button
+                    onClick={() => openProject(project.key)}
+                    className="cursor-pointer text-gray-500 hover:text-black transition-colors text-sm p-0 m-0 inline bg-transparent border-0 font-normal"
                   >
-                    Home
-                  </Link>
+                    {project.name}
+                  </button>
                 </li>
-                <li className="leading-tight mb-1.5">
-                  <Link 
-                    href="/writing" 
-                    onClick={() => handleLinkClick("/writing")}
-                    className="text-gray-500 hover:text-black transition-colors text-sm inline"
-                  >
-                    Writing
-                  </Link>
-                </li>
-                <li className="leading-tight mb-1.5">
-                  <Link 
-                    href="/who" 
-                    onClick={() => handleLinkClick("/who")}
-                    className="text-gray-500 hover:text-black transition-colors text-sm inline"
-                  >
-                    Who
-                  </Link>
-                </li>
-                <li className="leading-tight mb-1.5">
-                  <Link 
-                    href="/contact" 
-                    onClick={() => handleLinkClick("/contact")}
-                    className="text-gray-500 hover:text-black transition-colors text-sm inline"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Column 3: THE REST */}
+          <div className="mt-8 sm:mt-0">
+            <Overline className="mb-2">The Rest</Overline>
+            <ul className="list-none p-0 !m-0">
+              <li className="leading-tight mb-1.5">
+                <Link 
+                  href="/" 
+                  onClick={() => handleLinkClick("/")}
+                  className="text-gray-500 hover:text-black transition-colors text-sm inline"
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="leading-tight mb-1.5">
+                <Link 
+                  href="/writing" 
+                  onClick={() => handleLinkClick("/writing")}
+                  className="text-gray-500 hover:text-black transition-colors text-sm inline"
+                >
+                  Writing
+                </Link>
+              </li>
+              <li className="leading-tight mb-1.5">
+                <Link 
+                  href="/who" 
+                  onClick={() => handleLinkClick("/who")}
+                  className="text-gray-500 hover:text-black transition-colors text-sm inline"
+                >
+                  Who
+                </Link>
+              </li>
+              <li className="leading-tight mb-1.5">
+                <Link 
+                  href="/contact" 
+                  onClick={() => handleLinkClick("/contact")}
+                  className="text-gray-500 hover:text-black transition-colors text-sm inline"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
