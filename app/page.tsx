@@ -181,7 +181,7 @@ export default function HomePage() {
         </div> */}
       
       {/* About Section */}
-      <div className="mt-20">
+      <div className="mt-20 @container">
         <div className="flex items-center justify-between mb-8">
           <H2>Who</H2>
         </div>

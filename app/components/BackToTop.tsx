@@ -21,6 +21,7 @@ interface BackToTopProps {
 
 export default function BackToTop({ scrollThreshold = 300 }: BackToTopProps) {
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [isProjectOpen, setIsProjectOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,14 +30,35 @@ export default function BackToTop({ scrollThreshold = 300 }: BackToTopProps) {
       }
     }
 
-    // Set up scroll listener
+    // Check if a project sidebar is open
+    const checkProjectSidebar = () => {
+      // Look for the project-sidebar-content element which indicates an open project
+      const projectSidebar = document.querySelector('.project-sidebar-content')
+      setIsProjectOpen(!!projectSidebar)
+    }
+
+    // Set up listeners
     window.addEventListener('scroll', handleScroll)
     
-    // Initial check
+    // Set up a mutation observer to detect when the project sidebar is added/removed from DOM
+    const observer = new MutationObserver(() => {
+      checkProjectSidebar()
+    })
+    
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true 
+    })
+    
+    // Initial checks
     handleScroll()
+    checkProjectSidebar()
     
     // Clean up
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      observer.disconnect()
+    }
   }, [scrollThreshold])
 
   const scrollToTop = () => {
@@ -45,7 +67,7 @@ export default function BackToTop({ scrollThreshold = 300 }: BackToTopProps) {
 
   return (
     <AnimatePresence>
-      {showBackToTop && (
+      {showBackToTop && !isProjectOpen && (
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0, transition: ANIMATION_TIMING.enter }}

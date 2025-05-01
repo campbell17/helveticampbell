@@ -13,6 +13,17 @@ export default function WhoPage() {
         The TL;DR and the Long Version.
       </div>
 
+      {/* Profile image  */}
+      <div className="block md:hidden aspect-[4/4] -scale-x-100 relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 mb-12">
+        <Image
+          src="/images/tim.jpg"
+          alt="Tim Campbell"
+          width={1000}
+          height={1000}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="transition-all duration-200"
+        />
+      </div>
       <H2 className="mb-8">The Short Version</H2>
 
       <ul className="space-y-4 list-disc list-outside ml-5">
