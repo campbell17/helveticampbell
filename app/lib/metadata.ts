@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { sitemap } from '../config/sitemap';
+import { sitemap } from '../config/siteData';
 
 /**
  * Generate metadata for a specific page based on its path

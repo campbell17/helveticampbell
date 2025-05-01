@@ -1,9 +1,9 @@
 import { ImageResponse } from 'next/og'
-import { sitemap } from './config/siteData'
+import { sitemap } from '../config/siteData'
 
 // Route segment config
 export const runtime = 'edge'
-export const alt = 'Helveticampbell - Versatile, product-focused design'
+export const alt = 'Portfolio & Projects | Helveticampbell'
 export const size = {
   width: 1200,
   height: 630,
@@ -36,14 +36,14 @@ export default function Image() {
             fontWeight: 'bold',
             marginBottom: '10px',
           }}>
-            Helveticampbell
+            Portfolio & Projects
           </div>
           <div style={{ 
             fontSize: '32px', 
             color: '#666666',
             maxWidth: '700px'
           }}>
-            {sitemap.home.description}
+            {sitemap.work.description}
           </div>
         </div>
         <div style={{ 
@@ -51,7 +51,7 @@ export default function Image() {
           marginTop: '20px',
           color: '#888888' 
         }}>
-          Tim Campbell's Portfolio
+          Helveticampbell
         </div>
       </div>
     ),

@@ -1,5 +1,5 @@
 /**
- * Sitemap configuration for Helveticampbell portfolio website
+ * Site data configuration for Helveticampbell portfolio website
  * Contains route information and content summaries for SEO and metadata
  */
 
@@ -88,7 +88,18 @@ export function generateSitemapUrls() {
   return Object.values(sitemap).map(page => ({
     url: `https://helveticampbell.com${page.path}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as 'monthly' | 'always' | 'hourly' | 'daily' | 'weekly' | 'yearly' | 'never',
+    changefreq: 'monthly' as 'monthly' | 'always' | 'hourly' | 'daily' | 'weekly' | 'yearly' | 'never',
     priority: page.path === '/' ? 1.0 : 0.8,
   }));
-} 
+}
+
+// Define a variable for the default export
+const siteData = {
+  sitemap,
+  defaultMetadata,
+  getPageMetadata,
+  generateSitemapUrls
+};
+
+// Export the variable as default
+export default siteData; 

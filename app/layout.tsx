@@ -15,7 +15,7 @@ import { ProjectSidebarProvider } from './contexts/ProjectSidebarContext'
 import { LoadingProvider } from './contexts/LoadingContext'
 import { NavigationEvents } from './components/NavigationEvents'
 import { Suspense } from 'react'
-import { defaultMetadata } from './config/sitemap'
+import { defaultMetadata } from './config/siteData'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://helveticampbell.com'),

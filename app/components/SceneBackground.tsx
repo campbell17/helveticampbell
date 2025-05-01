@@ -338,7 +338,7 @@ export default function SceneBackground() {
       cameraRef.current = null;
       animationFrameRef.current = null;
     }
-  }, [lookAtTarget]) // Run only ONCE on mount (lookAtTarget is stable)
+  }, [lookAtTarget, pathname]) // Add pathname to dependency array
   
   return (
     <div 
