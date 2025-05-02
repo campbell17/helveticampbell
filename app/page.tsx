@@ -11,6 +11,7 @@ import { config } from './config/environment'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
 
 // Work images from Sidebar component
 const workImages = [
@@ -59,8 +60,13 @@ export default function HomePage() {
       <div className="subheading">
         Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up.
       </div>
-      
-      <H2 className="mb-8">Work</H2>
+
+      <div className="flex items-center justify-between mb-8">
+        <Link href="/work" className="group inline-flex items-center hover:text-primary transition-colors duration-300">
+          <H2 className="!mb-0 group-hover:text-primary transition-colors duration-300">Work</H2>
+          <ArrowRightIcon className="w-6 h-6 ml-2 transition-all duration-300" />
+        </Link>
+      </div>      
       <div className="@container mb-16">
         <div className="grid grid-cols-1 gap-4 md:gap-8">
           {workImages.map((image, index) => (
@@ -78,12 +84,9 @@ export default function HomePage() {
       {/* Writing Section */}
       <div className="mt-20">
         <div className="flex items-center justify-between mb-8">
-          <H2>Writing</H2>
-          <Link 
-            href="/writing" 
-            className="text-secondary hover:text-primary transition-colors duration-300"
-          >
-            View all
+          <Link href="/writing" className="group inline-flex items-center hover:text-primary transition-colors duration-300">
+            <H2 className="!mb-0 group-hover:text-primary transition-colors duration-300">Writing</H2>
+            <ArrowRightIcon className="w-6 h-6 ml-2 transition-all duration-300" />
           </Link>
         </div>
         
@@ -184,7 +187,10 @@ export default function HomePage() {
       {/* About Section */}
       <div className="mt-20 @container">
         <div className="flex items-center justify-between mb-8">
-          <H2>Who</H2>
+          <Link href="/who" className="group inline-flex items-center hover:text-primary transition-colors duration-300">
+            <H2 className="!mb-0 group-hover:text-primary transition-colors duration-300">Who</H2>
+            <ArrowRightIcon className="w-6 h-6 ml-2 transition-all duration-300" />
+          </Link>
         </div>
         
         <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
