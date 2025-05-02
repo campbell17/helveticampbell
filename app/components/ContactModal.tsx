@@ -2,6 +2,7 @@
 
 import { Fragment, useRef } from 'react'
 import { Dialog, DialogPanel, DialogTitle, DialogBackdrop } from '@headlessui/react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useForm, ValidationError } from '@formspree/react'
 
@@ -15,6 +16,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const cancelButtonRef = useRef(null)
   
   return (
+    <AnimatePresence>
     <Dialog 
       open={isOpen} 
       onClose={onClose} 
@@ -22,12 +24,24 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       initialFocus={cancelButtonRef}
     >
       {/* The backdrop, rendered as a fixed sibling to the panel container */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.15 }}
+      >
       <DialogBackdrop 
         className="fixed inset-0 bg-white/80 backdrop-blur-sm transition-opacity"
       />
-
+      </motion.div>
       {/* Full-screen container to center the panel */}
-      <div className="fixed inset-0 z-10 overflow-y-auto">
+      <motion.div 
+        className="fixed inset-0 z-10 overflow-y-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.10, delay: 0.3 }}
+      >
         <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
           <DialogPanel className="relative transform rounded-xl overflow-hidden bg-white px-6 pb-6 pt-6 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-8">
             <div className="absolute right-0 top-0 pr-4 pt-4">
@@ -121,7 +135,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
           </DialogPanel>
         </div>
-      </div>
+      </motion.div>
     </Dialog>
+      </AnimatePresence>
   )
 } 
