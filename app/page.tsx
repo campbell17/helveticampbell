@@ -62,9 +62,9 @@ export default function HomePage() {
       </div>
 
       <div className="flex items-center justify-between mb-8">
-        <Link href="/work" className="group inline-flex items-center hover:text-primary transition-colors duration-300">
-          <H2 className="!mb-0 group-hover:text-primary transition-colors duration-300">Work</H2>
-          <ArrowRightIcon className="w-6 h-6 ml-2 transition-all duration-300" />
+        <Link href="/work" className="group inline-flex items-center hover:text-primary transition-all duration-300">
+          <H2 className="!mb-0 transition-all duration-300">Work</H2>
+          <ArrowRightIcon className="w-6 h-6 ml-2 group-hover:text-rose-400 group-hover:translate-x-2 transition-all duration-300" />
         </Link>
       </div>      
       <div className="@container mb-16">
@@ -85,8 +85,8 @@ export default function HomePage() {
       <div className="mt-20">
         <div className="flex items-center justify-between mb-8">
           <Link href="/writing" className="group inline-flex items-center hover:text-primary transition-colors duration-300">
-            <H2 className="!mb-0 group-hover:text-primary transition-colors duration-300">Writing</H2>
-            <ArrowRightIcon className="w-6 h-6 ml-2 transition-all duration-300" />
+            <H2 className="!mb-0 transition-all duration-300">Writing</H2>
+            <ArrowRightIcon className="w-6 h-6 ml-2 group-hover:text-rose-400 group-hover:translate-x-2 transition-all duration-300" />
           </Link>
         </div>
         
@@ -188,8 +188,8 @@ export default function HomePage() {
       <div className="mt-20 @container">
         <div className="flex items-center justify-between mb-8">
           <Link href="/who" className="group inline-flex items-center hover:text-primary transition-colors duration-300">
-            <H2 className="!mb-0 group-hover:text-primary transition-colors duration-300">Who</H2>
-            <ArrowRightIcon className="w-6 h-6 ml-2 transition-all duration-300" />
+            <H2 className="!mb-0 transition-all duration-300">Who</H2>
+            <ArrowRightIcon className="w-6 h-6 ml-2 group-hover:text-rose-400 group-hover:translate-x-2 transition-all duration-300" />
           </Link>
         </div>
         

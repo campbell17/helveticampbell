@@ -252,7 +252,7 @@ const FulcrumContent: React.FC = () => {
               {/* Left column - Full-bleed image */}
               <div className="vignette-image-container">
                 <Image 
-                  src="/images/work/full/full-fulcrum-brochure-mini-mockup.jpg"
+                  src="/images/work/full/full-fulcrum-brochure-mini-mockup-cool.jpg"
                   alt="Fulcrum Brochure Mini Mockup"
                   fill
                   style={{ objectFit: 'cover' }}
