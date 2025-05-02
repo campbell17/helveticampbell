@@ -87,6 +87,7 @@ export default function HomePage() {
           </Link>
         </div>
         
+        {/* Essay List */}
         <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
             {essays.map(essay => (
               <EssayItem key={essay.id} essay={essay} />

@@ -31,11 +31,12 @@ export default function WritingPage() {
         A collection of essays, articles, and other writing.
       </div>
       
+      {/* Main column */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         <div className="xl:col-span-2">
           <h2 className="text-xl font-bold mb-6">Productivity</h2>
           {businessEssays.length > 0 ? (
-            <div className="flex flex-col gap-4">
+            <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
               {businessEssays.map((essay) => {
                 const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -44,35 +45,21 @@ export default function WritingPage() {
                 });
                 
                 return (
-                  <article key={essay.slug} className="">
-                    <Link href={`/writing/${essay.slug}`} className="group block bg-white p-10 shadow-2xl hover:shadow-xs rounded-lg hover:bg-neutral-50 transition-all duration-100">
-                      <h3 className="!text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
-                        {essay.title}
-                      </h3>
-                      
-                      <time dateTime={essay.date} className="text-sm text-text-secondary block">
+                  <Link 
+                    key={essay.slug}
+                    href={`/writing/${essay.slug}`} 
+                    className="block py-6 border-b border-border hover:bg-neutral-50 transition-colors duration-150 px-4"
+                  >
+                    <div className="flex flex-col gap-2">
+                      <time dateTime={essay.date} className="text-sm text-secondary">
                         {formattedDate}
                       </time>
-
-                      {essay.cover_image && (
-                        <div className="aspect-[3/2] relative rounded-[var(--container-radius)] overflow-hidden bg-white/30 my-6 group-hover:ring-1 group-hover:ring-primary/40 transition-all duration-300">
-                          <Image 
-                            src={essay.cover_image}
-                            alt={essay.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 800px"
-                            className="object-cover"
-                          />
-                        </div>
-                      )}
-
+                      <h3 className="!mb-2 font-medium text-xl text-primary">{essay.title}</h3>
                       {essay.excerpt && (
-                        <div className="prose prose-invert max-w-none line-clamp-3 mb-4">
-                          <p>{essay.excerpt}</p>
-                        </div>
+                        <p className="!mb-0 text-base text-primary/80">{essay.excerpt}</p>
                       )}
-                    </Link>
-                  </article>
+                    </div>
+                  </Link>
                 );
               })}
             </div>
@@ -85,6 +72,7 @@ export default function WritingPage() {
           )}
         </div>
 
+        {/* Sidebar column */}
         <div className="xl:col-span-1">
           <h2 className="!text-3xl font-bold mb-6">Story Time</h2>
           
