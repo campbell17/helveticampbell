@@ -38,7 +38,22 @@ export async function POST(request: Request) {
     }
 
     const data = await response.json();
+    
+    // Enhanced logging to debug response limits
     console.log(`Successfully fetched ${data.length} posts from Substack`);
+    console.log(`Requested limit: ${limit}, actual received: ${data.length}`);
+    
+    if (data.length < parseInt(limit)) {
+      console.log('Note: Received fewer posts than requested. This could be due to:');
+      console.log('1. API rate limits or maximum post limits');
+      console.log('2. Publication doesn\'t have that many posts');
+      console.log('3. Test API key restrictions');
+    }
+    
+    // Additional check for possible metadata
+    if (data.metadata) {
+      console.log('Response metadata:', data.metadata);
+    }
     
     // Return data directly without additional wrapping
     return NextResponse.json(data);
@@ -91,7 +106,22 @@ export async function GET(request: Request) {
     }
 
     const data = await response.json();
+    
+    // Enhanced logging to debug response limits
     console.log(`Successfully fetched ${data.length} posts from Substack`);
+    console.log(`Requested limit: ${limit}, actual received: ${data.length}`);
+    
+    if (data.length < parseInt(limit)) {
+      console.log('Note: Received fewer posts than requested. This could be due to:');
+      console.log('1. API rate limits or maximum post limits');
+      console.log('2. Publication doesn\'t have that many posts');
+      console.log('3. Test API key restrictions');
+    }
+    
+    // Additional check for possible metadata
+    if (data.metadata) {
+      console.log('Response metadata:', data.metadata);
+    }
     
     // Return data directly without additional wrapping
     return NextResponse.json(data);
