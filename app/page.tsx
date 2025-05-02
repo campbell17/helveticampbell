@@ -69,7 +69,7 @@ export default function HomePage() {
               image={image}
               index={index}
               onImageClick={handleImageClick}
-              imageAspectRatio="aspect-[21/6]" // Custom wider aspect ratio for homepage
+              imageAspectRatio="aspect-[21/9] md:aspect-[21/7]" // Custom wider aspect ratio for homepage
             />
           ))}
         </div>
