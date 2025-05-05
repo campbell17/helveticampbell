@@ -34,18 +34,17 @@ export default function ThemeSwitcher() {
             </MenuButton>
 
             <MenuItems
-              className="absolute right-0 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] container-glass bg-gradient-to-tr from-slate-50/60 via-teal-50/60 to-red-50/60 backdrop-blur-sm border border-white/10 p-1.5 shadow-lg focus:outline-none transition-all"
+              className="absolute right-0 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] bg-white border border-white/10 p-1.5 shadow-lg focus:outline-none transition-all"
               as={motion.div}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
             >
               <div className="py-1 space-y-1">
                 {themes.map(({ name, value, icon: Icon }) => (
                   <MenuItem key={value}>
                     {({ active }) => (
                       <motion.button 
-                        whileHover={{ x: 4 }}
                         whileTap={{ scale: 0.98 }}
                         transition={{ duration: 0.1 }}
                         className={`flex w-full items-center gap-3 px-3 py-2 rounded-md text-sm font-medium ${

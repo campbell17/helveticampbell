@@ -71,9 +71,9 @@ export default function RootLayout({
                 <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
                   <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
                     <Navigation />
-                    {/* <div className="flex-none mt-6">
+                    <div className="flex-none mt-6">
                       <ThemeSwitcher />
-                    </div> */}
+                    </div>
                   </nav>
                 </div>
 

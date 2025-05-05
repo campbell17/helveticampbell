@@ -186,9 +186,9 @@ function MobileNavigation({
           aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? (
-            <XMarkIcon className="h-6 w-6 text-black" />
+            <XMarkIcon className="h-6 w-6 text-primary" />
           ) : (
-            <Bars3Icon className="h-6 w-6 text-black" />
+            <Bars3Icon className="h-6 w-6 text-primary" />  
           )}
         </button>
       </motion.div>
@@ -216,21 +216,21 @@ function MobileNavigation({
             <nav className="flex flex-col items-center space-y-8 w-full px-8">
               <Link 
                 href="/work" 
-                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/work" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
+                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/work" ? 'text-primary font-bold' : 'text-secondary hover:text-primary'}`}
                 onClick={() => closeAndNavigate("/work")}
               >
                 Work
               </Link>
               <Link 
                 href="/writing" 
-                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/writing" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
+                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/writing" ? 'text-primary font-bold' : 'text-secondary hover:text-primary'}`}
                 onClick={() => closeAndNavigate("/writing")}
               >
                 Writing
               </Link>
               <Link 
                 href="/who" 
-                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/who" ? 'text-black font-bold' : 'text-neutral-500 hover:text-neutral-800'}`}
+                className={`py-3 px-6 text-2xl font-medium rounded-md text-center w-full ${pathname === "/who" ? 'text-primary font-bold' : 'text-secondary hover:text-primary'}`}
                 onClick={() => closeAndNavigate("/who")}
               >
                 Who
@@ -280,7 +280,7 @@ function DesktopNavigation({
         <div className="flex flex-col items-start w-full">
           <Link 
             href="/work" 
-            className={`${textStyles} w-full ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+            className={`${textStyles} w-full ${pathname === "/work" ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'}`}
             onClick={() => handleLinkClick("/work")}
           >
             Work
