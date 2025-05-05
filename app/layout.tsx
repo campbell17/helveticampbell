@@ -36,13 +36,13 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: 'Helveticampbell',
+    title: 'Tim Campbell',
     description: 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up',
     url: siteUrl,
     siteName: 'Helveticampbell',
     images: [
       {
-        url: `${siteUrl}/api/og?title=Helveticampbell&subtitle=Tim%20Campbell's%20Portfolio`,
+        url: `${siteUrl}/api/og?title=Helveticampbell&subtitle=Versatile%2C%20product-focused%20design.%20Building%2C%20shipping%2C%20and%20evolving%20digital%20experiences%20from%20the%20ground%20up`,
         width: 1200,
         height: 630,
         alt: 'Helveticampbell Portfolio',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Helveticampbell',
     description: 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up',
-    images: [`${siteUrl}/api/og?title=Helveticampbell&subtitle=Tim%20Campbell's%20Portfolio`],
+    images: [`${siteUrl}/api/og?title=Helveticampbell&subtitle=Versatile%2C%20product-focused%20design.%20Building%2C%20shipping%2C%20and%20evolving%20digital%20experiences%20from%20the%20ground%20up`],
   },
   icons: {
     icon: [
