@@ -7,6 +7,7 @@ import { ProjectOpener } from '../hooks/useOpenProject'
 import { Tooltip } from '../components/Tooltip'
 import ContactModal from '../components/ContactModal'
 import { useState } from 'react'
+import { PersonStructuredData } from '../components/StructuredDataManager'
 
 export default function WhoPage() {
   const [contactModalOpen, setContactModalOpen] = useState(false)
@@ -18,6 +19,8 @@ export default function WhoPage() {
 
   return (
     <div>
+      <PersonStructuredData />
+      
       <H1>Tim Campbell</H1>
       
       <div className="subheading">

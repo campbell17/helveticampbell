@@ -17,17 +17,85 @@ import { NavigationEvents } from './components/NavigationEvents'
 import { Suspense } from 'react'
 import Footer from './components/Footer'
 
+// Use environment variables if available, or default to localhost during development
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helveticampbell.com';
+
 export const metadata: Metadata = {
   title: 'Helveticampbell',
-  description: 'Portfolio and creative works',
+  description: 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up',
+  keywords: ['portfolio', 'creative', 'design', 'product design', 'web design'],
+  authors: [{ name: 'Tim Campbell' }],
+  creator: 'Tim Campbell',
+  publisher: 'Tim Campbell',
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Helveticampbell',
+    description: 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up',
+    url: siteUrl,
+    siteName: 'Helveticampbell',
+    images: [
+      {
+        url: `${siteUrl}/api/og?title=Helveticampbell&subtitle=Tim%20Campbell's%20Portfolio`,
+        width: 1200,
+        height: 630,
+        alt: 'Helveticampbell Portfolio',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Helveticampbell',
+    description: 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up',
+    images: [`${siteUrl}/api/og?title=Helveticampbell&subtitle=Tim%20Campbell's%20Portfolio`],
+  },
   icons: {
     icon: [
       {
-        url: '/favicon.svg',
-        type: 'image/svg+xml',
+        url: '/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        url: '/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+      {
+        url: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        url: '/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
       }
-    ]
-  }
+    ],
+    apple: [
+      {
+        url: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  verification: {
+    google: 'google-site-verification-code-here',
+  },
 }
 
 export default function RootLayout({
@@ -71,9 +139,9 @@ export default function RootLayout({
                 <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
                   <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
                     <Navigation />
-                    <div className="flex-none mt-6">
+                    {/* <div className="flex-none mt-6">
                       <ThemeSwitcher />
-                    </div>
+                    </div> */}
                   </nav>
                 </div>
 

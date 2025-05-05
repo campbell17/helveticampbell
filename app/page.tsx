@@ -12,6 +12,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { HomepageStructuredData } from './components/StructuredDataManager'
 
 // Work images from Sidebar component
 const workImages = [
@@ -55,6 +56,8 @@ export default function HomePage() {
 
   return (
     <>
+      <HomepageStructuredData />
+      
       <H1>This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>
       
       <div className="subheading">

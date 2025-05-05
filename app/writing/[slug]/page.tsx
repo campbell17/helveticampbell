@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { H1 } from '../../components/Typography';
 import { getEssayWithHtml, getAllEssays, ImageReference } from '../../lib/markdown';
+import { ArticleStructuredData } from '../../components/StructuredDataManager';
 
 // We're going to use the new Next.js 15 type pattern where params is a Promise
 type PageParams = {
@@ -19,6 +20,23 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
     return {
       title: `${essay.title} | Writing`,
       description: essay.excerpt || '',
+      openGraph: {
+        title: essay.title,
+        description: essay.excerpt || '',
+        url: `https://helveticampbell.com/writing/${slug}`,
+        type: 'article',
+        publishedTime: new Date(essay.date).toISOString(),
+        authors: ['Tim Campbell'],
+        images: essay.cover_image 
+          ? [{ url: essay.cover_image, width: 1200, height: 630, alt: essay.title }]
+          : undefined,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: essay.title,
+        description: essay.excerpt || '',
+        images: essay.cover_image ? [essay.cover_image] : undefined,
+      },
     };
   } catch (error) {
     console.error(error);
@@ -57,6 +75,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   
   return (
     <>
+      {/* Add structured data for the article */}
+      <ArticleStructuredData
+        title={essay.title}
+        description={essay.excerpt || ''}
+        image={essay.cover_image}
+        publishDate={new Date(essay.date).toISOString()}
+        url={`https://helveticampbell.com/writing/${essay.slug}`}
+      />
+      
       <H1>{essay.title}</H1>
       
       <div className="subheading mb-8">

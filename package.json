@@ -5,6 +5,7 @@
     "@headlessui/react": "^2.2.2",
     "@heroicons/react": "^2.2.0",
     "@motionone/dom": "^10.18.0",
+    "@vercel/og": "^0.6.8",
     "clsx": "^2.1.1",
     "framer-motion": "^12.7.3",
     "gray-matter": "^4.0.3",
@@ -19,6 +20,7 @@
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
+    "sharp": "^0.34.1",
     "tailwind-merge": "^3.2.0",
     "three": "^0.175.0",
     "three-stdlib": "^2.35.15"

@@ -10,6 +10,7 @@ import { useOpenProject } from '../hooks/useOpenProject'
 import { useState } from 'react'
 import { projectDetails } from '../data/projectDetails'
 import WorkItem from '../components/WorkItem'
+import { PortfolioStructuredData } from '../components/StructuredDataManager'
 
 // Work images from Sidebar component
 const workImages = [
@@ -35,6 +36,13 @@ export default function WorkPage() {
 
   return (
     <div>
+      <PortfolioStructuredData 
+        name="Tim Campbell's Portfolio Work"
+        description="Design and development work by Tim Campbell, including Fulcrum app, Spatial Networks, Divide for PS4, and more."
+        image="https://helveticampbell.com/images/work/isolated/iso-fulcrum-icon.png"
+        url="https://helveticampbell.com/work"
+      />
+      
       <H1>Work</H1>
 
       <div className="subheading">
