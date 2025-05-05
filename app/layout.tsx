@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: 'Tim Campbell',
+    title: 'Helveticampbell',
     description: 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up',
     url: siteUrl,
     siteName: 'Helveticampbell',

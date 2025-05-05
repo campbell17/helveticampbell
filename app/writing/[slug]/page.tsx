@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
     const essay = await getEssayWithHtml(slug);
     
     return {
-      title: `${essay.title} | Writing`,
+      title: `${essay.title}`,
       description: essay.excerpt || '',
       openGraph: {
         title: essay.title,
