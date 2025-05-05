@@ -94,7 +94,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   verification: {
-    google: 'google-site-verification-code-here',
+    google: 'KPqruPwJRTNLAO0juM2JU-k6-KEYfJjvvJSnVyavFJo',
   },
 }
 
