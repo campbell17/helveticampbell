@@ -166,11 +166,10 @@ export async function GET(request: NextRequest) {
               width="512"
               height="512"
               style={{
-                width: '512px',
+                width: '626px',
                 height: '512px',
                 objectFit: 'cover',
                 borderRadius: '12px',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
               }}
             />
           </div>
