@@ -35,6 +35,12 @@ export async function GET(request: NextRequest) {
     const subtitle = searchParams.get('subtitle') || 'Versatile, product-focused design';
     const imagePath = searchParams.get('image') || '/images/social/og-default.png';
     
+    // Debug logs
+    console.log('OG Image Request:');
+    console.log('- Title:', title);
+    console.log('- Subtitle:', subtitle);
+    console.log('- Image Path:', imagePath);
+    
     // Load the fonts
     const merriweatherFont = await loadGoogleFont('Merriweather:wght@700', title);
     const latoFont = await loadGoogleFont('Lato', 'helveticampbell.com');
