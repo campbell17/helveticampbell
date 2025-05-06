@@ -30,5 +30,31 @@ export const metadata: Metadata = {
 }
 
 export default function WhoPage() {
-  return <WhoContent />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Tim Campbell',
+            description: 'Designer with extensive experience in web and mobile applications.',
+            url: 'https://helveticampbell.com/who',
+            image: 'https://helveticampbell.com/images/tim.jpg',
+            jobTitle: 'Product Designer',
+            sameAs: [
+              'https://campbellseventeen.substack.com/'
+            ],
+            worksFor: {
+              '@type': 'Organization',
+              name: 'Fulcrum',
+              url: 'https://www.fulcrumapp.com'
+            }
+          })
+        }}
+      />
+      <WhoContent />
+    </>
+  )
 }

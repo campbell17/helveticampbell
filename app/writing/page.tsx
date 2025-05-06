@@ -7,7 +7,12 @@ import matter from 'gray-matter';
 import { Suspense } from 'react';
 import SubstackPostsSection from './SubstackPostsSection';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import JsonLd from '../components/JsonLd';
+import { Metadata } from 'next';
+
+// Define OG image parameters
+const ogTitle = 'Writing';
+const ogSubtitle = 'A collection of essays about productivity, life, and childhood shenanigans.';
+const ogImageUrl = `/api/og?title=${encodeURIComponent(ogTitle)}&subtitle=${encodeURIComponent(ogSubtitle)}`;
 
 // Define a type for our markdown essays
 interface LocalEssay {
@@ -16,6 +21,68 @@ interface LocalEssay {
   date: string;
   excerpt?: string;
   tags?: string[];
+}
+
+export const metadata: Metadata = {
+  title: 'Writing | Helveticampbell',
+  description: 'A collection of essays about productivity, life, and childhood shenanigans.',
+  alternates: {
+    canonical: '/writing',
+  },
+  openGraph: {
+    title: 'Writing | Helveticampbell',
+    description: 'A collection of essays about productivity, life, and childhood shenanigans.',
+    url: 'https://helveticampbell.com/writing',
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: 'Tim Campbell\'s Articles and Essays'
+      }
+    ],
+    type: 'website'
+  }
+}
+
+// Structured data for blog listing
+function BlogStructuredData({ essays }: { essays: LocalEssay[] }) {
+  // Transform essays to a format suitable for structured data
+  const blogPosts = essays.map(essay => ({
+    '@type': 'BlogPosting',
+    headline: essay.title,
+    datePublished: new Date(essay.date).toISOString(),
+    author: {
+      '@type': 'Person',
+      name: 'Tim Campbell',
+      url: 'https://helveticampbell.com/who'
+    },
+    url: `https://helveticampbell.com/writing/${essay.slug}`,
+    description: essay.excerpt || '',
+  }));
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: blogPosts.map((post, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: post
+      }))
+    },
+    url: 'https://helveticampbell.com/writing',
+    name: 'Writing by Tim Campbell',
+    description: 'A collection of essays about productivity, life, and childhood shenanigans.',
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
 }
 
 // Function to get essay metadata from files - runs server-side
@@ -68,58 +135,18 @@ function getLocalEssays(): LocalEssay[] {
   }
 }
 
-// Structured data for blog listing
-function BlogListingStructuredData({ essays }: { essays: LocalEssay[] }) {
-  // Transform essays to a format suitable for structured data
-  const blogPosts = essays.map(essay => ({
-    '@type': 'BlogPosting',
-    headline: essay.title,
-    datePublished: new Date(essay.date).toISOString(),
-    author: {
-      '@type': 'Person',
-      name: 'Tim Campbell',
-      url: 'https://helveticampbell.com/who'
-    },
-    url: `https://helveticampbell.com/writing/${essay.slug}`,
-    description: essay.excerpt || '',
-  }));
-
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListElement: blogPosts.map((post, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: post
-      }))
-    },
-    url: 'https://helveticampbell.com/writing',
-    name: 'Writing by Tim Campbell',
-    description: 'A collection of essays and articles by Tim Campbell',
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
-}
-
 export default function WritingPage() {
   // Get essays server-side
   const localEssays = getLocalEssays();
 
   return (
     <>
-      <BlogListingStructuredData essays={localEssays} />
+      <BlogStructuredData essays={localEssays} />
       
       <H1>Writing</H1>
 
       <div className="subheading mb-8">
-        A collection of essays.
+        A collection of essays about productivity, life, and childhood shenanigans.
       </div>
       
       {/* Main and sidebar columns */}
