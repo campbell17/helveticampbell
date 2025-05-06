@@ -33,6 +33,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const title = searchParams.get('title') || 'Helveticampbell';
     const subtitle = searchParams.get('subtitle') || 'Versatile, product-focused design';
+    const imagePath = searchParams.get('image') || '/images/social/og-default.png';
     
     // Load the fonts
     const merriweatherFont = await loadGoogleFont('Merriweather:wght@700', title);
@@ -161,7 +162,7 @@ export async function GET(request: NextRequest) {
             }}
           >
             <img
-              src={`${baseUrl}/images/social/og-default.png`}
+              src={`${baseUrl}${imagePath}`}
               alt="Featured image"
               width="512"
               height="512"
