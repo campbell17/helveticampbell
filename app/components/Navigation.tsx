@@ -11,6 +11,7 @@ import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline'
 import { useProjectSidebar } from '../contexts/ProjectSidebarContext'
 import { useLoading } from '../contexts/LoadingContext'
 import LoadingLogo from './LoadingLogo'
+import ThemeSwitcher from './ThemeSwitcher'
 
 // Define types for project items
 interface ProjectItem {
@@ -179,7 +180,7 @@ function MobileNavigation({
             </svg>
           </LoadingLogo>
         </Link>
-        
+        <ThemeSwitcher />
         <button
           onClick={toggleMobileMenu}
           className="cursor-pointer flex items-center justify-center p-2 rounded-md focus:outline-none relative z-50"

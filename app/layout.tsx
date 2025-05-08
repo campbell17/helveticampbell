@@ -139,9 +139,7 @@ export default function RootLayout({
                 {/* Mobile navigation */}
                 <div className="block top-0 left-0 right-0 z-50 md:hidden">
                   <nav className="p-6">
-                    <Navigation />
-                    <ThemeSwitcher />
-
+                    <Navigation />                    
                   </nav>
                 </div>
 
