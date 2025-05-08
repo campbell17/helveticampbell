@@ -138,11 +138,11 @@ export default function Testimonials({ className }: TestimonialsProps) {
   return (
     <div className={`@container ${className}`}>
       <div className="mx-auto">
-        <div className="mx-auto grid grid-cols-1 gap-8 text-sm/6 text-text-primary">
+        <div className="mx-auto grid grid-cols-1 gap-8 text-sm/6 text-text-color">
           {testimonials.flat(2).map((testimonial) => (
             <figure
               key={testimonial.author.handle}
-              className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5 relative overflow-hidden"
+              className="rounded-2xl pane no-hover p-6 shadow-lg ring-1 ring-gray-900/5 relative overflow-hidden"
             >
               {/* Large quote mark pseudo-element (top) */}
               <div className="absolute top-20 left-0 text-neutral-400 opacity-10 text-[224px] font-body z-0 -tracking-[20px] leading-16 pointer-events-none select-none">
@@ -154,7 +154,7 @@ export default function Testimonials({ className }: TestimonialsProps) {
                 &rsquo;&rsquo;
               </div>
 
-              <blockquote className="text-text-primary relative z-10">
+              <blockquote className="text-text-color relative z-10">
                 {testimonial.body.map((paragraph, idx) => (
                   <div key={idx} className="mb-4">
                     {paragraph}
@@ -171,7 +171,7 @@ export default function Testimonials({ className }: TestimonialsProps) {
                 />
                 <div>
                   <div className="font-[700]">{testimonial.author.name}</div>
-                  <div className="text-text-secondary">{`${testimonial.author.handle}`}</div>
+                  <div className="text-text-color-light">{`${testimonial.author.handle}`}</div>
                 </div>
               </figcaption>
             </figure>

@@ -75,7 +75,7 @@ const AllinspectionsContent: React.FC = () => {
       </div>
 
       {/* Vignette Section 1 */}
-      <div className="w-full bg-slate-100 border-y border-slate-200">
+      <div className="w-full bg-[var(--mode-color)] border-[var(--color-border)]">
         <div className="vignette-container">
           {/* Left column - Full-bleed image */}
           <div className="vignette-image-container">

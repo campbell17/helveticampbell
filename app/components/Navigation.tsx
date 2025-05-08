@@ -172,10 +172,10 @@ function MobileNavigation({
           }
         }}
       >
-        <Link href="/" onClick={() => handleLinkClick("/")}>
+        <Link href="/" className="flex" onClick={() => handleLinkClick("/")}>
           <LoadingLogo sizeClasses="h-8 w-10" className="transition-colors duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.87 51.26" className="h-full w-full">
-              <path d="M61.73,31.25c.47-4.22-.3-7.16-2.31-8.82-2-1.66-4.86-2.49-8.56-2.5h0s-5.94,0-5.94,0L49.16,0h-9.63l-4.28,19.93h-9.83L29.71,0h-12.32c-2.41,0-4.67.39-6.77,1.19C6.71,2.69,3.79,5.39,1.84,9.29.18,12.61-.36,15.54.23,18.08c.59,2.54,2.88,4.55,6.86,6.01l3.55-7.09c-1.03-.41-1.85-1-2.45-1.77-.79-1.08-.78-2.44.04-4.08,1.17-2.33,3.24-3.59,6.23-3.78,1.16-.07,2.5.04,4.02.34l-9.02,42.31h9.63l5.01-23.55h9.83l-5.01,23.55h8.84c1.66.82,3.75,1.24,6.31,1.24,4.76,0,8.71-1.69,11.86-5.08,1.97-2.1,3.29-4.33,3.96-6.68h-7.9c-.49,1.56-1.22,2.82-2.19,3.8-.97.98-2.36,1.47-4.17,1.47-2.55,0-4.03-1.23-4.43-3.69-.22-1.32-.1-3.07.35-5.24.49-2.28,1.13-4.11,1.93-5.48,1.5-2.59,3.56-3.88,6.16-3.88,1.83,0,3.05.6,3.67,1.79.42.89.58,1.88.49,2.99h7.93Z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.87 51.26" className="h-full w-full" fill="none">
+              <path fill="var(--logo-color)" d="M61.73,31.25c.47-4.22-.3-7.16-2.31-8.82-2-1.66-4.86-2.49-8.56-2.5h0s-5.94,0-5.94,0L49.16,0h-9.63l-4.28,19.93h-9.83L29.71,0h-12.32c-2.41,0-4.67.39-6.77,1.19C6.71,2.69,3.79,5.39,1.84,9.29.18,12.61-.36,15.54.23,18.08c.59,2.54,2.88,4.55,6.86,6.01l3.55-7.09c-1.03-.41-1.85-1-2.45-1.77-.79-1.08-.78-2.44.04-4.08,1.17-2.33,3.24-3.59,6.23-3.78,1.16-.07,2.5.04,4.02.34l-9.02,42.31h9.63l5.01-23.55h9.83l-5.01,23.55h8.84c1.66.82,3.75,1.24,6.31,1.24,4.76,0,8.71-1.69,11.86-5.08,1.97-2.1,3.29-4.33,3.96-6.68h-7.9c-.49,1.56-1.22,2.82-2.19,3.8-.97.98-2.36,1.47-4.17,1.47-2.55,0-4.03-1.23-4.43-3.69-.22-1.32-.1-3.07.35-5.24.49-2.28,1.13-4.11,1.93-5.48,1.5-2.59,3.56-3.88,6.16-3.88,1.83,0,3.05.6,3.67,1.79.42.89.58,1.88.49,2.99h7.93Z"/>
             </svg>
           </LoadingLogo>
         </Link>
@@ -196,7 +196,7 @@ function MobileNavigation({
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center"
+            className="fixed inset-0 bg-[var(--mode-color)] z-40 flex flex-col items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ 
               opacity: 1,
@@ -270,8 +270,8 @@ function DesktopNavigation({
     >
       <Link href="/" className="w-max" onClick={() => handleLinkClick("/")}>
         <LoadingLogo sizeClasses="h-9 w-12" className="transition-colors duration-200">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.87 51.26" className="h-full w-full">
-            <path d="M61.73,31.25c.47-4.22-.3-7.16-2.31-8.82-2-1.66-4.86-2.49-8.56-2.5h0s-5.94,0-5.94,0L49.16,0h-9.63l-4.28,19.93h-9.83L29.71,0h-12.32c-2.41,0-4.67.39-6.77,1.19C6.71,2.69,3.79,5.39,1.84,9.29.18,12.61-.36,15.54.23,18.08c.59,2.54,2.88,4.55,6.86,6.01l3.55-7.09c-1.03-.41-1.85-1-2.45-1.77-.79-1.08-.78-2.44.04-4.08,1.17-2.33,3.24-3.59,6.23-3.78,1.16-.07,2.5.04,4.02.34l-9.02,42.31h9.63l5.01-23.55h9.83l-5.01,23.55h8.84c1.66.82,3.75,1.24,6.31,1.24,4.76,0,8.71-1.69,11.86-5.08,1.97-2.1,3.29-4.33,3.96-6.68h-7.9c-.49,1.56-1.22,2.82-2.19,3.8-.97.98-2.36,1.47-4.17,1.47-2.55,0-4.03-1.23-4.43-3.69-.22-1.32-.1-3.07.35-5.24.49-2.28,1.13-4.11,1.93-5.48,1.5-2.59,3.56-3.88,6.16-3.88,1.83,0,3.05.6,3.67,1.79.42.89.58,1.88.49,2.99h7.93Z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.87 51.26" className="h-full w-full" fill="none">
+            <path fill="var(--logo-color)" d="M61.73,31.25c.47-4.22-.3-7.16-2.31-8.82-2-1.66-4.86-2.49-8.56-2.5h0s-5.94,0-5.94,0L49.16,0h-9.63l-4.28,19.93h-9.83L29.71,0h-12.32c-2.41,0-4.67.39-6.77,1.19C6.71,2.69,3.79,5.39,1.84,9.29.18,12.61-.36,15.54.23,18.08c.59,2.54,2.88,4.55,6.86,6.01l3.55-7.09c-1.03-.41-1.85-1-2.45-1.77-.79-1.08-.78-2.44.04-4.08,1.17-2.33,3.24-3.59,6.23-3.78,1.16-.07,2.5.04,4.02.34l-9.02,42.31h9.63l5.01-23.55h9.83l-5.01,23.55h8.84c1.66.82,3.75,1.24,6.31,1.24,4.76,0,8.71-1.69,11.86-5.08,1.97-2.1,3.29-4.33,3.96-6.68h-7.9c-.49,1.56-1.22,2.82-2.19,3.8-.97.98-2.36,1.47-4.17,1.47-2.55,0-4.03-1.23-4.43-3.69-.22-1.32-.1-3.07.35-5.24.49-2.28,1.13-4.11,1.93-5.48,1.5-2.59,3.56-3.88,6.16-3.88,1.83,0,3.05.6,3.67,1.79.42.89.58,1.88.49,2.99h7.93Z"/>
           </svg>
         </LoadingLogo>
       </Link>
@@ -280,14 +280,14 @@ function DesktopNavigation({
         <div className="flex flex-col items-start w-full">
           <Link 
             href="/work" 
-            className={`${textStyles} w-full ${pathname === "/work" ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'}`}
+            className={`${textStyles} w-full ${pathname === "/work" ? 'text-color' : 'text-color-light hover:text-color'}`}
             onClick={() => handleLinkClick("/work")}
           >
             Work
             <AnimatePresence mode="wait">
               {pathname === "/work" && (
                 <motion.div
-                  className="absolute bottom-4 left-16 right-8 h-[2px] bg-black rounded-full"
+                  className="absolute bottom-4 left-16 right-10 h-[2px] bg-[var(--theme-color)] rounded-full"
                   style={{ transformOrigin: 'left' }}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -317,7 +317,7 @@ function DesktopNavigation({
               animate={{ rotate: isDisclosureOpen ? 180 : 0 }}
               transition={{ duration: animationConstants.disclosureDuration, ease: animationConstants.disclosureEase }}
             >
-              <ChevronUpDownIcon className="h-5 w-6 bg-white hover:bg-neutral-100 border border-neutral-200 rounded-lg text-neutral-400 hover:text-neutral-800" />
+              <ChevronUpDownIcon className="h-5 w-6 pane border border-[var(--text-color-light)] hover:border-[var(--text-color)] text-[var(--text-color-light)] hover:text-[var(--text-color)] rounded-lg" />
             </motion.div>
           </button>
           
@@ -363,10 +363,10 @@ function DesktopNavigation({
                         }
                       }}
                       onClick={() => openProject(project.key)}
-                      className={`cursor-pointer flex items-center pl-2 rounded-md border border-transparent hover:border-neutral-200 hover:bg-neutral-100 justify-between text-sm tracking-wider font-[500] py-1 uppercase !font-sans ${pathname === "/work" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'} group w-full`}
+                      className={`cursor-pointer pane hover-only flex items-center pl-2 rounded-md border border-transparent hover:border-[var(--color-border-hover)] justify-between text-sm tracking-wider font-[500] py-1 uppercase !font-sans ${pathname === "/work" ? 'text-color' : 'text-color-light hover:text-color'} group w-full`}
                     >
                       {project.name}
-                      <ArrowLeftStartOnRectangleIcon className="opacity-0 group-hover:opacity-100 mr-1.5 h-4 w-4 transition-opacity" />
+                      <ArrowLeftStartOnRectangleIcon className="opacity-0 group-hover:opacity-100 mr-1.5 h-4 w-4 transition-all" />
                     </motion.button>
                   ))}
                 </div>
@@ -379,14 +379,14 @@ function DesktopNavigation({
       {/* Writing link */}
       <Link 
         href="/writing" 
-        className={`${textStyles} ${pathname === "/writing" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+        className={`${textStyles} ${pathname === "/writing" ? 'text-color' : 'text-color-light hover:text-color'}`}
         onClick={() => handleLinkClick("/writing")}
       >
         Writing
         <AnimatePresence mode="wait">
           {pathname === "/writing" && (
             <motion.div
-              className="absolute bottom-4 left-20 right-0 h-[2px] bg-black rounded-full"
+              className="absolute bottom-4 left-20 right-0 h-[2px]  bg-[var(--theme-color)] rounded-full"
               style={{ transformOrigin: 'left' }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
@@ -410,14 +410,14 @@ function DesktopNavigation({
       {/* Who link */}
       <Link 
         href="/who" 
-        className={`${textStyles} ${pathname === "/who" ? 'text-black' : 'text-neutral-400 hover:text-neutral-800'}`}
+        className={`${textStyles} ${pathname === "/who" ? 'text-color' : 'text-color-light hover:text-color'}`}
         onClick={() => handleLinkClick("/who")}
       >
         Who
         <AnimatePresence mode="wait">
           {pathname === "/who" && (
             <motion.div
-              className="absolute bottom-4 left-14 right-0 h-[2px] bg-black"
+              className="absolute bottom-4 left-14 right-0 h-[2px]  bg-[var(--theme-color)]"
               style={{ transformOrigin: 'left' }}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}

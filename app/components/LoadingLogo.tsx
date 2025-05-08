@@ -32,7 +32,7 @@ const LoadingLogo: React.FC<LoadingLogoProps> = ({ children, className, sizeClas
             transition={{ duration: 0.2 }}
           >
             <svg 
-              className={`animate-spin-fast text-black dark:text-white ${sizeClasses}`}
+              className={`animate-spin-fast text-logo-spinner-color ${sizeClasses}`}
               xmlns="http://www.w3.org/2000/svg" 
               fill="none" 
               viewBox="0 0 24 24"

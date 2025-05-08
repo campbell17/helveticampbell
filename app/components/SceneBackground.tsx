@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { usePathname } from 'next/navigation'
+import { useTheme } from 'next-themes'
 
 // Custom shader for the grid effect
 const gridVertexShader = `
@@ -15,48 +16,67 @@ const gridVertexShader = `
 
 const gridFragmentShader = `
   uniform float time;
+  uniform vec3 floorColor;
+  uniform float floorOpacity;
+  uniform vec3 gridColor;
+  uniform float gridOpacity;
+  uniform vec3 pulseColor;
+  uniform float pulseOpacity;
   varying vec2 vUv;
-  
+
   void main() {
     vec2 uv = vUv * 180.0;
     float t = time * 0.05;
-    
-    // Create a grid pattern
+
+    // Grid logic
     vec2 grid = fract(uv);
+    float lineWidth = 0.99;
+    float gridMask = step(lineWidth, grid.x) + step(lineWidth, grid.y);
+    gridMask = min(gridMask, 1.0);
+
+    // Pulse logic - random initial states and offsets
     vec2 id = floor(uv);
-    
-    // Create a unique value for each cell
     float n = id.x * 7.0 + id.y * 13.0;
     float cell = fract(sin(n) * 43758.5453);
     
-    // Animate the cells with stronger pulsation
-    float pulse = sin(t + cell * 6.28) * 0.5 + 0.5;
-    pulse = pow(pulse, 0.5);
+    // Create positionally-dependent offsets
+    // This ensures cells are at different stages of animation from the moment the page loads
+    float cellTimeOffset = cell * 10.0; // Basic offset based on cell value
+    float spatialOffset = sin(id.x * 0.76) * cos(id.y * 0.31) * 15.0; // Position-based offset
+    float initialPhaseOffset = cell * 23.14; // Extra randomness offset
     
-    // Create crisp grid lines
-    float lineWidth = 0.99;
-    float gridLines = step(lineWidth, grid.x) + step(lineWidth, grid.y);
-    gridLines = min(gridLines, 1.0);
+    // Combine all offsets for maximum randomness in initial states
+    float totalOffset = cellTimeOffset + spatialOffset + initialPhaseOffset;
     
-    // Create pulsation effect
-    vec3 pulseColor = vec3(pulse * .90); // Almost white base color
-    float pulseGlow = smoothstep(0.0, 1.0, pulse);
-    pulseColor += vec3(200, 200, 200) * pulseGlow * 0.9; // Minimal glow
-    float pulseOpacity = 1.0; // Pulsation opacity
+    // Apply the combined offsets to create truly random-looking pulse states
+    float pulse = sin((t * 15.0) + totalOffset) * 0.5 + 0.5;
     
-    // Create grid lines effect
-    vec3 gridColor = vec3(0); // Grid line color
-    float gridOpacity = 1.0; // Grid line opacity
+    // Make the pulse smoother with easing
+    pulse = smoothstep(0.1, 0.9, pulse);
     
-    // Combine effects
-    vec3 finalColor = mix(pulseColor, gridColor, gridLines * gridOpacity);
+    // Control how many cells show pulses
+    float pulseRarity = smoothstep(0.96, 1.0, cell); // Very rare pulses
     
-    // Set final opacity
-    float finalOpacity = 0.1;
-    
-    gl_FragColor = vec4(finalColor, finalOpacity * pulseOpacity);
+    // Simple multiplication without the minimum intensity
+    // This allows pulses to completely fade out
+    pulse *= pulseRarity;
+
+    // Compose colors and opacities
+    vec3 color = floorColor;
+    float alpha = floorOpacity;
+
+    // Add pulse to non-grid areas
+    float nonGridMask = 1.0 - gridMask;
+    color = mix(color, pulseColor, pulse * pulseOpacity * nonGridMask);
+    alpha = mix(alpha, pulseOpacity * pulse, pulse * pulseOpacity * nonGridMask);
+
+    // Add grid lines on top (almost opaque)
+    color = mix(color, gridColor, gridMask * gridOpacity);
+    alpha = mix(alpha, gridOpacity, gridMask * gridOpacity);
+
+    gl_FragColor = vec4(color, alpha);
   }
-`
+`;
 
 export default function SceneBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -65,7 +85,24 @@ export default function SceneBackground() {
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null)
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
   const gridRef = useRef<THREE.Mesh | null>(null)
+  const materialRef = useRef<THREE.ShaderMaterial | null>(null)
   const pathname = usePathname()
+  const { theme, resolvedTheme } = useTheme()
+  const lastThemeRef = useRef<string | undefined>(theme);
+  
+  // Add theme change detection log
+  useEffect(() => {
+    if (theme !== lastThemeRef.current) {
+      // console.log(`Theme changed from ${lastThemeRef.current} to ${theme}`);
+      
+      // Force document attribute update
+      if (theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      
+      lastThemeRef.current = theme;
+    }
+  }, [theme]);
   
   // Camera and scroll state
   const cameraPositionRef = useRef({
@@ -136,6 +173,79 @@ export default function SceneBackground() {
     cameraPositionRef.current.targetRotationZ = targetRotationZ;
   }, [pathname]) // Only depends on pathname
   
+  // Effect to update uniforms when theme changes
+  useEffect(() => {
+    if (!materialRef.current) return;
+    
+    // Read CSS variables for the current theme - directly using normalized values
+    const floorR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-r').trim()) || 0.0;
+    const floorG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-g').trim()) || 0.0;
+    const floorB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-b').trim()) || 0.0;
+    const floorOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-opacity').trim()) || 0.0;
+    
+    const gridR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-r').trim()) || 0.0;
+    const gridG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-g').trim()) || 0.0;
+    const gridB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-b').trim()) || 0.0;
+    const gridOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-opacity').trim()) || 0.35;
+    
+    const pulseR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-r').trim()) || 0.0;
+    const pulseG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-g').trim()) || 0.0;
+    const pulseB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-b').trim()) || 0.0;
+    const pulseOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-opacity').trim()) || 0.4;
+        
+    // Update shader uniforms with the normalized values
+    materialRef.current.uniforms.floorColor.value.set(floorR, floorG, floorB);
+    materialRef.current.uniforms.floorOpacity.value = floorOpacity;
+    materialRef.current.uniforms.gridColor.value.set(gridR, gridG, gridB);
+    materialRef.current.uniforms.gridOpacity.value = gridOpacity;
+    materialRef.current.uniforms.pulseColor.value.set(pulseR, pulseG, pulseB);
+    materialRef.current.uniforms.pulseOpacity.value = pulseOpacity;
+    
+    // Set up a MutationObserver to watch for attribute changes on the root element
+    // This will catch theme changes even if they don't trigger a React state update
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          
+          // Re-read CSS variables
+          const newFloorR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-r').trim()) || 0.0;
+          const newFloorG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-g').trim()) || 0.0;
+          const newFloorB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-b').trim()) || 0.0;
+          const newFloorOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-opacity').trim()) || 0.0;
+          
+          const newGridR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-r').trim()) || 0.0;
+          const newGridG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-g').trim()) || 0.0;
+          const newGridB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-b').trim()) || 0.0;
+          const newGridOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-opacity').trim()) || 0.35;
+          
+          const newPulseR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-r').trim()) || 0.0;
+          const newPulseG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-g').trim()) || 0.0;
+          const newPulseB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-b').trim()) || 0.0;
+          const newPulseOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-opacity').trim()) || 0.4;
+                    
+          // Update shader uniforms
+          if (materialRef.current) {
+            materialRef.current.uniforms.floorColor.value.set(newFloorR, newFloorG, newFloorB);
+            materialRef.current.uniforms.floorOpacity.value = newFloorOpacity;
+            materialRef.current.uniforms.gridColor.value.set(newGridR, newGridG, newGridB);
+            materialRef.current.uniforms.gridOpacity.value = newGridOpacity;
+            materialRef.current.uniforms.pulseColor.value.set(newPulseR, newPulseG, newPulseB);
+            materialRef.current.uniforms.pulseOpacity.value = newPulseOpacity;
+          }
+        }
+      });
+    });
+    
+    // Start observing
+    observer.observe(document.documentElement, { attributes: true });
+    
+    // Clean up observer
+    return () => {
+      observer.disconnect();
+    };
+    
+  }, [theme]); // Update whenever theme changes
+  
   // Effect 2: Set up Three.js scene ONCE and run animation loop
   useEffect(() => {
     // Wait until container is ready
@@ -202,17 +312,40 @@ export default function SceneBackground() {
     canvas.style.zIndex = '-1'
     containerRef.current.appendChild(canvas)
     
+    // Read initial CSS variables - directly using normalized values
+    const floorR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-r').trim()) || 0.0;
+    const floorG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-g').trim()) || 0.0;
+    const floorB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-b').trim()) || 0.0;
+    const floorOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-opacity').trim()) || 0;
+    
+    const gridR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-r').trim()) || 0.0;
+    const gridG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-g').trim()) || 0.0;
+    const gridB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-b').trim()) || 0.0;
+    const gridOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-line-opacity').trim()) || 0.35;
+    
+    const pulseR = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-r').trim()) || 0.0;
+    const pulseG = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-g').trim()) || 0.0;
+    const pulseB = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-b').trim()) || 0.0;
+    const pulseOpacity = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-opacity').trim()) || 0.4;    
+   
     // Create grid
     const gridGeometry = new THREE.PlaneGeometry(4000, 4000, 100, 100)
     const gridMaterial = new THREE.ShaderMaterial({
       vertexShader: gridVertexShader,
       fragmentShader: gridFragmentShader,
       uniforms: {
-        time: { value: 0 }
+        time: { value: 0 },
+        floorColor: { value: new THREE.Vector3(floorR, floorG, floorB) },
+        floorOpacity: { value: floorOpacity },
+        gridColor: { value: new THREE.Vector3(gridR, gridG, gridB) },
+        gridOpacity: { value: gridOpacity },
+        pulseColor: { value: new THREE.Vector3(pulseR, pulseG, pulseB) },
+        pulseOpacity: { value: pulseOpacity },
       },
       transparent: true,
       side: THREE.DoubleSide
     })
+    materialRef.current = gridMaterial;
     const grid = new THREE.Mesh(gridGeometry, gridMaterial)
     gridRef.current = grid
     grid.rotation.x = -Math.PI / 2
@@ -352,6 +485,7 @@ export default function SceneBackground() {
       gridRef.current = null;
       cameraRef.current = null;
       animationFrameRef.current = null;
+      materialRef.current = null;
     }
   }, [lookAtTarget, pathname]) // Add pathname to dependency array
   
@@ -365,7 +499,9 @@ export default function SceneBackground() {
         width: '100%',
         height: '100%',
         zIndex: -1,
-        pointerEvents: 'none'
+        pointerEvents: 'none',
+        backgroundColor: 'var(--scene-bg-color)',
+        transition: 'background-color 0.3s ease-in-out'
       }}
     />
   )

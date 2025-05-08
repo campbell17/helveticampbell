@@ -178,7 +178,7 @@ export default function WritingPage() {
           <h2 className="!text-3xl font-bold mb-6">Archive</h2>
           
           {localEssays.length > 0 ? (
-            <div className="divide-y divide-neutral-200/80">
+            <div className="divide-y divide-border">
               {localEssays.map((essay) => {
                 const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -188,11 +188,11 @@ export default function WritingPage() {
                 
                 return (
                   <div key={essay.slug} className="">
-                    <Link href={`/writing/${essay.slug}`} className="block group p-4 hover:bg-neutral-50 ">
+                    <Link href={`/writing/${essay.slug}`} className="block group p-4 pane hover-only">
                       <h3 className="font-medium !text-lg !mb-0 group-hover:text-primary transition-colors duration-300">
                         {essay.title}
                       </h3>
-                      <time dateTime={essay.date} className="text-sm text-text-secondary">
+                      <time dateTime={essay.date} className="text-sm text-text-color-light">
                         {formattedDate}
                       </time>
                     </Link>
@@ -201,7 +201,7 @@ export default function WritingPage() {
               })}
             </div>
           ) : (
-            <p className="text-text-secondary">No essays found.</p>
+            <p className="text-text-color-light">No essays found.</p>
           )}
         </div>
       </div>

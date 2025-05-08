@@ -12,7 +12,7 @@ export default function EssayItem({ essay }: EssayItemProps) {
   return (
     <Link 
       href={`/writing/${essay.slug}`} 
-      className="block py-6 border-b border-border hover:bg-neutral-50 transition-colors duration-150 px-4"
+      className="block py-6 border-b border-color-border hover:bg-pane-bg-color-hover transition-colors duration-150 px-4"
     >
       <div className="flex flex-col gap-2">
         <Overline className="text-secondary">{essay.date}</Overline>

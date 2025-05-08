@@ -11,7 +11,7 @@ interface TextLinkProps extends TextProps {
 
 export function H1({ children, className = '', style = {} }: TextProps) {
   return (
-    <h1 style={style} className={`mb-6 text-[clamp(1rem,8vw,4.5rem)] lg:text-8xl font-[700] text-text-heading font-display ${className}`}>
+    <h1 style={style} className={`mb-6 text-[clamp(1rem,8vw,4.5rem)] lg:text-8xl font-[700] font-display ${className}`}>
       {children}
     </h1>
   );
@@ -35,7 +35,7 @@ export function H3({ children, className = '', style = {} }: TextProps) {
 
 export function Caption({ children, className = '', style = {} }: TextProps) {
   return (
-    <div style={style} className={`text-sm font-[500] text-text-secondary ${className}`}>
+    <div style={style} className={`text-sm font-[500] text-text-color-light ${className}`}>
       {children}
     </div>
   );
@@ -59,7 +59,7 @@ export function TextLink({ children, href, external = false, className = '', sty
     <a 
       href={href}
       style={style}
-      className={`text-text-primary hover:text-text-heading underline underline-offset-4 transition-colors ${className}`}
+      className={`text-text-color hover:text-text-heading underline underline-offset-4 transition-colors ${className}`}
       {...externalProps}
     >
       {children}

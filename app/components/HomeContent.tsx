@@ -35,16 +35,16 @@ export default function HomeContent() {
   const [showDebug, setShowDebug] = useState(false);
 
   // Debug output
-  useEffect(() => {
-    if (posts && posts.length > 0) {
-      console.log('Posts available for rendering:', posts.length);
-      console.log('First post sample:', posts[0]);
-    }
+  // useEffect(() => {
+  //   if (posts && posts.length > 0) {
+  //     console.log('Posts available for rendering:', posts.length);
+  //     console.log('First post sample:', posts[0]);
+  //   }
 
-    if (rawResponse) {
-      console.log('Raw API response stored:', rawResponse);
-    }
-  }, [posts, rawResponse]);
+  //   if (rawResponse) {
+  //     console.log('Raw API response stored:', rawResponse);
+  //   }
+  // }, [posts, rawResponse]);
 
   // Handler for image clicks - simplified to only open projects
   const handleImageClick = (index: number) => {
@@ -65,9 +65,9 @@ export default function HomeContent() {
       </div>
 
       <div className="flex items-center justify-between mb-8">
-        <Link href="/work" className="group inline-flex items-center hover:text-primary transition-all duration-300">
-          <H2 className="!mb-0 transition-all duration-300">Work</H2>
-          <ArrowRightIcon className="w-6 h-6 ml-2 group-hover:text-rose-400 group-hover:translate-x-2 transition-all duration-300" />
+        <Link href="/work" className="group inline-flex items-center hover:text-primary">
+          <H2 className="!mb-0">Work</H2>
+          <ArrowRightIcon className="w-6 h-6 ml-2 group-hover:text-rose-400 group-hover:translate-x-2 transition-translate duration-300" />
         </Link>
       </div>      
       <div className="@container mb-16">
@@ -113,7 +113,7 @@ export default function HomeContent() {
           </div>
         )}
         
-        <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
+        <div className="rounded-[var(--container-radius)] overflow-hidden shadow-md">
           {isLoading ? (
             <div className="p-6 text-center">Loading posts...</div>
           ) : error ? (

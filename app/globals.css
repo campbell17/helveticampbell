@@ -1,12 +1,31 @@
 @import 'tailwindcss';
 @import './theme.css';
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant warm (&:where([data-theme=warm], [data-theme=warm] *));
+@custom-variant fun (&:where([data-theme=fun], [data-theme=fun] *));
+
+
+/* Utility classes for theme colors - for use in className */
+/* .text-color {
+  color: var(--text-color);
+} */
+
+.text-color-light {
+  color: var(--text-color-light);
+}
+
+.hover\:text-color:hover {
+  color: var(--text-color);
+}
+
+/* Legacy color classes - consider removing if not used */
 .heading-color {
-  color: var(--color-text-heading);
+  color: var(--text-color); /* Updated to new variable */
 }
 
 .body-color {
-  color: var(--color-text-primary);
+  color: var(--text-color); /* Updated to new variable */
 }
 
 /* Grid layout helpers */
@@ -138,10 +157,20 @@ html.sidebar-open::-webkit-scrollbar {
   display: none;
 }
 
+/* This should come BEFORE other element-specific styles */
+/* Force all text elements to inherit color */
+p, h1, h2, h3, h4, h5, h6, span, div, li, button, input, textarea, label, td, th {
+  color: inherit;
+}
+
+/* Main body styling - sets the base color for inheritance */
 body {
-  @apply text-text-primary antialiased text-2xl;
+  @apply antialiased text-2xl;
   /* background-color: var(--color-bg-primary); */
   overflow-x: hidden;
+  color: var(--text-color);
+  background-color: var(--body-bg-color);
+  transition: color 0.3s ease-in-out;
 }
 
 h2 { 
@@ -160,8 +189,19 @@ figure, body a {
   @apply font-body
 }
 
+/* Link styling - separated from color inheritance */
+a {
+  transition: color 0.15s ease;
+}
+
+/* Specific coloring for certain link types */
 p a, li a {
-  @apply text-link hover:text-link-hover transition-colors duration-150 relative;
+  @apply relative;
+  color: var(--color-link);
+}
+
+p a:hover, li a:hover {
+  color: var(--color-link-hover);
 }
 
 p a::after, li a::after {
@@ -183,11 +223,12 @@ p a:hover::after, li a:hover::after {
 
 nav a {
   @apply font-helveticampbell;
-  /* color: var(--color-link); */
+  /* Use the standard color inheritance */
 }
 
 .subheading {
-  @apply font-display text-2xl lg:text-4xl leading-normal mb-24 text-text-secondary;
+  @apply font-display text-2xl lg:text-4xl leading-normal mb-24;
+  color: var(--text-color-light);
 }
 
 .project-sidebar-content {
@@ -199,7 +240,7 @@ nav a {
 /* Navigation */
 .nav-link {
   @apply font-helveticampbell border-1 border-transparent block px-4 py-2 rounded-full transition-all duration-50 ease-in-out;
-  color: hsl(var(--color-text-primary));
+  /* Removed color override to use inheritance */
   font-family: var(--font-helveticampbell);
 
   &.active, &:hover {
@@ -228,6 +269,16 @@ nav a {
   box-shadow: 0 4px 32px -12px var(--container-glass-shadow);
 }
 
+.pane {
+  @apply backdrop-blur-sm;
+  background-color: var(--pane-bg-color);
+  &.hover-only { @apply backdrop-blur-none; background-color: transparent; };
+  &:hover {
+    background-color: var(--pane-bg-color-hover);
+  }
+  &.no-hover:hover { background-color: var(--pane-bg-color); }
+}
+
 /* Add rule to hide default NProgress bar */
 #nprogress .bar {
   display: none !important;
@@ -253,4 +304,9 @@ nav a {
 
 .vignette-image-container {
   @apply relative h-full min-h-[320px] aspect-square;
+}
+
+/* Class for light text that can be applied to specific elements */
+.text-light {
+  color: var(--text-color-light) !important; /* Added !important to ensure it overrides */
 }

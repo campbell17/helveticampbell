@@ -1,73 +1,105 @@
 'use client'
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline'
-import { useTheme } from 'next-themes'
+import { SunIcon, MoonIcon, FireIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
+
+// Define theme types
+type ThemeType = 'light' | 'dark' | 'warm' | 'fun'
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   
+  // Only show the UI after mounted to avoid hydration errors
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  
+  // Theme definitions with just metadata (no hardcoded colors)
   const themes = [
-    { name: 'Light', value: 'light', icon: SunIcon },
-    { name: 'Dark', value: 'dark', icon: MoonIcon },
-    { name: 'System', value: 'system', icon: ComputerDesktopIcon }
-  ] as const
-
-  // Get current theme icon
+    { name: 'Light', value: 'light' as ThemeType, icon: SunIcon },
+    { name: 'Dark', value: 'dark' as ThemeType, icon: MoonIcon },
+    { name: 'Warm', value: 'warm' as ThemeType, icon: FireIcon },
+    { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon }
+  ]
+  
+  // Handle theme change
+  function changeTheme(newTheme: ThemeType) {
+    // First set the data-theme attribute directly to ensure immediate update
+    document.documentElement.setAttribute('data-theme', newTheme);
+    
+    // Force a small delay to allow CSS to update
+    setTimeout(() => {
+      // Then use the next-themes API
+      setTheme(newTheme);
+      
+      console.log(`Theme switched to: ${newTheme}`);
+      console.log('Current CSS values:');
+      console.log('--grid-floor-r:', getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-r'));
+      console.log('--grid-line-r:', getComputedStyle(document.documentElement).getPropertyValue('--grid-line-r'));
+      console.log('--grid-pulse-r:', getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-r'));
+    }, 50);
+  }
+  
+  // Current theme icon
   const CurrentThemeIcon = themes.find(t => t.value === theme)?.icon || SunIcon
 
-  return (
-    <div className="fixed top-6 right-8">
-      <Menu>
-        {({ open }) => (
-          <div>
-            <MenuButton className="cursor-pointer flex items-center justify-center w-10 h-10 rounded-full backdrop-blur-sm border border-black/10 shadow-md hover:shadow-xs transition-all duration-200">
-              <motion.div
-                initial={{ scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <CurrentThemeIcon className="w-5 h-5 text-neutral-700" />
-              </motion.div>
-            </MenuButton>
+  // Don't render anything until mounted to prevent hydration issues
+  if (!mounted) return null
 
-            <MenuItems
-              className="absolute right-0 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] bg-white border border-white/10 p-1.5 shadow-lg focus:outline-none transition-all"
-              as={motion.div}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed top-6 right-18 md:top-6 md:right-8"
+    >
+      <Menu>
+        <div>
+          <MenuButton className="pane cursor-pointer flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-border)] shadow-md hover:shadow-xs transition-all duration-200">
+            <motion.div
+              initial={{ scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <div className="py-1 space-y-1">
-                {themes.map(({ name, value, icon: Icon }) => (
-                  <MenuItem key={value}>
-                    {({ active }) => (
-                      <motion.button 
-                        whileTap={{ scale: 0.98 }}
-                        transition={{ duration: 0.1 }}
-                        className={`flex w-full items-center gap-3 px-3 py-2 rounded-md text-sm font-medium ${
-                          active ? 'bg-white/30' : ''
-                        } ${
-                          theme === value ? 'text-black font-semibold' : 'text-neutral-600'
-                        }`}
-                        onClick={() => setTheme(value)}
-                      >
-                        <Icon className="w-4 h-4" />
-                        <span>{name}</span>
-                        {theme === value && (
-                          <div className="ml-auto h-1.5 w-1.5 rounded-full bg-black/70" />
-                        )}
-                      </motion.button>
+              <CurrentThemeIcon className="w-5 h-5" />
+            </motion.div>
+          </MenuButton>
+
+          <MenuItems
+            className="pane no-hover absolute right-0 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
+            as={motion.div}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="py-1 space-y-1">
+              {themes.map(({ name, value, icon: Icon }) => (
+                <MenuItem key={value}>
+                  <motion.button 
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.1 }}
+                    className={`flex w-full items-center gap-3 px-3 py-2 rounded-md text-sm font-medium border border-transparent 
+                      hover:data-focus:border-[var(--color-border)] hover:data-focus:bg-[var(--pane-bg-color-hover)]
+                      ${theme === value ? 'font-semibold' : ''}`}
+                    onClick={() => changeTheme(value)}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span>{name}</span>
+                    {theme === value && (
+                      <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--mode-color-invert)]" />
                     )}
-                  </MenuItem>
-                ))}
-              </div>
-            </MenuItems>
-          </div>
-        )}
+                  </motion.button>
+                </MenuItem>
+              ))}
+            </div>
+          </MenuItems>
+        </div>
       </Menu>
-    </div>
+    </motion.div>
   )
 } 

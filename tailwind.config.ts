@@ -15,6 +15,9 @@ const config: Config = {
         lato: ['var(--font-sans)'],
         mono: ['var(--font-mono)'],
       },
+      animation: {
+        'spin-fast': 'spin 0.7s linear infinite',
+      },
     },
   },
   plugins: [],

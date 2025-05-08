@@ -119,6 +119,14 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
+          forcedTheme={undefined}
+          themes={['light', 'dark', 'warm', 'fun']}
+          value={{
+            light: 'light',
+            dark: 'dark',
+            warm: 'warm',
+            fun: 'fun'
+          }}
         >
           <ProjectSidebarProvider>
             <LoadingProvider>
@@ -130,8 +138,10 @@ export default function RootLayout({
               <div className="min-h-screen">
                 {/* Mobile navigation */}
                 <div className="block top-0 left-0 right-0 z-50 md:hidden">
-                  <nav className="p-4">
+                  <nav className="p-6">
                     <Navigation />
+                    <ThemeSwitcher />
+
                   </nav>
                 </div>
 
@@ -139,9 +149,9 @@ export default function RootLayout({
                 <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
                   <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
                     <Navigation />
-                    {/* <div className="flex-none mt-6">
+                    <div className="flex-none mt-6">
                       <ThemeSwitcher />
-                    </div> */}
+                    </div>
                   </nav>
                 </div>
 

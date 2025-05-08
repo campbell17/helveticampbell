@@ -91,7 +91,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         {essay.tags && essay.tags.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">
             {essay.tags.map((tag) => (
-              <span key={tag} className="text-sm text-text-secondary">
+              <span key={tag} className="text-sm text-text-color-light">
                 #{tag}
               </span>
             ))}

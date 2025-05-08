@@ -25,7 +25,7 @@ export default function SubstackPostItem({ post }: SubstackPostItemProps) {
       href={post.url} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="block py-6 border-b border-border hover:bg-neutral-50 transition-colors duration-150 px-4"
+      className="block pane py-6 border-b border-border last:border-b-0 transition-colors duration-150 px-4"
     >
       <div className="flex flex-col gap-2">
         <Overline className="text-secondary">{formattedDate}</Overline>

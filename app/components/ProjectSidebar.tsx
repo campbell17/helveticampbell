@@ -98,14 +98,14 @@ const PreTransition = ({
             ease: "easeInOut",
             exit: PRE_TRANSITION_TIMING.exit
           }}
-          className="fixed inset-0 bg-black z-sidebar flex items-center justify-center"
+          className="fixed inset-0 bg-[var(--stinger-bg-color)] z-sidebar flex items-center justify-center"
         >
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 1 }}
             transition={{ duration: 0.15 }}
-            className="text-white text-4xl md:text-6xl font-helveticampbell tracking-tight"
+            className="!text-[var(--stinger-logo-color)] text-4xl md:text-6xl font-helveticampbell tracking-tight"
           >
             Helveticampbell
           </motion.h1>
@@ -309,7 +309,7 @@ export default function ProjectSidebar({
               ease: SIDEBAR_TIMING.enter.ease,
               delay: 0, // No delay for entrance
             }}
-            className="fixed inset-0 bg-[#f7f8fa] backdrop-blur-xs  shadow-2xl shadow-black z-sidebar overflow-hidden"
+            className="fixed inset-0 bg-[var(--project-bg-color)] shadow-2xl shadow-black z-sidebar overflow-hidden"
           >
             {/* Simple grid background pattern */}
             <div 
@@ -321,8 +321,8 @@ export default function ProjectSidebar({
                 bottom: 0,
                 backgroundSize: '50px 50px',
                 backgroundImage: `
-                  linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)
+                  linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                  linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px)
                 `,
                 zIndex: -1,
                 pointerEvents: 'none'
@@ -335,7 +335,7 @@ export default function ProjectSidebar({
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0, ease: "easeOut" }}
               onClick={handleClose}
-              className={`cursor-pointer fixed right-6 text-black/60 hover:text-black transition-all z-[1000] flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10 top-4 w-8 h-8 md:top-6 md:w-12 md:h-12`}
+              className={`pane cursor-pointer fixed right-6 transition-all z-[1000] flex items-center justify-center rounded-full border border-[var(--color-border)] hover:border-[var(--color-border-hover)] top-4 w-8 h-8 md:top-6 md:w-12 md:h-12`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -457,7 +457,7 @@ export default function ProjectSidebar({
                 // Navigate to previous project with transition
                 handleProjectTransition(prevProjectKey);
               }}
-              className="cursor-pointer fixed left-4 top-4 md:top-1/2 md:-translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+              className="pane cursor-pointer fixed left-4 top-4 md:top-1/2 md:-translate-y-1/2 transition-colors z-[1000] w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[var(--color-border)] hover:border-[var(--color-border-hover)]"
               aria-label="Previous Project"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -487,7 +487,7 @@ export default function ProjectSidebar({
                 // Navigate to next project with transition
                 handleProjectTransition(nextProjectKey);
               }}
-              className="cursor-pointer fixed left-20 md:left-auto md:right-6 top-4 md:top-1/2 md:-translate-y-1/2 text-black/60 hover:text-black transition-colors z-[1000] w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+              className="pane cursor-pointer fixed left-20 md:left-auto md:right-6 top-4 md:top-1/2 md:-translate-y-1/2 transition-colors z-[1000] w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[var(--color-border)] hover:border-[var(--color-border-hover)]"
               aria-label="Next Project"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

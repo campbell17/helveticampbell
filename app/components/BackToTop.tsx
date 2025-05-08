@@ -73,7 +73,7 @@ export default function BackToTop({ scrollThreshold = 300 }: BackToTopProps) {
           animate={{ opacity: 1, y: 0, transition: ANIMATION_TIMING.enter }}
           exit={{ opacity: 0, y: 20, transition: ANIMATION_TIMING.exit }}
           onClick={scrollToTop}
-          className="cursor-pointer fixed bottom-6 right-6 text-black/60 hover:text-black transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+          className="cursor-pointer pane fixed bottom-6 right-6 transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full border border-[var(--color-border)] hover:border-[var(--color-border-hover)]"
           aria-label="Back to top"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
