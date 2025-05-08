@@ -5,12 +5,6 @@ import { projectDetails } from '../../data/projectDetails';
 
 const SpatialNetworksContent: React.FC = () => {
 
-  const stats = [
-    { name: 'Organizations', stat: '3,000+' },
-    { name: 'Users', stat: '50,000+' },
-    { name: 'Countries', stat: '100+' },
-  ]
-
   return (
     <>
       <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
@@ -22,7 +16,7 @@ const SpatialNetworksContent: React.FC = () => {
         <H1 className="mb-4">Spatial Networks<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Geospatial Intelligence Platform</span></H1>
         <p className="subheading">(2010 - 2019) Geospatial intelligence specializing in technology, analytics, and ground-truthing. I led design for all aspects of the company, including marketing, branding, and product design of its software products.</p>
       </div>
-      <div className="bg-white border-b border-border">
+      <div className="bg-[var(--mode-color)] border-b border-[var(--color-border)]">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
           {/* First row */}
           

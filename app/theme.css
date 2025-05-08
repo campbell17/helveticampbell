@@ -159,13 +159,13 @@
   /* Dark Theme colors  */
   --mode-color: oklch(0 0 0);
   --mode-color-invert: oklch(100% 0 0);
-  --logo-color: oklch(64.5% 0.246 16.439);
+  --logo-color: oklch(71.2% 0.194 13.428);
   --logo-spinner-color: oklch(100% 0 0);
-  --theme-color: oklch(64.5% 0.246 16.439);
+  --theme-color: oklch(71.2% 0.194 13.428);
   --theme-color-accent: oklch(100% 0 0 / 0.5);
   --body-bg-color: oklch(0 0 220);
-  --pane-bg-color: oklch(100% 0 360 / 10%);
-  --pane-bg-color-hover: oklch(100% 0 360 / 20%);
+  --pane-bg-color: oklch(71.2% 0.194 13.428 / 0.15);
+  --pane-bg-color-hover: oklch(71.2% 0.194 13.428 / 0.25);
   --project-bg-color: oklch(10% 0 0);
   --scene-bg-color: oklch(10% 0.05 220);
   --stinger-bg-color: oklch(100% 0 0);
@@ -175,14 +175,14 @@
   --grid-floor-b: 0.0;
   --grid-floor-opacity: 0.0;
   --grid-line-r: 1.0;
-  --grid-line-g: 0.125;
-  --grid-line-b: 0.337;
-  --grid-line-opacity: 0.9;
+  --grid-line-g: 0.388;
+  --grid-line-b: 0.494;
+  --grid-line-opacity: 0.8;
   --grid-pulse-r: 1.0;
   --grid-pulse-g: 0.125;
   --grid-pulse-b: 0.337;
   --grid-pulse-opacity: 0.7;
-  --grid-color: oklch(64.5% 0.246 16.439 / 0.3); /* should ~match --grid-line overall color  */
+  --grid-color: oklch(71.2% 0.194 13.428 / 0.3); /* should ~match --grid-line overall color  */
   --text-color: oklch(100% 0 0);
   --text-color-light: oklch(100% 0 0 / 0.5);
   --color-link: oklch(71.2% 0.194 13.428);
@@ -193,8 +193,8 @@
   --color-shadow: oklch(100% 0 220);
   --color-shadow-opacity: 0.2;
   --color-shadow-hover-opacity: 0.25;
-  --color-border: oklch(100% 0 0 / 0.15);
-  --color-border-hover: oklch(100% 0 0 / 0.35);
+  --color-border: oklch(71.2% 0.194 13.428 / 0.35);
+  --color-border-hover: oklch(71.2% 0.194 13.428 / 0.45);
 
 }
 

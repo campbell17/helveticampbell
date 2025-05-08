@@ -77,7 +77,7 @@ export function Tooltip({
               transition: 'opacity 200ms',
               opacity: open ? 1 : 0
             }}
-            className="bg-white text-black rounded-lg p-2 text-sm max-w-xs z-50 shadow-lg border border-gray-200 select-text cursor-auto"
+            className="bg-white !text-black rounded-lg p-2 text-sm max-w-xs z-50 shadow-lg border border-gray-200 select-text cursor-auto"
             {...getFloatingProps()}
           >
             {content}

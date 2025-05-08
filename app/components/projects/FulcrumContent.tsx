@@ -27,7 +27,7 @@ const FulcrumContent: React.FC = () => {
       </div>
       {/* <div className="p-20 pt-0"> */}
       {/* Stats Callout */}
-      <div className="w-full bg-rose-50 pt-12 pb-16 px-8 md:px-20 border-y border-rose-100">
+      <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] pt-12 pb-16 px-8 md:px-20 border-y border-[var(--color-border)]">
         <div className="w-full 2xl:max-w-7xl mx-auto">
           <Overline className="mb-4">Company Overview</Overline>
           <H2>From Startup to Enterprise Platform</H2>
@@ -38,9 +38,9 @@ const FulcrumContent: React.FC = () => {
           <div>
             <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3 font-sans">
               {stats.map((item) => (
-                <div key={item.name} className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow shadow-rose-200/50 sm:p-6">
-                  <dt className="truncate text-sm font-medium text-neutral-500">{item.name}</dt>
-                  <dd className="mt-1 text-xl md:text-3xl font-semibold text-neutral-900">{item.stat}</dd>
+                <div key={item.name} className="overflow-hidden bg-white/50 dark:bg-[var(--pane-bg-color)] rounded-lg px-4 py-5 shadow shadow-[var(--color-shadow)] sm:p-6">
+                  <dt className="truncate text-sm font-medium">{item.name}</dt>
+                  <dd className="mt-1 text-xl md:text-3xl font-semibold">{item.stat}</dd>
                 </div>
               ))}
             </dl>
@@ -62,7 +62,7 @@ const FulcrumContent: React.FC = () => {
           </div> */}
         </div>
       </div>
-      <div className="bg-white border-b border-border">
+      <div className="bg-[var(--mode-color)] border-b border-[var(--color-border)]">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6">
           {/* First row */}
           
@@ -190,7 +190,7 @@ const FulcrumContent: React.FC = () => {
       </div>
 
       {/* Vignette Section 1 */}
-      <div className="w-full bg-slate-100 border-y border-slate-200">
+      <div className="w-full bg-[var(--mode-color)] border-y border-[var(--color-border)]">
         <div className="vignette-container">
           {/* Left column - Full-bleed image */}
           <div className="vignette-image-container">
@@ -247,7 +247,7 @@ const FulcrumContent: React.FC = () => {
 
 
           {/* Vignette Section 2 */}
-          <div className="w-full bg-slate-100 border-y border-slate-200">
+          <div className="w-full bg-[var(--mode-color)] border-y border-[var(--color-border)]">
             <div className="vignette-container">
               {/* Left column - Full-bleed image */}
               <div className="vignette-image-container">

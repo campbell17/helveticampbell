@@ -108,7 +108,7 @@ main::-webkit-scrollbar,
   width: 8px;
   height: 100vh;
   z-index: 40;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .scrollbar-track {
@@ -270,7 +270,7 @@ nav a {
 }
 
 .pane {
-  @apply backdrop-blur-sm;
+  @apply backdrop-blur-xs;
   background-color: var(--pane-bg-color);
   &.hover-only { @apply backdrop-blur-none; background-color: transparent; };
   &:hover {

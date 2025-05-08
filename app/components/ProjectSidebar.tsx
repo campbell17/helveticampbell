@@ -346,7 +346,7 @@ export default function ProjectSidebar({
              <div
               data-scrolled={isScrolled ? "true" : "false"}
               data-testid="sticky-header"
-              className={`opacity-100 md:opacity-0 h-16 fixed top-0 left-0 right-0 z-modal transition-all bg-white/80 duration-500 ease-in-out backdrop-blur-md py-4 px-6 border-b border-gray-200 shadow-sm`}
+              className={`opacity-100 md:opacity-0 h-16 fixed top-0 left-0 right-0 z-modal transition-all bg-[var(--page-bg-color)] duration-500 ease-in-out backdrop-blur-md py-4 px-6 border-b border-[var(--color-border)] shadow-sm`}
               // style={{
               //   // Force important styles to ensure visibility if needed
               //   zIndex: 110,
@@ -506,7 +506,7 @@ export default function ProjectSidebar({
             animate={{ opacity: 1, y: 0, transition: ANIMATION_TIMING.enter }}
             exit={{ opacity: 0, y: 20, transition: ANIMATION_TIMING.exit }}
             onClick={scrollToTop}
-            className="cursor-pointer fixed bottom-6 right-6 text-black/60 hover:text-black transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full bg-gray-200/70 hover:bg-gray-200/90 backdrop-blur-sm border border-white/10"
+            className="pane cursor-pointer fixed bottom-6 right-6 transition-colors z-modal w-12 h-12 flex items-center justify-center rounded-full border border-[var(--color-border)] hover:border-[var(--color-border-hover)]"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />

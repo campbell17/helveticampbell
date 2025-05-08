@@ -281,7 +281,7 @@ function DesktopNavigation({
         <div className="flex flex-col items-start w-full">
           <Link 
             href="/work" 
-            className={`${textStyles} w-full ${pathname === "/work" ? 'text-color' : 'text-color-light hover:text-color'}`}
+            className={`${textStyles} ${isDisclosureOpen ? 'mb-4' : ''} w-full ${pathname === "/work" ? 'text-color' : 'text-color-light hover:text-color'}`}
             onClick={() => handleLinkClick("/work")}
           >
             Work
@@ -325,7 +325,7 @@ function DesktopNavigation({
           <AnimatePresence initial={false}>
             {isDisclosureOpen && (
               <motion.div 
-                className="mt-4 space-y-2 w-full"
+                className="w-full"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ 
                   height: 'auto', 
@@ -340,7 +340,7 @@ function DesktopNavigation({
                   opacity: 0,
                   transition: {
                     height: { duration: animationConstants.disclosureDuration, ease: animationConstants.disclosureEase },
-                    opacity: { duration: animationConstants.disclosureDuration * 0.8, ease: animationConstants.disclosureEase }
+                    opacity: { duration: animationConstants.disclosureDuration * 0, ease: animationConstants.disclosureEase }
                   }
                 }}
               >

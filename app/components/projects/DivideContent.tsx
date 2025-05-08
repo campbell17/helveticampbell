@@ -90,7 +90,7 @@ const DivideContent: React.FC = () => {
       </div>
 
       {/* Vignette Section 1 */}
-      <div className="w-full bg-slate-100 border-y border-slate-200">
+      <div className="w-full bg-[var(--mode-color)] border-y border-[var(--color-border)]">
         <div className="vignette-container">
           {/* Left column - Full-bleed image */}
           <div className="vignette-image-container">
@@ -116,7 +116,7 @@ const DivideContent: React.FC = () => {
       </div>
 
       {/* Vignette Section 2 */}
-      <div className="w-full bg-slate-100 border-b border-slate-200">
+      <div className="w-full bg-[var(--mode-color)] border-b border-[var(--color-border)]">
         <div className="vignette-container">
           {/* Left column - Full-bleed image */}
           <div className="vignette-image-container">
@@ -170,7 +170,7 @@ const DivideContent: React.FC = () => {
 
             
       {/* Vignette Section 2 */}
-      <div className="w-full bg-slate-100 border-y mb-28 border-slate-200">
+      <div className="w-full bg-[var(--mode-color)] border-y mb-28 border-[var(--color-border)]">
         <div className="vignette-container">
           {/* Left column - Full-bleed image */}
           <div className="vignette-image-container">

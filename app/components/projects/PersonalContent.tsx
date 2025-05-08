@@ -6,7 +6,7 @@ import Link from 'next/link';
 const PersonalContent: React.FC = () => {
   return (
     <>
-      <div className="p-8 pb-10 md:p-20 md:pb-28">
+      <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
         <div className="flex flex-wrap mb-8">
           <Overline className="!text-lg mr-8">Drawing</Overline>
           <Overline className="!text-lg mr-8">Painting</Overline>
