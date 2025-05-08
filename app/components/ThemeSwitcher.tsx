@@ -60,14 +60,7 @@ export default function ThemeSwitcher() {
       <Menu>
         <div>
           <MenuButton className="pane cursor-pointer flex items-center justify-center w-10 h-10 rounded-full border border-[var(--color-border)] shadow-md hover:shadow-xs transition-all duration-200">
-            <motion.div
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <CurrentThemeIcon className="w-5 h-5" />
-            </motion.div>
+            <CurrentThemeIcon className="w-5 h-5" />
           </MenuButton>
 
           <MenuItems
@@ -77,16 +70,19 @@ export default function ThemeSwitcher() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="py-1 space-y-1">
+            <div className="space-y-1">
               {themes.map(({ name, value, icon: Icon }) => (
                 <MenuItem key={value}>
                   <motion.button 
                     whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.1 }}
-                    className={`flex w-full items-center gap-3 px-3 py-2 rounded-md text-sm font-medium border border-transparent 
+                    className={`flex w-full items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium border border-transparent 
                       hover:data-focus:border-[var(--color-border)] hover:data-focus:bg-[var(--pane-bg-color-hover)]
                       ${theme === value ? 'font-semibold' : ''}`}
-                    onClick={() => changeTheme(value)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      changeTheme(value);
+                    }}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{name}</span>
