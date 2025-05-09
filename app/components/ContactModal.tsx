@@ -28,10 +28,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.15 }}
+        transition={{ duration: 0.1 }}
       >
       <DialogBackdrop 
-        className="fixed inset-0 bg-white/80 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[var(--mode-color)] backdrop-blur-md transition-opacity"
       />
       </motion.div>
       {/* Full-screen container to center the panel */}
@@ -40,14 +40,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.10, delay: 0.3 }}
+        transition={{ duration: 0.10, delay: 0.1 }}
       >
         <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-          <DialogPanel className="relative transform rounded-xl overflow-hidden bg-white px-6 pb-6 pt-6 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-8">
+          <DialogPanel className="relative transform rounded-xl overflow-hidden pane no-hover border border-[color:var(--color-border)] px-6 pb-6 pt-6 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-8">
             <div className="absolute right-0 top-0 pr-4 pt-4">
               <button
                 type="button"
-                className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                className="rounded-md pane hover:text-gray-500"
                 onClick={onClose}
                 ref={cancelButtonRef}
               >
@@ -70,14 +70,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900 mb-1">
+                    <label htmlFor="name" className="block text-sm font-medium leading-6 text-[var(--text-color-light)] mb-1">
                       Name
                     </label>
                     <input
                       type="text"
                       name="name"
                       id="name"
-                      className="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 text-sm"
+                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border-light)] placeholder:text-[var(--text-color-light)] text-sm"
                       placeholder="Your name"
                       required
                     />
@@ -85,14 +85,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 mb-1">
+                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-[var(--text-color-light)] mb-1">
                       Email
                     </label>
                     <input
                       type="email"
                       name="email"
                       id="email"
-                      className="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 text-sm"
+                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border-light)] placeholder:text-[var(--text-color-light)] text-sm"
                       placeholder="you@example.com"
                       required
                     />
@@ -100,14 +100,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium leading-6 text-gray-900 mb-1">
+                    <label htmlFor="message" className="block text-sm font-medium leading-6 text-[var(--text-color-light)] mb-1">
                       Message
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       rows={4}
-                      className="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 text-sm"
+                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border-light)] placeholder:text-[var(--text-color-light)] text-sm"
                       placeholder="Your message"
                       required
                     />
@@ -117,7 +117,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <div className="mt-6 pt-1 flex justify-end space-x-3">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md bg-white py-2 px-4 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      className="inline-flex justify-center rounded-md pane py-2 px-4 text-sm font-medium text-gray-900 shadow-sm border border-[color:var(--color-border)]"
                       onClick={onClose}
                     >
                       Cancel
@@ -125,7 +125,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <button
                       type="submit"
                       disabled={state.submitting}
-                      className="inline-flex justify-center rounded-md bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                      className="inline-flex justify-center rounded-md bg-[var(--theme-color)] py-2 px-4 text-sm font-medium text-[var(--text-color)] shadow-sm hover:bg-[var(--theme-color-hover)] border border-[color:var(--color-border)]"
                     >
                       {state.submitting ? 'Sending...' : 'Send Message'}
                     </button>

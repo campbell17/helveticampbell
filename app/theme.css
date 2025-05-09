@@ -96,7 +96,8 @@
   --mode-color-invert: oklch(0 0 0);
   --logo-color: oklch(0 0 0);
   --logo-spinner-color: oklch(0 0 0);
-  --theme-color: oklch(10% 0 0);
+  --theme-color: oklch(71.2% 0.194 13.428);
+  --theme-color-hover: oklch(71.2% 0.194 13.428 / 0.7);
   --theme-color-accent: oklch(70.7% 0.165 254.624);
   --body-bg-color: oklch(100 0 220);
   --pane-bg-color: oklch(1 0 0 / 0%);
@@ -127,7 +128,7 @@
   --color-container-blur: 2px;
   --color-border: oklch(0 0 0 / 0.1);
   --color-border-hover: oklch(0 0 0 / 0.35);
-  --color-shadow: oklch(20% 0.1 220);
+  --color-shadow: oklch(20% 0 220 / 0.15);
   --color-shadow-opacity: 0.1;
   --color-shadow-hover-opacity: 0.15;
 
@@ -161,7 +162,8 @@
   --mode-color-invert: oklch(100% 0 0);
   --logo-color: oklch(100 0 0);
   --logo-spinner-color: oklch(100% 0 0);
-  --theme-color: oklch(100 0 0);
+  --theme-color: oklch(71.2% 0.194 13.428);
+  --theme-color-hover: oklch(71.2% 0.194 13.428 / 0.7);
   --theme-color-accent: oklch(100% 0 0 / 0.5);
   --body-bg-color: oklch(0 0 220);
   --pane-bg-color: oklch(100 0 0 / 0.15);
@@ -190,7 +192,7 @@
   --color-container-bg: oklch(100% 0 0);
   --color-container-opacity: 0.4;
   --color-container-blur: 2px;
-  --color-shadow: oklch(100% 0 220);
+  --color-shadow: oklch(100% 0 220 / 0.1);
   --color-shadow-opacity: 0.2;
   --color-shadow-hover-opacity: 0.25;
   --color-border: oklch(100 0 0 / 0.35);
@@ -382,7 +384,6 @@
 }
 
 /* Gametime mode */
-/* Dark mode */
 [data-theme="gametime"] {  
   --container-radius: 1rem;
   --text-subheading: "3xl";
@@ -410,6 +411,7 @@
   --logo-color: oklch(0.58 0.2091 273.85);
   --logo-spinner-color: oklch(100% 0 0);
   --theme-color: oklch(0.58 0.2091 273.85);
+  --theme-color-hover: oklch(0.58 0.2091 273.85 / 0.7);
   --theme-color-accent: oklch(100% 0 0 / 0.5);
   --body-bg-color: oklch(0 0 220);
   --pane-bg-color: oklch(0.58 0.2091 273.85 / 0.15);
@@ -438,7 +440,7 @@
   --color-container-bg: oklch(100% 0 0);
   --color-container-opacity: 0.4;
   --color-container-blur: 2px;
-  --color-shadow: oklch(100% 0 220);
+  --color-shadow: oklch(0.58 0.2091 273.85 / 0.2);
   --color-shadow-opacity: 0.2;
   --color-shadow-hover-opacity: 0.25;
   --color-border: oklch(0.58 0.2091 273.85 / 0.35);
