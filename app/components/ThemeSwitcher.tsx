@@ -22,9 +22,10 @@ export default function ThemeSwitcher() {
   const themes = [
     { name: 'Light', value: 'light' as ThemeType, icon: SunIcon },
     { name: 'Dark', value: 'dark' as ThemeType, icon: MoonIcon },
+    { name: 'Grove', value: 'grove' as ThemeType, icon: SparklesIcon },
     { name: 'Warm', value: 'warm' as ThemeType, icon: FireIcon },
     { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon },
-    { name: 'Gametime', value: 'gametime' as ThemeType, icon: SparklesIcon }
+    { name: 'Gametime', value: 'gametime' as ThemeType, icon: SparklesIcon },
   ]
   
   // Handle theme change
@@ -83,7 +84,7 @@ export default function ThemeSwitcher() {
                     {/* <Icon className="w-4 h-4" /> */}
                     <span>{name}</span>
                     {theme === value && (
-                      <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--mode-color-invert)]" />
+                      <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--theme-color)]" />
                     )}
                   </motion.button>
                 </MenuItem>

@@ -67,7 +67,7 @@ export default function HomeContent() {
       <div className="flex items-center justify-between mb-8">
         <Link href="/work" className="group inline-flex items-center hover:text-primary">
           <H2 className="!mb-0">Work</H2>
-          <ArrowRightIcon className="w-6 h-6 ml-2 group-hover:text-rose-400 group-hover:translate-x-2 transition-translate duration-300" />
+          <ArrowRightIcon className="w-6 h-6 ml-2 group-hover:text-[var(--color-link)] group-hover:translate-x-2 transition-translate duration-300" />
         </Link>
       </div>      
       <div className="@container mb-16">

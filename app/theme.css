@@ -99,36 +99,36 @@
   --theme-color: oklch(71.2% 0.194 13.428);
   --theme-color-hover: oklch(71.2% 0.194 13.428 / 0.7);
   --theme-color-accent: oklch(70.7% 0.165 254.624);
-  --body-bg-color: oklch(100 0 220);
-  --pane-bg-color: oklch(1 0 0 / 0%);
-  --pane-bg-color-hover: oklch(0 0 360 / 2%);
+  --body-bg-color: oklch(100% 0 0);
+  --pane-bg-color: oklch(100% 0 0 / 0);
+  --pane-bg-color-hover: oklch(0 0 0 / 0.02);
   --project-bg-color: oklch(0.98 0.0029 264.54);
-  --scene-bg-color: oklch(100 0 220 / 0.3);
+  --scene-bg-color: oklch(100% 0 0 / 0.3);
   --stinger-bg-color: oklch(0 0 0);
   --stinger-logo-color: oklch(100% 0 0);
-  --grid-floor-r: 0.0;
-  --grid-floor-g: 0.0;
-  --grid-floor-b: 0.0;
-  --grid-floor-opacity: 0.0;
-  --grid-line-r: 0.0;
-  --grid-line-g: 0.0;
-  --grid-line-b: 0.0;
-  --grid-line-opacity: 0.35;
-  --grid-pulse-r: 0.0;
-  --grid-pulse-g: 0.0;
-  --grid-pulse-b: 0.0;
-  --grid-pulse-opacity: 0.4;
+  --grid-floor-r: 0.0; /* rgb 0-1 */
+  --grid-floor-g: 0.0; /* rgb 0-1 */
+  --grid-floor-b: 0.0; /* rgb 0-1 */
+  --grid-floor-opacity: 0.0; 
+  --grid-line-r: 0.0; /* rgb 0-1 */
+  --grid-line-g: 0.0; /* rgb 0-1 */
+  --grid-line-b: 0.0; /* rgb 0-1 */
+  --grid-line-opacity: 0.35; 
+  --grid-pulse-r: 0.0; /* rgb 0-1 */
+  --grid-pulse-g: 0.0; /* rgb 0-1 */
+  --grid-pulse-b: 0.0; /* rgb 0-1 */
+  --grid-pulse-opacity: 0.4; 
   --grid-color: oklch(0 0 0 / 0.03); /* should ~match --grid-line overall color  */
   --text-color: oklch(0 0 0);
   --text-color-light: oklch(0 0 0 / 0.55);
   --color-link: oklch(71.2% 0.194 13.428);
-  --color-link-hover: oklch(10% 0.1 220);
+  --color-link-hover: oklch(10% 0 0);
   --color-container-bg: oklch(100% 0 0);
   --color-container-opacity: 0.4;
   --color-container-blur: 2px;
   --color-border: oklch(0 0 0 / 0.1);
   --color-border-hover: oklch(0 0 0 / 0.35);
-  --color-shadow: oklch(20% 0 220 / 0.15);
+  --color-shadow: oklch(20% 0 0 / 0.15);
   --color-shadow-opacity: 0.1;
   --color-shadow-hover-opacity: 0.15;
 
@@ -264,6 +264,69 @@
 
 }
 
+[data-theme="grove"] {
+  --container-radius: 1rem;
+  --text-subheading: "3xl";
+
+  /* Animation Tokens */
+  --transition-duration-fast: 75ms;
+  --transition-duration-normal: 100ms;
+  --transition-duration-slow: 150ms;
+
+  --transition-timing-enter: cubic-bezier(0.4, 0, 0.2, 1); /* ease-out for entering */
+  --transition-timing-leave: cubic-bezier(0.4, 0, 1, 1);   /* ease-in for leaving */
+
+  --scale-enter-from: 0.95;
+  --scale-enter-to: 1;
+  --scale-leave-from: 1;
+  --scale-leave-to: 0.95;
+
+  /* Animation tokens */
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Grove Theme colors  */
+  --mode-color: oklch(0 0 0);
+  --mode-color-invert: oklch(100% 0 0);
+  --logo-color: oklch(0.54 0.1788 262.84);
+  --logo-spinner-color: oklch(0 0 0);
+  --theme-color: oklch(0.54 0.1788 262.84);
+  --theme-color-hover: oklch(71.2% 0.194 13.428 / 0.7);
+  --theme-color-accent: oklch(70.7% 0.165 254.624);
+  --body-bg-color: oklch(100 0 220);
+  --pane-bg-color: oklch(100 0 0 / 0.2);
+  --pane-bg-color-hover: oklch(100 0 0 / 0.1);
+  --project-bg-color: oklch(0.24 0.067 255.41);
+  --scene-bg-color: oklch(0.24 0.067 255.41);
+  --scene-bg-color-dark: oklch(0.24 0.067 255.41);
+  --stinger-bg-color: oklch(100 0 0);
+  --stinger-logo-color: oklch(0.54 0.1788 262.84);
+  --grid-floor-r: 0.0;
+  --grid-floor-g: 0.0;
+  --grid-floor-b: 0.0;
+  --grid-floor-opacity: 0.0;
+  --grid-line-r: 1.0;
+  --grid-line-g: 1.0;
+  --grid-line-b: 1.0;
+  --grid-line-opacity: 0.5;
+  --grid-pulse-r: 1.0;
+  --grid-pulse-g: 1.0;
+  --grid-pulse-b: 1.0;
+  --grid-pulse-opacity: 0.6;
+  --grid-color: oklch(100 0 0 / 0.07); /* should ~match --grid-line overall color  */
+  --text-color: oklch(100 0 0);
+  --text-color-light: oklch(100 0 0 / 0.55);
+  --color-link: oklch(0.54 0.1788 262.84);
+  --color-link-hover: oklch(100% 0 0);
+  --color-container-bg: oklch(100% 0 0);
+  --color-container-opacity: 0.4;
+  --color-container-blur: 2px;
+  --color-border: oklch(0 0 0 / 0.1);
+  --color-border-hover: oklch(0 0 0 / 0.35);
+  --color-shadow: oklch(20% 0 220 / 0.15);
+  --color-shadow-opacity: 0.1;
+  --color-shadow-hover-opacity: 0.15;  
+}
 
 /* Warm mode */
 [data-theme="warm"] {
