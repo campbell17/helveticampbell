@@ -103,7 +103,7 @@
   --logo-spinner-color: oklch(0 0 0);
   --theme-color: var(--theme);
   --theme-color-hover: var(--theme-dark);
-  --theme-color-accent: oklch(70.7% 0.165 254.624);
+  --theme-color-accent: oklch(95.6% 0.045 203.388);
   --body-bg-color: oklch(100% 0 0);
   --pane-bg-color: oklch(100% 0 0 / 0);
   --pane-bg-color-hover: oklch(0 0 0 / 0.02);
@@ -175,7 +175,7 @@
   --logo-spinner-color: oklch(100% 0 0);
   --theme-color: var(--theme);
   --theme-color-hover: var(--theme-dark);
-  --theme-color-accent: oklch(100% 0 0 / 0.5);
+  --theme-color-accent: oklch(71.5% 0.143 215.221);
   --body-bg-color: oklch(0 0 220);
   --pane-bg-color: oklch(100 0 0 / 0.15);
   --pane-bg-color-hover: oklch(100 0 0 / 0.25);

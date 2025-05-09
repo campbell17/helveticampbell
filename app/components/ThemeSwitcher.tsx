@@ -20,9 +20,9 @@ export default function ThemeSwitcher() {
   
   // Theme definitions with just metadata (no hardcoded colors)
   const themes = [
-    { name: 'System', value: 'system' as ThemeType, icon: ComputerDesktopIcon },
     { name: 'Light', value: 'light' as ThemeType, icon: SunIcon },
     { name: 'Dark', value: 'dark' as ThemeType, icon: MoonIcon },
+    { name: 'System', value: 'system' as ThemeType, icon: ComputerDesktopIcon },
     // { name: 'Grove', value: 'grove' as ThemeType, icon: SparklesIcon },
     // { name: 'Warm', value: 'warm' as ThemeType, icon: FireIcon },
     // { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon },
