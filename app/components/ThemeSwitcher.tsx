@@ -1,13 +1,13 @@
 'use client'
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { SunIcon, MoonIcon, FireIcon, SparklesIcon, PaintBrushIcon } from '@heroicons/react/24/outline'
+import { SunIcon, MoonIcon, FireIcon, SparklesIcon, PaintBrushIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 
 // Define theme types
-type ThemeType = 'light' | 'dark' | 'warm' | 'fun'
+type ThemeType = 'light' | 'dark' | 'warm' | 'fun' | 'system' | 'grove' | 'gametime'
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
@@ -20,12 +20,13 @@ export default function ThemeSwitcher() {
   
   // Theme definitions with just metadata (no hardcoded colors)
   const themes = [
+    { name: 'System', value: 'system' as ThemeType, icon: ComputerDesktopIcon },
     { name: 'Light', value: 'light' as ThemeType, icon: SunIcon },
     { name: 'Dark', value: 'dark' as ThemeType, icon: MoonIcon },
-    { name: 'Grove', value: 'grove' as ThemeType, icon: SparklesIcon },
-    { name: 'Warm', value: 'warm' as ThemeType, icon: FireIcon },
-    { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon },
-    { name: 'Gametime', value: 'gametime' as ThemeType, icon: SparklesIcon },
+    // { name: 'Grove', value: 'grove' as ThemeType, icon: SparklesIcon },
+    // { name: 'Warm', value: 'warm' as ThemeType, icon: FireIcon },
+    // { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon },
+    // { name: 'Gametime', value: 'gametime' as ThemeType, icon: SparklesIcon },
   ]
   
   // Handle theme change
@@ -42,8 +43,8 @@ export default function ThemeSwitcher() {
   }
   
   // Current theme icon
-  // const CurrentThemeIcon = themes.find(t => t.value === theme)?.icon || SunIcon - this shows different icons
-  const CurrentThemeIcon = PaintBrushIcon
+  const CurrentThemeIcon = themes.find(t => t.value === theme)?.icon || SunIcon
+  // const CurrentThemeIcon = PaintBrushIcon
   
   // Don't render anything until mounted to prevent hydration issues
   if (!mounted) return null
@@ -81,7 +82,7 @@ export default function ThemeSwitcher() {
                       changeTheme(value);
                     }}
                   >
-                    {/* <Icon className="w-4 h-4" /> */}
+                    <Icon className="w-4 h-4" />
                     <span>{name}</span>
                     {theme === value && (
                       <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--theme-color)]" />
