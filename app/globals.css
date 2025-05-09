@@ -4,7 +4,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @custom-variant warm (&:where([data-theme=warm], [data-theme=warm] *));
 @custom-variant fun (&:where([data-theme=fun], [data-theme=fun] *));
-
+@custom-variant gametime (&:where([data-theme=gametime], [data-theme=gametime] *));
 
 /* Utility classes for theme colors - for use in className */
 /* .text-color {

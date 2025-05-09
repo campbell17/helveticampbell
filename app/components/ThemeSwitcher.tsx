@@ -1,7 +1,7 @@
 'use client'
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { SunIcon, MoonIcon, FireIcon, SparklesIcon } from '@heroicons/react/24/outline'
+import { SunIcon, MoonIcon, FireIcon, SparklesIcon, PaintBrushIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
@@ -23,7 +23,8 @@ export default function ThemeSwitcher() {
     { name: 'Light', value: 'light' as ThemeType, icon: SunIcon },
     { name: 'Dark', value: 'dark' as ThemeType, icon: MoonIcon },
     { name: 'Warm', value: 'warm' as ThemeType, icon: FireIcon },
-    { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon }
+    { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon },
+    { name: 'Gametime', value: 'gametime' as ThemeType, icon: SparklesIcon }
   ]
   
   // Handle theme change
@@ -36,17 +37,13 @@ export default function ThemeSwitcher() {
       // Then use the next-themes API
       setTheme(newTheme);
       
-      console.log(`Theme switched to: ${newTheme}`);
-      console.log('Current CSS values:');
-      console.log('--grid-floor-r:', getComputedStyle(document.documentElement).getPropertyValue('--grid-floor-r'));
-      console.log('--grid-line-r:', getComputedStyle(document.documentElement).getPropertyValue('--grid-line-r'));
-      console.log('--grid-pulse-r:', getComputedStyle(document.documentElement).getPropertyValue('--grid-pulse-r'));
     }, 50);
   }
   
   // Current theme icon
-  const CurrentThemeIcon = themes.find(t => t.value === theme)?.icon || SunIcon
-
+  // const CurrentThemeIcon = themes.find(t => t.value === theme)?.icon || SunIcon - this shows different icons
+  const CurrentThemeIcon = PaintBrushIcon
+  
   // Don't render anything until mounted to prevent hydration issues
   if (!mounted) return null
 
@@ -84,7 +81,7 @@ export default function ThemeSwitcher() {
                       changeTheme(value);
                     }}
                   >
-                    <Icon className="w-4 h-4" />
+                    {/* <Icon className="w-4 h-4" /> */}
                     <span>{name}</span>
                     {theme === value && (
                       <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--mode-color-invert)]" />

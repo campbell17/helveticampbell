@@ -38,7 +38,7 @@ const FulcrumContent: React.FC = () => {
           <div>
             <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3 font-sans">
               {stats.map((item) => (
-                <div key={item.name} className="overflow-hidden bg-white/50 dark:bg-[var(--pane-bg-color)] rounded-lg px-4 py-5 shadow shadow-[var(--color-shadow)] sm:p-6">
+                <div key={item.name} className="overflow-hidden bg-white/50 gametime:bg-[var(--theme-color)] dark:bg-[var(--pane-bg-color)] rounded-lg px-4 py-5 shadow shadow-[var(--color-shadow)] sm:p-6">
                   <dt className="truncate text-sm font-medium">{item.name}</dt>
                   <dd className="mt-1 text-xl md:text-3xl font-semibold">{item.stat}</dd>
                 </div>
@@ -62,7 +62,7 @@ const FulcrumContent: React.FC = () => {
           </div> */}
         </div>
       </div>
-      <div className="bg-[var(--mode-color)] border-b border-[var(--color-border)]">
+      <div className="mx-4 mt-10">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6">
           {/* First row */}
           

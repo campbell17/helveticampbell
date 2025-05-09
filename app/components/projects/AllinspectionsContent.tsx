@@ -16,7 +16,7 @@ const AllinspectionsContent: React.FC = () => {
         <H1 className="mb-4">Allinspections<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Inspection Management Software</span></H1>
         <p className="subheading">(2010 - 2012) Inspection management software focused on the home inspections market. As the sole designer, I created the branding, marketing, web & mobile apps, and environmental/tradeshow materials.</p>
       </div>
-      <div className="bg-[var(--mode-color)] border-b border-[var(--color-border)]">
+      <div>
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 lg:gap-6">
           {/* First row */}
           
