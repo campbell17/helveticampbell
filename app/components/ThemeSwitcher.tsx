@@ -22,11 +22,11 @@ export default function ThemeSwitcher() {
   const themes = [
     { name: 'Light', value: 'light' as ThemeType, icon: SunIcon },
     { name: 'Dark', value: 'dark' as ThemeType, icon: MoonIcon },
-    { name: 'Grove', value: 'grove' as ThemeType, icon: SparklesIcon },
+    // { name: 'Grove', value: 'grove' as ThemeType, icon: SparklesIcon },
     // { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon },
     // { name: 'Gametime', value: 'gametime' as ThemeType, icon: SparklesIcon },
-    { name: 'Maranello', value: 'maranello' as ThemeType, icon: SparklesIcon },
-    { name: 'Woking', value: 'woking' as ThemeType, icon: SparklesIcon },
+    // { name: 'Maranello', value: 'maranello' as ThemeType, icon: SparklesIcon },
+    // { name: 'Woking', value: 'woking' as ThemeType, icon: SparklesIcon },
     { name: 'System', value: 'system' as ThemeType, icon: ComputerDesktopIcon },
   ]
   

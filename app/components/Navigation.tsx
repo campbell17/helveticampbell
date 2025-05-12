@@ -380,12 +380,12 @@ function DesktopNavigation({
       {/* Writing link */}
       <Link 
         href="/writing" 
-        className={`${textStyles} ${pathname === "/writing" ? 'text-color' : 'text-color-light hover:text-color'}`}
+        className={`${textStyles} ${pathname.startsWith("/writing") ? 'text-color' : 'text-color-light hover:text-color'}`}
         onClick={() => handleLinkClick("/writing")}
       >
         Writing
         <AnimatePresence mode="wait">
-          {pathname === "/writing" && (
+          {pathname.startsWith("/writing") && (
             <motion.div
               className="absolute bottom-4 left-20 right-0 h-[2px]  bg-[var(--theme-color)] rounded-full"
               style={{ transformOrigin: 'left' }}
