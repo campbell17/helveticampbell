@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'DIYF (Do It Yourself...First)'
 date: '2020-11-12'
-tags: ["Productivity"]
+tags: ["Self Improvement", "Relationships", "Personal Growth"]
 ---
 
 There comes a time in every person's life when they feel compelled to boss someone around. If you don't think it will happen to you, you must not be in a relationship or have children or even friends, because if there's one thing I know about humans, we're selfish bastards. It's easy to be humble, empathetic, and generous when the only mouth you have to feed is making faces at you in the bathroom mirror. When it comes to force-feeding my infinite wisdom on my loved ones, however, I've discovered a useful trick.

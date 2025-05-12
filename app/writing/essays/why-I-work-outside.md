@@ -4,7 +4,7 @@ category: writing
 title: 'Why I Work Outside'
 subtitle: "Embellished for dramatic effect. I love my family. (Ok, are they gone? Phew.)"
 date: '2020-10-26'
-tags: ["Productivity"]
+tags: ["Remote Work", "Focus", "Work Environment"]
 ---
 
 ![The blurry edge of a laptop in the foreground obscuring bare feet on a lawn chair](https://campbell17.s3.amazonaws.com/posts/working-outside.jpg)

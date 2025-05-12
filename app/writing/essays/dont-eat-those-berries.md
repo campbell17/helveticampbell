@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: "Don't Eat Those Berries"
 date: '2021-01-28'
-tags: ["Personal"]
+tags: ["Information Diet", "Digital Wellness", "Social Media"]
 ---
 
 

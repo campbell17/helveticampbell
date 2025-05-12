@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: '🛠 Fix-it Friday'
 date: '2020-09-30'
-tags: ["Business"]
+tags: ["Development", "UI Design", "Incremental Improvement"]
 ---
 
 In a recent [CSS Tricks newsletter](https://css-tricks.com/newsletter/217-small-changes-in-the-right-direction/), [Robin Rendle](https://twitter.com/robinrendle) explains how he practices incremental improvements by scrutinizing Sentry's CSS every Friday afternoon.

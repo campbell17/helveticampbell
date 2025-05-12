@@ -4,7 +4,7 @@ category: writing
 title: 'My Kingdom for a Back Button'
 subtitle: "Why simple feature requests aren't so simple."
 date: '2020-10-05'
-tags: ["Personal"]
+tags: ["UX Design", "Product Development", "Communication"]
 ---
 
 We all think we know what we want. On occasion, we're actually right about what that even is. But usually when we ask for something we fail to articulate what we _really_ want. My daughter does this when she argues with me. 
@@ -27,4 +27,4 @@ I sent a cheeky tweet about the recently released email service, [Hey](https://t
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/heyhey?ref_src=twsrc%5Etfw">@heyhey</a> My kingdom for a back button.</p>&mdash; Tim Campbell (@timcampbell17) <a href="https://twitter.com/timcampbell17/status/1301203157536698369?ref_src=twsrc%5Etfw">September 2, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-While this is far from a real feature request, it isn't far off from what you get if you take feedback at face value. This fact was driven home recently when I discovered that there was, indeed, a back button in Hey. It just wasn't where I _wanted_ it. c’est la vie.
+While this is far from a real feature request, it isn't far off from what you get if you take feedback at face value. This fact was driven home recently when I discovered that there was, indeed, a back button in Hey. It just wasn't where I _wanted_ it. c'est la vie.

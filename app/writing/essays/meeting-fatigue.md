@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Meeting Fatigue'
 date: '2020-09-16'
-tags: ["Business"]
+tags: ["Work Culture", "Remote Work", "Burnout"]
 ---
 
 Recently, much of my time is spent thinking about, checking the calendar for, preparing for, or trying to avoid meetings. I'm a designer, so I expect my attendence to occasionally be required when questions of product flow, UI, UX, branding, or other designery things come up. Lately, however, it seems like more of my time is being spent somewhat needlessly. I'm actually one of the lucky people, as some have had their entire existence engulphed by Zoom calls.

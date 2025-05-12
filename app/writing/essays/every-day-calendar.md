@@ -3,6 +3,7 @@ layout: post
 category: writing
 title: 'The Every Day Calendar'
 date: '2020-09-07'
+tags: ["Habits", "Productivity", "Makers"]
 ---
 
 I made a frivolous purchase today. When you reach a certain age, you don't really get presents for your birthday any more. I'm not a big shopper and I don't want much, so typically when I want something, I pick it up. However, there are certain things I would love to have that my cheapness will simply not allow. Normally that's that and I leave myself wanting, but with my new goal of writing every day in full swing, I thought I would consummate the journey by buying myself a birthday present.
@@ -15,6 +16,6 @@ Below are some links about the calendar. Being a YouTuber, Simone obviously made
 
 * [How I managed to meditate every day for a year](https://www.youtube.com/watch?v=-lpvy-xkSNA) - How it all started.
 
-* [My Crowdfunding Campaign: Here’s What Happened](https://www.youtube.com/watch?v=7G0Vuvb45HQ) - The recap of making a product for the masses.
+* [My Crowdfunding Campaign: Here's What Happened](https://www.youtube.com/watch?v=7G0Vuvb45HQ) - The recap of making a product for the masses.
 
 * [Adam Savage Reviews Simone Giertz's Every Day Calendar](https://www.youtube.com/watch?v=gykzsbqJ76U) - Just what it says.

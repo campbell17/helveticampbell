@@ -175,7 +175,12 @@ export default function WritingPage() {
 
         {/* Sidebar column - Local Essays */}
         <div className="xl:col-span-1">
-          <h2 className="!text-3xl font-bold mb-6">Archive</h2>
+          <div className="flex items-center justify-between mb-6">
+            <Link href="/writing/archive" className="group inline-flex items-center text-sm hover:text-primary transition-colors duration-300">
+              <h2 className="!text-3xl font-bold !mb-0">Archive</h2>
+              <ArrowRightIcon className="w-4 h-4 ml-1 group-hover:text-rose-400 group-hover:translate-x-1 transition-all duration-300" />            
+            </Link>
+          </div>
           
           {localEssays.length > 0 ? (
             <div className="divide-y divide-border">

@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'November Books Update'
 date: '2020-11-27'
-tags: ["Productivity"]
+tags: ["Reading", "Goals", "Habits"]
 ---
 
 About little over six weeks ago I decided to tackle my lack of reading progress [with math]({% post_url 2020-10-06-books-update %}), deducing that if I simply read a certain minimum number of pages per day, I'll finish every book on my list by year's end. Welp...It's working.

@@ -5,7 +5,7 @@ title: "A Meeting About a Project"
 description: "Guys, before we move on I'd like to address an elephant in the room..."
 img: 'https://campbell17.s3.amazonaws.com/posts/meeting.jpg'
 date: '2021-04-13'
-tags: ["Personal"]
+tags: ["Product Development", "Leadership", "Software Design"]
 ---
 
 ![abstract illustration of Google calendar](https://campbell17.s3.amazonaws.com/posts/meeting.jpg)

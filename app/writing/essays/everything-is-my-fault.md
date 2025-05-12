@@ -3,6 +3,7 @@ layout: post
 category: writing
 title: "Everything is My Fault"
 date: '2021-02-05'
+tags: ["Personal Responsibility", "Self Improvement", "Mindset"]
 ---
 
 ![Macro photograph of the Hell Yeah or No book cover](https://campbell17.s3.amazonaws.com/posts/hellyeah.jpg)
@@ -15,28 +16,28 @@ My review of implementing this philosophy today and using it forever: "⭐️⭐
 
 > I used to get mad at people. They lied. They betrayed me. They disappeared.
 > 
-> Do you hear the pattern? “They this. They that.”
+> Do you hear the pattern? "They this. They that."
 > 
-> When someone upsets you, it’s human nature to feel it’s their fault. But one day I tried thinking of everything as my fault.
+> When someone upsets you, it's human nature to feel it's their fault. But one day I tried thinking of everything as my fault.
 > 
 > I created the environment that made them feel they had to lie. I mistook their neutral behavior as betrayal. I made it more appealing for them to disappear than to communicate.
 > 
 > It felt so good to think it was all my fault!
 > 
-> This is way better than forgiving. When you forgive, you’re still assuming that they’re wrong and you’re the victim.
+> This is way better than forgiving. When you forgive, you're still assuming that they're wrong and you're the victim.
 > 
-> But to decide it’s your fault feels amazing! Now you weren’t wronged. People were just playing their part in the situation you helped create.
+> But to decide it's your fault feels amazing! Now you weren't wronged. People were just playing their part in the situation you helped create.
 > 
-> What power! Now you’re the person who made things happen, made a mistake, and can learn from it. Now you’re in control and there’s nothing to complain about.
+> What power! Now you're the person who made things happen, made a mistake, and can learn from it. Now you're in control and there's nothing to complain about.
 > 
-> This philosophy feels so good that I’ve playfully decided to apply this rule to the rest of my life. As soon as I catch myself blaming anyone for anything, I decide it’s my fault.
+> This philosophy feels so good that I've playfully decided to apply this rule to the rest of my life. As soon as I catch myself blaming anyone for anything, I decide it's my fault.
 > 
 > • The guy who ran away with my investment? My fault. I should have verified his claims.
 >
 > • The love of my life who suddenly dumped me? My fault. I let our relationship plateau.
 >
-> • Don’t like my government? My fault. I could get involved and change it.
+> • Don't like my government? My fault. I could get involved and change it.
 >
-> Doesn’t that feel more powerful? Try it. Maybe instead of “fault” you prefer the word “responsibility,” but the idea is the same. Think of every bad thing > that happened to you, and imagine that you happened to it.
+> Doesn't that feel more powerful? Try it. Maybe instead of "fault" you prefer the word "responsibility," but the idea is the same. Think of every bad thing > that happened to you, and imagine that you happened to it.
 
 [Here's a link to the essay (he has an audio version as well).](https://sive.rs/my-fault)
