@@ -117,7 +117,7 @@ export default function ArchiveFilterClient({ essays, sortedTags, tagCounts }: A
           {sortedTags.length > 10 && (
             <button 
               onClick={toggleExpanded}
-              className="mt-2 text-sm text-primary hover:text-primary/80 transition-colors focus:outline-none"
+              className="mt-2 cursor-pointer text-sm transition-colors focus:outline-none"
             >
               {expanded ? 'Show fewer topics' : 'Show more topics'}
             </button>
