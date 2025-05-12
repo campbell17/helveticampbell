@@ -120,14 +120,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
           forcedTheme={undefined}
-          themes={['light', 'dark', 'warm', 'fun', 'gametime', 'grove']}
+          themes={['light', 'dark', 'fun', 'gametime', 'grove', 'woking', 'maranello']}
           value={{
             light: 'light',
             dark: 'dark',
-            warm: 'warm',
             fun: 'fun',
             gametime: 'gametime',
-            grove: 'grove'
+            grove: 'grove',
+            woking: 'woking',
+            maranello: 'maranello'
           }}
         >
           <ProjectSidebarProvider>

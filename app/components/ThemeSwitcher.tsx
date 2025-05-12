@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 
 // Define theme types
-type ThemeType = 'light' | 'dark' | 'warm' | 'fun' | 'system' | 'grove' | 'gametime'
+type ThemeType = 'light' | 'dark' | 'fun' | 'system' | 'grove' | 'gametime' | 'woking' | 'maranello'
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
@@ -22,11 +22,12 @@ export default function ThemeSwitcher() {
   const themes = [
     { name: 'Light', value: 'light' as ThemeType, icon: SunIcon },
     { name: 'Dark', value: 'dark' as ThemeType, icon: MoonIcon },
-    { name: 'System', value: 'system' as ThemeType, icon: ComputerDesktopIcon },
-    // { name: 'Grove', value: 'grove' as ThemeType, icon: SparklesIcon },
-    // { name: 'Warm', value: 'warm' as ThemeType, icon: FireIcon },
+    { name: 'Grove', value: 'grove' as ThemeType, icon: SparklesIcon },
     // { name: 'Fun', value: 'fun' as ThemeType, icon: SparklesIcon },
     // { name: 'Gametime', value: 'gametime' as ThemeType, icon: SparklesIcon },
+    { name: 'Maranello', value: 'maranello' as ThemeType, icon: SparklesIcon },
+    { name: 'Woking', value: 'woking' as ThemeType, icon: SparklesIcon },
+    { name: 'System', value: 'system' as ThemeType, icon: ComputerDesktopIcon },
   ]
   
   // Handle theme change

@@ -31,7 +31,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         transition={{ duration: 0.1 }}
       >
       <DialogBackdrop 
-        className="fixed inset-0 bg-[var(--mode-color)] backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-[var(--scene-bg-color)] backdrop-blur-md transition-opacity"
       />
       </motion.div>
       {/* Full-screen container to center the panel */}

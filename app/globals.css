@@ -6,6 +6,8 @@
 @custom-variant fun (&:where([data-theme=fun], [data-theme=fun] *));
 @custom-variant gametime (&:where([data-theme=gametime], [data-theme=gametime] *));
 @custom-variant grove (&:where([data-theme=grove], [data-theme=grove] *));
+@custom-variant woking (&:where([data-theme=woking], [data-theme=woking] *));
+@custom-variant maranello (&:where([data-theme=maranello], [data-theme=maranello] *));
 
 /* Utility classes for theme colors - for use in className */
 /* .text-color {
