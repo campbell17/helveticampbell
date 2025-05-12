@@ -97,9 +97,6 @@ function getEssays(): { essays: Essay[], allTags: string[] } {
       return new Date(b!.date).getTime() - new Date(a!.date).getTime();
     });
     
-    // Sort tags alphabetically
-    allTags.sort();
-    
     return { essays: essays as Essay[], allTags };
   } catch (error) {
     console.error('Error fetching essays:', error);
@@ -111,11 +108,14 @@ export default function ArchivePage() {
   // Get essays and tags server-side
   const { essays, allTags } = getEssays();
 
-  // Count essays per tag
+  // Count essays per tag and sort by popularity
   const tagCounts: Record<string, number> = {};
   allTags.forEach(tag => {
     tagCounts[tag] = essays.filter(essay => essay.tags.includes(tag)).length;
   });
+  
+  // Sort tags by count (popularity) instead of alphabetically
+  const sortedTags = [...allTags].sort((a, b) => tagCounts[b] - tagCounts[a]);
 
   return (
     <>
@@ -130,31 +130,42 @@ export default function ArchivePage() {
       
       {/* Tag filtering section */}
       <div className="mb-8">
-        <h2 className="text-xl font-bold mb-4">Filter by Topic</h2>
-        <div className="flex flex-wrap gap-2 mb-4" id="tag-buttons">
-          {allTags.map(tag => (
-            <button
-              key={tag}
-              data-tag={tag}
-              className="tag-button inline-flex items-center bg-[var(--pane-bg-color)] hover:bg-[var(--theme-color)] border border-[var(--color-border)] cursor-pointer px-3 py-1 rounded-full text-sm transition-all"
-            >
-              {tag} <span className="ml-1 !text-[var(--text-color-light)]">({tagCounts[tag]})</span>
-            </button>
-          ))}
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-xl font-bold !mb-0">Filter by Topic</h2>   
+          {allTags.length > 0 && (
+            <div className="flex items-center">
+              <button
+                id="clear-filters"
+                className="bg-[var(--mode-color)] hover:bg-[var(--grid-color)] border border-[var(--color-border)] cursor-pointer px-3 py-1 rounded-full text-sm transition-all hidden"
+              >
+                Clear Filters
+              </button>
+            </div>
+          )} 
         </div>
-        {allTags.length > 0 && (
-          <div className="flex items-center">
-            <button
-              id="clear-filters"
-              className="bg-[var(--mode-color)] hover:bg-[var(--grid-color)] border border-[var(--color-border)] cursor-pointer px-3 py-1 rounded-full text-sm transition-all"
-            >
-              Clear Filters
-            </button>
-            <div id="active-filters-count" className="ml-3 text-sm text-text-color-light hidden">
-              Showing essays with <span id="tag-count">0</span> selected tags
+        <div className="relative">
+          <div id="tags-container" className="h-[76px] overflow-hidden transition-all duration-300 ease-in-out">
+            <div className="flex flex-wrap gap-2 mb-4" id="tag-buttons">
+              {sortedTags.map((tag) => (
+                <button
+                  key={tag}
+                  data-tag={tag}
+                  className="tag-button inline-flex items-center bg-[var(--pane-bg-color)] hover:bg-[var(--theme-color)] border border-[var(--color-border)] cursor-pointer px-3 py-1 rounded-full text-sm transition-all"
+                >
+                  {tag} <span className="ml-1 !text-[var(--text-color-light)]">({tagCounts[tag]})</span>
+                </button>
+              ))}
             </div>
           </div>
-        )}
+          {sortedTags.length > 10 && (
+            <button 
+              id="show-more-tags"
+              className="mt-2 text-sm text-primary hover:text-primary/80 transition-colors focus:outline-none"
+            >
+              Show more topics
+            </button>
+          )}
+        </div>
       </div>
       
       {/* Essays list */}
@@ -208,11 +219,32 @@ export default function ArchivePage() {
           const tagButtons = document.querySelectorAll('.tag-button');
           const clearButton = document.getElementById('clear-filters');
           const resetButton = document.getElementById('reset-filters');
+          const showMoreButton = document.getElementById('show-more-tags');
+          const tagsContainer = document.getElementById('tags-container');
           const essayItems = document.querySelectorAll('.essay-item');
           const noResultsElement = document.getElementById('no-results');
-          const activeFiltersCount = document.getElementById('active-filters-count');
-          const tagCountElement = document.getElementById('tag-count');
           const activeFilters = new Set();
+          let expanded = false;
+          
+          // Show more tags button
+          if (showMoreButton && tagsContainer) {
+            // Store the full height of the tags container for the transition
+            const fullHeight = tagsContainer.scrollHeight;
+            
+            showMoreButton.addEventListener('click', () => {
+              if (!expanded) {
+                // Expand tags container
+                tagsContainer.style.height = fullHeight + 'px';
+                showMoreButton.textContent = 'Show fewer topics';
+                expanded = true;
+              } else {
+                // Collapse tags container
+                tagsContainer.style.height = '76px';
+                showMoreButton.textContent = 'Show more topics';
+                expanded = false;
+              }
+            });
+          }
           
           function updateEssayVisibility() {
             if (activeFilters.size === 0) {
@@ -221,13 +253,12 @@ export default function ArchivePage() {
                 item.style.display = 'flex';
               });
               noResultsElement.classList.add('hidden');
-              activeFiltersCount.classList.add('hidden');
+              clearButton.classList.add('hidden');
               return;
             }
             
-            // Update the active filters count display
-            tagCountElement.textContent = activeFilters.size.toString();
-            activeFiltersCount.classList.remove('hidden');
+            // Show clear filters button
+            clearButton.classList.remove('hidden');
             
             // Hide/show essays based on active filters
             let visibleCount = 0;
