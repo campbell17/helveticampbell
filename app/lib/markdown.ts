@@ -126,10 +126,30 @@ export function extractImageReferences(markdown: string): ImageReference[] {
 
 // Custom processing function to prepare markdown for Next.js rendering
 export async function markdownToHtml(markdown: string) {
-  // Process with remark for standard markdown
+  // First, ensure HTML img tags have proper classes for styling
+  let processedMarkdown = markdown.replace(
+    /<img(.*?)class="(.*?)"(.*?)>/g, 
+    (match, before, classes, after) => {
+      // Make sure the img has the responsive-image class
+      const enhancedClasses = classes.includes('responsive-image') 
+        ? classes 
+        : `${classes} responsive-image`;
+      return `<img${before}class="${enhancedClasses}"${after}>`;
+    }
+  );
+  
+  // Handle img tags without class attribute
+  processedMarkdown = processedMarkdown.replace(
+    /<img(.*?)(?!class=)(src=".*?"|alt=".*?"|style=".*?"|width=".*?"|height=".*?"|loading=".*?")(.*)>/g,
+    (match, before, attribute, after) => {
+      return `<img${before}class="responsive-image" ${attribute}${after}>`;
+    }
+  );
+  
+  // Process with remark for standard markdown, but preserve HTML
   const result = await remark()
-    .use(html)
-    .process(markdown);
+    .use(html, { sanitize: false }) // Don't sanitize HTML to preserve the img tags
+    .process(processedMarkdown);
   
   return result.toString();
 }

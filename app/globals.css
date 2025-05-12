@@ -313,3 +313,34 @@ nav a {
 .text-light {
   color: var(--text-color-light) !important; /* Added !important to ensure it overrides */
 }
+
+/* Responsive images in essay content */
+.prose img.responsive-image,
+.essay-content img.responsive-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--container-radius);
+  margin: 2rem 0;
+}
+
+.prose img.container-bg,
+.essay-content img.container-bg {
+  background-color: var(--color-container-bg);
+  padding: 1.5rem;
+}
+
+.prose img.on-white,
+.essay-content img.on-white {
+  background-color: white;
+}
+
+.prose .caption,
+.essay-content .caption {
+  display: block;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-color-light);
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+}
