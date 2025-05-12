@@ -179,7 +179,7 @@ export default function ArchivePage() {
             });
             
             return (
-              <Link href={`/writing/${essay.slug}`} data-tags={JSON.stringify(essay.tags)} key={essay.slug} className="essay-item flex flex-col justify-between rounded-[var(--container-radius)] overflow-hidden pane py-6 shadow-md border-b border-border transition-colors duration-150 px-4">
+              <Link href={`/writing/${essay.slug}?from=archive`} data-tags={JSON.stringify(essay.tags)} key={essay.slug} className="essay-item flex flex-col justify-between rounded-[var(--container-radius)] overflow-hidden pane py-6 shadow-md border-b border-border transition-colors duration-150 px-4">
                 <h3 className="font-medium text-xl hover:text-primary transition-colors duration-300">
                   {essay.title}
                 </h3>

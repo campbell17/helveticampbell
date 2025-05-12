@@ -193,7 +193,7 @@ export default function WritingPage() {
                 
                 return (
                   <div key={essay.slug} className="">
-                    <Link href={`/writing/${essay.slug}`} className="block group p-4 pane hover-only">
+                    <Link href={`/writing/${essay.slug}?from=writing`} className="block group p-4 pane hover-only">
                       <h3 className="font-medium !text-lg !mb-0 group-hover:text-primary transition-colors duration-300">
                         {essay.title}
                       </h3>

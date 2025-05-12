@@ -2,9 +2,12 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { H1 } from '../../components/Typography';
+import Link from 'next/link';
+import { H1, Overline } from '../../components/Typography';
 import { getEssayWithHtml, getAllEssays, ImageReference } from '../../lib/markdown';
 import { ArticleStructuredData } from '../../components/StructuredDataManager';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import DynamicBackLink from '../../components/DynamicBackLink';
 
 // We're going to use the new Next.js 15 type pattern where params is a Promise
 type PageParams = {
@@ -83,6 +86,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         publishDate={new Date(essay.date).toISOString()}
         url={`https://helveticampbell.com/writing/${essay.slug}`}
       />
+      
+      {/* Dynamic Back Link */}
+      <DynamicBackLink />
       
       <H1>{essay.title}</H1>
       
