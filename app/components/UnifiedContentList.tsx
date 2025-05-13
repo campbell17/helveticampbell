@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useSubstackPosts, SubstackPost } from '../hooks/useSubstackPosts';
 import { config } from '../config/environment';
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 // Define a type for our markdown essays
 interface LocalEssay {
@@ -74,7 +73,7 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
       title: post.title,
       date: post.date,
       excerpt: post.description || post.excerpt || '',
-      tags: ['substack'], // Tag all substack posts with 'substack'
+      tags: ['Substack'], // Tag all substack posts with 'substack'
       source: 'substack' as const,
       url: post.url,
       isExternal: true,
@@ -212,7 +211,7 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
       )}
       
       {/* Unified Content List */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
         {filteredContent.length > 0 ? (
           filteredContent.map((item) => (
             <Link 
@@ -220,7 +219,7 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
               key={item.id} 
               target={item.isExternal ? "_blank" : undefined}
               rel={item.isExternal ? "noopener noreferrer" : undefined}
-              className="group content-item flex flex-col h-full rounded-[var(--container-radius)] overflow-hidden pane shadow-md border border-border transition-colors duration-150"
+              className="group content-item flex flex-col h-full container-behavior-primary pane"
             >
               {item.coverImage && item.coverImage.url && !imageErrors[item.id] && (
                 <div className="relative w-full h-48 overflow-hidden bg-gray-100">
@@ -230,7 +229,7 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     style={{ objectFit: 'cover' }}
-                    className="transition-transform duration-300 group-hover:scale-105"
+                    className="transition-transform duration-300"
                     onError={() => handleImageError(item.id)}
                   />
                 </div>
@@ -239,35 +238,43 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
               <div className="flex flex-col justify-between flex-grow p-5">
                 <div>
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-medium text-xl group-hover:text-primary transition-colors duration-300">
+                    <h3 className="!mb-0">
                       {item.title}
                     </h3>
-                    {item.isExternal && (
-                      <ArrowTopRightOnSquareIcon className="w-4 h-4 text-text-color-light ml-2 flex-shrink-0" />
-                    )}
                   </div>
                   
                   {item.excerpt && (
-                    <p className="text-sm text-text-color-light mt-2 line-clamp-2">{item.excerpt}</p>
+                    <p className="text-base !text-[var(--text-color-light)] mt-2 !mb-8 line-clamp-2">{item.excerpt}</p>
                   )}
                 </div>
                 
                 <div className="mt-4">
-                  <div className="flex flex-wrap gap-2 mb-2">
-                    {item.tags && item.tags.map(tag => (
-                      <span 
-                        key={`${item.id}-${tag}`}
-                        className={`inline-block px-2 py-0.5 rounded-full text-xs ${
-                          tag === 'substack' ? 'bg-orange-500/20 text-orange-600' : 'bg-secondary/10'
-                        }`}
+                  <div className="flex justify-between items-center">
+                    <time dateTime={new Date(item.date).toISOString()} className="text-xs uppercase font-sans text-[var(--text-color-light)]">
+                      {formattedDate(item.date)}
+                    </time>
+                    {item.isExternal && (
+                      <svg 
+                        role="img" 
+                        style={{ transform: 'scale(1)' }} 
+                        width="16" 
+                        height="18" 
+                        viewBox="0 0 16 18" 
+                        fill="#ff6719" 
+                        strokeWidth="1.8" 
+                        stroke="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="flex-shrink-0"
                       >
-                        {tag}
-                      </span>
-                    ))}
+                        <g>
+                          <title>Substack</title>
+                          <path d="M16 4H0V6H16V4Z"></path>
+                          <path d="M0 8V18L7.9993 13.534L16 18V8H0Z"></path>
+                          <path d="M16 0H0V2H16V0Z"></path>
+                        </g>
+                      </svg>
+                    )}
                   </div>
-                  <time dateTime={new Date(item.date).toISOString()} className="text-sm text-text-color-light">
-                    {formattedDate(item.date)}
-                  </time>
                 </div>
               </div>
             </Link>

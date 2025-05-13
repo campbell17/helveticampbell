@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Books Update'
 date: '2020-10-06'
-tags: ["Reading", "Goals", "Self Discipline"]
+tags: ["Archive", Reading", "Goals", "Self Discipline"]
 ---
 
 > The main challenge for this goal isn't going to be completing these books. It's going to be refraining from starting 10 more while I do.

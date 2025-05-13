@@ -5,7 +5,7 @@ title: "Laundry Gratitude"
 description: "We tend to take for granted the small things that keep everything afloat..."
 img: 'https://campbell17.s3.amazonaws.com/posts/laundry.jpg'
 date: '2021-03-29'
-tags: ["Relationships", "Marriage", "Perspective"]
+tags: ["Archive", Relationships", "Marriage", "Perspective"]
 ---
 
 ![Macro photo of a metal hanger](https://campbell17.s3.amazonaws.com/posts/laundry.jpg)

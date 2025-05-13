@@ -35,7 +35,7 @@ export default function WorkItem({ image, onImageClick, index, imageAspectRatio 
       `}
     >
       <div 
-        className="cursor-pointer h-full rounded-[var(--container-radius)] overflow-hidden shadow-xl hover:shadow-xs shadow-[color:var(--color-shadow)] pane border border-[color:var(--color-border)] transition-all duration-transition-duration-normal"
+        className="container-behavior-primary pane"
         onClick={() => onImageClick(index)}
       >
         {/* Cover image with customizable aspect ratio */}

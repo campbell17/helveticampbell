@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'I Was a Dumbass At Least Once This Week'
 date: '2020-09-11'
-tags: ["Programming", "Debugging", "Work Mishaps"]
+tags: ["Archive", Programming", "Debugging", "Work Mishaps"]
 ---
 
 Toward the end of the workday yesterday, I began having trouble running our app locally. Like everything in life, the problem wasn't what it seemed at first. I've been working on updating the color palette in the app since some of the theming didn't precisely match some recent marketing changes we made. Dozens and dozens of haml and css files later, my find/replace cleanup was done and my new Sass variables were all nice and shiny. 🧐 Yup, everything still works.

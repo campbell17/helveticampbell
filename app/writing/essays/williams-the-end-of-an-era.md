@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Williams F1: The End of an Era'
 date: '2020-09-04'
-tags: ["Formula 1", "Racing", "Sports"]
+tags: ["Archive", Formula 1", "Racing", "Sports"]
 ---
 
 <img class="container-bg on-white" style="width: 100%; height: auto;" src="https://campbell17.s3.amazonaws.com/posts/williams-martini-logo.svg" alt="" />

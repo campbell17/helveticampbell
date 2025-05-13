@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: '10 Years.'
 date: '2020-09-21'
-tags: ["Career", "Work Culture", "Professional Growth"]
+tags: ["Archive", Career", "Work Culture", "Professional Growth"]
 ---
 
 Stability is very important to me. I've tried to live my life in such a way that minimizes the opportunity for unrest to infiltrate my surroundings and leave me with more unknowns than I can handle. When I was recruited by my company 10 years ago, I was at an epicenter of career uncertainty. Following the departure from my first design job out of college, I spent a year freelancing with mixed results. Needing to find something more predictable, I applied everywhere I could and took the first offer. I won't go so far as to call that a mistake, having learned a ton and met some decent people, but the culture was all wrong for me. After a somewhat miserable year, I was more than ready to move on. I updated my website with some of my newly learned skills and started blogging a bit.

@@ -4,7 +4,7 @@ category: writing
 title: 'A New Chapter in Making Progress'
 subtitle: "Tales & observations from a recovering time waster"
 date: '2020-12-04'
-tags: ["Productivity", "Morning Routine", "Self Discipline"]
+tags: ["Archive", Productivity", "Morning Routine", "Self Discipline"]
 ---
 
 ![A dark wavy line with the peaks filled in green](https://campbell17.s3.amazonaws.com/posts/chapter-progress.png)

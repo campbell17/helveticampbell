@@ -1,7 +1,7 @@
 ---
 title: 'Working from home today. Forever.'
 date: '2020-05-24'
-tags: ["Remote Work", "Career", "Work Culture"]
+tags: ["Archive", Remote Work", "Career", "Work Culture"]
 ---
 
 This article was originally posted on [Medium](https://medium.com/@campbell17/working-from-home-today-forever-cf06e166d4b2)

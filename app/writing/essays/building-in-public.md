@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Building in Public'
 date: '2020-08-31'
-tags: ["Projects", "Writing", "Social Media"]
+tags: ["Archive", Projects", "Writing", "Social Media"]
 ---
 
 Here's the [Twitter thread](https://twitter.com/timcampbell17/status/1300124985814650887) of this endeavor.

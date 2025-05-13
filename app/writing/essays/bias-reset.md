@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: "Resetting a Bias"
 date: '2021-01-24'
-tags: ["Psychology", "Self Improvement", "Perspective"]
+tags: ["Archive", Psychology", "Self Improvement", "Perspective"]
 ---
 
 For my second book of the year, I picked up [Predictably Irrational](https://www.goodreads.com/book/show/1713426.Predictably_Irrational) by [Dan Ariely](https://twitter.com/danariely). Information about how the human brain operates is deeply interesting to me, so a book about the irrationality of humankind is an easy choice. I enjoy how works like this cause me to examine my own habits and modes of thinking to show areas I can improve. Today's exercise came to me this morning when I was looking through Spotify for the day's playlist.

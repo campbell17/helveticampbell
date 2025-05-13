@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'A New Chapter in Doing Nothing'
 date: '2021-01-04'
-tags: ["Productivity", "Rest", "Work-Life Balance"]
+tags: ["Archive", Productivity", "Rest", "Work-Life Balance"]
 ---
 
 ![A dark wavy line with the troughs filled in red](https://campbell17.s3.amazonaws.com/posts/chapter-rest.png)

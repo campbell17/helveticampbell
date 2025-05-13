@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: "Everything is My Fault"
 date: '2021-02-05'
-tags: ["Personal Responsibility", "Self Improvement", "Mindset"]
+tags: ["Archive", Personal Responsibility", "Self Improvement", "Mindset"]
 ---
 
 ![Macro photograph of the Hell Yeah or No book cover](https://campbell17.s3.amazonaws.com/posts/hellyeah.jpg)

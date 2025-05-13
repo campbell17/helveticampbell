@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'The Did-I-Google-it Rule'
 date: '2020-09-02'
-tags: ["Work Culture", "Problem Solving", "Self Reliance"]
+tags: ["Archive", Work Culture", "Problem Solving", "Self Reliance"]
 ---
 
 Fairly early on in my tenure at [Fulcrum](https://www.fulcrumapp.com), it became obvious that I was working alongside higher levels of talent and intelligence than I was used to. Everyone was very kind and answered my questions politely and I didn't hesitate to let my curiosity show. As I settled into my place in the company, however, I had a growing feeling of guilt about interrupting coworkers to ask for answers that could most likely be found with some thrifty Googling. Granted, some of the information was inside baseball and only they had the answers, but the rest of it? Not so much. One day, though, my attitude changed.

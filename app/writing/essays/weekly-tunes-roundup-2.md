@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: '🎵 Weekly Tunes Roundup'
 date: '2020-09-18'
-tags: ["Music", "Playlists", "Instrumental"]
+tags: ["Archive", Music", "Playlists", "Instrumental"]
 ---
 
 When I was younger I listened to a ton of instrumental guitar and this week I revisited one of the best: Joe Satriani. The word prolific doesn't do him justice as he's still going strong 34 years after his debut album. Today I made a playlist of some of my old favorites.

@@ -14,8 +14,12 @@
   color: var(--text-color);
 } */
 
-.text-color-light {
-  color: var(--text-color-light);
+.container-behavior-primary {
+ @apply cursor-pointer h-full rounded-[var(--container-radius)] overflow-hidden shadow-xl hover:shadow-xs shadow-[color:var(--color-shadow)] border border-[color:var(--color-border)] transition-all;
+}
+
+.container-behavior-secondary {
+  @apply border-b border-[var(--color-border)] last:border-b-0 transition-colors duration-150;
 }
 
 .hover\:text-color:hover {

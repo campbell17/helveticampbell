@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'The Every Day Calendar'
 date: '2020-09-07'
-tags: ["Habits", "Productivity", "Makers"]
+tags: ["Archive", Habits", "Productivity", "Makers"]
 ---
 
 I made a frivolous purchase today. When you reach a certain age, you don't really get presents for your birthday any more. I'm not a big shopper and I don't want much, so typically when I want something, I pick it up. However, there are certain things I would love to have that my cheapness will simply not allow. Normally that's that and I leave myself wanting, but with my new goal of writing every day in full swing, I thought I would consummate the journey by buying myself a birthday present.
