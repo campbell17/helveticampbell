@@ -20,9 +20,19 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
     const { slug } = await params;
     const essay = await getEssayWithHtml(slug);
     
+    // Use the default image from the "who" page if no cover image is available
+    const defaultImage = '/images/tim.jpg';
+    const imageToUse = essay.cover_image || defaultImage;
+    
+    // Generate OG image URL using the API
+    const ogImageUrl = `/api/og?title=${encodeURIComponent(essay.title)}&subtitle=${encodeURIComponent(essay.excerpt || 'Read my latest thoughts')}&image=${encodeURIComponent(imageToUse)}`;
+    
     return {
       title: `${essay.title}`,
       description: essay.excerpt || '',
+      alternates: {
+        canonical: `https://helveticampbell.com/writing/${slug}`,
+      },
       openGraph: {
         title: essay.title,
         description: essay.excerpt || '',
@@ -30,15 +40,20 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
         type: 'article',
         publishedTime: new Date(essay.date).toISOString(),
         authors: ['Tim Campbell'],
-        images: essay.cover_image 
-          ? [{ url: essay.cover_image, width: 1200, height: 630, alt: essay.title }]
-          : undefined,
+        images: [
+          {
+            url: ogImageUrl,
+            width: 1200,
+            height: 630,
+            alt: essay.title
+          }
+        ],
       },
       twitter: {
         card: 'summary_large_image',
         title: essay.title,
         description: essay.excerpt || '',
-        images: essay.cover_image ? [essay.cover_image] : undefined,
+        images: [ogImageUrl],
       },
     };
   } catch (error) {
@@ -76,13 +91,20 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     day: 'numeric',
   });
   
+  // Use the default image from the "who" page if no cover image is available
+  const defaultImage = '/images/tim.jpg';
+  const imageToUse = essay.cover_image || defaultImage;
+  
+  // Generate OG image URL using the API
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(essay.title)}&subtitle=${encodeURIComponent(essay.excerpt || 'Read my latest thoughts')}&image=${encodeURIComponent(imageToUse)}`;
+  
   return (
     <>
       {/* Add structured data for the article */}
       <ArticleStructuredData
         title={essay.title}
         description={essay.excerpt || ''}
-        image={essay.cover_image}
+        image={ogImageUrl}
         publishDate={new Date(essay.date).toISOString()}
         url={`https://helveticampbell.com/writing/${essay.slug}`}
       />

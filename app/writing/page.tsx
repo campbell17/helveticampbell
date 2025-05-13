@@ -12,7 +12,8 @@ import { Metadata } from 'next';
 // Define OG image parameters
 const ogTitle = 'Writing';
 const ogSubtitle = 'A collection of essays about productivity, life, and childhood shenanigans.';
-const ogImageUrl = `/api/og?title=${encodeURIComponent(ogTitle)}&subtitle=${encodeURIComponent(ogSubtitle)}`;
+const defaultImage = '/images/tim.jpg';
+const ogImageUrl = `/api/og?title=${encodeURIComponent(ogTitle)}&subtitle=${encodeURIComponent(ogSubtitle)}&image=${encodeURIComponent(defaultImage)}`;
 
 // Define a type for our markdown essays
 interface LocalEssay {

@@ -2,6 +2,7 @@
 layout: post
 category: writing
 title: "A Meeting About a Project"
+subtitle: ""
 description: "Guys, before we move on I'd like to address an elephant in the room..."
 img: 'https://campbell17.s3.amazonaws.com/posts/meeting.jpg'
 date: '2021-04-13'

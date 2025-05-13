@@ -10,7 +10,8 @@ import ArchiveFilterClient from '../../components/ArchiveFilterClient';
 // Define OG image parameters
 const ogTitle = 'Writing Archive';
 const ogSubtitle = 'Browse my complete collection of essays by topic.';
-const ogImageUrl = `/api/og?title=${encodeURIComponent(ogTitle)}&subtitle=${encodeURIComponent(ogSubtitle)}`;
+const defaultImage = '/images/tim.jpg';
+const ogImageUrl = `/api/og?title=${encodeURIComponent(ogTitle)}&subtitle=${encodeURIComponent(ogSubtitle)}&image=${encodeURIComponent(defaultImage)}`;
 
 // Define a type for our markdown essays
 interface Essay {
