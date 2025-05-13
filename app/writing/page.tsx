@@ -5,9 +5,9 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { Suspense } from 'react';
-import SubstackPostsSection from './SubstackPostsSection';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { Metadata } from 'next';
+import UnifiedContentList from '../components/UnifiedContentList';
 
 // Define OG image parameters
 const ogTitle = 'Writing';
@@ -150,67 +150,26 @@ export default function WritingPage() {
         A collection of essays about productivity, life, and childhood shenanigans.
       </div>
       
-      {/* Main and sidebar columns */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        {/* Main column - Substack Posts */}
-        <div className="xl:col-span-2">
-
-          <div className="flex items-center justify-between mb-8">
-          <Link href="https://campbellseventeen.substack.com" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center hover:text-primary transition-colors duration-300">
-            <H2 className="!mb-0 transition-all duration-300">Substack Essays</H2>
-            <ArrowRightIcon className="w-6 h-6 ml-2 group-hover:text-rose-400 group-hover:translate-x-2 transition-all duration-300" />
-          </Link>
+      {/* Substack embed for newsletter signup */}
+      {/* <div className="mb-12">
+        <iframe 
+          src="https://campbellseventeen.substack.com/embed" 
+          width="100%" 
+          height="320" 
+          className="rounded-[var(--container-radius)]" 
+          style={{ border: 'none', background: 'white'}} 
+          frameBorder="0"
+        ></iframe>
+      </div> */}
+      
+      {/* Unified Content List with filters */}
+      <Suspense fallback={
+        <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
+          <div className="p-6 text-center">Loading content...</div>
         </div>
-
-          <iframe src="https://campbellseventeen.substack.com/embed" width="100%" height="320" className="rounded-[var(--container-radius)] mb-8" style={{ border: 'none', background: 'white'}} frameBorder="0" ></iframe>          
-          
-          {/* Use Suspense for client-side loading */}
-          <Suspense fallback={
-            <div className="rounded-[var(--container-radius)] bg-white/5 backdrop-blur-sm overflow-hidden shadow-md">
-              <div className="p-6 text-center">Loading posts...</div>
-            </div>
-          }>
-            <SubstackPostsSection />
-          </Suspense>
-        </div>
-
-        {/* Sidebar column - Local Essays */}
-        <div className="xl:col-span-1">
-          <div className="flex items-center justify-between mb-6">
-            <Link href="/writing/archive" className="group inline-flex items-center text-sm hover:text-primary transition-colors duration-300">
-              <h2 className="!text-3xl font-bold !mb-0">Archive</h2>
-              <ArrowRightIcon className="w-4 h-4 ml-1 group-hover:text-rose-400 group-hover:translate-x-1 transition-all duration-300" />            
-            </Link>
-          </div>
-          
-          {localEssays.length > 0 ? (
-            <div className="divide-y divide-border">
-              {localEssays.map((essay) => {
-                const formattedDate = new Date(essay.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                });
-                
-                return (
-                  <div key={essay.slug} className="">
-                    <Link href={`/writing/${essay.slug}?from=writing`} className="block group p-4 pane hover-only">
-                      <h3 className="font-medium !text-lg !mb-0 group-hover:text-primary transition-colors duration-300">
-                        {essay.title}
-                      </h3>
-                      <time dateTime={essay.date} className="text-sm text-text-color-light">
-                        {formattedDate}
-                      </time>
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <p className="text-text-color-light">No essays found.</p>
-          )}
-        </div>
-      </div>
+      }>
+        <UnifiedContentList localEssays={localEssays} showFilters={true} />
+      </Suspense>
     </>
   )
 } 
