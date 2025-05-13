@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Mental Inertia'
 date: '2020-09-01'
-tags: ["Archive", Habits", "Consistency", "Creativity"]
+tags: ["Archive",  "Habits", "Consistency", "Creativity"]
 ---
 
 Jerry Seinfeld writes material every day for his act. In interviews, he often references his endless collection of yellow legal pads, saturated with ideas he curates and refines until they resemble the comedic equivalent of a bonsai masterpiece. 

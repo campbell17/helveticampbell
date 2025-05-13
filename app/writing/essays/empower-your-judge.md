@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Empowering Your Judge'
 date: '2020-10-28'
-tags: ["Archive", Self Improvement", "Psychology", "Personal Growth"]
+tags: ["Archive",  "Self Improvement", "Psychology", "Personal Growth"]
 ---
 
 > Only _you_ know how truly lazy you are.

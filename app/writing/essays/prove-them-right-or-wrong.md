@@ -4,7 +4,7 @@ category: writing
 title: "Prove Them Right or Prove Them Wrong"
 date: '2021-03-08'
 homepage: true
-tags: ["Archive", Motivation", "Self Image", "Personal Growth"]
+tags: ["Archive",  "Motivation", "Self Image", "Personal Growth"]
 ---
 
 ![Calvin & Hobbes single panel comic. Calvin says, now I need to make some enemies. Hobbes responds, I'll be one.](https://campbell17.s3.amazonaws.com/posts/calvin-enemies.jpg)

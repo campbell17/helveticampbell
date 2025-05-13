@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: "Paying Attention"
 date: '2020-09-14'
-tags: ["Archive", Mindfulness", "Life Lessons", "Awareness"]
+tags: ["Archive",  "Mindfulness", "Life Lessons", "Awareness"]
 ---
 
 I shattered the sidelight next to my front door yesterday with the weed whacker. Well, not with the weed whacker as such, but with the river rock launching out sideways from under its throttling spool. I was, of course, obvlivious to this fact due to the noise and chaos usually commonplace to this activity. However, my wife screaming my name at the top of her lungs broke through the noise (and my ear protection) just enough to wake me from my yardwork trance.

@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Old Work'
 date: '2020-09-08'
-tags: ["Archive", Design", "Professional Growth", "Creativity"]
+tags: ["Archive",  "Design", "Professional Growth", "Creativity"]
 ---
 
 There's something unique about enjoying an activity where you leave artifacts behind. Whether doing it professionally or just as a hobby, there's nothing quite like making something yourself and adding it to the world. In searching through some of my past work to accompany the case studies for this site, however, I'm reminded of one of my least favorite aspects of design: looking at my crusty old work. I think digital designers have a particular disadvantage compared to fine artists in that they are primarily making something to solve a problem for that exact time. While the painter gets to look back at their "blue" period and recall all the tumultuous or wonderful things they were experiencing at the time, the digital problem solver has to look at something that's been solved 10 different ways since then and all of them are no doubt more clever, more usable, and probably better for the environment.

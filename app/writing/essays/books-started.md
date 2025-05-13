@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Books Started'
 date: '2020-09-05'
-tags: ["Archive", Productivity", "Reading", "Habits"]
+tags: ["Archive",  "Productivity", "Reading", "Habits"]
 ---
 
 I suffer from something I bet a lot of people struggle with. I start a lot of books. Sometimes I read the first few chapters right away to try and give myself a fighting chance. Occasionally I even make it halfway through or more before something else draws my attention away. I do finish some, but I get so excited when I come across a new book I want to read, I usually start it before I finish the last one. I even tried to jump start my reading by adding a Basecamp check-in entitled, "How many pages did you read today?". That actually worked for the book I was reading at the time, _Every Tool's a Hammer_ by [Adam Savage](https://www.twitter.com/donttrythis), but I didn't make room in my routine for the next book, and poof: inertia gone. With 4 months left in the year, my goal is to finish every 'started' book. I list them thusly:

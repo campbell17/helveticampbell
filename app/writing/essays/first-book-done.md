@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: "Reading Pace: 91.25 Books Per Year"
 date: '2021-01-07'
-tags: ["Archive", Reading", "Books", "Personal Growth"]
+tags: ["Archive",  "Reading", "Books", "Personal Growth"]
 ---
 
 ![Macro photograph of the edge of a hardbound book](https://campbell17.s3.amazonaws.com/posts/first-book-2021.jpg)

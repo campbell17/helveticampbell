@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: 'Failure Hill'
 date: '2020-11-03'
-tags: ["Archive", Art", "Creativity", "Resilience"]
+tags: ["Archive",  "Art", "Creativity", "Resilience"]
 ---
 
 Almost every drawing I do starts as a punishing failure. There's a point at which the winds change, however, and it moves into the success category. It's a palpable feeling, but I can't predict when (or if) it will happen when I'm drawing. It's a bit like Russian roulette in that I have no idea if it will _ever_ go from failure to success, leaving open the possibility that the entire exercise will yield nothing. I should be ok with that, chalking it up to being "part of the bigger process", but I'm not. Failed drawings are disproportionate hits to my confidence and while rare, I've had some that never came around no matter how much erasing, noodling, coercing, or fiddling I did.

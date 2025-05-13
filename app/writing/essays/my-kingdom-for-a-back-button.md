@@ -4,7 +4,7 @@ category: writing
 title: 'My Kingdom for a Back Button'
 subtitle: "Why simple feature requests aren't so simple."
 date: '2020-10-05'
-tags: ["Archive", UX Design", "Product Development", "Communication"]
+tags: ["Archive",  "UX Design", "Product Development", "Communication"]
 ---
 
 We all think we know what we want. On occasion, we're actually right about what that even is. But usually when we ask for something we fail to articulate what we _really_ want. My daughter does this when she argues with me. 

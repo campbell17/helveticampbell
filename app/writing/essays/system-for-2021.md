@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: My 2021 System
 date: '2021-01-14'
-tags: ["Archive", Goals", "Habits", "Creativity"]
+tags: ["Archive", "Goals", "Habits", "Creativity"]
 ---
 
 I've never been a practitioner of yearly goal setting since it goes against my tendency to go with the flow, but this year I'm taking a new approach. I do have some general goals in mind, but instead of putting any energy toward them specifically, I'm implementing a system of habits whose byproduct will hopefully lead to them. My system is diabolically simple. Every morning before work, I will exercise, stretch, make art, read, and write. That's it. That's the list.

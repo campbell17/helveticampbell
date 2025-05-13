@@ -3,7 +3,7 @@ layout: post
 category: writing
 title: '🎮 Free Play'
 date: '2020-09-25'
-tags: ["Archive", Parenting", "Personal Growth", "Childhood Development"]
+tags: ["Archive",  "Parenting", "Personal Growth", "Childhood Development"]
 ---
 
 Yesterday I did something I want to take back. I ruined the fun of my 8 year old when we were playing in the driveway. I wish I could say this is the first and last time that will happen, but I've done this before. I always do this. I played sports as a kid and I loved nothing more than practicing by myself in the driveway, making up drills and challenges that were fun but stretched me beyond my immediate skill level. My youngest son isn't like me. He likes playing sports, but doesn't really want to get better. He says he does, but he doesn't have that knack for practice that will lead to actual improvement. He has natural ability so he's more than capable, but he tends to stop quickly when things get a little tough.
