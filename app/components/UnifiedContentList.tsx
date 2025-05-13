@@ -161,7 +161,65 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
   const sortedTags = [...allTags].sort((a, b) => tagCounts[b] - tagCounts[a]);
 
   if (isLoading) {
-    return <div className="p-6 text-center">Loading content...</div>;
+    return (
+      <div className="w-full">
+        {/* Skeleton for filter section */}
+        {showFilters && (
+          <div className="mb-8">
+            <div className="mb-8">
+              {/* Filter heading skeleton */}
+              <div className="h-7 w-36 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+            </div>
+            <div className="relative">
+              <div className="overflow-hidden" style={{ height: '76px' }}>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {/* First row of tag skeletons */}
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div 
+                      key={`tag-skeleton-row1-${i}`}
+                      className="h-8 w-20 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse"
+                    ></div>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {/* Second row of tag skeletons */}
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <div 
+                      key={`tag-skeleton-row2-${i}`}
+                      className="h-8 w-24 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse"
+                    ></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Skeleton for content grid */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={`content-skeleton-${i}`} className="container-behavior-primary pane h-[350px] flex flex-col">
+              {/* Image skeleton */}
+              <div className="h-48 w-full bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                {/* Title skeleton */}
+                <div>
+                  <div className="h-6 w-3/4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse mb-2"></div>
+                  <div className="h-6 w-1/2 bg-gray-200 dark:bg-gray-700 rounded animate-pulse mb-8"></div>
+                  {/* Excerpt skeleton */}
+                  <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded animate-pulse mb-1"></div>
+                  <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+                </div>
+                {/* Date skeleton */}
+                <div className="mt-4">
+                  <div className="h-4 w-28 bg-gray-200 dark:bg-gray-700 rounded animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (
