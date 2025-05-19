@@ -11,7 +11,6 @@ import CustomScrollbar from './components/CustomScrollbar'
 import BackToTop from './components/BackToTop'
 import { cn } from './lib/utils'
 import { fontVariables } from './lib/fonts'
-import { ProjectSidebarProvider } from './contexts/ProjectSidebarContext'
 import { LoadingProvider } from './contexts/LoadingContext'
 import { NavigationEvents } from './components/NavigationEvents'
 import { Suspense } from 'react'
@@ -132,50 +131,48 @@ export default function RootLayout({
             maranello: 'maranello'
           }}
         >
-          <ProjectSidebarProvider>
-            <LoadingProvider>
-              <Suspense fallback={null}>
-                <NavigationEvents />
-              </Suspense>
-              <SceneBackground />
-              
-              {/* Global Top navigation bar */}
-              {/* <ThemeSwitcher />               */}
-              <div className="relative min-h-screen">
+          <LoadingProvider>
+            <Suspense fallback={null}>
+              <NavigationEvents />
+            </Suspense>
+            <SceneBackground />
+            
+            {/* Global Top navigation bar */}
+            {/* <ThemeSwitcher />               */}
+            <div className="relative min-h-screen">
               <TopNav />
-                {/* Mobile navigation */}
-                {/* <div className="block top-0 left-0 right-0 z-50 md:hidden">
-                  <nav className="p-6">
-                    <Navigation />                    
-                  </nav>
-                </div> */}
+              {/* Mobile navigation */}
+              {/* <div className="block top-0 left-0 right-0 z-50 md:hidden">
+                <nav className="p-6">
+                  <Navigation />                    
+                </nav>
+              </div> */}
 
-                {/* Desktop sidebar navigation */}
-                {/* <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
-                  <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
-                    <Navigation />
-                    <div className="flex-none mt-6">
-                      <ThemeSwitcher />
-                    </div>
-                  </nav>
-                </div> */}
-
-                {/* Main content area with grid layout */}
-                <main className="py-20 mx-auto overflow-visible">
-                  <div className="grid grid-cols-12 gap-4 overflow-visible">
-                    <AnimatedLayout>
-                      {children}
-                    </AnimatedLayout>
+              {/* Desktop sidebar navigation */}
+              {/* <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
+                <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
+                  <Navigation />
+                  <div className="flex-none mt-6">
+                    <ThemeSwitcher />
                   </div>
-                </main>
-                
-                {/* Footer */}
-                <Footer />
-              </div>
-              <CustomScrollbar />
-              <BackToTop />
-            </LoadingProvider>
-          </ProjectSidebarProvider>
+                </nav>
+              </div> */}
+
+              {/* Main content area with grid layout */}
+              <main className="mx-auto overflow-visible">
+                <div className="grid grid-cols-12 gap-4 overflow-visible">
+                  <AnimatedLayout>
+                    {children}
+                  </AnimatedLayout>
+                </div>
+              </main>
+              
+              {/* Footer */}
+              <Footer />
+            </div>
+            <CustomScrollbar />
+            <BackToTop />
+          </LoadingProvider>
         </ThemeProvider>
       </body>
     </html>

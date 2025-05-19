@@ -38,13 +38,13 @@ const BrandingContent: React.FC = () => {
 
   return (
     <>
-      <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
+      <div className="px-4 sm:px-6 md:px-20">
         <H1 className="mb-4">Branding</H1>
         <p className="subheading">A collection of logo and identity work, always executed with close collaboration and a tight communication loop with stakeholders. These are a mix of new brands, redesigns, and refreshes.</p>
       </div>
 
       {/* Gallery Section */}
-      <div className="p-8 pb-10 md:p-20 md:pb-28 pt-0">
+      <div className="px-4 sm:px-6 md:px-20 md:pb-28 pt-0">
         <div className="max-w-none">
           
           {/* Row */}

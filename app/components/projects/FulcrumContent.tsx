@@ -42,7 +42,7 @@ const FulcrumContent: React.FC = () => {
 
   return (
     <>
-      <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
+      <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-wrap mb-8">
           <Overline className="!text-lg mr-8">UI/UX</Overline>
           <Overline className="!text-lg mr-8">Branding</Overline>
@@ -56,7 +56,7 @@ const FulcrumContent: React.FC = () => {
       </div>
       {/* <div className="p-20 pt-0"> */}
       {/* Stats Callout */}
-      <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] pt-12 pb-16 px-8 md:px-20 border-y border-[var(--color-border)]">
+      <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] pt-12 pb-16 px-4 sm:px-6 md:px-20 border-y border-[var(--color-border)]">
         <div className="w-full 2xl:max-w-7xl mx-auto">
           <Overline className="mb-4">Company Overview</Overline>
           <H2>From Startup to Enterprise Platform</H2>
@@ -91,7 +91,7 @@ const FulcrumContent: React.FC = () => {
           </div> */}
         </div>
       </div>
-      <div className="mx-4 mt-10">
+      <div className="mt-10">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6">
           {/* First row */}
           

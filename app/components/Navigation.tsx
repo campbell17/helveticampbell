@@ -8,7 +8,6 @@ import { H1 } from './Typography'
 import Image from 'next/image'
 import { ChevronUpDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline'
-import { useProjectSidebar } from '../contexts/ProjectSidebarContext'
 import { useLoading } from '../contexts/LoadingContext'
 import LoadingLogo from './LoadingLogo'
 import ThemeSwitcher from './ThemeSwitcher'
@@ -37,7 +36,6 @@ interface NavigationComponentProps {
   projects: ProjectItem[];
   isDisclosureOpen: boolean;
   handleDisclosureChange: () => void;
-  openProject: (key: string) => void;
   animationConstants: AnimationConstants;
   handleLinkClick: (href: string) => void;
 }
@@ -46,7 +44,6 @@ export default function Navigation() {
   const pathname = usePathname()
   const [isFirstLoad, setIsFirstLoad] = useState(true)
   const [isDisclosureOpen, setIsDisclosureOpen] = useState(false)
-  const { openProject } = useProjectSidebar()
   const { initiateLoading } = useLoading()
 
   // Animation constants
@@ -107,7 +104,6 @@ export default function Navigation() {
           projects={projects}
           isDisclosureOpen={isDisclosureOpen}
           handleDisclosureChange={handleDisclosureChange}
-          openProject={openProject}
           animationConstants={{
             duration: INITIAL_LOAD_DURATION,
             delay: INITIAL_LOAD_DELAY,
@@ -125,7 +121,6 @@ export default function Navigation() {
           projects={projects}
           isDisclosureOpen={isDisclosureOpen}
           handleDisclosureChange={handleDisclosureChange}
-          openProject={openProject}
           animationConstants={{
             enterDelay: ENTER_DELAY,
             enterDuration: ENTER_DURATION,
@@ -250,7 +245,6 @@ function DesktopNavigation({
   projects, 
   isDisclosureOpen, 
   handleDisclosureChange, 
-  openProject,
   animationConstants,
   handleLinkClick
 }: NavigationComponentProps) {
@@ -346,29 +340,15 @@ function DesktopNavigation({
               >
                 <div>
                   {projects.map((project, index) => (
-                    <motion.button
+                    <Link
                       key={project.key}
-                      initial={{ opacity: 0 }}
-                      animate={{                       
-                        opacity: 1,
-                        transition: {
-                          delay: index * 0.05,
-                          duration: animationConstants.disclosureDuration,
-                          ease: animationConstants.disclosureEase
-                        }
-                      }}
-                      exit={{ 
-                        transition: {
-                          duration: animationConstants.disclosureDuration * 0.5,
-                          ease: animationConstants.disclosureEase
-                        }
-                      }}
-                      onClick={() => openProject(project.key)}
+                      href={project.href}
+                      onClick={() => handleLinkClick(project.href)}
                       className={`cursor-pointer pane hover-only flex items-center pl-2 rounded-md border border-transparent hover:border-[var(--color-border-hover)] justify-between text-sm tracking-wider font-[500] py-1 uppercase !font-sans ${pathname === "/work" ? 'text-color' : 'text-color-light hover:text-color'} group w-full`}
                     >
                       {project.name}
                       <ArrowLeftStartOnRectangleIcon className="opacity-0 group-hover:opacity-100 mr-1.5 h-4 w-4 transition-all" />
-                    </motion.button>
+                    </Link>
                   ))}
                 </div>
               </motion.div>

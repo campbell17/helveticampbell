@@ -1,7 +1,9 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { useOpenProject } from '../hooks/useOpenProject'
+import Link from 'next/link'
+import { useLoading } from '../contexts/LoadingContext'
+import { usePathname } from 'next/navigation'
 
 interface ProjectLinkProps {
   projectKey: string
@@ -10,17 +12,32 @@ interface ProjectLinkProps {
 }
 
 /**
- * A button component that can be used anywhere to open a project in the sidebar
+ * A component that links directly to project pages
  */
 export default function ProjectLink({ projectKey, children, className = '' }: ProjectLinkProps) {
-  const { openProject } = useOpenProject()
+  const pathname = usePathname()
+  const { initiateLoading } = useLoading()
+  
+  // Convert project key to URL-friendly format
+  const getProjectUrl = (key: string) => {
+    return `/work/${key.toLowerCase().replace(/\s+/g, '-')}`;
+  };
+  
+  const handleLinkClick = (href: string) => {
+    if (href !== pathname) {
+      initiateLoading(600);
+    }
+  }
 
+  const projectUrl = getProjectUrl(projectKey)
+  
   return (
-    <button
-      onClick={() => openProject(projectKey)}
+    <Link
+      href={projectUrl}
+      onClick={() => handleLinkClick(projectUrl)}
       className={`${className}`}
     >
       {children}
-    </button>
+    </Link>
   )
 } 

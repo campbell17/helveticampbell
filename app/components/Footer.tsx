@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useProjectSidebar } from '../contexts/ProjectSidebarContext'
 import { useLoading } from '../contexts/LoadingContext'
 import { Overline } from './Typography'
 import { useState } from 'react'
@@ -12,7 +11,6 @@ import Image from 'next/image'
 
 export default function Footer() {
   const pathname = usePathname()
-  const { openProject } = useProjectSidebar()
   const { initiateLoading } = useLoading()
   const [contactModalOpen, setContactModalOpen] = useState(false)
   
@@ -134,12 +132,12 @@ export default function Footer() {
                 <ul className="list-none p-0 !m-0">
                   {projects.map((project) => (
                     <li key={project.key} className="leading-tight mb-1">
-                      <button
-                        onClick={() => openProject(project.key)}
+                      <Link
+                        href={project.href}                        
                         className="cursor-pointer text-gray-500 hover:text-black transition-colors text-sm p-0 m-0 inline bg-transparent border-0 font-normal"
                       >
                         {project.name}
-                      </button>
+                      </Link>
                     </li>
                   ))}
                 </ul>

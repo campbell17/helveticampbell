@@ -1,10 +1,27 @@
 'use client'
 
-import { useProjectSidebar } from '../contexts/ProjectSidebarContext'
+import { useRouter } from 'next/navigation'
+import { useLoading } from '../contexts/LoadingContext'
 
-// A simple wrapper hook for opening projects
+// Helper function to convert project key to URL
+const getProjectUrl = (key: string) => {
+  return `/work/${key.toLowerCase().replace(/\s+/g, '-')}`;
+};
+
+// A simple wrapper hook for navigating to project pages
 export function useOpenProject() {
-  const { openProject, closeProject } = useProjectSidebar()
+  const router = useRouter()
+  const { initiateLoading } = useLoading()
+  
+  const openProject = (projectKey: string) => {
+    const url = getProjectUrl(projectKey)
+    initiateLoading(600)
+    router.push(url)
+  }
+  
+  const closeProject = () => {
+    router.push('/work')
+  }
   
   return {
     openProject,
@@ -23,11 +40,9 @@ export function setGlobalProjectHandler(handler: (projectKey: string) => void) {
 // Static functions that can be imported and used directly
 export const ProjectOpener = {
   open: (projectKey: string) => {
-    if (globalProjectHandler) {
-      globalProjectHandler(projectKey)
-    } else {
-      console.warn('ProjectOpener: No global handler set. Make sure ProjectSidebarProvider is mounted.')
-    }
+    // Direct navigation using window object for static functions
+    const url = getProjectUrl(projectKey)
+    window.location.href = url
   },
   openFulcrum: () => ProjectOpener.open('Fulcrum'),
   openSpatialNetworks: () => ProjectOpener.open('Spatial Networks'),

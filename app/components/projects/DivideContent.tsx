@@ -36,7 +36,7 @@ const DivideContent: React.FC = () => {
 
   return (
     <>
-      <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
+      <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-wrap mb-8">
           <Overline className="!text-lg mr-8">UI</Overline>
           <Overline className="!text-lg mr-8">Branding</Overline>

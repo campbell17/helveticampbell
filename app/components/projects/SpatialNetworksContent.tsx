@@ -32,7 +32,7 @@ const SpatialNetworksContent: React.FC = () => {
 
   return (
     <>
-      <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
+      <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-wrap mb-8">
           <Overline className="!text-lg mr-8">Branding</Overline>
           <Overline className="!text-lg mr-8">Product Design</Overline>
@@ -41,7 +41,7 @@ const SpatialNetworksContent: React.FC = () => {
         <H1 className="mb-4">Spatial Networks<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Geospatial Intelligence Platform</span></H1>
         <p className="subheading">(2010 - 2019) Geospatial intelligence specializing in technology, analytics, and ground-truthing. I led design for all aspects of the company, including marketing, branding, and product design of its software products.</p>
       </div>
-      <div className="mx-4 mt-10">
+      <div className="mt-10">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
           {/* First row */}
           
