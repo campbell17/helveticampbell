@@ -63,8 +63,8 @@ export default function ThemeSwitcher() {
             <CurrentThemeIcon className="w-5 h-5" />
           </MenuButton>
 
-          <MenuItems
-            className="pane no-hover absolute right-0 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
+          <MenuItems modal={false}
+            className="pane no-hover absolute right-6 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
             as={motion.div}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -73,8 +73,7 @@ export default function ThemeSwitcher() {
             <div className="space-y-1">
               {themes.map(({ name, value, icon: Icon }) => (
                 <MenuItem key={value}>
-                  <motion.button 
-                    whileTap={{ scale: 0.98 }}
+                  <motion.button                   
                     transition={{ duration: 0.1 }}
                     className={`flex w-full items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium border border-transparent 
                       hover:data-focus:border-[var(--color-border)] hover:data-focus:bg-[var(--pane-bg-color-hover)]

@@ -28,7 +28,7 @@ export default function TopNav() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.75, delay: 0.25, ease: 'easeOut' }}
-      className="w-full backdrop-blur-[1px] sticky top-0">
+      className="w-full backdrop-blur-[1px] sticky top-0 z-50">
       <nav
         className="w-full mx-auto flex items-center justify-between px-6 py-6"
         aria-label="Main navigation"
