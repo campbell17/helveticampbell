@@ -137,11 +137,11 @@ export default function SceneBackground() {
       targetX = 50
       targetRotationX = 0
       targetRotationZ = 0
-    } else if (path === '/work') {
+    } else if (path.startsWith('/work')) {
       targetX = 100
       targetRotationX = -0.05
       targetRotationZ = 0.02
-    } else if (path.startsWith('/writing')) { // Check if path starts with /writing
+    } else if (path.startsWith('/writing')) {
       targetX = 160
       targetRotationX = 0.05
       targetRotationZ = -0.02
