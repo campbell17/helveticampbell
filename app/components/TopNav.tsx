@@ -15,7 +15,7 @@ export default function TopNav() {
   ]
 
   return (
-    <div className="w-full bg-white/60 backdrop-blur-md shadow-md border-b border-white/30">
+    <div className="w-full backdrop-blur-xs sticky top-0 z-50">
       <nav
         className="w-full mx-auto flex items-center justify-between px-6 py-3"
         aria-label="Main navigation"

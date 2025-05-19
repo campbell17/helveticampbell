@@ -52,7 +52,7 @@
   @apply col-span-12;
 }
 
-.root-page-narrow {
+.container-narrow {
   @apply max-w-5xl mx-auto;
 }
 

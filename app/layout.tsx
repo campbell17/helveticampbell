@@ -108,7 +108,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
-        'relative min-h-screen bg-white font-sans antialiased overflow-x-hidden',
+        'relative min-h-screen bg-white font-sans antialiased',
         fontVariables.bitter,
         fontVariables.merriweather,
         fontVariables.lato,
@@ -140,9 +140,9 @@ export default function RootLayout({
               <SceneBackground />
               
               {/* Global Top navigation bar */}
-              <TopNav />
               {/* <ThemeSwitcher />               */}
-              <div className="min-h-screen">
+              <div className="relative min-h-screen">
+              <TopNav />
                 {/* Mobile navigation */}
                 {/* <div className="block top-0 left-0 right-0 z-50 md:hidden">
                   <nav className="p-6">

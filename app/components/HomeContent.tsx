@@ -55,7 +55,7 @@ export default function HomeContent() {
   };
 
   return (
-    <div className="root-page-narrow">
+    <div className="container-narrow">
       <HomepageStructuredData />
       
       <H1>This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>

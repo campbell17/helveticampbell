@@ -41,15 +41,14 @@ export default function Footer() {
     <AnimatePresence>
       <motion.footer 
         id="main-footer" 
-        className="relative mt-0 pb-16 md:pl-64 2xl:pl-72"
+        className="container-narrow"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.75, delay: 0.25, ease: 'easeOut' }}
       >
 
-        <div className="grid grid-cols-12 gap-4">
-          <div className="grid-narrow-content flex flex-col md:flex-row gap-6 lg:gap-24 px-8 py-6 md:py-12 overflow-visible">
+          <div className="flex flex-col md:flex-row gap-6 justify-between lg:gap-24 px-4 sm:px-6 md:px-8 lg:px-0 py-6 pb-16 md:py-12 overflow-visible">
             {/* Column 1: Logo & Info */}
             <div className="flex flex-col space-y-8">
               {/* Logo */}
@@ -128,70 +127,71 @@ export default function Footer() {
               </div>
             </div>
             
-            {/* Column 2: WORK */}
-            <div className="py-6 md:py-0 md:my-0 border-y border-neutral-200 md:border-0 t-8 sm:mt-0">
-              <Overline className="mb-2">Work</Overline>
-              <ul className="list-none p-0 !m-0">
-                {projects.map((project) => (
-                  <li key={project.key} className="leading-tight mb-1">
-                    <button
-                      onClick={() => openProject(project.key)}
-                      className="cursor-pointer text-gray-500 hover:text-black transition-colors text-sm p-0 m-0 inline bg-transparent border-0 font-normal"
+            <div className="flex flex-col md:flex-row gap-12">
+              {/* Column 2: WORK */}
+              <div className="py-6 md:py-0 md:my-0 border-y border-neutral-200 md:border-0 t-8 sm:mt-0">
+                <Overline className="mb-2">The Work</Overline>
+                <ul className="list-none p-0 !m-0">
+                  {projects.map((project) => (
+                    <li key={project.key} className="leading-tight mb-1">
+                      <button
+                        onClick={() => openProject(project.key)}
+                        className="cursor-pointer text-gray-500 hover:text-black transition-colors text-sm p-0 m-0 inline bg-transparent border-0 font-normal"
+                      >
+                        {project.name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              {/* Column 3: THE REST */}
+              <div className="">
+                <Overline className="mb-2">The Rest</Overline>
+                <ul className="list-none p-0 !m-0">
+                  <li className="leading-tight mb-1">
+                    <Link 
+                      href="/" 
+                      onClick={() => handleLinkClick("/")}
+                      className="text-sm inline"
+                      prefetch={pathname !== "/" ? true : false}
                     >
-                      {project.name}
-                    </button>
+                      Home
+                    </Link>
                   </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Column 3: THE REST */}
-            <div className="">
-              <Overline className="mb-2">The Rest</Overline>
-              <ul className="list-none p-0 !m-0">
-                <li className="leading-tight mb-1">
-                  <Link 
-                    href="/" 
-                    onClick={() => handleLinkClick("/")}
-                    className="text-sm inline"
-                    prefetch={pathname !== "/" ? true : false}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li className="leading-tight mb-1">
-                  <Link 
-                    href="/writing" 
-                    onClick={() => handleLinkClick("/writing")}
-                    className="text-sm inline"
-                    prefetch={pathname !== "/writing" ? true : false}
-                  >
-                    Writing
-                  </Link>
-                </li>
-                <li className="leading-tight mb-1">
-                  <Link 
-                    href="/who" 
-                    onClick={() => handleLinkClick("/who")}
-                    className="text-sm inline"
-                    prefetch={pathname !== "/who" ? true : false}
-                  >
-                    Who
-                  </Link>
-                </li>
-                <li className="leading-tight mb-1">
-                  <Link 
-                    href="#contact"
-                    onClick={openContactModal}
-                    className="text-sm inline"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
+                  <li className="leading-tight mb-1">
+                    <Link 
+                      href="/writing" 
+                      onClick={() => handleLinkClick("/writing")}
+                      className="text-sm inline"
+                      prefetch={pathname !== "/writing" ? true : false}
+                    >
+                      Writing
+                    </Link>
+                  </li>
+                  <li className="leading-tight mb-1">
+                    <Link 
+                      href="/who" 
+                      onClick={() => handleLinkClick("/who")}
+                      className="text-sm inline"
+                      prefetch={pathname !== "/who" ? true : false}
+                    >
+                      Who
+                    </Link>
+                  </li>
+                  <li className="leading-tight mb-1">
+                    <Link 
+                      href="#contact"
+                      onClick={openContactModal}
+                      className="text-sm inline"
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
 
         {/* Contact Modal */}
         <ContactModal isOpen={contactModalOpen} onClose={() => setContactModalOpen(false)} />
