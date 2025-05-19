@@ -42,25 +42,40 @@ export default function TopNav() {
             </LoadingLogo>
           </Link>
           
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-lg px-4 py-2 rounded-md transition-colors duration-200 relative
-                ${pathname === link.href ? 'text-[var(--text-color)]' : 'text-[var(--text-color-light)] hover:text-[var(--text-color)]'}`}
-              aria-current={pathname === link.href ? 'page' : undefined}
-              onClick={() => handleLinkClick(link.href)}
-            >
-              {link.name}
-              {pathname === link.href && (
-                <motion.span
-                  layoutId="topnav-underline"
-                  className="absolute left-2 right-2 bottom-1 h-0.5 rounded-full bg-[var(--theme-color)]"
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                />
-              )}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            // Check if current path starts with the link path (for nested routes)
+            // But make sure we're not matching "/" with everything
+            const isActive = link.href !== '/' && pathname.startsWith(link.href);
+            // Check if we're on the exact page (for animation purposes)
+            const isExactMatch = pathname === link.href;
+            
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-lg px-4 py-2 rounded-md transition-colors duration-200 relative
+                  ${isActive ? 'text-[var(--text-color)]' : 'text-[var(--text-color-light)] hover:text-[var(--text-color)]'}`}
+                aria-current={isActive ? 'page' : undefined}
+                onClick={() => handleLinkClick(link.href)}
+              >
+                {link.name}
+                {isActive && (
+                  <motion.span
+                    // Only use layoutId for exact matches to get the spring animation
+                    // between main sections, but not when navigating inside a section
+                    {...(isExactMatch ? { layoutId: "topnav-underline" } : {})}
+                    className="absolute left-2 right-2 bottom-1 h-0.5 rounded-full bg-[var(--theme-color)]"
+                    initial={!isExactMatch ? { opacity: 0 } : undefined}
+                    animate={{ opacity: 1 }}
+                    transition={isExactMatch ? 
+                      { type: 'spring', stiffness: 400, damping: 30 } : 
+                      { duration: 0.2 }
+                    }
+                  />
+                )}
+              </Link>
+            );
+          })}
         </div>
         <div className="flex items-center gap-4">
           {/* Placeholder for future features */}

@@ -141,7 +141,7 @@ export default function WritingPage() {
   const localEssays = getLocalEssays();
 
   return (
-    <div className="container-narrow px-4 sm:px-6 md:px-8">
+    <div className="container-narrow px-4 sm:px-6 md:px-0">
       <BlogStructuredData essays={localEssays} />
       
       <H1>Writing</H1>
