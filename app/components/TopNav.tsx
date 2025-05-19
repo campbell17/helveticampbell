@@ -6,14 +6,28 @@ import { motion } from 'framer-motion'
 import ThemeSwitcher from './ThemeSwitcher'
 import LoadingLogo from './LoadingLogo'
 import { useLoading } from '../contexts/LoadingContext'
+import { Menu, MenuItem, MenuItems } from '@headlessui/react'
+import { useState } from 'react'
 
 export default function TopNav() {
   const pathname = usePathname()
   const { initiateLoading } = useLoading()
+  const [isWorkHovered, setIsWorkHovered] = useState(false)
+  
   const navLinks = [
-    { name: 'Work', href: '/work' },
     { name: 'Writing', href: '/writing' },
     { name: 'Who', href: '/who' },
+  ]
+
+  // Work projects for the dropdown menu based on the actual project files
+  const workProjects = [
+    { name: 'All Projects', href: '/work' },
+    { name: 'Fulcrum', href: '/work/fulcrum' },
+    { name: 'Allinspections', href: '/work/allinspections' },
+    { name: 'Divide', href: '/work/divide' },
+    { name: 'Spatial Networks', href: '/work/spatial-networks' },
+    { name: 'Branding', href: '/work/branding' },
+    { name: 'Personal', href: '/work/personal' },
   ]
 
   const handleLinkClick = (href: string) => {
@@ -28,7 +42,7 @@ export default function TopNav() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.75, delay: 0.25, ease: 'easeOut' }}
-      className="w-full backdrop-blur-[1px] sticky top-0 z-50">
+      className="w-full sticky top-0 z-99">
       <nav
         className="w-full mx-auto flex items-center justify-between px-6 py-6"
         aria-label="Main navigation"
@@ -41,7 +55,62 @@ export default function TopNav() {
               </svg>
             </LoadingLogo>
           </Link>
+
+          {/* Work dropdown menu */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsWorkHovered(true)}
+            onMouseLeave={() => setIsWorkHovered(false)}
+          >
+            {/* Work Link */}
+            <Link
+              href="/work"
+              onClick={() => handleLinkClick('/work')}
+              className={`text-lg px-4 py-2 rounded-md transition-colors duration-200 relative inline-block
+                ${pathname.startsWith('/work') ? 'text-[var(--text-color)]' : 'text-[var(--text-color-light)] hover:text-[var(--text-color)]'}`}
+              aria-current={pathname.startsWith('/work') ? 'page' : undefined}
+            >
+              Work
+              {pathname.startsWith('/work') && (
+                <motion.span
+                  layoutId="topnav-underline"
+                  className="absolute left-2 right-2 bottom-1 h-0.5 rounded-full bg-[var(--theme-color)]"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+            </Link>
+            
+            {/* Dropdown Menu */}
+            {isWorkHovered && (
+              <motion.div
+                className="pane no-hover absolute left-0 mt-2 w-48 z-50 origin-top-left rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.2 } }}
+                exit={{ opacity: 0 }}
+              >
+                <div className="space-y-1">
+                  {workProjects.map((project) => (
+                    <div key={project.href}>
+                      <Link
+                        href={project.href}
+                        onClick={() => handleLinkClick(project.href)}
+                        className={`flex w-full items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium border border-transparent 
+                          hover:border-[var(--color-border)] hover:bg-[var(--pane-bg-color-hover)] 
+                          transition-colors duration-200`}
+                      >
+                        <span>{project.name}</span>
+                        {pathname === project.href && (
+                          <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--theme-color)]" />
+                        )}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </div>
           
+          {/* Regular links (Writing, Who) */}
           {navLinks.map((link) => {
             // Check if current path starts with the link path (for nested routes)
             // But make sure we're not matching "/" with everything
@@ -77,10 +146,7 @@ export default function TopNav() {
             );
           })}
         </div>
-        <div className="flex items-center gap-4">
-          {/* Placeholder for future features */}
-          <ThemeSwitcher />
-        </div>
+        <ThemeSwitcher /> 
       </nav>
     </motion.div>
   )

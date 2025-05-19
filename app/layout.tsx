@@ -136,7 +136,7 @@ export default function RootLayout({
               <NavigationEvents />
             </Suspense>
             <SceneBackground />
-            
+
             {/* Global Top navigation bar */}
             {/* <ThemeSwitcher />               */}
             <div className="relative min-h-screen">
