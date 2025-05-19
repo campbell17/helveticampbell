@@ -107,6 +107,7 @@
   --body-bg-color: oklch(100% 0 0);
   --pane-bg-color: oklch(100% 0 0 / 0);
   --pane-bg-color-hover: oklch(0 0 0 / 0.02);
+  --pane-opaque: 100;
   --project-bg-color: oklch(0.98 0.0029 264.54);
   --scene-bg-color: oklch(98.5% 0 0);
   --stinger-bg-color: oklch(0 0 0);
@@ -179,6 +180,7 @@
   --body-bg-color: oklch(0 0 0);
   --pane-bg-color: oklch(100% 0 0 / 0.15);
   --pane-bg-color-hover: oklch(100% 0 0 / 0.25);
+  --pane-opaque: 0;
   --project-bg-color: oklch(10% 0 0);
   --scene-bg-color: oklch(10% 0 0);
   --stinger-bg-color: oklch(100% 0 0);

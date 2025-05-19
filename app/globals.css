@@ -211,6 +211,7 @@ nav a {
     background-color: var(--pane-bg-color-hover);
   }
   &.no-hover:hover { background-color: var(--pane-bg-color); }
+  &.opaque { @apply backdrop-brightness-[var(--pane-opaque)];}
 }
 
 /* Add rule to hide default NProgress bar */

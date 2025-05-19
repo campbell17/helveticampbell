@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import ThemeSwitcher from './ThemeSwitcher'
 import LoadingLogo from './LoadingLogo'
 import { useLoading } from '../contexts/LoadingContext'
@@ -80,34 +80,36 @@ export default function TopNav() {
               )}
             </Link>
             
-            {/* Dropdown Menu */}
-            {isWorkHovered && (
-              <motion.div
-                className="pane no-hover absolute left-0 mt-2 w-48 z-50 origin-top-left rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.2 } }}
-                exit={{ opacity: 0 }}
-              >
-                <div className="space-y-1">
-                  {workProjects.map((project) => (
-                    <div key={project.href}>
-                      <Link
-                        href={project.href}
-                        onClick={() => handleLinkClick(project.href)}
-                        className={`flex w-full items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium border border-transparent 
-                          hover:border-[var(--color-border)] hover:bg-[var(--pane-bg-color-hover)] 
-                          transition-colors duration-200`}
-                      >
-                        <span>{project.name}</span>
-                        {pathname === project.href && (
-                          <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--theme-color)]" />
-                        )}
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
+            {/* Dropdown Menu with AnimatePresence for proper exit animations */}
+            <AnimatePresence>
+              {isWorkHovered && (
+                <motion.div
+                  className="pane opaque no-hover absolute left-0 mt-2 w-48 z-50 origin-top-left rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { duration: 0.2 } }}
+                  exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.2 } }}
+                >
+                  <div className="space-y-1">
+                    {workProjects.map((project) => (
+                      <div key={project.href}>
+                        <Link
+                          href={project.href}
+                          onClick={() => handleLinkClick(project.href)}
+                          className={`flex w-full items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium border border-transparent 
+                            hover:border-[var(--color-border)] hover:bg-[var(--pane-bg-color-hover)] 
+                            transition-colors duration-200`}
+                        >
+                          <span>{project.name}</span>
+                          {pathname === project.href && (
+                            <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--theme-color)]" />
+                          )}
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           
           {/* Regular links (Writing, Who) */}
