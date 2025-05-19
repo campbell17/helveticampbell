@@ -76,8 +76,6 @@ export default function HomeContent() {
             <WorkItem
               key={index}
               image={image}
-              index={index}
-              onImageClick={handleImageClick}
               imageAspectRatio="aspect-[21/9] md:aspect-[21/7]" // Custom wider aspect ratio for homepage
             />
           ))}
