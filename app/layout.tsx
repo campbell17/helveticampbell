@@ -7,7 +7,7 @@ import SceneBackground from './components/SceneBackground'
 import ThemeSwitcher from './components/ThemeSwitcher'
 import Navigation from './components/Navigation'
 import AnimatedLayout from './components/AnimatedLayout'
-import CustomScrollbar from './components/CustomScrollbar'
+// import CustomScrollbar from './components/CustomScrollbar'
 import BackToTop from './components/BackToTop'
 import { cn } from './lib/utils'
 import { fontVariables } from './lib/fonts'
@@ -170,7 +170,7 @@ export default function RootLayout({
               {/* Footer */}
               <Footer />
             </div>
-            <CustomScrollbar />
+            {/* <CustomScrollbar /> */}
             <BackToTop />
           </LoadingProvider>
         </ThemeProvider>

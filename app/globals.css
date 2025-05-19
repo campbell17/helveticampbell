@@ -56,38 +56,6 @@
   @apply max-w-5xl mx-auto;
 }
 
-/* Custom scrollbar styles */
-:root {
-  --scrollbar-width: 8px;
-}
-
-/* Hide native scrollbar but keep scrolling functionality */
-html {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE & Edge */
-  overflow-y: scroll; /* Force vertical scrollbar */
-}
-
-html::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-  width: 0px; /* Remove default width */
-}
-
-/* Ensure no additional scrollbars from grid containers */
-main, .grid-cols-12, [class^="grid-"], [class*=" grid-"] {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  overflow: visible;
-}
-
-main::-webkit-scrollbar, 
-.grid-cols-12::-webkit-scrollbar, 
-[class^="grid-"]::-webkit-scrollbar, 
-[class*=" grid-"]::-webkit-scrollbar {
-  display: none;
-  width: 0;
-}
-
 /* Grid layout utilities */
 .grid-layout {
   display: grid;
@@ -111,40 +79,6 @@ main::-webkit-scrollbar,
   }
 }
 
-/* Custom scrollbar styling */
-.custom-scrollbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 8px;
-  height: 100vh;
-  z-index: 40;
-  /* pointer-events: none; */
-}
-
-.scrollbar-track {
-  position: absolute;
-  right: 0;
-  height: 100%;
-  width: 10px;
-  background-color: transparent;
-}
-
-.scrollbar-thumb {
-  @apply w-0 md:w-2;
-  position: absolute;
-  right: 2px;
-  border-radius: 5px;
-  background-color: rgba(100, 100, 100, 0.4);
-  transition: width 0.2s, right 0.2s, background-color 0.2s;
-}
-
-.scrollbar-thumb:hover {
-  width: 8px;
-  right: 2px;
-  background-color: rgba(100, 100, 100, 0.6);
-}
-
 /* The main content container needs margin to account for the fixed sidebar */
 .content-wrapper {
   width: 100%;
@@ -156,17 +90,6 @@ main::-webkit-scrollbar,
 .z-sidebar { z-index: 100; }
 .z-modal { z-index: 110; }
 .z-lightbox { z-index: 120; }
-.z-scrollbar { z-index: 40; }
-
-/* Body scrolling control */
-html.sidebar-open {
-  scrollbar-width: none;
-}
-
-html.sidebar-open::-webkit-scrollbar {
-  width: 0;
-  display: none;
-}
 
 /* This should come BEFORE other element-specific styles */
 /* Force all text elements to inherit color */
