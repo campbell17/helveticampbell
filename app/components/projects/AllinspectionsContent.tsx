@@ -1,9 +1,38 @@
 import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
-import { projectDetails } from '../../data/projectDetails';
+
+interface ImageData {
+  src: string;
+  alt: string;
+  aspectRatio?: string;
+  fullWidth?: boolean;
+}
 
 const AllinspectionsContent: React.FC = () => {
+  // Images directly in the component
+  const images: ImageData[] = [
+    { src: "/images/work/isolated/iso-allinspections-icon.jpg", alt: "Allinspections Icon" },
+    { src: "/images/work/isolated/iso-allinspections-logo.jpg", alt: "Allinspections Logo" },
+    { src: "/images/work/isolated/iso-allinspections-pullup-1.jpg", alt: "Allinspections Pullup 1" },
+    { src: "/images/work/isolated/iso-allinspections-pullup-2-alt.jpg", alt: "Allinspections Pullup 2 Alt" },
+    { src: "/images/work/isolated/iso-allinspections-pullup-3.jpg", alt: "Allinspections Pullup 3" },
+    { src: "/images/work/browser/browser-allinspections-0.jpg", alt: "Allinspections Site 1", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-1.jpg", alt: "Allinspections Site 2", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-2.jpg", alt: "Allinspections Site 3", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-3.jpg", alt: "Allinspections Site 4", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-4-1.jpg", alt: "Allinspections Site 5", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-4-2.jpg", alt: "Allinspections Site 6", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-4-3.jpg", alt: "Allinspections Site 7", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-4-4.jpg", alt: "Allinspections Site 8", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-4-5.jpg", alt: "Allinspections Site 9", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-allinspections-5.jpg", alt: "Allinspections Site 11", aspectRatio: "1440/1261" },
+    { src: "/images/work/full/full-allinspections-brochure.jpg", alt: "Allinspections Brochure" },
+    { src: "/images/work/full/full-allinspections-double-ad.jpg", alt: "Allinspections Double Ad" },
+    { src: "/images/work/full/full-allinspections-card-1.jpg", alt: "Allinspections Card 1" },
+    { src: "/images/work/full/full-allinspections-card-2.jpg", alt: "Allinspections Card 2" }
+  ];
+
   return (
     <>
       <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
@@ -53,7 +82,7 @@ const AllinspectionsContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Allinspections.images?.filter(img => !img.fullWidth).slice(5, 15).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(5, 15).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 
@@ -109,7 +138,7 @@ const AllinspectionsContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
               {
-                projectDetails.Allinspections.images?.filter(img => !img.fullWidth).slice(2, 5).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(2, 5).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 
@@ -130,7 +159,7 @@ const AllinspectionsContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 gap-4 lg:gap-6">
               {
-                projectDetails.Allinspections.images?.filter(img => !img.fullWidth).slice(15, 16).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(15, 16).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 

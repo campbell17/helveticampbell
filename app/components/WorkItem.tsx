@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Overline } from './Typography'
 import { projectDetails } from '../data/projectDetails'
 
@@ -19,12 +20,15 @@ interface WorkItemProps {
     headingAlt?: string;
     subheading?: string;
   }; 
-  onImageClick: (index: number) => void;
-  index: number;
   imageAspectRatio?: string; // Custom aspect ratio class
 }
 
-export default function WorkItem({ image, onImageClick, index, imageAspectRatio = "aspect-video" }: WorkItemProps) {
+export default function WorkItem({ image, imageAspectRatio = "aspect-video" }: WorkItemProps) {
+  // Convert project key to URL-friendly format
+  const getProjectUrl = (key: string) => {
+    return `/work/${key.toLowerCase().replace(/\s+/g, '-')}`;
+  };
+
   return (
     <div 
       className={`
@@ -34,9 +38,9 @@ export default function WorkItem({ image, onImageClick, index, imageAspectRatio 
         ${image.fullWidth ? 'md:col-span-2' : ''}
       `}
     >
-      <div 
+      <Link 
+        href={getProjectUrl(image.projectKey)}
         className="container-behavior-primary pane"
-        onClick={() => onImageClick(index)}
       >
         {/* Cover image with customizable aspect ratio */}
         {projectDetails[image.projectKey]?.coverImage && (
@@ -71,7 +75,7 @@ export default function WorkItem({ image, onImageClick, index, imageAspectRatio 
           {/* Description */}
           <p className="!mb-0 text-primary text-base">{projectDetails[image.projectKey]?.subheading || 'A comprehensive design solution that combines intuitive user experience with compelling visual identity and strategic marketing assets.'}</p>
         </div>
-      </div>
+      </Link>
     </div>
   )
 } 

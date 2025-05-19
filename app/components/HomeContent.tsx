@@ -55,7 +55,7 @@ export default function HomeContent() {
   };
 
   return (
-    <>
+    <div className="root-page-narrow">
       <HomepageStructuredData />
       
       <H1>This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>
@@ -186,6 +186,6 @@ export default function HomeContent() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 } 

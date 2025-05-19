@@ -1,9 +1,34 @@
 import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
-import { projectDetails } from '../../data/projectDetails';
+
+interface ImageData {
+  src: string;
+  alt: string;
+  aspectRatio?: string;
+  fullWidth?: boolean;
+}
 
 const SpatialNetworksContent: React.FC = () => {
+  // Images directly in the component
+  const images: ImageData[] = [
+    { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks Icon" },
+    { src: "/images/work/isolated/iso-sni-logo.jpg", alt: "Spatial Networks Logo" },
+    { src: "/images/work/isolated/iso-sni-icon-fall.jpg", alt: "Spatial Networks Icon fall" },
+    { src: "/images/work/isolated/iso-sni-icon-fall-tshirt.jpg", alt: "Spatial Networks Icon fall tshirt" },
+    { src: "/images/work/browser/browser-sni-2011.jpg", alt: "Spatial Networks 2011 Site", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-sni-2013.jpg", alt: "Spatial Networks 2013 Site", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-sni-2017.jpg", alt: "Spatial Networks 2017 Site", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-sni-2019-1.jpg", alt: "Spatial Networks 2019 Site 1", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-sni-2019-3.jpg", alt: "Spatial Networks 2019 Site 3", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-sni-2019-4.jpg", alt: "Spatial Networks 2019 Site 4", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-sni-2019-5.jpg", alt: "Spatial Networks 2019 Site 5", aspectRatio: "1440/1261" },
+    { src: "/images/work/browser/browser-sni-foresight-1.jpg", alt: "Spatial Networks Foresight", aspectRatio: "1440/1261" },
+    { src: "/images/work/full/full-sni-ad-1.jpg", alt: "Spatial Networks Ad 1" },
+    { src: "/images/work/full/full-sni-ad-2.jpg", alt: "Spatial Networks Ad 2" },
+    { src: "/images/work/isolated/iso-sni-tradeshow-booth.jpg", alt: "Spatial Networks Tradeshow booth" },
+    { src: "/images/work/snapshots/snapshot-sni-tradeshow-1.jpg", alt: "Spatial Networks Tradeshow" },
+  ];
 
   return (
     <>
@@ -77,7 +102,7 @@ const SpatialNetworksContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails["Spatial Networks"].images?.filter(img => !img.fullWidth).slice(4, 16).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(4, 16).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 

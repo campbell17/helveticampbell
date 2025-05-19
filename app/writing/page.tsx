@@ -141,7 +141,7 @@ export default function WritingPage() {
   const localEssays = getLocalEssays();
 
   return (
-    <>
+    <div className="root-page-narrow">
       <BlogStructuredData essays={localEssays} />
       
       <H1>Writing</H1>
@@ -170,6 +170,6 @@ export default function WritingPage() {
       }>
         <UnifiedContentList localEssays={localEssays} showFilters={true} />
       </Suspense>
-    </>
+    </div>
   )
 } 

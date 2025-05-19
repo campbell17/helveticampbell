@@ -6,7 +6,6 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import { H1, Caption, H2, H3, Overline } from './Typography'
 import Image from 'next/image'
 import Testimonials from './Testimonials'
-import { useOpenProject } from '../hooks/useOpenProject'
 import { useState } from 'react'
 import { projectDetails } from '../data/projectDetails'
 import WorkItem from './WorkItem'
@@ -24,18 +23,8 @@ const workImages = [
 ];
 
 export default function WorkContent() {
-  const { openProject } = useOpenProject();
-
-  // Handler for image clicks - simplified to only open projects
-  const handleImageClick = (index: number) => {
-    const clickedImage = workImages[index];
-    if (clickedImage.projectKey) {
-      openProject(clickedImage.projectKey);
-    }
-  };
-
   return (
-    <div>
+    <div className="root-page-narrow">
       <PortfolioStructuredData 
         name="Tim Campbell's Portfolio Work"
         description="Design and development work by Tim Campbell, including Fulcrum app, Spatial Networks, Divide for PS4, and more."
@@ -58,8 +47,6 @@ export default function WorkContent() {
                 <WorkItem
                   key={index}
                   image={image}
-                  index={index}
-                  onImageClick={handleImageClick}
                 />
               ))}
             </div>

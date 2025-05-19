@@ -1,0 +1,58 @@
+"use client"
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { motion } from 'framer-motion'
+import ThemeSwitcher from './ThemeSwitcher'
+import LoadingLogo from './LoadingLogo'
+
+export default function TopNav() {
+  const pathname = usePathname()
+  const navLinks = [
+    { name: 'Work', href: '/work' },
+    { name: 'Writing', href: '/writing' },
+    { name: 'Who', href: '/who' },
+  ]
+
+  return (
+    <div className="w-full bg-white/60 backdrop-blur-md shadow-md border-b border-white/30">
+      <nav
+        className="w-full mx-auto flex items-center justify-between px-6 py-3"
+        aria-label="Main navigation"
+      >
+        <div className="flex items-center gap-2">
+          <Link href="/" className="mr-6">
+            <LoadingLogo sizeClasses="h-8 w-10" className="transition-colors duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.87 51.26" className="h-full w-full" fill="none">
+                <path fill="var(--logo-color)" d="M61.73,31.25c.47-4.22-.3-7.16-2.31-8.82-2-1.66-4.86-2.49-8.56-2.5h0s-5.94,0-5.94,0L49.16,0h-9.63l-4.28,19.93h-9.83L29.71,0h-12.32c-2.41,0-4.67.39-6.77,1.19C6.71,2.69,3.79,5.39,1.84,9.29.18,12.61-.36,15.54.23,18.08c.59,2.54,2.88,4.55,6.86,6.01l3.55-7.09c-1.03-.41-1.85-1-2.45-1.77-.79-1.08-.78-2.44.04-4.08,1.17-2.33,3.24-3.59,6.23-3.78,1.16-.07,2.5.04,4.02.34l-9.02,42.31h9.63l5.01-23.55h9.83l-5.01,23.55h8.84c1.66.82,3.75,1.24,6.31,1.24,4.76,0,8.71-1.69,11.86-5.08,1.97-2.1,3.29-4.33,3.96-6.68h-7.9c-.49,1.56-1.22,2.82-2.19,3.8-.97.98-2.36,1.47-4.17,1.47-2.55,0-4.03-1.23-4.43-3.69-.22-1.32-.1-3.07.35-5.24.49-2.28,1.13-4.11,1.93-5.48,1.5-2.59,3.56-3.88,6.16-3.88,1.83,0,3.05.6,3.67,1.79.42.89.58,1.88.49,2.99h7.93Z"/>
+              </svg>
+            </LoadingLogo>
+          </Link>
+          
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`font-bold text-lg px-4 py-2 rounded-md transition-colors duration-200 relative
+                ${pathname === link.href ? 'text-primary bg-white/80 shadow-sm' : 'text-secondary hover:text-primary hover:bg-white/60'}`}
+              aria-current={pathname === link.href ? 'page' : undefined}
+            >
+              {link.name}
+              {pathname === link.href && (
+                <motion.span
+                  layoutId="topnav-underline"
+                  className="absolute left-2 right-2 -bottom-1 h-1 rounded-full bg-[var(--theme-color)] opacity-60"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+            </Link>
+          ))}
+        </div>
+        <div className="flex items-center gap-4">
+          {/* Placeholder for future features */}
+          <ThemeSwitcher />
+        </div>
+      </nav>
+    </div>
+  )
+} 

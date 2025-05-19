@@ -1,9 +1,39 @@
 import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
-import { projectDetails } from '../../data/projectDetails';
 import Link from 'next/link';
+
+interface ImageData {
+  src: string;
+  alt: string;
+  aspectRatio?: string;
+  fullWidth?: boolean;
+}
+
 const DivideContent: React.FC = () => {
+  // Images directly in the component
+  const images: ImageData[] = [
+    { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide Logo" },
+    { src: "/images/work/isolated/iso-divide-vestige-sticker.jpg", alt: "Divide Vestige Sticker" },
+    { src: "/images/work/full/full-divide-ingame-world-1.jpg", alt: "Divide In-Game World 1", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-ingame-world-2.jpg", alt: "Divide In-Game World 2", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-ingame-world-3.jpg", alt: "Divide In-Game World 3", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-ingame-UI-1.jpg", alt: "Divide In-Game UI 1", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-ingame-UI-2.jpg", alt: "Divide In-Game UI 2", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-ingame-codex-1.jpg", alt: "Divide In-Game Codex 1", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-ingame-codex-2.jpg", alt: "Divide In-Game Codex 2", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-ingame-codex-3.jpg", alt: "Divide In-Game Codex 3", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-ingame-codex-4.jpg", alt: "Divide In-Game Codex 4", aspectRatio: "10/5" },
+    { src: "/images/work/full/full-divide-brochure-1.jpg", alt: "Divide Brochure 1" },
+    { src: "/images/work/full/full-divide-brochure-2.jpg", alt: "Divide Brochure 2" },
+    { src: "/images/work/full/full-divide-ps4.jpg", alt: "Divide PS4" },
+    { src: "/images/work/gridded/grid-divide-icons.jpg", alt: "Divide Icons" },
+    { src: "/images/work/full/full-divide-soundtrack.jpg", alt: "Divide Soundtrack" },
+    { src: "/images/work/full/full-divide-soundtrack-deluxe.jpg", alt: "Divide Soundtrack Deluxe" },
+    { src: "/images/work/full/full-divide-soundtrack-ep.jpg", alt: "Divide Soundtrack EP" },
+    { src: "/images/work/snapshots/snapshot-divide-recording-1.jpg", alt: "Divide Recording Session" }
+  ];
+
   return (
     <>
       <div className="p-8 pt-24 pb-10 md:p-20 md:pb-28">
@@ -27,7 +57,7 @@ const DivideContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Divide.images?.filter(img => !img.fullWidth).slice(0, 2).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(0, 2).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 
@@ -48,7 +78,7 @@ const DivideContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-8 gap-4 lg:gap-6">
               {
-                projectDetails.Divide.images?.filter(img => !img.fullWidth).slice(2, 11).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(2, 11).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative md:col-start-2 md:col-span-6 group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 
@@ -69,7 +99,7 @@ const DivideContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Divide.images?.filter(img => !img.fullWidth).slice(11, 13).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(11, 13).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 
@@ -149,7 +179,7 @@ const DivideContent: React.FC = () => {
           <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
               {
-                projectDetails.Divide.images?.filter(img => !img.fullWidth).slice(15, 18).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(15, 18).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 
@@ -194,10 +224,6 @@ const DivideContent: React.FC = () => {
           </div>
         </div>
       </div>
-
-
-              
-          
     </>
   );
 }

@@ -55,7 +55,7 @@ export default function ThemeSwitcher() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="absolute md:fixed top-0 right-12 md:top-6 md:right-8"
+      className=""
     >
       <Menu>
         <div>

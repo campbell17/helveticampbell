@@ -52,6 +52,10 @@
   @apply col-span-12;
 }
 
+.root-page-narrow {
+  @apply max-w-5xl mx-auto;
+}
+
 /* Custom scrollbar styles */
 :root {
   --scrollbar-width: 8px;
@@ -229,7 +233,7 @@ p a:hover::after, li a:hover::after {
 }
 
 nav a {
-  @apply font-helveticampbell;
+  @apply font-sans;
   /* Use the standard color inheritance */
 }
 

@@ -16,6 +16,7 @@ import { LoadingProvider } from './contexts/LoadingContext'
 import { NavigationEvents } from './components/NavigationEvents'
 import { Suspense } from 'react'
 import Footer from './components/Footer'
+import TopNav from './components/TopNav'
 
 // Use environment variables if available, or default to localhost during development
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helveticampbell.com';
@@ -138,26 +139,29 @@ export default function RootLayout({
               </Suspense>
               <SceneBackground />
               
+              {/* Global Top navigation bar */}
+              <TopNav />
+              {/* <ThemeSwitcher />               */}
               <div className="min-h-screen">
                 {/* Mobile navigation */}
-                <div className="block top-0 left-0 right-0 z-50 md:hidden">
+                {/* <div className="block top-0 left-0 right-0 z-50 md:hidden">
                   <nav className="p-6">
                     <Navigation />                    
                   </nav>
-                </div>
+                </div> */}
 
                 {/* Desktop sidebar navigation */}
-                <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
+                {/* <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
                   <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
                     <Navigation />
                     <div className="flex-none mt-6">
                       <ThemeSwitcher />
                     </div>
                   </nav>
-                </div>
+                </div> */}
 
                 {/* Main content area with grid layout */}
-                <main className="pt-20 pb-16 pl-4 pr-4 md:pt-16 md:pl-64 2xl:pl-72 overflow-visible">
+                <main className="py-20 mx-auto overflow-visible">
                   <div className="grid grid-cols-12 gap-4 overflow-visible">
                     <AnimatedLayout>
                       {children}

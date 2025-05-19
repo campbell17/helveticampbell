@@ -99,7 +99,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const ogImageUrl = `/api/og?title=${encodeURIComponent(essay.title)}&subtitle=${encodeURIComponent(essay.excerpt || 'Read my latest thoughts')}&image=${encodeURIComponent(imageToUse)}`;
   
   return (
-    <>
+    <div className="root-page-narrow">
       {/* Add structured data for the article */}
       <ArticleStructuredData
         title={essay.title}
@@ -144,6 +144,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         className="prose prose-invert max-w-none essay-content"
         dangerouslySetInnerHTML={{ __html: essay.html }}
       />
-    </>
+    </div>
   );
 } 

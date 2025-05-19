@@ -1,15 +1,44 @@
 import React from 'react';
 import Image from 'next/image';
 import { H1, H2, H3, Overline } from '../Typography';
-import { projectDetails } from '../../data/projectDetails';
 
 const FulcrumContent: React.FC = () => {
-
   const stats = [
     { name: 'Organizations', stat: '3,000+' },
     { name: 'Users', stat: '50,000+' },
     { name: 'Countries', stat: '100+' },
-  ]
+  ];
+
+  // Images directly in the component
+  const images = [
+    { src: "/images/work/browser/browser-fulcrum-modern-builder-empty.jpg", alt: "Fulcrum Modern Builder Empty", aspectRatio: "100/60" },
+    { src: "/images/work/browser/browser-fulcrum-modern-builder-selected.jpg", alt: "Fulcrum Modern Builder Selected", aspectRatio: "100/60" },
+    { src: "/images/work/browser/browser-fulcrum-modern-apps-empty.jpg", alt: "Fulcrum Modern Apps Empty", aspectRatio: "100/60" },
+    { src: "/images/work/browser/browser-fulcrum-modern-apps-context.jpg", alt: "Fulcrum Modern Apps Context", aspectRatio: "100/60" },
+    { src: "/images/work/browser/browser-fulcrum-modern-apps-list.jpg", alt: "Fulcrum Modern Apps List", aspectRatio: "100/60" },
+    { src: "/images/work/browser/browser-fulcrum-modern-dataviewer.jpg", alt: "Fulcrum Modern Dataviewer", aspectRatio: "100/60" },
+    { src: "/images/work/snapshots/snapshot-fulcrum-cw-office-1.jpg", alt: "Fulcrum CW Office 1" },
+    { src: "/images/work/snapshots/snapshot-fulcrum-cw-office-2.jpg", alt: "Fulcrum CW Office 2" },
+    { src: "/images/work/snapshots/snapshot-fulcrum-cw-onsite-fema-1.jpg", alt: "Fulcrum CW Onsite FEMA 1" },
+    { src: "/images/work/snapshots/snapshot-fulcrum-cw-onsite-fema-2.jpg", alt: "Fulcrum CW Onsite FEMA 2" },
+    { src: "/images/work/full/full-fulcrum-brochure-mini-1.jpg", alt: "Fulcrum Brochure Mini 1" },
+    { src: "/images/work/full/full-fulcrum-brochure-mini-2.jpg", alt: "Fulcrum Brochure Mini 2" },
+    { src: "/images/work/full/full-fulcrum-brochure-mini-mockup.jpg", alt: "Fulcrum Brochure Mini Mockup" },
+    { src: "/images/work/full/full-fulcrum-ad-2.jpg", alt: "Fulcrum Ad 2" },
+    { src: "/images/work/full/full-fulcrum-book-cover.jpg", alt: "Fulcrum Book Cover" },
+    { src: "/images/work/full/full-fulcrum-book-fundamentals.jpg", alt: "Fulcrum Book Fundamentals" },
+    { src: "/images/work/full/full-fulcrum-book-data.jpg", alt: "Fulcrum Book Data" },
+    { src: "/images/work/isolated/iso-fulcrum-pullup-1.jpg", alt: "Fulcrum Pullup 1" },
+    { src: "/images/work/snapshots/snapshot-fulcrum-cw-tradeshow.jpg", alt: "Fulcrum CW Tradeshow" },
+    { src: "/images/work/snapshots/snapshot-fulcrum-cw-early-swag.jpg", alt: "Fulcrum CW Early Swag" },
+    { src: "/images/work/isolated/iso-fulcrum-package.jpg", alt: "Fulcrum Package" },
+    { src: "/images/work/isolated/iso-fulcrum-sticker-1.jpg", alt: "Fulcrum Sticker 1" },
+    { src: "/images/work/isolated/iso-fulcrum-sticker-2.jpg", alt: "Fulcrum Sticker 2" },
+    { src: "/images/work/isolated/iso-fulcrum-button.jpg", alt: "Fulcrum Button" },
+    { src: "/images/work/isolated/iso-fulcrum-packaging-holidaybox.jpg", alt: "Fulcrum Holiday Box", aspectRatio: "100/50" },
+    { src: "/images/work/full/full-fulcrum-handout.jpg", alt: "Fulcrum Handout", fullWidth: true, aspectRatio: "100/64" },
+    { src: "/images/work/gridded/grid-fulcrum-buildericons-v3.jpg", alt: "Fulcrum Builder Icons v3" },
+  ];
 
   return (
     <>
@@ -168,7 +197,7 @@ const FulcrumContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(0, 6).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(0, 6).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '10/6' }}>
                       <Image 
@@ -224,7 +253,7 @@ const FulcrumContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:col-start-2 gap-4 lg:gap-6">
               {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(6, 10).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(6, 10).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 
@@ -277,7 +306,7 @@ const FulcrumContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(10, 12).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(10, 12).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 
@@ -298,7 +327,7 @@ const FulcrumContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(13,15).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(13,15).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 
@@ -319,7 +348,7 @@ const FulcrumContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(15, 17).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(15, 17).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 
@@ -340,7 +369,7 @@ const FulcrumContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(17, 19).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(17, 19).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 
@@ -361,7 +390,7 @@ const FulcrumContent: React.FC = () => {
           <div className="mb-4 lg:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
               {
-                projectDetails.Fulcrum.images?.filter(img => !img.fullWidth).slice(19, 21).map((image, index) => (
+                images.filter(img => !img.fullWidth).slice(19, 21).map((image, index) => (
                   <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
                       <Image 

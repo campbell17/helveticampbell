@@ -18,7 +18,7 @@ export default function WhoContent() {
   }
 
   return (
-    <div>      
+    <div className="root-page-narrow">
       <PersonStructuredData />
       <H1>Tim Campbell</H1>
       

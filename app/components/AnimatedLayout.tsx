@@ -20,7 +20,7 @@ export default function AnimatedLayout({ children }: AnimatedLayoutProps) {
   // const gridClass = useWideLayout ? 'grid-wide-content' : 'grid-narrow-content'
 
   return (
-    <div className={`grid-narrow-content px-4 sm:px-6 md:px-8 py-6 md:py-12 overflow-visible`}>
+    <div className={`grid-wide-content px-4 sm:px-6 md:px-8 py-6 md:py-12 overflow-visible`}>
       {/* Remove AnimatePresence and PageTransition wrappers */}
       {children}
     </div>
