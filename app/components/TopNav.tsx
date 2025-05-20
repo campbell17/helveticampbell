@@ -87,9 +87,10 @@ export default function TopNav() {
               Work
               {pathname.startsWith('/work') && (
                 <motion.span
-                  layoutId="topnav-underline"
                   className="absolute left-2 right-2 bottom-1 h-0.5 rounded-full bg-[var(--theme-color)]"
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
                 />
               )}
             </Link>
@@ -134,8 +135,6 @@ export default function TopNav() {
             // Check if current path starts with the link path (for nested routes)
             // But make sure we're not matching "/" with everything
             const isActive = link.href !== '/' && pathname.startsWith(link.href);
-            // Check if we're on the exact page (for animation purposes)
-            const isExactMatch = pathname === link.href;
             
             return (
               <Link
@@ -149,16 +148,10 @@ export default function TopNav() {
                 {link.name}
                 {isActive && (
                   <motion.span
-                    // Only use layoutId for exact matches to get the spring animation
-                    // between main sections, but not when navigating inside a section
-                    {...(isExactMatch ? { layoutId: "topnav-underline" } : {})}
                     className="absolute left-2 right-2 bottom-1 h-0.5 rounded-full bg-[var(--theme-color)]"
-                    initial={!isExactMatch ? { opacity: 0 } : undefined}
+                    initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={isExactMatch ? 
-                      { type: 'spring', stiffness: 400, damping: 30 } : 
-                      { duration: 0.2 }
-                    }
+                    transition={{ duration: 0.2 }}
                   />
                 )}
               </Link>
