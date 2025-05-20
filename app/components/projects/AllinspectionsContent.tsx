@@ -1,6 +1,7 @@
 import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
+import ProjectNavigation from '../ProjectNavigation';
 
 interface ImageData {
   src: string;
@@ -176,6 +177,11 @@ const AllinspectionsContent: React.FC = () => {
             </div>
           </div>          
         </div>
+      </div>
+
+      {/* Project Navigation */}
+      <div className="w-full border-t border-[var(--color-border)] mt-16">
+        <ProjectNavigation currentProject="Allinspections" />
       </div>
     </>
   );

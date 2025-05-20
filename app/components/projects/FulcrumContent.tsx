@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { H1, H2, H3, Overline } from '../Typography';
+import ProjectNavigation from '../ProjectNavigation';
 
 const FulcrumContent: React.FC = () => {
   const stats = [
@@ -409,6 +410,9 @@ const FulcrumContent: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Project Navigation */}
+      <ProjectNavigation currentProject="Fulcrum" />
     </>
   );
 }
