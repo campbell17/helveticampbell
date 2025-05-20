@@ -79,7 +79,10 @@ export default function TopNav() {
             {/* Work Link */}
             <Link
               href="/work"
-              onClick={() => handleLinkClick('/work')}
+              onClick={() => {
+                handleLinkClick('/work');
+                setIsWorkHovered(false);
+              }}
               className={`text-lg px-2 sm:px-4 py-2 rounded-md transition-colors duration-200 relative inline-block
                 ${pathname.startsWith('/work') ? 'text-[var(--text-color)]' : 'text-[var(--text-color-light)] hover:text-[var(--text-color)]'}`}
               aria-current={pathname.startsWith('/work') ? 'page' : undefined}
