@@ -58,10 +58,10 @@ export default function TopNav() {
       transition={{ duration: 0.75, delay: 0.25, ease: 'easeOut' }}
       className={`w-full sticky top-0 z-99 transition-all duration-500 ${scrolled ? 'bg-[var(--mode-color-topnav)]' : 'bg-transparent'}`}>
       <nav
-        className="w-full mx-auto flex items-center justify-between px-6 py-6"
+        className="w-full mx-auto flex items-center justify-between px-4 sm:px-6 py-6"
         aria-label="Main navigation"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-0 sm:gap-2">
           <Link href="/" className="mr-6 flex" onClick={() => handleLinkClick('/')}>
             <LoadingLogo sizeClasses="h-9 w-12" className="transition-colors duration-200">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.87 51.26" className="h-full w-full" fill="none">
@@ -80,7 +80,7 @@ export default function TopNav() {
             <Link
               href="/work"
               onClick={() => handleLinkClick('/work')}
-              className={`text-lg px-4 py-2 rounded-md transition-colors duration-200 relative inline-block
+              className={`text-lg px-2 sm:px-4 py-2 rounded-md transition-colors duration-200 relative inline-block
                 ${pathname.startsWith('/work') ? 'text-[var(--text-color)]' : 'text-[var(--text-color-light)] hover:text-[var(--text-color)]'}`}
               aria-current={pathname.startsWith('/work') ? 'page' : undefined}
             >
@@ -138,7 +138,7 @@ export default function TopNav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-lg px-4 py-2 rounded-md transition-colors duration-200 relative
+                className={`text-lg px-2 sm:px-4 py-2 rounded-md transition-colors duration-200 relative
                   ${isActive ? 'text-[var(--text-color)]' : 'text-[var(--text-color-light)] hover:text-[var(--text-color)]'}`}
                 aria-current={isActive ? 'page' : undefined}
                 onClick={() => handleLinkClick(link.href)}
