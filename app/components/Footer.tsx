@@ -46,7 +46,7 @@ export default function Footer() {
         transition={{ duration: 0.75, delay: 0.25, ease: 'easeOut' }}
       >
 
-          <div className="flex flex-col md:flex-row gap-6 justify-between lg:gap-24 px-4 sm:px-6 md:px-8 lg:px-0 py-6 pb-16 md:py-12 overflow-visible">
+          <div className="flex flex-col md:flex-row gap-6 justify-between lg:gap-24 px-4 sm:px-6 md:px-8 xl:px-0 py-6 pb-16 md:py-12 overflow-visible">
             {/* Column 1: Logo & Info */}
             <div className="flex flex-col space-y-8">
               {/* Logo */}

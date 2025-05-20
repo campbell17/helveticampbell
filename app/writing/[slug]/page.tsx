@@ -99,7 +99,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const ogImageUrl = `/api/og?title=${encodeURIComponent(essay.title)}&subtitle=${encodeURIComponent(essay.excerpt || 'Read my latest thoughts')}&image=${encodeURIComponent(imageToUse)}`;
   
   return (
-    <div className="container-narrow px-4 sm:px-6 md:px-0">
+    <div className="container-narrow px-4 sm:px-6 md:px-8 xl:px-0">
       {/* Add structured data for the article */}
       <ArticleStructuredData
         title={essay.title}

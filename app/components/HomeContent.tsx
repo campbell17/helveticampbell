@@ -55,7 +55,7 @@ export default function HomeContent() {
   };
 
   return (
-    <div className="container-narrow px-4 sm:px-6 md:px-8">
+    <div className="container-narrow px-4 sm:px-6 md:px-8 xl:px-0">
       <HomepageStructuredData />
       
       <H1>This is <span className="font-helveticampbell tracking-normal">Helveticampbell</span>.</H1>

@@ -24,7 +24,7 @@ const workImages = [
 
 export default function WorkContent() {
   return (
-    <div className="container-narrow px-4 sm:px-6 md:px-0">
+    <div className="container-narrow px-4 sm:px-6 md:px-8 xl:px-0">
       <PortfolioStructuredData 
         name="Tim Campbell's Portfolio Work"
         description="Design and development work by Tim Campbell, including Fulcrum app, Spatial Networks, Divide for PS4, and more."
