@@ -64,7 +64,7 @@ export default function ThemeSwitcher() {
           </MenuButton>
 
           <MenuItems modal={false}
-            className="pane no-hover absolute right-6 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
+            className="pane no-hover opaque absolute right-6 mt-2 w-48 origin-top-right rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
             as={motion.div}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

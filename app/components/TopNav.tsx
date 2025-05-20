@@ -7,12 +7,26 @@ import ThemeSwitcher from './ThemeSwitcher'
 import LoadingLogo from './LoadingLogo'
 import { useLoading } from '../contexts/LoadingContext'
 import { Menu, MenuItem, MenuItems } from '@headlessui/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function TopNav() {
   const pathname = usePathname()
   const { initiateLoading } = useLoading()
   const [isWorkHovered, setIsWorkHovered] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 40
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled)
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [scrolled])
   
   const navLinks = [
     { name: 'Writing', href: '/writing' },
@@ -21,13 +35,13 @@ export default function TopNav() {
 
   // Work projects for the dropdown menu based on the actual project files
   const workProjects = [
-    { name: 'All Projects', href: '/work' },
+    { name: 'Overview', href: '/work' },
     { name: 'Fulcrum', href: '/work/fulcrum' },
     { name: 'Allinspections', href: '/work/allinspections' },
     { name: 'Divide', href: '/work/divide' },
     { name: 'Spatial Networks', href: '/work/spatial-networks' },
     { name: 'Branding', href: '/work/branding' },
-    { name: 'Personal', href: '/work/personal' },
+    { name: 'Art', href: '/work/personal' },
   ]
 
   const handleLinkClick = (href: string) => {
@@ -42,7 +56,7 @@ export default function TopNav() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.75, delay: 0.25, ease: 'easeOut' }}
-      className="w-full sticky top-0 z-99">
+      className={`w-full sticky top-0 z-99 transition-all duration-500 ${scrolled ? 'bg-[var(--mode-color-topnav)]' : 'bg-transparent'}`}>
       <nav
         className="w-full mx-auto flex items-center justify-between px-6 py-6"
         aria-label="Main navigation"
@@ -84,7 +98,7 @@ export default function TopNav() {
             <AnimatePresence>
               {isWorkHovered && (
                 <motion.div
-                  className="pane opaque no-hover absolute left-0 mt-2 w-48 z-50 origin-top-left rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
+                  className="bg-[var(--mode-color)] absolute left-0 mt-2 w-48 z-50 origin-top-left rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, transition: { duration: 0.2 } }}
                   exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.2 } }}

@@ -98,6 +98,7 @@
   --theme-dark: oklch(64.5% 0.246 16.439);
   
   --mode-color: oklch(100% 0 0);
+  --mode-color-topnav: oklch(100% 0 0 / 0.8);
   --mode-color-invert: oklch(0 0 0);
   --logo-color: oklch(0 0 0);
   --logo-spinner-color: oklch(0 0 0);
@@ -171,6 +172,7 @@
   --theme-dark: oklch(64.5% 0.246 16.439);
 
   --mode-color: oklch(0 0 0);
+  --mode-color-topnav: oklch(0 0 0 / 0.8);
   --mode-color-invert: oklch(100% 0 0);
   --logo-color: oklch(100 0 0);
   --logo-spinner-color: oklch(100% 0 0);

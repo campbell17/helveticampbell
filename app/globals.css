@@ -206,7 +206,7 @@ nav a {
 .pane {
   @apply backdrop-blur-xs;
   background-color: var(--pane-bg-color);
-  &.hover-only { @apply backdrop-blur-none; background-color: transparent; };
+  &.hover-only { @apply backdrop-blur-none bg-transparent; };
   &:hover {
     background-color: var(--pane-bg-color-hover);
   }
