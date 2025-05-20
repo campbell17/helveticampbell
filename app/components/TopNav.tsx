@@ -108,7 +108,10 @@ export default function TopNav() {
                       <div key={project.href}>
                         <Link
                           href={project.href}
-                          onClick={() => handleLinkClick(project.href)}
+                          onClick={() => {
+                            handleLinkClick(project.href);
+                            setIsWorkHovered(false);
+                          }}
                           className={`flex w-full items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium border border-transparent 
                             hover:border-[var(--color-border)] hover:bg-[var(--pane-bg-color-hover)] 
                             transition-colors duration-200`}
