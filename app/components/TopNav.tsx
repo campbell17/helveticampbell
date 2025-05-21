@@ -37,9 +37,9 @@ export default function TopNav() {
   const workProjects = [
     { name: 'Overview', href: '/work' },
     { name: 'Fulcrum', href: '/work/fulcrum' },
-    { name: 'Allinspections', href: '/work/allinspections' },
-    { name: 'Divide', href: '/work/divide' },
     { name: 'Spatial Networks', href: '/work/spatial-networks' },
+    { name: 'Divide', href: '/work/divide' },
+    { name: 'Allinspections', href: '/work/allinspections' },
     { name: 'Branding', href: '/work/branding' },
     { name: 'Art', href: '/work/personal' },
   ]
