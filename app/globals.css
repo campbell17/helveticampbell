@@ -19,7 +19,7 @@
 }
 
 .container-behavior-secondary {
-  @apply border-b border-[var(--color-border)] last:border-b-0 transition-colors duration-150;
+  @apply border-b border-[var(--color-border)] md:last:border-b-0 transition-colors duration-150;
 }
 
 .hover\:text-color:hover {

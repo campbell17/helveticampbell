@@ -86,7 +86,7 @@ export default function HomeContent() {
         </div>
         
         {/* Convert local essays to the format expected by UnifiedContentList */}
-        <div className="rounded-[var(--container-radius)] shadow-md overflow-hidden">
+        <div className="rounded-[var(--container-radius)] md:shadow-md overflow-hidden">
           <UnifiedContentList 
             localEssays={essays.map(essay => ({
               slug: essay.slug,

@@ -365,18 +365,18 @@ export default function UnifiedContentList({ localEssays, showFilters = false, l
                 key={item.id} 
                 target={item.isExternal ? "_blank" : undefined}
                 rel={item.isExternal ? "noopener noreferrer" : undefined}
-                className="block border-b border-color-border hover:bg-pane-bg-color-hover transition-colors duration-150 container-behavior-secondary pane"
+                className="flex flex-col mb-4 md:mb-0 rounded-[var(--container-radius)] md:rounded-none overflow-hidden md:overflow-visible md:block border-b border-color-border hover:bg-pane-bg-color-hover transition-colors duration-150 container-behavior-secondary pane"
               >
-                <div className="flex">
-                  {/* Image on the left - flush with edges */}
+                <div className="flex flex-col md:flex-row">
+                  {/* Image - full width on mobile, fixed width on md+ */}
                   {item.coverImage && item.coverImage.url && !imageErrors[item.id] ? (
-                    <div className="relative min-w-[280px] w-[280px] h-auto overflow-hidden flex-shrink-0">
-                      <div className="aspect-[9/6] h-full">
+                    <div className="relative w-full md:min-w-[280px] md:w-[280px] h-auto overflow-hidden flex-shrink-0">
+                      <div className="aspect-[16/6] md:aspect-[9/6] h-full">
                         <Image 
                           src={item.coverImage.url} 
                           alt={item.coverImage.alt}
                           fill
-                          sizes="280px"
+                          sizes="(max-width: 768px) 100vw, 280px"
                           style={{ objectFit: 'cover' }}
                           className="transition-transform duration-300"
                           onError={() => handleImageError(item.id)}
@@ -384,15 +384,15 @@ export default function UnifiedContentList({ localEssays, showFilters = false, l
                       </div>
                     </div>
                   ) : (
-                    <div className="relative min-w-[280px] w-[280px] aspect-[9/6] bg-gray-100 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center">
+                    <div className="relative w-full md:min-w-[280px] md:w-[280px] aspect-[9/6] bg-gray-100 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
                   )}
                   
-                  {/* Content on the right with padding */}
-                  <div className="flex flex-col gap-2 flex-1 py-6 px-6">
+                  {/* Content with adjusted padding for stacked layout */}
+                  <div className="flex flex-col gap-2 flex-1 py-4 md:py-6 px-4 md:px-6">
                     <div className="flex justify-between items-center">
                       <Overline className="!text-[var(--text-color-light)]">
                         {formattedDate(item.date)}
