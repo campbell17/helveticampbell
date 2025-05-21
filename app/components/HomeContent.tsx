@@ -2,10 +2,8 @@
 
 import { H1, H2, H3 } from './Typography'
 import WorkItem from './WorkItem'
-import EssayItem from './EssayItem'
-import SubstackPostItem from './SubstackPostItem'
+import UnifiedContentList from './UnifiedContentList'
 import { useOpenProject } from '../hooks/useOpenProject'
-import { useSubstackPosts } from '../hooks/useSubstackPosts'
 import { essays } from '../data/essays'
 import { config } from '../config/environment'
 import Link from 'next/link'
@@ -27,10 +25,6 @@ const workImages = [
 
 export default function HomeContent() {
   const { openProject } = useOpenProject();
-  const { posts, isLoading, error, rawResponse } = useSubstackPosts({
-    publicationUrl: config.substackUrl,
-    limit: 5
-  });
   
   const [showDebug, setShowDebug] = useState(false);
 
@@ -82,7 +76,7 @@ export default function HomeContent() {
         </div>
       </div>
       
-      {/* Writing Section w/ Substack posts */}
+      {/* Writing Section w/ Unified Content List */}
       <div className="mt-20">
         <div className="flex items-center justify-between mb-8">
           <Link href="/writing" className="group inline-flex items-center hover:text-primary transition-colors duration-300">
@@ -91,68 +85,19 @@ export default function HomeContent() {
           </Link>
         </div>
         
-        {process.env.NODE_ENV === 'development' && showDebug && (
-          <div className="mb-4 p-4 bg-slate-800/50 rounded-lg overflow-auto max-h-96 text-xs font-mono">
-            <h3 className="text-white mb-2">Debug Info</h3>
-            <div>
-              <p className="text-green-400">Publication URL: {config.substackUrl}</p>
-              <p className="text-green-400">Loading: {isLoading ? 'true' : 'false'}</p>
-              <p className="text-green-400">Error: {error || 'none'}</p>
-              <p className="text-green-400">Posts: {posts?.length || 0}</p>
-              {rawResponse && (
-                <div className="mt-2">
-                  <p className="text-yellow-400">Raw Response:</p>
-                  <pre className="text-white mt-2 whitespace-pre-wrap">
-                    {JSON.stringify(rawResponse, null, 2)}
-                  </pre>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-        
-        <div className="rounded-[var(--container-radius)] overflow-hidden shadow-md">
-          {isLoading ? (
-            <div className="p-6 text-center">Loading posts...</div>
-          ) : error ? (
-            <>
-              {/* Show error message in dev mode */}
-              {process.env.NODE_ENV === 'development' && (
-                <div className="p-6 mb-4 bg-red-500/10 text-red-400 rounded-md">
-                  <p>Error loading Substack posts: {error}</p>
-                  <p className="text-sm mt-2">Check the console for more details.</p>
-                </div>
-              )}
-              {/* Always fall back to local essays data when there's an error */}
-               {essays.map(essay => (
-                <EssayItem key={essay.id} essay={essay} />
-              ))}
-            </>
-          ) : posts && posts.length > 0 ? (
-            // Show Substack posts if available
-            <>
-              {process.env.NODE_ENV === 'development' && (
-                <div className="p-2 bg-green-500/10 text-green-400 text-xs">
-                  {posts.length} posts loaded successfully
-                </div>
-              )}
-              {posts.map(post => (
-                <SubstackPostItem key={post.slug} post={post} />
-              ))}
-            </>
-          ) : (
-            // Fallback to local essays data if no posts
-            <>
-              {process.env.NODE_ENV === 'development' && (
-                <div className="p-2 bg-yellow-500/10 text-yellow-400 text-xs">
-                  No Substack posts found, showing fallback content
-                </div>
-              )}
-              {essays.map(essay => (
-                <EssayItem key={essay.id} essay={essay} />
-              ))}
-            </>
-          )}
+        {/* Convert local essays to the format expected by UnifiedContentList */}
+        <div className="rounded-[var(--container-radius)] shadow-md overflow-hidden">
+          <UnifiedContentList 
+            localEssays={essays.map(essay => ({
+              slug: essay.slug,
+              title: essay.title,
+              date: essay.date,
+              excerpt: essay.excerpt,
+              tags: essay.tags || []
+            }))} 
+            limit={5}
+            layout="list"
+          />
         </div>
       </div>
       

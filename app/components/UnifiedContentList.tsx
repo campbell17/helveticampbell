@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useSubstackPosts, SubstackPost } from '../hooks/useSubstackPosts';
 import { config } from '../config/environment';
+import { Overline } from './Typography';
 
 // Define a type for our markdown essays
 interface LocalEssay {
@@ -34,9 +35,11 @@ interface UnifiedContentItem {
 interface UnifiedContentListProps {
   localEssays: LocalEssay[];
   showFilters?: boolean;
+  limit?: number;
+  layout?: 'grid' | 'list';
 }
 
-export default function UnifiedContentList({ localEssays, showFilters = false }: UnifiedContentListProps) {
+export default function UnifiedContentList({ localEssays, showFilters = false, limit, layout = 'grid' }: UnifiedContentListProps) {
   const [unifiedContent, setUnifiedContent] = useState<UnifiedContentItem[]>([]);
   const [activeFilters, setActiveFilters] = useState<Set<string>>(new Set());
   const [allTags, setAllTags] = useState<string[]>([]);
@@ -88,7 +91,10 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
       new Date(b.date).getTime() - new Date(a.date).getTime()
     );
     
-    setUnifiedContent(combined);
+    // Apply limit if specified
+    const limitedContent = limit ? combined.slice(0, limit) : combined;
+    
+    setUnifiedContent(limitedContent);
     
     // Extract all unique tags for filtering
     const tags = new Set<string>();
@@ -106,7 +112,7 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
     });
     setTagCounts(counts);
     
-  }, [localEssays, substackPosts, isLoading]);
+  }, [localEssays, substackPosts, isLoading, limit]);
 
   // Handle image error
   const handleImageError = (itemId: string) => {
@@ -269,86 +275,168 @@ export default function UnifiedContentList({ localEssays, showFilters = false }:
       )}
       
       {/* Unified Content List */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-        {filteredContent.length > 0 ? (
-          filteredContent.map((item) => (
-            <Link 
-              href={item.url} 
-              key={item.id} 
-              target={item.isExternal ? "_blank" : undefined}
-              rel={item.isExternal ? "noopener noreferrer" : undefined}
-              className="group content-item flex flex-col h-full container-behavior-primary pane"
-            >
-              {item.coverImage && item.coverImage.url && !imageErrors[item.id] && (
-                <div className="relative w-full h-48 overflow-hidden bg-gray-100">
-                  <Image 
-                    src={item.coverImage.url} 
-                    alt={item.coverImage.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    style={{ objectFit: 'cover' }}
-                    className="transition-transform duration-300"
-                    onError={() => handleImageError(item.id)}
-                  />
-                </div>
-              )}
-              
-              <div className="flex flex-col justify-between flex-grow p-5">
-                <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="!mb-0">
-                      {item.title}
-                    </h3>
+      {layout === 'grid' ? (
+        <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+          {filteredContent.length > 0 ? (
+            filteredContent.map((item) => (
+              <Link 
+                href={item.url} 
+                key={item.id} 
+                target={item.isExternal ? "_blank" : undefined}
+                rel={item.isExternal ? "noopener noreferrer" : undefined}
+                className="group content-item flex flex-col h-full container-behavior-primary pane"
+              >
+                {item.coverImage && item.coverImage.url && !imageErrors[item.id] && (
+                  <div className="relative w-full h-48 overflow-hidden bg-gray-100">
+                    <Image 
+                      src={item.coverImage.url} 
+                      alt={item.coverImage.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      style={{ objectFit: 'cover' }}
+                      className="transition-transform duration-300"
+                      onError={() => handleImageError(item.id)}
+                    />
                   </div>
-                  
-                  {item.excerpt && (
-                    <p className="text-base !text-[var(--text-color-light)] mt-2 !mb-8 line-clamp-2">{item.excerpt}</p>
-                  )}
-                </div>
+                )}
                 
-                <div className="mt-4">
-                  <div className="flex justify-between items-center">
-                    <time dateTime={new Date(item.date).toISOString()} className="text-xs uppercase font-sans text-[var(--text-color-light)]">
-                      {formattedDate(item.date)}
-                    </time>
-                    {item.isExternal && (
-                      <svg 
-                        role="img" 
-                        style={{ transform: 'scale(1)' }} 
-                        width="16" 
-                        height="18" 
-                        viewBox="0 0 16 18" 
-                        fill="#ff6719" 
-                        strokeWidth="1.8" 
-                        stroke="none" 
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="flex-shrink-0"
-                      >
-                        <g>
-                          <title>Substack</title>
-                          <path d="M16 4H0V6H16V4Z"></path>
-                          <path d="M0 8V18L7.9993 13.534L16 18V8H0Z"></path>
-                          <path d="M16 0H0V2H16V0Z"></path>
-                        </g>
-                      </svg>
+                <div className="flex flex-col justify-between flex-grow p-5">
+                  <div>
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="!mb-0">
+                        {item.title}
+                      </h3>
+                    </div>
+                    
+                    {item.excerpt && (
+                      <p className="text-base !text-[var(--text-color-light)] mt-2 !mb-8 line-clamp-2">{item.excerpt}</p>
                     )}
                   </div>
+                  
+                  <div className="mt-4">
+                    <div className="flex justify-between items-center">
+                      <time dateTime={new Date(item.date).toISOString()} className="text-xs uppercase font-sans text-[var(--text-color-light)]">
+                        {formattedDate(item.date)}
+                      </time>
+                      {item.isExternal && (
+                        <svg 
+                          role="img" 
+                          style={{ transform: 'scale(1)' }} 
+                          width="16" 
+                          height="18" 
+                          viewBox="0 0 16 18" 
+                          fill="#ff6719" 
+                          strokeWidth="1.8" 
+                          stroke="none" 
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="flex-shrink-0"
+                        >
+                          <g>
+                            <title>Substack</title>
+                            <path d="M16 4H0V6H16V4Z"></path>
+                            <path d="M0 8V18L7.9993 13.534L16 18V8H0Z"></path>
+                            <path d="M16 0H0V2H16V0Z"></path>
+                          </g>
+                        </svg>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <div className="py-8 text-center col-span-full">
-            <p className="text-lg">No content matches the selected filters.</p>
-            <button 
-              onClick={clearFilters}
-              className="mt-4 bg-primary/10 hover:bg-primary/20 text-text-color px-4 py-2 rounded-full text-sm transition-all"
-            >
-              Reset Filters
-            </button>
-          </div>
-        )}
-      </div>
+              </Link>
+            ))
+          ) : (
+            <div className="py-8 text-center col-span-full">
+              <p className="text-lg">No content matches the selected filters.</p>
+              <button 
+                onClick={clearFilters}
+                className="mt-4 bg-primary/10 hover:bg-primary/20 text-text-color px-4 py-2 rounded-full text-sm transition-all"
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-col">
+          {filteredContent.length > 0 ? (
+            filteredContent.map((item) => (
+              <Link 
+                href={item.url} 
+                key={item.id} 
+                target={item.isExternal ? "_blank" : undefined}
+                rel={item.isExternal ? "noopener noreferrer" : undefined}
+                className="block border-b border-color-border hover:bg-pane-bg-color-hover transition-colors duration-150 container-behavior-secondary pane"
+              >
+                <div className="flex">
+                  {/* Image on the left - flush with edges */}
+                  {item.coverImage && item.coverImage.url && !imageErrors[item.id] ? (
+                    <div className="relative min-w-[280px] w-[280px] h-auto overflow-hidden flex-shrink-0">
+                      <div className="aspect-[9/6] h-full">
+                        <Image 
+                          src={item.coverImage.url} 
+                          alt={item.coverImage.alt}
+                          fill
+                          sizes="280px"
+                          style={{ objectFit: 'cover' }}
+                          className="transition-transform duration-300"
+                          onError={() => handleImageError(item.id)}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative min-w-[280px] w-[280px] aspect-[9/6] bg-gray-100 dark:bg-gray-800 flex-shrink-0 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  )}
+                  
+                  {/* Content on the right with padding */}
+                  <div className="flex flex-col gap-2 flex-1 py-6 px-6">
+                    <div className="flex justify-between items-center">
+                      <Overline className="!text-[var(--text-color-light)]">
+                        {formattedDate(item.date)}
+                      </Overline>
+                      {item.isExternal && (
+                        <svg 
+                          role="img" 
+                          width="16" 
+                          height="18" 
+                          viewBox="0 0 16 18" 
+                          fill="#ff6719" 
+                          strokeWidth="1.8" 
+                          stroke="none" 
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="flex-shrink-0"
+                        >
+                          <g>
+                            <title>Substack</title>
+                            <path d="M16 4H0V6H16V4Z"></path>
+                            <path d="M0 8V18L7.9993 13.534L16 18V8H0Z"></path>
+                            <path d="M16 0H0V2H16V0Z"></path>
+                          </g>
+                        </svg>
+                      )}
+                    </div>
+                    <h3 className="!mb-2 font-medium text-xl">{item.title}</h3>
+                    <p className="!mb-0 text-base !text-[var(--text-color-light)]">{item.excerpt}</p>
+                  </div>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="py-8 text-center">
+              <p className="text-lg">No content matches the selected filters.</p>
+              <button 
+                onClick={clearFilters}
+                className="mt-4 bg-primary/10 hover:bg-primary/20 text-text-color px-4 py-2 rounded-full text-sm transition-all"
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </>
   );
 } 
