@@ -3,6 +3,7 @@ import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
 import Link from 'next/link';
 import ProjectNavigation from '../ProjectNavigation';
+import { projectTags } from '../../data/projectTags';
 
 interface ImageData {
   src: string;
@@ -12,6 +13,9 @@ interface ImageData {
 }
 
 const PersonalContent: React.FC = () => {
+  // Get tags from project tags with fallback
+  const personalTags = projectTags["Personal"] || ["Drawing", "Painting", "Photography"];
+
   // Images directly in the component
   const images: ImageData[] = [
     { src: "/images/work/full/full-personal-painting-1.jpg", alt: "Painting 1" },
@@ -52,9 +56,9 @@ const PersonalContent: React.FC = () => {
     <>
       <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-wrap mb-8">
-          <Overline className="!text-lg mr-8">Drawing</Overline>
-          <Overline className="!text-lg mr-8">Painting</Overline>
-          <Overline className="!text-lg mr-8">Photography</Overline>
+          {personalTags.map((tag, index) => (
+            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
+          ))}
         </div>
         <H1 className="mb-4">Traditional Art</H1>
         <p className="subheading">I studied traditional illustration and photography before I became a designer and I still practice when I can. My macro photography pulls double-duty as the cover images for my <Link href="https://campbellseventeen.substack.com" target="_blank" rel="noreferrer noopener">Substack essays</Link>. I write fresh ones weekly and publish on Fridays.</p>

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { H1, H2, H3, Overline } from '../Typography';
 import ProjectNavigation from '../ProjectNavigation';
+import { projectTags } from '../../data/projectTags';
 
 const FulcrumContent: React.FC = () => {
   const stats = [
@@ -9,6 +10,9 @@ const FulcrumContent: React.FC = () => {
     { name: 'Users', stat: '50,000+' },
     { name: 'Countries', stat: '100+' },
   ];
+
+  // Get tags from project tags
+  const fulcrumTags = projectTags["Fulcrum"] || [];
 
   // Images directly in the component
   const images = [
@@ -45,12 +49,9 @@ const FulcrumContent: React.FC = () => {
     <>
       <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-wrap mb-8">
-          <Overline className="!text-lg mr-8">UI/UX</Overline>
-          <Overline className="!text-lg mr-8">Branding</Overline>
-          <Overline className="!text-lg mr-8">Product Design</Overline>
-          <Overline className="!text-lg mr-8">Marketing Design</Overline>
-          <Overline className="!text-lg mr-8">Icon Design</Overline>
-          <Overline className="!text-lg mr-8">Illustration</Overline>
+          {fulcrumTags.map((tag, index) => (
+            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
+          ))}
         </div>
         <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
         <p className="subheading">(2012 - 2025) As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>

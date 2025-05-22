@@ -2,6 +2,7 @@ import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
 import ProjectNavigation from '../ProjectNavigation';
+import { projectTags } from '../../data/projectTags';
 
 interface ImageData {
   src: string;
@@ -11,6 +12,9 @@ interface ImageData {
 }
 
 const BrandingContent: React.FC = () => {
+  // Get tags from project tags
+  const brandingTags = projectTags["Branding"] || [];
+
   // Images directly in the component
   const images: ImageData[] = [
     { src: "/images/work/isolated/iso-liminallab-logo.jpg", alt: "Liminal Lab Logo" },
@@ -40,6 +44,11 @@ const BrandingContent: React.FC = () => {
   return (
     <>
       <div className="px-4 sm:px-6 md:px-20">
+        {/* <div className="flex flex-wrap mb-8">
+          {brandingTags.map((tag, index) => (
+            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
+          ))}
+        </div> */}
         <H1 className="mb-4">Branding</H1>
         <p className="subheading">A collection of logos and identity work, always executed with close collaboration and a tight communication loop with all involved. These are a mix of new brands, redesigns, and refreshes.</p>
       </div>

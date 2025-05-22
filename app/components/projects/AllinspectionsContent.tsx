@@ -2,6 +2,7 @@ import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
 import ProjectNavigation from '../ProjectNavigation';
+import { projectTags } from '../../data/projectTags';
 
 interface ImageData {
   src: string;
@@ -11,6 +12,9 @@ interface ImageData {
 }
 
 const AllinspectionsContent: React.FC = () => {
+  // Get tags from project tags
+  const allinspectionsTags = projectTags["Allinspections"] || [];
+
   // Images directly in the component
   const images: ImageData[] = [
     { src: "/images/work/isolated/iso-allinspections-icon.jpg", alt: "Allinspections Icon" },
@@ -38,10 +42,9 @@ const AllinspectionsContent: React.FC = () => {
     <>
       <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-wrap mb-8">
-          <Overline className="!text-lg mr-8">UI/UX</Overline>
-          <Overline className="!text-lg mr-8">Branding</Overline>
-          <Overline className="!text-lg mr-8">Product Design</Overline>
-          <Overline className="!text-lg mr-8">Marketing Design</Overline>
+          {allinspectionsTags.map((tag, index) => (
+            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
+          ))}
         </div>
         <H1 className="mb-4">Allinspections<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Inspection Management Software</span></H1>
         <p className="subheading">(2010 - 2012) Inspection management software focused on the home inspections market. As the sole designer, I created the branding, marketing, web & mobile apps, and environmental/tradeshow materials.</p>

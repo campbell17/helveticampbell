@@ -3,6 +3,7 @@ import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
 import Link from 'next/link';
 import ProjectNavigation from '../ProjectNavigation';
+import { projectTags } from '../../data/projectTags';
 
 interface ImageData {
   src: string;
@@ -12,6 +13,9 @@ interface ImageData {
 }
 
 const DivideContent: React.FC = () => {
+  // Get tags from project tags
+  const divideTags = projectTags["Divide"] || [];
+
   // Images directly in the component
   const images: ImageData[] = [
     { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide Logo" },
@@ -39,11 +43,9 @@ const DivideContent: React.FC = () => {
     <>
       <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-wrap mb-8">
-          <Overline className="!text-lg mr-8">UI</Overline>
-          <Overline className="!text-lg mr-8">Branding</Overline>
-          <Overline className="!text-lg mr-8">Game Design</Overline>
-          <Overline className="!text-lg mr-8">Icon Design</Overline>
-          <Overline className="!text-lg mr-8">Marketing Design</Overline>
+          {divideTags.map((tag, index) => (
+            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
+          ))}
         </div>
         <H1 className="mb-4">Divide<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Action / Adventure Game (PS4)</span></H1>
         <p className="subheading">(2014) A character-driven, science fiction action/adventure game with a modern take on isometric adventures of the past. I designed the logo, UI assets, icons, menus, HUD, and map, as well as posters and branding for the in-game world.</p>

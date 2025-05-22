@@ -2,6 +2,7 @@ import React from 'react';
 import { H1, H2, H3, Overline } from '../Typography';
 import Image from 'next/image';
 import ProjectNavigation from '../ProjectNavigation';
+import { projectTags } from '../../data/projectTags';
 
 interface ImageData {
   src: string;
@@ -11,6 +12,9 @@ interface ImageData {
 }
 
 const SpatialNetworksContent: React.FC = () => {
+  // Get tags from project tags
+  const sniTags = projectTags["Spatial Networks"] || [];
+
   // Images directly in the component
   const images: ImageData[] = [
     { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks Icon" },
@@ -35,9 +39,9 @@ const SpatialNetworksContent: React.FC = () => {
     <>
       <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-wrap mb-8">
-          <Overline className="!text-lg mr-8">Branding</Overline>
-          <Overline className="!text-lg mr-8">Product Design</Overline>
-          <Overline className="!text-lg mr-8">Marketing Design</Overline>
+          {sniTags.map((tag, index) => (
+            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
+          ))}
         </div>
         <H1 className="mb-4">Spatial Networks<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Geospatial Intelligence Platform</span></H1>
         <p className="subheading">(2010 - 2019) Geospatial intelligence specializing in technology, analytics, and ground-truthing. I led design for all aspects of the company, including marketing, branding, and product design of its software products.</p>

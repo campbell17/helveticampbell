@@ -5,6 +5,7 @@ import AllinspectionsContent from '../components/projects/AllinspectionsContent'
 import DivideContent from '../components/projects/DivideContent';
 import BrandingContent from '../components/projects/BrandingContent';
 import PersonalContent from '../components/projects/PersonalContent';
+import { projectTags } from './projectTags';
 
 // Interfaces moved from ProjectSidebar.tsx
 export interface ImageData {
@@ -64,7 +65,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/full/full-fulcrum-handout.jpg", alt: "Fulcrum Handout", fullWidth: true, aspectRatio: "100/64" },
       { src: "/images/work/gridded/grid-fulcrum-buildericons-v3.jpg", alt: "Fulcrum Builder Icons v3" },
     ],
-    tags: ["UX/UI", "Branding", "Product Design", "Marketing Design"],
+    tags: projectTags["Fulcrum"],
     description: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
     coverImage: "/images/work/index/work-index-fulcrum.jpg",
     heading: "Fulcrum",
@@ -91,7 +92,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/isolated/iso-sni-tradeshow-booth.jpg", alt: "Spatial Networks Tradeshow booth" },
       { src: "/images/work/snapshots/snapshot-sni-tradeshow-1.jpg", alt: "Spatial Networks Tradeshow" },
     ],
-    tags: ["Branding", "UX/UI", "Marketing Design"],
+    tags: projectTags["Spatial Networks"],
     description: "Rebranding and digital presence for a geospatial intelligence company.",
     coverImage: "/images/work/full/full-sni-ad-1.jpg",
     heading: "Spatial Networks",
@@ -121,7 +122,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/full/full-divide-soundtrack-ep.jpg", alt: "Divide Soundtrack EP" },
       { src: "/images/work/snapshots/snapshot-divide-recording-1.jpg", alt: "Divide Recording Session" }
     ],
-    tags: ["Game UI", "Branding", "Icon Design"],
+    tags: projectTags["Divide"],
     description: "UI design for a sci-fi action RPG exclusive to PlayStation 4.",
     coverImage: "/images/work/index/work-index-divide.jpg",
     heading: "Divide",
@@ -151,7 +152,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/full/full-allinspections-card-1.jpg", alt: "Allinspections Card 1" },
       { src: "/images/work/full/full-allinspections-card-2.jpg", alt: "Allinspections Card 2" }
     ],
-    tags: ["Branding", "UX/UI", "Product Design", "Marketing Design"],
+    tags: projectTags["Allinspections"],
     description: "Field inspection management platform for quality control teams.",
     coverImage: "/images/work/index/work-index-allinspections.jpg",
     heading: "Allinspections",
@@ -191,7 +192,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
       // { src: "/images/work/browser/browser-tilton-4.jpg", alt: "Christiltong.com", aspectRatio: "1440/1261" },
       
     ],
-    tags: ["Branding", "Logo Design", "Identity"],
+    tags: projectTags["Branding"],
     description: "Various logo and identity work.",
     coverImage: "/images/work/gridded/grid-icons-all.jpg",
     heading: "Branding",
@@ -234,7 +235,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
   //     { src: "/images/work/full/full-personal-photo-59.png", alt: "Photo 59", aspectRatio: "3/2" },
   //     { src: "/images/work/full/full-personal-photo-64.png", alt: "Photo 64", aspectRatio: "3/2" },
   //   ],
-  //   tags: ["Drawing", "Painting", "Photography"],
+  //   tags: projectTags["Personal"],
   //   description: "Selected works from my personal creative portfolio.",
   //   coverImage: "/images/work/full/full-personal-drawing-1.jpg",
   //   heading: "Art",
