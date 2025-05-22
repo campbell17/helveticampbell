@@ -73,7 +73,7 @@ export default function WorkItem({ image, imageAspectRatio = "aspect-video" }: W
           <h3 className="text-primary text-lg font-medium mb-2">{projectDetails[image.projectKey]?.heading}<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> {projectDetails[image.projectKey]?.headingAlt}</span></h3>
           
           {/* Description */}
-          <p className="!mb-0 text-primary text-base">{projectDetails[image.projectKey]?.subheading || 'A comprehensive design solution that combines intuitive user experience with compelling visual identity and strategic marketing assets.'}</p>
+          <p className="!mb-0 text-primary text-base">{projectDetails[image.projectKey]?.subheading || ''}</p>
         </div>
       </Link>
     </div>

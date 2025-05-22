@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Branding | Logo Design & Identity | Tim Campbell',
-  description: 'Various logo and identity work for businesses across industries.',
+  description: 'Various logo and identity work.',
 };
 
 export default function BrandingPage() {

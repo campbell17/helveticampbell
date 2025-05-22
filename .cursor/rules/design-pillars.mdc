@@ -1,0 +1,54 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Principles (of design in general, not just the look and feel):
+
+## Product Orientation / Organization
+
+* **Building blocks:** Give them the tools to self-organize
+    * **Examples:**
+        * Folders
+        * Filters
+        * Labels?
+        * Tags?
+        * In the Builder: field groups/templates so they can "drag once" but get a set of fields as a good starting point.
+* **Simplify:** Differentiate between "What **can** I do?" and "What *should* I do?"
+    * **Examples:**
+        * Suppress secondary navigation/content/actions
+* **Speed** (see Principle 2): "Why did you take me here?" - Don't navigate elsewhere for things they could do in-page or in-component.
+* **Context** (see Principle 3): "Who owns this?" - Add contributor information at the point of contact - who, when, where.
+* **Modes?:** Being more deliberate about modes might help with subconscious orientation - **consumption** (read) vs. **creation** (write) vs. **communication** (report)
+
+## Speed & Intuitiveness (of interactive elements)
+
+* **Feedback:** Show the user the software is aware they're there.
+    * **Examples:**
+        * Hovers
+        * Multi-select
+        * Inline data updates
+        * Auto-save
+* **Speed:** Everything has to be *fast* faster.
+    * **Examples:**
+        * Page/component hydration
+        * Skeleton states
+        * Instant hovers (as opposed to "prettier" fade-in hovers)
+        * **Context** (see Principle 3): Don't make me go somewhere else to learn/do something I should be able to learn/do at the point of contact.
+
+## Context
+
+* The objective of adding context is to add certainty about what action to take next by reducing cognitive load & the need to hunt for information elsewhere (i.e., *you don't need to keep things in your head if the info is "within arms reach"*).
+* **Examples**
+    * Related data: Can we progressively disclose all potentially related data?
+    * Contributors
+    * Activity
+    * Ownership
+    * Recency
+
+## Bonus: Stop doing weird shit.
+
+* It's not innovation if the only reason we did it is because we couldn't do it the obvious way, no matter the excuse.
+* **Examples:**
+    * Bulk delete - **Obvious way:** multi-select checkboxes within the table open a context panel with delete affordance.
+        * (Note: I applaud our ability to deliver something to customers despite not being equipped to avoid the weirdness, but the weirdness still stands)

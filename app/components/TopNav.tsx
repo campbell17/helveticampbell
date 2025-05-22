@@ -41,7 +41,7 @@ export default function TopNav() {
     { name: 'Divide', href: '/work/divide' },
     { name: 'Allinspections', href: '/work/allinspections' },
     { name: 'Branding', href: '/work/branding' },
-    { name: 'Art', href: '/work/personal' },
+    // { name: 'Art', href: '/work/personal' },
   ]
 
   const handleLinkClick = (href: string) => {

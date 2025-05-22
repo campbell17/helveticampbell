@@ -20,7 +20,7 @@ const workImages = [
   { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide for PS4", projectKey: "Divide", gallery: 1 },
   { src: "/images/work/isolated/iso-allinspections-icon-alt.jpg", alt: "Allinspections", projectKey: "Allinspections", gallery: 1 },
   { src: "/images/work/gridded/grid-icons-all.jpg", alt: "Branding", projectKey: "Branding", gallery: 1 },
-  { src: "/images/work/full/full-personal-drawing-1.jpg", alt: "Personal/Misc", projectKey: "Personal", gallery: 1 },
+  // { src: "/images/work/full/full-personal-drawing-1.jpg", alt: "Personal/Misc", projectKey: "Personal", gallery: 1 },
 ];
 
 export default function HomeContent() {
@@ -122,9 +122,9 @@ export default function HomeContent() {
             />
           </div>
           <div className="flex flex-col"> 
-            <H3 className="!mb-0">Hi, I'm Tim.</H3>
+            <H3 className="!mb-0">Hey, I'm Tim.</H3>
             <p className="!mb-2 !leading-8">
-              Currently designing, making art, writing, and solving problems. Adding clarity wherever possible. <Link href="/who">Learn more</Link>
+              Currently designing, making art, writing, and solving problems. Adding clarity wherever possible. <Link href="/who">Read the whole story</Link>
             </p>
           </div>
         </div>

@@ -52,7 +52,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 ref={cancelButtonRef}
               >
                 <span className="sr-only">Close</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                <XMarkIcon className="cursor-pointer h-6 w-6" aria-hidden="true" />
               </button>
             </div>
             
@@ -77,7 +77,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       type="text"
                       name="name"
                       id="name"
-                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border-light)] placeholder:text-[var(--text-color-light)] text-sm"
+                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border)] placeholder:text-[var(--text-color-light)] text-sm"
                       placeholder="Your name"
                       required
                     />
@@ -92,7 +92,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       type="email"
                       name="email"
                       id="email"
-                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border-light)] placeholder:text-[var(--text-color-light)] text-sm"
+                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border)] placeholder:text-[var(--text-color-light)] text-sm"
                       placeholder="you@example.com"
                       required
                     />
@@ -107,7 +107,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       id="message"
                       name="message"
                       rows={4}
-                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border-light)] placeholder:text-[var(--text-color-light)] text-sm"
+                      className="block w-full rounded-md py-2 px-3 text-[var(--text-color)] shadow-sm border border-[var(--color-border)] placeholder:text-[var(--text-color-light)] text-sm"
                       placeholder="Your message"
                       required
                     />
@@ -125,7 +125,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <button
                       type="submit"
                       disabled={state.submitting}
-                      className="inline-flex justify-center rounded-md bg-[var(--theme-color)] py-2 px-4 text-sm font-medium text-[var(--text-color)] shadow-sm hover:bg-[var(--theme-color-hover)] border border-[color:var(--color-border)]"
+                      className="inline-flex justify-center rounded-md bg-[var(--theme-color)] py-2 px-4 text-sm font-medium !text-white shadow-sm hover:bg-[var(--theme-color-hover)] border border-[color:var(--color-border)]"
                     >
                       {state.submitting ? 'Sending...' : 'Send Message'}
                     </button>

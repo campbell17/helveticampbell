@@ -21,7 +21,7 @@ export default function Footer() {
     { name: 'Divide', href: '/work/divide', key: 'Divide' },
     { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
     { name: 'Branding', href: '/work/branding', key: 'Branding' },
-    { name: 'Art', href: '/work/personal', key: 'Personal' },
+    // { name: 'Art', href: '/work/personal', key: 'Personal' },
   ]
   
   const handleLinkClick = (href: string) => {
