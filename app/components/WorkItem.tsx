@@ -51,6 +51,8 @@ export default function WorkItem({ image, imageAspectRatio = "aspect-video" }: W
               width={1920}
               height={1080}
               className="object-cover w-full h-full"
+              priority={true}
+              loading="eager"
             />
           </div>
         )}

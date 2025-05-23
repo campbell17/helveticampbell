@@ -104,7 +104,7 @@ export default function SceneBackground() {
     }
   }, [theme]);
   
-  // Camera and scroll state
+  // Camera state
   const cameraPositionRef = useRef({
     // Target positions for different pages
     targetX: 50,
@@ -117,14 +117,9 @@ export default function SceneBackground() {
     targetRotationZ: 0,
     currentRotationZ: 0
   })
-  const scrollStateRef = useRef({
-    current: 0,
-    target: 0,
-    max: 2800
-  })
   
   // Centralized lookAt target
-  const lookAtTarget = useRef(new THREE.Vector3(0, -150, 0)).current
+  const lookAtTarget = useRef(new THREE.Vector3(0, 75, 0)).current
   
   // Helper to get camera settings for a specific pathname
   const getCameraSettingsForPath = (path: string) => {
@@ -354,11 +349,6 @@ export default function SceneBackground() {
     
     // Capture containerRef.current for cleanup
     const currentContainer = containerRef.current;
-    
-    // Scroll handler (now unconditional)
-    const handleScroll = () => {
-      scrollStateRef.current.target = window.scrollY
-    }
 
     // Handle resize
     const handleResize = () => {
@@ -380,8 +370,7 @@ export default function SceneBackground() {
     }
     
     window.addEventListener('resize', handleResize)
-    window.addEventListener('scroll', handleScroll, { passive: true }) // Add scroll listener here
-    window.addEventListener('scroll', handleViewportChanges, { passive: true })
+    window.addEventListener('resize', handleViewportChanges)
     document.addEventListener('touchmove', handleViewportChanges, { passive: true })
     document.addEventListener('touchend', handleViewportChanges, { passive: true })
     
@@ -406,21 +395,11 @@ export default function SceneBackground() {
       cameraPositionRef.current.currentRotationX += (cameraPositionRef.current.targetRotationX - cameraPositionRef.current.currentRotationX) * transitionFactor
       cameraPositionRef.current.currentRotationZ += (cameraPositionRef.current.targetRotationZ - cameraPositionRef.current.currentRotationZ) * transitionFactor
       
-      // Apply scroll effects unconditionally
-      scrollStateRef.current.current += (scrollStateRef.current.target - scrollStateRef.current.current) * 0.05
-      const limitedScrollY = Math.min(scrollStateRef.current.current, scrollStateRef.current.max)
-      const baseY = cameraPositionRef.current.y + (-limitedScrollY * 0.15)
-      const extraScroll = Math.max(0, scrollStateRef.current.current - scrollStateRef.current.max)
-      const zOffset = -extraScroll * 0.03
-      
-      let finalY = baseY
-      let finalZ = cameraPositionRef.current.z + zOffset
-      
-      // Update camera position with interpolated X and calculated Y/Z
+      // Update camera position with interpolated values
       cameraRef.current.position.set(
         cameraPositionRef.current.currentX,
-        finalY,
-        finalZ
+        cameraPositionRef.current.y,
+        cameraPositionRef.current.z
       )
         
       // Apply interpolated rotation
@@ -446,8 +425,7 @@ export default function SceneBackground() {
       
       // Remove event listeners
       window.removeEventListener('resize', handleResize)
-      window.removeEventListener('scroll', handleScroll) // Remove scroll listener here
-      window.removeEventListener('scroll', handleViewportChanges)
+      window.removeEventListener('resize', handleViewportChanges)
       document.removeEventListener('touchmove', handleViewportChanges)
       document.removeEventListener('touchend', handleViewportChanges)
       

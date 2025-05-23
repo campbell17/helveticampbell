@@ -15,7 +15,7 @@ export function useOpenProject() {
   
   const openProject = (projectKey: string) => {
     const url = getProjectUrl(projectKey)
-    initiateLoading(600)
+          initiateLoading(100) // Reduced from 600ms to 100ms for better responsiveness
     router.push(url)
   }
   

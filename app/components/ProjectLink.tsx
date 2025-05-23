@@ -25,7 +25,7 @@ export default function ProjectLink({ projectKey, children, className = '' }: Pr
   
   const handleLinkClick = (href: string) => {
     if (href !== pathname) {
-      initiateLoading(600);
+      initiateLoading(100); // Reduced from 600ms to 100ms for better responsiveness
     }
   }
 

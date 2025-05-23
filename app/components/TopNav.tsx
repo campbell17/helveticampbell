@@ -17,10 +17,18 @@ export default function TopNav() {
   
   // Handle scroll effect
   useEffect(() => {
+    let ticking = false
+    
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 40
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 40
+          if (isScrolled !== scrolled) {
+            setScrolled(isScrolled)
+          }
+          ticking = false
+        })
+        ticking = true
       }
     }
     
@@ -46,7 +54,7 @@ export default function TopNav() {
 
   const handleLinkClick = (href: string) => {
     if (href !== pathname) {
-      initiateLoading(600);
+      initiateLoading(100); // Reduced from 600ms to 100ms for better responsiveness
     }
   }
 

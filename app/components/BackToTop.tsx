@@ -24,9 +24,17 @@ export default function BackToTop({ scrollThreshold = 300 }: BackToTopProps) {
   const [isProjectOpen, setIsProjectOpen] = useState(false)
 
   useEffect(() => {
+    let ticking = false
+    
     const handleScroll = () => {
-      if (typeof window !== 'undefined') {
-        setShowBackToTop(window.scrollY > scrollThreshold)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (typeof window !== 'undefined') {
+            setShowBackToTop(window.scrollY > scrollThreshold)
+          }
+          ticking = false
+        })
+        ticking = true
       }
     }
 
@@ -38,7 +46,7 @@ export default function BackToTop({ scrollThreshold = 300 }: BackToTopProps) {
     }
 
     // Set up listeners
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     
     // Set up a mutation observer to detect when the project sidebar is added/removed from DOM
     const observer = new MutationObserver(() => {

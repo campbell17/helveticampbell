@@ -217,16 +217,24 @@ export default function ProjectSidebar({
     
     const sidebar = sidebarContentRef.current;
     
+    let ticking = false
+    
     const handleScroll = () => {
-      if (sidebar) {
-        const scrollPosition = sidebar.scrollTop;
-        setShowBackToTop(scrollPosition > 300);
-        setIsScrolled(scrollPosition > 100);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (sidebar) {
+            const scrollPosition = sidebar.scrollTop;
+            setShowBackToTop(scrollPosition > 300);
+            setIsScrolled(scrollPosition > 100);
+          }
+          ticking = false
+        })
+        ticking = true
       }
     };
 
     if (sidebar) {
-      sidebar.addEventListener('scroll', handleScroll);
+      sidebar.addEventListener('scroll', handleScroll, { passive: true });
       
       // Trigger an initial check
       handleScroll();
