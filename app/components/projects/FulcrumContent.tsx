@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { H1, H2, H3, Overline } from '../Typography';
 import ProjectNavigation from '../ProjectNavigation';
 import { projectTags } from '../../data/projectTags';
@@ -57,7 +59,6 @@ const FulcrumContent: React.FC = () => {
         <p className="subheading">(2012 - 2025) As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
       </div>
       {/* <div className="p-20 pt-0"> */}
-      {/* Stats Callout */}
       <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] pt-12 pb-16 px-4 sm:px-6 md:px-20 border-y border-[var(--color-border)]">
         <div className="w-full 2xl:max-w-7xl mx-auto">
           <Overline className="mb-4">Company Overview</Overline>
@@ -77,22 +78,120 @@ const FulcrumContent: React.FC = () => {
             </dl>
           </div>
 
-          {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
-              <p className="text-4xl font-bold mb-1">3,000+</p>
-              <p className="text-sm text-pink-900/70">Organizations</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
-              <p className="text-4xl">50,000+</p>
-              <p className="text-sm text-pink-900/70">Users</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-pink-100 shadow-sm">
-              <p className="text-4xl font-bold mb-1">100+</p>
-              <p className="text-sm text-pink-900/70">Countries</p>
-            </div>
-          </div> */}
         </div>
-      </div>
+      </div>      
+      {/* <div className="mt-20 px-4 sm:px-6 pb-10 md:px-20">
+        <H2>Case Studies</H2> */}
+        
+        {/* Feature Case Studies Disclosures */}
+        {/* <div className="mt-8"> */}
+          
+          {/* Data Viewer Redesign Case Study */}
+          {/* <Disclosure>
+            <DisclosureButton className="!bg-red-400 pane w-full flex items-center justify-between p-6 text-left">
+              <span className="text-lg font-medium">Data Viewer Redesign</span>
+              <ChevronDownIcon className="w-5 h-5 group-data-open:rotate-180 transition-transform duration-200" />
+            </DisclosureButton>
+            <DisclosurePanel className="mt-4 !bg-yellow-400">
+              <div className="pane p-8">
+                <p className="text-base text-slate-700 mb-6">
+                  A comprehensive redesign of Fulcrum's data viewing interface to improve usability and performance for large datasets. This project involved reimagining how users interact with their collected field data.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100">
+                    <div className="absolute inset-0 flex items-center justify-center text-slate-500">
+                      Before: Legacy Data Viewer
+                    </div>
+                  </div>
+                  <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100">
+                    <div className="absolute inset-0 flex items-center justify-center text-slate-500">
+                      After: Modern Data Viewer
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </DisclosurePanel>
+          </Disclosure> */}
+
+          {/* Groups Case Study */}
+          {/* <Disclosure>
+            <DisclosureButton className="pane w-full flex items-center justify-between p-6 text-left">
+              <span className="text-lg font-medium">Groups</span>
+              <ChevronDownIcon className="w-5 h-5 group-data-open:rotate-180 transition-transform duration-200" />
+            </DisclosureButton>
+            <DisclosurePanel className="mt-4">
+              <div className="pane p-8">
+                <p className="text-base text-slate-700 mb-6">
+                  Implementation of a flexible grouping system that allows organizations to structure their data collection workflows hierarchically. This feature enables better organization and permissions management across large teams.
+                </p>
+                <div className="space-y-4">
+                  <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100">
+                    <div className="absolute inset-0 flex items-center justify-center text-slate-500">
+                      Groups Feature Implementation
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <div className="bg-white/50 p-4 rounded-lg">
+                      <strong>Challenge:</strong> Managing permissions across complex organizational structures
+                    </div>
+                    <div className="bg-white/50 p-4 rounded-lg">
+                      <strong>Solution:</strong> Hierarchical group system with inherited permissions
+                    </div>
+                    <div className="bg-white/50 p-4 rounded-lg">
+                      <strong>Impact:</strong> 40% reduction in setup time for new organizations
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </DisclosurePanel>
+          </Disclosure> */}
+
+          {/* Lines & Polygons Case Study */}
+          {/* <Disclosure>
+            <DisclosureButton className="pane w-full flex items-center justify-between p-6 text-left">
+              <span className="text-lg font-medium">Lines & Polygons</span>
+              <ChevronDownIcon className="w-5 h-5 group-data-open:rotate-180 transition-transform duration-200" />
+            </DisclosureButton>
+            <DisclosurePanel className="mt-4">
+              <div className="pane p-8">
+                <p className="text-base text-slate-700 mb-6">
+                  Development of advanced geometry collection tools allowing field teams to capture complex spatial data including linear features (roads, pipelines) and area features (plots, boundaries) with precision GPS tracking.
+                </p>
+                <div className="space-y-4">
+                  <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100">
+                    <div className="absolute inset-0 flex items-center justify-center text-slate-500">
+                      Geometry Collection Interface
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <h4 className="font-medium">Key Features:</h4>
+                      <ul className="text-sm text-slate-600 space-y-1">
+                        <li>• Real-time GPS tracking with sub-meter accuracy</li>
+                        <li>• Complex polygon creation with hole support</li>
+                        <li>• Line snapping and editing capabilities</li>
+                        <li>• Automatic area and distance calculations</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="font-medium">Use Cases:</h4>
+                      <ul className="text-sm text-slate-600 space-y-1">
+                        <li>• Infrastructure mapping</li>
+                        <li>• Environmental monitoring</li>
+                        <li>• Agricultural plot management</li>
+                        <li>• Emergency response planning</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </DisclosurePanel>
+          </Disclosure>
+
+        </div>
+        
+      </div> */}
+
       <div className="mt-10">
         <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6">
           {/* First row */}

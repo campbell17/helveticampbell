@@ -81,12 +81,27 @@ export const useSubstackPosts = ({
         
         // console.log(`Fetching from: ${apiUrl.toString()}`);
         
-        const response = await fetch(apiUrl.toString());
+        const response = await fetch(apiUrl.toString(), {
+          // Add timeout and better error handling
+          signal: AbortSignal.timeout(10000), // 10 second timeout
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        });
         
         if (!response.ok) {
+          // Don't treat API failures as critical errors
           const errorData = await response.json().catch(() => null);
           const errorMessage = errorData?.error || response.statusText;
-          throw new Error(`Failed to fetch posts: ${errorMessage}`);
+          console.warn(`Substack API warning: ${errorMessage} (Status: ${response.status})`);
+          
+          // Set empty array instead of throwing error
+          if (isMounted) {
+            setPosts([]);
+            setError(null); // Don't set error for external API failures
+          }
+          return;
         }
         
         const responseData = await response.json();
@@ -120,17 +135,31 @@ export const useSubstackPosts = ({
             return;
           }
           
-          // No valid structure found
-          console.error('Unexpected data format:', responseData);
-          throw new Error('Invalid response format from API');
+          // No valid structure found - set empty array
+          console.warn('Unexpected data format from Substack API:', responseData);
+          setPosts([]);
         } else {
-          throw new Error('Empty response from API');
+          console.warn('Empty response from Substack API');
+          setPosts([]);
         }
       } catch (err) {
         if (isMounted) {
-          const errorMessage = err instanceof Error ? err.message : 'Failed to fetch Substack posts';
-          setError(errorMessage);
-          console.error('Error fetching Substack posts:', err);
+          // Handle network errors gracefully
+          if (err instanceof Error) {
+            if (err.name === 'AbortError') {
+              console.warn('Substack API request timed out');
+            } else if (err.name === 'TypeError') {
+              console.warn('Substack API network error:', err.message);
+            } else {
+              console.warn('Substack API error:', err.message);
+            }
+          } else {
+            console.warn('Unknown Substack API error:', err);
+          }
+          
+          // Don't set error state for external API failures
+          setPosts([]);
+          setError(null);
         }
       } finally {
         if (isMounted) {

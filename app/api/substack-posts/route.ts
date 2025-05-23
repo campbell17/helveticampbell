@@ -26,11 +26,20 @@ export async function POST(request: Request) {
       headers: {
         'X-API-Key': apiKey,
       },
+      // Add timeout for external API calls
+      signal: AbortSignal.timeout(8000), // 8 second timeout
     });
 
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`Substack API error (${response.status}): ${errorText}`);
+      
+      // Return empty array instead of error for external API failures
+      if (response.status === 404 || response.status >= 500) {
+        console.warn('Substack API unavailable, returning empty results');
+        return NextResponse.json([]);
+      }
+      
       return NextResponse.json(
         { error: `Substack API error: ${errorText}` },
         { status: response.status }
@@ -59,6 +68,13 @@ export async function POST(request: Request) {
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching Substack posts:', error);
+    
+    // Return empty array for timeout or network errors instead of 500 error
+    if (error instanceof Error && (error.name === 'AbortError' || error.name === 'TimeoutError')) {
+      console.warn('Substack API request timed out, returning empty results');
+      return NextResponse.json([]);
+    }
+    
     return NextResponse.json(
       { error: 'Failed to fetch Substack posts' },
       { status: 500 }
@@ -94,11 +110,20 @@ export async function GET(request: Request) {
       headers: {
         'X-API-Key': apiKey,
       },
+      // Add timeout for external API calls
+      signal: AbortSignal.timeout(8000), // 8 second timeout
     });
 
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`Substack API error (${response.status}): ${errorText}`);
+      
+      // Return empty array instead of error for external API failures
+      if (response.status === 404 || response.status >= 500) {
+        console.warn('Substack API unavailable, returning empty results');
+        return NextResponse.json([]);
+      }
+      
       return NextResponse.json(
         { error: `Substack API error: ${errorText}` },
         { status: response.status }
@@ -127,6 +152,13 @@ export async function GET(request: Request) {
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching Substack posts:', error);
+    
+    // Return empty array for timeout or network errors instead of 500 error
+    if (error instanceof Error && (error.name === 'AbortError' || error.name === 'TimeoutError')) {
+      console.warn('Substack API request timed out, returning empty results');
+      return NextResponse.json([]);
+    }
+    
     return NextResponse.json(
       { error: 'Failed to fetch Substack posts' },
       { status: 500 }

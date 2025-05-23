@@ -15,22 +15,37 @@ export const LoadingProvider: React.FC<{ children: ReactNode }> = ({ children })
   const timerIdRef = useRef<NodeJS.Timeout | null>(null);
 
   const initiateLoading = useCallback((delayMs: number) => {
-    if (timerIdRef.current) {
-      clearTimeout(timerIdRef.current);
-      timerIdRef.current = null;
+    // Safety check for client-side
+    if (typeof window === 'undefined') return;
+    
+    try {
+      if (timerIdRef.current) {
+        clearTimeout(timerIdRef.current);
+        timerIdRef.current = null;
+      }
+      timerIdRef.current = setTimeout(() => {
+        setIsLoading(true);
+        timerIdRef.current = null;
+      }, delayMs);
+    } catch (error) {
+      console.warn('Loading initiation error:', error);
     }
-    timerIdRef.current = setTimeout(() => {
-      setIsLoading(true);
-      timerIdRef.current = null;
-    }, delayMs);
   }, []);
 
   const completeLoading = useCallback(() => {
-    if (timerIdRef.current) {
-      clearTimeout(timerIdRef.current);
-      timerIdRef.current = null;
+    // Safety check for client-side
+    if (typeof window === 'undefined') return;
+    
+    try {
+      if (timerIdRef.current) {
+        clearTimeout(timerIdRef.current);
+        timerIdRef.current = null;
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.warn('Loading completion error:', error);
+      setIsLoading(false); // Ensure loading is completed even if there's an error
     }
-    setIsLoading(false);
   }, []);
 
   return (

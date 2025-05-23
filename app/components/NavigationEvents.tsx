@@ -13,6 +13,9 @@ export function NavigationEvents() {
   const previousPathRef = useRef<string | null>(null);
 
   useEffect(() => {
+    // Add safety check for client-side
+    if (typeof window === 'undefined') return;
+    
     NProgress.configure({ showSpinner: false });
 
     const currentPath = `${pathname}?${searchParams}`;
@@ -26,10 +29,16 @@ export function NavigationEvents() {
 
     // When the component renders for the new path, call completeLoading.
     const timer = setTimeout(() => {
-        if (NProgress.isStarted()) {
-            NProgress.done(); 
+        try {
+          if (NProgress.isStarted()) {
+              NProgress.done(); 
+          }
+          completeLoading(); // <-- Call completeLoading
+        } catch (error) {
+          // Gracefully handle any NProgress errors
+          console.warn('Navigation progress error:', error);
+          completeLoading();
         }
-        completeLoading(); // <-- Call completeLoading
     }, 1); 
 
     previousPathRef.current = currentPath;
@@ -37,8 +46,13 @@ export function NavigationEvents() {
     // Cleanup
     return () => {
         clearTimeout(timer);
-        if (NProgress.isStarted()) {
-            NProgress.done();
+        try {
+          if (NProgress.isStarted()) {
+              NProgress.done();
+          }
+        } catch (error) {
+          // Gracefully handle cleanup errors
+          console.warn('Navigation cleanup error:', error);
         }
         completeLoading(); // <-- Call completeLoading on cleanup too
     };
