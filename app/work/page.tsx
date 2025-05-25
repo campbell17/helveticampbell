@@ -54,7 +54,7 @@ export default function WorkPage() {
                   item: {
                     '@type': 'CreativeWork',
                     name: 'Fulcrum',
-                    url: 'https://helveticampbell.com/work',
+                    url: 'https://helveticampbell.com/work/fulcrum',
                     image: 'https://helveticampbell.com/images/work/isolated/iso-fulcrum-icon.png'
                   }
                 },
@@ -63,9 +63,9 @@ export default function WorkPage() {
                   position: 2,
                   item: {
                     '@type': 'CreativeWork',
-                    name: 'Spatial Networks',
-                    url: 'https://helveticampbell.com/work',
-                    image: 'https://helveticampbell.com/images/work/isolated/iso-sni-icon.jpg'
+                    name: 'Fulcrum Branding',
+                    url: 'https://helveticampbell.com/work/fulcrum/branding',
+                    image: 'https://helveticampbell.com/images/work/isolated/iso-fulcrum-icon.png'
                   }
                 },
                 {
@@ -73,9 +73,39 @@ export default function WorkPage() {
                   position: 3,
                   item: {
                     '@type': 'CreativeWork',
+                    name: 'Fulcrum Data',
+                    url: 'https://helveticampbell.com/work/fulcrum/data',
+                    image: 'https://helveticampbell.com/images/work/isolated/iso-fulcrum-icon.png'
+                  }
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 4,
+                  item: {
+                    '@type': 'CreativeWork',
+                    name: 'Fulcrum Community',
+                    url: 'https://helveticampbell.com/work/fulcrum/community',
+                    image: 'https://helveticampbell.com/images/work/isolated/iso-fulcrum-icon.png'
+                  }
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 5,
+                  item: {
+                    '@type': 'CreativeWork',
                     name: 'Divide for PS4',
-                    url: 'https://helveticampbell.com/work',
+                    url: 'https://helveticampbell.com/work/divide',
                     image: 'https://helveticampbell.com/images/work/isolated/iso-divide-logo.jpg'
+                  }
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 6,
+                  item: {
+                    '@type': 'CreativeWork',
+                    name: 'Allinspections',
+                    url: 'https://helveticampbell.com/work/allinspections',
+                    image: 'https://helveticampbell.com/images/work/isolated/iso-allinspections-icon-alt.jpg'
                   }
                 }
               ]

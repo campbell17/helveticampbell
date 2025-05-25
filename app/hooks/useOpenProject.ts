@@ -5,6 +5,18 @@ import { useLoading } from '../contexts/LoadingContext'
 
 // Helper function to convert project key to URL
 const getProjectUrl = (key: string) => {
+  // Handle nested Fulcrum projects
+  if (key === 'Fulcrum Branding') {
+    return '/work/fulcrum/branding';
+  }
+  if (key === 'Fulcrum Data') {
+    return '/work/fulcrum/data';
+  }
+  if (key === 'Fulcrum Community') {
+    return '/work/fulcrum/community';
+  }
+  
+  // Default behavior for other projects
   return `/work/${key.toLowerCase().replace(/\s+/g, '-')}`;
 };
 
@@ -45,6 +57,9 @@ export const ProjectOpener = {
     window.location.href = url
   },
   openFulcrum: () => ProjectOpener.open('Fulcrum'),
+  openFulcrumBranding: () => ProjectOpener.open('Fulcrum Branding'),
+  openFulcrumData: () => ProjectOpener.open('Fulcrum Data'),
+  openFulcrumCommunity: () => ProjectOpener.open('Fulcrum Community'),
   openSpatialNetworks: () => ProjectOpener.open('Spatial Networks'),
   openAllinspections: () => ProjectOpener.open('Allinspections'),
   openDivide: () => ProjectOpener.open('Divide'),

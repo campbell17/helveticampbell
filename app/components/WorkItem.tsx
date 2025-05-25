@@ -26,6 +26,18 @@ interface WorkItemProps {
 export default function WorkItem({ image, imageAspectRatio = "aspect-video" }: WorkItemProps) {
   // Convert project key to URL-friendly format
   const getProjectUrl = (key: string) => {
+    // Handle nested Fulcrum projects
+    if (key === 'Fulcrum Branding') {
+      return '/work/fulcrum/branding';
+    }
+    if (key === 'Fulcrum Data') {
+      return '/work/fulcrum/data';
+    }
+    if (key === 'Fulcrum Community') {
+      return '/work/fulcrum/community';
+    }
+    
+    // Default behavior for other projects
     return `/work/${key.toLowerCase().replace(/\s+/g, '-')}`;
   };
 

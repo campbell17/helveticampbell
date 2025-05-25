@@ -87,6 +87,9 @@ export default function Navigation() {
   // Project links for the Work disclosure
   const projects: ProjectItem[] = [
     { name: 'Fulcrum', href: '/work/fulcrum', key: 'Fulcrum' },
+    { name: 'Fulcrum Branding', href: '/work/fulcrum/branding', key: 'Fulcrum Branding' },
+    { name: 'Fulcrum Data', href: '/work/fulcrum/data', key: 'Fulcrum Data' },
+    { name: 'Fulcrum Community', href: '/work/fulcrum/community', key: 'Fulcrum Community' },
     { name: 'Spatial Networks', href: '/work/spatial-networks', key: 'Spatial Networks' },
     { name: 'Divide', href: '/work/divide', key: 'Divide' },
     { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
