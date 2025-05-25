@@ -2,17 +2,15 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import ThemeSwitcher from './ThemeSwitcher'
 import LoadingLogo from './LoadingLogo'
 import { useLoading } from '../contexts/LoadingContext'
-import { Menu, MenuItem, MenuItems } from '@headlessui/react'
 import { useState, useEffect } from 'react'
 
 export default function TopNav() {
   const pathname = usePathname()
   const { initiateLoading } = useLoading()
-  const [isWorkHovered, setIsWorkHovered] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   
   // Handle scroll effect
@@ -37,19 +35,9 @@ export default function TopNav() {
   }, [scrolled])
   
   const navLinks = [
-    { name: 'Writing', href: '/writing' },
-    { name: 'Who', href: '/who' },
-  ]
-
-  // Work projects for the dropdown menu based on the actual project files
-  const workProjects = [
-    { name: 'Overview', href: '/work' },
-    { name: 'Fulcrum', href: '/work/fulcrum' },
-    { name: 'Spatial Networks', href: '/work/spatial-networks' },
-    { name: 'Divide', href: '/work/divide' },
-    { name: 'Allinspections', href: '/work/allinspections' },
-    { name: 'Branding', href: '/work/branding' },
-    // { name: 'Art', href: '/work/personal' },
+    // { name: 'Work', href: '/work' },
+    // { name: 'Writing', href: '/writing' },
+    { name: 'About', href: '/who' },
   ]
 
   const handleLinkClick = (href: string) => {
@@ -77,71 +65,8 @@ export default function TopNav() {
               </svg>
             </LoadingLogo>
           </Link>
-
-          {/* Work dropdown menu */}
-          <div 
-            className="relative"
-            onMouseEnter={() => setIsWorkHovered(true)}
-            onMouseLeave={() => setIsWorkHovered(false)}
-          >
-            {/* Work Link */}
-            <Link
-              href="/work"
-              onClick={() => {
-                handleLinkClick('/work');
-                setIsWorkHovered(false);
-              }}
-              className={`text-lg px-2 sm:px-4 py-2 rounded-md transition-colors duration-200 relative inline-block
-                ${pathname.startsWith('/work') ? 'text-[var(--text-color)]' : 'text-[var(--text-color-light)] hover:text-[var(--text-color)]'}`}
-              aria-current={pathname.startsWith('/work') ? 'page' : undefined}
-            >
-              Work
-              {pathname.startsWith('/work') && (
-                <motion.span
-                  className="absolute left-2 right-2 bottom-1 h-0.5 rounded-full bg-[var(--theme-color)]"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                />
-              )}
-            </Link>
-            
-            {/* Dropdown Menu with AnimatePresence for proper exit animations */}
-            <AnimatePresence>
-              {isWorkHovered && (
-                <motion.div
-                  className="bg-[var(--mode-color)] absolute left-0 mt-2 w-48 z-50 origin-top-left rounded-[var(--container-radius)] border border-[var(--color-border)] p-1.5 shadow-lg focus:outline-none transition-all"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1, transition: { duration: 0.2 } }}
-                  exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.2 } }}
-                >
-                  <div className="space-y-1">
-                    {workProjects.map((project) => (
-                      <div key={project.href}>
-                        <Link
-                          href={project.href}
-                          onClick={() => {
-                            handleLinkClick(project.href);
-                            setIsWorkHovered(false);
-                          }}
-                          className={`flex w-full items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium border border-transparent 
-                            hover:border-[var(--color-border)] hover:bg-[var(--pane-bg-color-hover)] 
-                            transition-colors duration-200`}
-                        >
-                          <span>{project.name}</span>
-                          {pathname === project.href && (
-                            <div className="ml-auto h-1.5 w-1.5 rounded-full bg-[var(--theme-color)]" />
-                          )}
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
           
-          {/* Regular links (Writing, Who) */}
+          {/* Navigation links */}
           {navLinks.map((link) => {
             // Check if current path starts with the link path (for nested routes)
             // But make sure we're not matching "/" with everything

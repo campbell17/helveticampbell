@@ -15,16 +15,16 @@ import { PortfolioStructuredData } from './StructuredDataManager'
 const workImages = [
   // Gallery 1: My Work
   { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum", gallery: 1 },
-  { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks", projectKey: "Spatial Networks", gallery: 1 },
+  // { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks", projectKey: "Spatial Networks", gallery: 1 },
   { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide for PS4", projectKey: "Divide", gallery: 1 },
   { src: "/images/work/isolated/iso-allinspections-icon-alt.jpg", alt: "Allinspections", projectKey: "Allinspections", gallery: 1 },
-  { src: "/images/work/gridded/grid-icons-all.jpg", alt: "Branding", projectKey: "Branding", gallery: 1 },
+  // { src: "/images/work/gridded/grid-icons-all.jpg", alt: "Branding", projectKey: "Branding", gallery: 1 },
   // { src: "/images/work/full/full-personal-drawing-1.jpg", alt: "Personal/Misc", projectKey: "Personal", gallery: 1 },
 ];
 
 export default function WorkContent() {
   return (
-    <div className="container-narrow px-4 sm:px-6 md:px-8 xl:px-0">
+    <div className="container-wide px-4 sm:px-6 md:px-8 xl:px-0">
       <PortfolioStructuredData 
         name="Tim Campbell's Portfolio Work"
         description="Design and development work by Tim Campbell, including Fulcrum app, Spatial Networks, Divide for PS4, and more."
@@ -42,7 +42,7 @@ export default function WorkContent() {
         <div>
           {/* Work gallery grid  */}
           <div className="@container mb-16">
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
               {workImages.map((image, index) => (
                 <WorkItem
                   key={index}
@@ -64,15 +64,7 @@ export default function WorkContent() {
             <p>If design called to my logical side, the web as a medium called to my preternatural lust for improvement. When I sent that file entitled "business-card-CEO-front_final-final2.pdf" to the printer for that run of 10,000, clicking 'send' was what I like to refer to as a Pampers™ moment. On the web, however, I could fix a typo faster than that same PDF would load in Adobe Acrobat. I'm not condoning sloppiness, of course. Pampers™ are expensive.</p>            
             <p><Link href="/who">Read more about my work history.</Link></p>
           </div>
-        </div>
-        
-        <div>
-          {/* Working with Tim */}
-          <div className="flex flex-col">
-            <H2>What It's Like to Work With Me</H2>
-            <Testimonials className="mt-12"/>
-          </div>
-        </div>
+        </div>       
       </div>
     </div>
   )

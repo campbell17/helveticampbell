@@ -52,6 +52,14 @@
   @apply col-span-12;
 }
 
+.container-wide {
+  @apply max-w-7xl mx-auto;
+}
+
+.container-medium {
+  @apply max-w-7xl mx-auto;
+}
+
 .container-narrow {
   @apply max-w-5xl mx-auto;
 }

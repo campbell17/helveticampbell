@@ -19,7 +19,7 @@ const testimonials = [
       {
         content: (
           <>
-            <p>I had the pleasure of working closely with Tim at Fulcrum, where he brought <span className="font-[700] !text-black bg-[var(--theme-color-accent)]">an incredible mix of design talent, initiative, and thoughtfulness</span> to our team. What stood out most about Tim was his thoughtful ability to question — "Should we do this?" rather than just "How should we do this?" That kind of thinking helped us build not just usable features, but also avoid wasting time on things we didn't need. Tim consistently delivered designs that were a joy to use—some of the most intuitive and polished parts of our platform were his work. He also took initiative on bigger efforts, like leading the charge on our web design system.</p>
+            <p>I had the pleasure of working closely with Tim at Fulcrum, where he brought an <span className="font-[700] !text-black bg-[var(--theme-color-accent)]">incredible mix of design talent, initiative, and thoughtfulness</span> to our team. What stood out most about Tim was his thoughtful ability to question — "Should we do this?" rather than just "How should we do this?" That kind of thinking helped us build not just usable features, but also avoid wasting time on things we didn't need. Tim consistently delivered designs that were a joy to use—some of the most intuitive and polished parts of our platform were his work. He also took initiative on bigger efforts, like leading the charge on our web design system.</p>
           </>
         ),
         author: {

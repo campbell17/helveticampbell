@@ -8,7 +8,8 @@ import { Tooltip } from './Tooltip'
 import ContactModal from './ContactModal'
 import { useState } from 'react'
 import { PersonStructuredData } from './StructuredDataManager'
-import { EnvelopeIcon, DocumentTextIcon } from '@heroicons/react/24/solid'
+import { EnvelopeIcon, DocumentTextIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/solid'
+import Testimonials from './Testimonials'
 
 export default function WhoContent() {
   const [contactModalOpen, setContactModalOpen] = useState(false)
@@ -19,7 +20,7 @@ export default function WhoContent() {
   }
 
   return (
-    <div className="container-narrow px-4 sm:px-6 md:px-8 xl:px-0">
+    <div className="container-wide px-4 sm:px-6 md:px-8 xl:px-0">
       <PersonStructuredData />
       <div className="flex flex-col md:flex-row items-start md:items-center">
         {/* Profile image  */}
@@ -33,27 +34,22 @@ export default function WhoContent() {
               className="transition-all duration-200"
             />
         </div> */}
-        <H1>Hey, I'm Tim</H1>
+        <H1>About Tim</H1>
       </div>
       
       <div className="subheading">
-        I'm a lead product designer based near Philadelphia with 20 years of experience designing and shipping software with a relentless focus on the user.
-        <ul className="w-fit flex flex-col sm:flex-row space-x-6 mt-3 text-base">
+        I'm a founding product designer based near Philadelphia with experience making shrewd decisions about what to build and when, executing quality work to improve life for customers and internal teams alike.
+        <div className="flex flex-col md:flex-row gap-6">
+        <ul className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full md:w-fit flex flex-col gap-1 md:gap-0 md:flex-row mt-12 !mb-0 text-base">
           {/* Get in touch:  */}
           <li>
-            <Link href="#contact" onClick={openContactModal} className="flex items-center transition-colors">
-              <EnvelopeIcon className="h-5 w-5 mr-2" />
-              <span>Contact</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/pdf/Tim-Campbell-Lead-Product-Designer-Resume-2025.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:text-teal-700 transition-colors">
+            <Link href="/pdf/Tim-Campbell-Lead-Product-Designer-Resume-2025.pdf" target="_blank" rel="noopener noreferrer" className="w-full p-6 py-4 pane flex items-center transition-colors">
               <DocumentTextIcon className="h-5 w-5 mr-2" />
               <span>Resume</span>
             </Link>
           </li>
           <li>
-            <Link href="https://github.com/campbell17" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:text-teal-700 transition-colors">
+            <Link href="https://github.com/campbell17" target="_blank" rel="noopener noreferrer" className="w-full p-6 py-4 pane flex items-center transition-colors">
               <svg className="h-5 w-5 mr-2" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   fillRule="evenodd"
@@ -66,7 +62,7 @@ export default function WhoContent() {
             </Link>
           </li>
           <li>
-            <Link href="https://linkedin.com/in/campbell17" target="_blank" rel="noopener noreferrer" className="flex items-center text-teal-600 hover:text-teal-700 transition-colors">
+            <Link href="https://linkedin.com/in/campbell17" target="_blank" rel="noopener noreferrer" className="w-full p-6 py-4 pane flex items-center transition-colors">
               <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27187 6.51094 3.27187 5.37187C3.27187 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8938V14.8828C16.8938 13.5563 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2938 12.9094 14.7891V20.4516H9.35625V8.99531H12.7688V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z" fill="currentColor"/>
               </svg>
@@ -74,19 +70,27 @@ export default function WhoContent() {
             </Link>
           </li>
         </ul>
+
+        <ul className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full md:w-fit flex flex-col md:flex-row mt-6 md:mt-12 !mb-0 text-base">
+          {/* Get in touch:  */}
+          <li>
+            <Link href="#contact" onClick={openContactModal} className="w-full p-6 py-4 pane flex items-center transition-colors">
+              <ChatBubbleLeftRightIcon className="h-5 w-5 mr-2" />
+              <span>Talk to me</span>
+            </Link>
+          </li>
+        </ul>
+        </div>
       </div>
 
       <H2 className="mb-8">The Short Version</H2>
 
       <ul className="space-y-4 list-disc list-outside ml-5">
         <li>
-          I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer">Fulcrum</Link> for its first 10 years while it grew from an idea on a whiteboard to $12M+ in ARR with 2,000+ customers.
+          I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer">Fulcrum</Link> for its first 10 years, growing it from an idea on a whiteboard to $12M+ in ARR with a small team and scant resources.
         </li>
         <li>
-          This included web app, mobile Apps, branding, marketing website, print materials.
-        </li>
-        <li>
-          I&apos;m comfortable working with Rails, HTML, CSS, as well as JS/React. They didn&apos;t ask me to learn how to code. I did it to speed us up. 
+          I&apos;m adaptable and always learning. No one asked me to learn how to code, I did it to speed up our shipping time.
         </li>
         <li>
           In addition to working on Fulcrum, I was also solely responsible for designing and shipping the branding, website, and print / trade show materials for our parent company, Spatial Networks.
@@ -99,7 +103,13 @@ export default function WhoContent() {
         </li>
       </ul>
 
-      <H2 className="mb-8">For Brevity Haters</H2>
+      {/* Working with Tim */}
+      <div className="flex flex-col mt-24">
+        <H2>What It's Like to Work With Me</H2>
+        <Testimonials className="mt-12"/>
+      </div>
+
+      {/* <H2 className="mb-8">For Brevity Haters</H2>
       <p>Fourteen years ago, a geospatial technology company named <Tooltip content="Open Project"><Link href="/work/spatial-networks"> Spatial Networks</Link></Tooltip> hired me as their 12th employee and first designer. They needed... everything. My title was UI Designer, but I did it all, online and in print. But we&apos;ll come back to that.</p>
       <p>Before that, I founded a design agency called Whiteshark Creations with an engineering colleague. We worked with some great clients in our first year, but I realized agency life wasn&apos;t my calling and I left for other design pursuits.</p>
       <p>Prior to going solo, my design career began its infancy, when Macromedia was still a household name and Web 2.0 was hitting it&apos;s bubbly prime. I started as a web designer at an online travel operator called Tourico Holidays (now HotelBeds) and this is where I first clapped eyes on naked HTML & CSS. We had dedicated developers to write all the code, but started learning and practicing to satisfy my curiosity. But it wasn't until my first year working at Spatial Networks that I would feel the power of <code className="pane no-hover text-xl p-2 rounded-md border border-dashed border-[var(--color-border)]">git push origin master</code>.</p>
@@ -109,7 +119,7 @@ export default function WhoContent() {
       <p>We took a few cracks at different product ideas. <Tooltip content="Open Project"><Link href="/work/allinspections"> Allinspections</Link></Tooltip>, the product I was actually hired to help create, couldn&apos;t find its niche and had to be sunsetted after 18 months. The CEO called me into his office. I was proud of the work we did, but when he told me we had to shut it down, I worried that would be our final meeting. Instead, he offered me the opportunity to head up something new: Fulcrum.</p>
       <p>Since 2012, this has been the flagship product of Spatial Networks and my number one source of design activity. Unlike prior attempts, Fulcrum struck just the right balance of utility, ease of use, customizability, and extensibility. We were still super lean back then, but now we had people counting on our product. It felt so good to talk to customers about their issues and ideas and be able to mesh them with ours to give their companies leverage just from using our software.</p>
       <p>Since then, we grew every month, steady as a rock. We found product market fit. Our founders understood the importance of keeping the team tight. People who didn&apos;t perform didn&apos;t last. I was responsible the strategy and design for the marketing website, the web app, and the mobile app, all while continuing to support the corporate design materials and marketing for our parent company. It&apos;s wild to compare how we operate now with what we achieved back then with so little, but what I learned about the importance of shipping fast to keep the feedback loop tight was invaluable.</p>
-      <p>Let's chat about your next project. <Link href="#contact" onClick={openContactModal} className="text-gray-500 hover:text-black transition-colors inline">Get in touch</Link>.</p>
+      <p>Let's chat about your next project. <Link href="#contact" onClick={openContactModal} className="text-gray-500 hover:text-black transition-colors inline">Get in touch</Link>.</p> */}
       
       {/* Contact Modal */}
       <ContactModal isOpen={contactModalOpen} onClose={() => setContactModalOpen(false)} />

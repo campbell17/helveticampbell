@@ -60,7 +60,7 @@ export default function WorkItem({ image, imageAspectRatio = "aspect-video" }: W
         {/* Content area */}
         <div className="p-6">
           {/* Tags */}
-          <div className="flex flex-wrap gap-x-2 gap-y-1 mb-3">
+          <div className="flex flex-wrap gap-x-2 gap-y-1 mb-1">
             {projectDetails[image.projectKey]?.tags?.map((tag: string, i: number) => (
               <React.Fragment key={tag}>
                 <Overline className="flex items-center text-xs uppercase font-medium text-secondary">{tag}</Overline>
@@ -72,10 +72,10 @@ export default function WorkItem({ image, imageAspectRatio = "aspect-video" }: W
           </div>
           
           {/* Title */}
-          <h3 className="text-primary text-lg font-medium mb-2">{projectDetails[image.projectKey]?.heading}<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> {projectDetails[image.projectKey]?.headingAlt}</span></h3>
+          <h3 className="text-primary text-lg font-medium !mb-1">{projectDetails[image.projectKey]?.heading}<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> {projectDetails[image.projectKey]?.headingAlt}</span></h3>
           
           {/* Description */}
-          <p className="!mb-0 text-primary text-base">{projectDetails[image.projectKey]?.subheading || ''}</p>
+          {/* <p className="!mb-0 text-primary text-base">{projectDetails[image.projectKey]?.subheading || ''}</p> */}
         </div>
       </Link>
     </div>
