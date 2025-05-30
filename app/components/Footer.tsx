@@ -8,7 +8,7 @@ import { Overline } from './Typography'
 import { useState } from 'react'
 import ContactModal from './ContactModal'
 import Image from 'next/image'
-import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/solid'
+import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
 
 export default function Footer() {
   const pathname = usePathname()
@@ -66,9 +66,9 @@ export default function Footer() {
                 </div>
                 
                 {/* Talk to me button */}
-                <ul className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-fit !mb-0 flex text-base">
+                <ul className="w-fit !mb-0 flex text-base">
                   <li>
-                    <Link href="#contact" onClick={openContactModal} className="p-6 py-4 pane flex items-center transition-colors">
+                    <Link href="#contact" onClick={openContactModal} className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-4 pane flex items-center justify-center transition-colors flex items-center transition-colors">
                       <ChatBubbleLeftRightIcon className="h-5 w-5 mr-2" />
                       <span>Talk to me</span>
                     </Link>

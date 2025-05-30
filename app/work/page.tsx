@@ -64,7 +64,7 @@ export default function WorkPage() {
                   item: {
                     '@type': 'CreativeWork',
                     name: 'Fulcrum Branding',
-                    url: 'https://helveticampbell.com/work/fulcrum/branding',
+                    url: 'https://helveticampbell.com/work/fulcrum/evolution',
                     image: 'https://helveticampbell.com/images/work/isolated/iso-fulcrum-icon.png'
                   }
                 },

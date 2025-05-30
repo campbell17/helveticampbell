@@ -6,10 +6,11 @@ import UnifiedContentList from './UnifiedContentList'
 import { useOpenProject } from '../hooks/useOpenProject'
 import { essays } from '../data/essays'
 import { config } from '../config/environment'
+import { projectDetails } from '../data/projectDetails'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import { ArrowRightIcon, CalendarDateRangeIcon, CalendarIcon, DocumentTextIcon, HandRaisedIcon } from '@heroicons/react/24/outline'
 import { HomepageStructuredData } from './StructuredDataManager'
 
 // Work images from Sidebar component
@@ -55,10 +56,10 @@ export default function HomeContent() {
     <div className="container-medium px-4 sm:px-6 md:px-8 xl:px-0">
       <HomepageStructuredData />
       {/* <Overline className="!text-xl">This is</Overline> */}
-      <H1 className="">Here's a nice headline. It might go to two lines.</H1>
+      <H1 className="">I Help Teams Design & Build Products.</H1>
       
-      <div className="subheading">
-        If you want this could be snappy, or it could be a long thing that no one will ever read.
+      <div className="subheading !mb-0">
+        Let's build something better together.
       </div>
       
       {/* <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center mb-16">
@@ -82,20 +83,90 @@ export default function HomeContent() {
         </div>
       </div> */}
 
-      <div className="flex items-center justify-between mb-8">
+      {/* <div className="flex items-center justify-between mb-8">
         <H2 className="!mb-0">Featured Work</H2>
-      </div>      
-      <div className="@container mb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
-          {workImages.map((image, index) => (
-            <WorkItem
-              key={index}
-              image={image}
-              imageAspectRatio="aspect-[21/11]" // Custom wider aspect ratio for homepage
-            />
-          ))}
-        </div>
+      </div>       */}
+      {/* <div className="@container mb-16"> */}
+      <div className="flex flex-col md:flex-row gap-6">
+        <ul className="w-full flex items-center flex-col gap-2 lg:flex-row mt-12 !mb-0 text-base">
+          {/* Get in touch:  */}
+          <li className="w-full">
+            <Link href="https://github.com/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
+              <CalendarIcon className="h-5 w-5 mr-2" />
+              <Overline className="!text-lg">Hire me full-time</Overline>
+            </Link>
+          </li>
+          <li className="w-full">
+            <Link href="https://linkedin.com/in/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
+              <CalendarDateRangeIcon className="h-5 w-5 mr-2" />
+              <Overline className="!text-lg">Hire me for a project</Overline>
+            </Link>
+          </li>
+          <li className="w-full">
+            <Link href="https://linkedin.com/in/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
+              <HandRaisedIcon className="h-5 w-5 mr-2" />
+              <Overline className="!text-lg">Let's chat like humans</Overline>
+            </Link>
+          </li>
+        </ul>
       </div>
+
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8"> */}
+          {/* {workImages.map((image, index) => {
+            // Check if this project has a video to determine aspect ratio
+            const hasVideo = projectDetails[image.projectKey]?.coverVideo;
+            const aspectRatio = hasVideo ? "aspect-[21/12]" : "aspect-[21/11]";
+            
+            return (
+              <WorkItem
+                key={index}
+                image={image}
+                imageAspectRatio={aspectRatio}
+              />
+            );
+          })} */}
+          
+          {/* <div className="flex flex-col transition-all duration-[var(--duration-300)]">
+            <Overline className="flex items-center !text-lg mb-2">Hire me full-time</Overline>
+            <Link 
+              href="/work/fulcrum/evolution"
+              className="container-behavior-primary pane"
+            >
+              <div className="aspect-[21/12] w-full overflow-hidden">
+                <video
+                  src="/videos/fulcrum-evolution-hero.mp4"
+                  poster="/images/work/full/full-fulcrum-evolution-hero.jpg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            </Link>
+          </div>
+          <div className="flex flex-col transition-all duration-[var(--duration-300)]">
+            <Overline className="flex items-center !text-lg mb-2">Hire me for a project/contract</Overline>
+            <Link 
+              href="/work/fulcrum/evolution"
+              className="container-behavior-primary pane"
+            >
+              <div className="aspect-[21/12] w-full overflow-hidden">
+                <video
+                  src="/videos/fulcrum-evolution-hero.mp4"
+                  poster="/images/work/full/full-fulcrum-evolution-hero.jpg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            </Link>
+          </div> */}
+
+        {/* </div> */}
+      {/* </div> */}
     </div>
   )
 } 

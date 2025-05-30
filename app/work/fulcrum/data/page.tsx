@@ -1,16 +1,16 @@
 import React from 'react';
-import FulcrumContent from '../../../components/projects/FulcrumContent';
+import FulcrumDataContent from '../../../components/projects/FulcrumDataContent';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Fulcrum Data Viewer | Data Management Platform | Tim Campbell',
-  description: 'As the primary designer for Fulcrum, I led the product\'s visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.',
+  description: 'Designing intuitive data management tools that help organizations make sense of millions of field records through powerful visualization, filtering, and export capabilities.',
 };
 
 export default function FulcrumDataPage() {
   return (
     <div className="project-page">
-      <FulcrumContent />
+      <FulcrumDataContent />
     </div>
   );
 } 

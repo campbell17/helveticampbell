@@ -29,7 +29,7 @@ export default function ThemeSwitcher() {
   }
   
   // Show the opposite icon of current theme (moon for light, sun for dark)
-  const IconToShow = theme === 'dark' ? SunIcon : MoonIcon
+  const IconToShow = theme === 'dark' ? MoonIcon : SunIcon
   
   // Don't render anything until mounted to prevent hydration issues
   if (!mounted) return null

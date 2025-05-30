@@ -1,16 +1,16 @@
 import React from 'react';
-import FulcrumContent from '../../../components/projects/FulcrumContent';
+import FulcrumBrandingContent from '../../../components/projects/FulcrumBrandingContent';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Fulcrum Evolution | Branding & Identity | Tim Campbell',
-  description: 'As the primary designer for Fulcrum, I led the product\'s visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.',
+  title: 'Fulcrum Branding | Visual Identity & Marketing | Tim Campbell',
+  description: 'Developing a cohesive visual identity that evolved with the company from startup to enterprise platform, including logos, marketing materials, and brand guidelines.',
 };
 
 export default function FulcrumBrandingPage() {
   return (
     <div className="project-page">
-      <FulcrumContent />
+      <FulcrumBrandingContent />
     </div>
   );
 } 

@@ -7,7 +7,7 @@ import { useLoading } from '../contexts/LoadingContext'
 const getProjectUrl = (key: string) => {
   // Handle nested Fulcrum projects
   if (key === 'Fulcrum Branding') {
-    return '/work/fulcrum/branding';
+    return '/work/fulcrum/evolution';
   }
   if (key === 'Fulcrum Data') {
     return '/work/fulcrum/data';

@@ -23,6 +23,7 @@ export interface ProjectDetails {
   tags?: string[];
   description?: string;
   coverImage?: string;
+  coverVideo?: string;
   heading?: string;
   headingAlt?: string;
   subheading?: string;
@@ -109,7 +110,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
     ],
     tags: projectTags["Fulcrum Branding"],
     description: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
-    coverImage: "/images/work/index/work-index-fulcrum.jpg",
+    coverImage: "/images/work/index/work-index-fulcrum-evolution.jpg",
     heading: "Fulcrum",
     headingAlt: "Evolution",
     subheading: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
@@ -151,9 +152,10 @@ export const projectDetails: Record<string, ProjectDetails> = {
     ],
     tags: projectTags["Fulcrum Data"],
     description: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
-    coverImage: "/images/work/index/work-index-fulcrum.jpg",
+    coverImage: "/images/work/index/work-index-fulcrum-data2.jpg",
+    coverVideo: "/images/work/index/data-viewer-short.webm",
     heading: "Fulcrum",
-    headingAlt: "Data Viewer",
+    headingAlt: "Data",
     subheading: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
   },
   "Fulcrum Community": {
