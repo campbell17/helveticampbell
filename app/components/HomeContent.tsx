@@ -56,10 +56,10 @@ export default function HomeContent() {
     <div className="container-medium px-4 sm:px-6 md:px-8 xl:px-0">
       <HomepageStructuredData />
       {/* <Overline className="!text-xl">This is</Overline> */}
-      <H1 className="">I Help Teams Design & Build Products.</H1>
+      <H1>I Help Software Teams Design, Build, and Evolve Their Products.</H1>
       
       <div className="subheading !mb-0">
-        Let's build something better together.
+        Let's make something better together.
       </div>
       
       {/* <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center mb-16">
@@ -86,36 +86,36 @@ export default function HomeContent() {
       {/* <div className="flex items-center justify-between mb-8">
         <H2 className="!mb-0">Featured Work</H2>
       </div>       */}
-      {/* <div className="@container mb-16"> */}
-      <div className="flex flex-col md:flex-row gap-6">
-        <ul className="w-full flex items-center flex-col gap-2 lg:flex-row mt-12 !mb-0 text-base">
-          {/* Get in touch:  */}
-          <li className="w-full">
-            <Link href="https://github.com/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
-              <CalendarIcon className="h-5 w-5 mr-2" />
-              <Overline className="!text-lg">Hire me full-time</Overline>
-            </Link>
-          </li>
-          <li className="w-full">
-            <Link href="https://linkedin.com/in/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
-              <CalendarDateRangeIcon className="h-5 w-5 mr-2" />
-              <Overline className="!text-lg">Hire me for a project</Overline>
-            </Link>
-          </li>
-          <li className="w-full">
-            <Link href="https://linkedin.com/in/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
-              <HandRaisedIcon className="h-5 w-5 mr-2" />
-              <Overline className="!text-lg">Let's chat like humans</Overline>
-            </Link>
-          </li>
-        </ul>
+      <div className="@container mb-16">
+        <div className="h-full flex flex-col md:flex-row gap-6">
+          <ul className="w-full h-full flex items-center flex-col gap-2 lg:flex-row mt-12 !mb-0 text-base">
+            {/* Get in touch:  */}
+            <li className="w-full h-full">
+              <Link href="https://github.com/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
+                <CalendarIcon className="h-5 w-5 mr-2" />
+                <Overline className="!text-lg">Hire me full-time</Overline>
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link href="https://linkedin.com/in/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
+                <CalendarDateRangeIcon className="h-5 w-5 mr-2" />
+                <Overline className="!text-lg">Hire me for a project</Overline>
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link href="https://linkedin.com/in/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
+                <HandRaisedIcon className="h-5 w-5 mr-2" />
+                <Overline className="!text-lg">Chat With Me</Overline>
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
-
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8"> */}
-          {/* {workImages.map((image, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {workImages.map((image, index) => {
             // Check if this project has a video to determine aspect ratio
             const hasVideo = projectDetails[image.projectKey]?.coverVideo;
-            const aspectRatio = hasVideo ? "aspect-[21/12]" : "aspect-[21/11]";
+            const aspectRatio = hasVideo ? "aspect-[21/12]" : "aspect-[21/12]";
             
             return (
               <WorkItem
@@ -124,7 +124,7 @@ export default function HomeContent() {
                 imageAspectRatio={aspectRatio}
               />
             );
-          })} */}
+          })}
           
           {/* <div className="flex flex-col transition-all duration-[var(--duration-300)]">
             <Overline className="flex items-center !text-lg mb-2">Hire me full-time</Overline>
@@ -166,7 +166,7 @@ export default function HomeContent() {
           </div> */}
 
         {/* </div> */}
-      {/* </div> */}
+      </div>
     </div>
   )
 } 

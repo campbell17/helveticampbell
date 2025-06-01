@@ -99,7 +99,7 @@ export default function WhoContent() {
           I write for fun. You can read what I publish on <Link href="https://campbellseventeen.substack.com" target="_blank" rel="noopener noreferrer" className="text-teal-600">Substack</Link>.
         </li>
         <li>
-          I enjoy sports and I love Formula 1. I haven&apos;t missed a race in 25 years.
+          I enjoy sports and I love Formula 1. I haven&apos;t missed a race since Hockenheim in 2000, which made Rubens Barrichello so sad he cried on the podium.
         </li>
       </ul>
 
