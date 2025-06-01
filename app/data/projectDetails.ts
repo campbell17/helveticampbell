@@ -73,7 +73,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
     headingAlt: "Field Operations Platform",
     subheading: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
   },
-  "Fulcrum Branding": {
+  "Fulcrum Lines and Polygons": {
     content: FulcrumContent, 
     images: [
       // { src: "/images/work/isolated/iso-fulcrum-icon-og.jpg", alt: "Fulcrum Icon OG" },
@@ -108,11 +108,11 @@ export const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/full/full-fulcrum-handout.jpg", alt: "Fulcrum Handout", fullWidth: true, aspectRatio: "100/64" },
       { src: "/images/work/gridded/grid-fulcrum-buildericons-v3.jpg", alt: "Fulcrum Builder Icons v3" },
     ],
-    tags: projectTags["Fulcrum Branding"],
+    tags: projectTags["Fulcrum Lines and Polygons"],
     description: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
     coverImage: "/images/work/index/work-index-fulcrum-evolution.jpg",
     heading: "Fulcrum",
-    headingAlt: "Evolution",
+    headingAlt: "Lines & Polygons",
     subheading: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
   },
   "Fulcrum Data": {
@@ -158,7 +158,7 @@ export const projectDetails: Record<string, ProjectDetails> = {
     headingAlt: "Data",
     subheading: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
   },
-  "Fulcrum Community": {
+  "Fulcrum Report Builder": {
     content: FulcrumContent, 
     images: [
       // { src: "/images/work/isolated/iso-fulcrum-icon-og.jpg", alt: "Fulcrum Icon OG" },
@@ -193,40 +193,13 @@ export const projectDetails: Record<string, ProjectDetails> = {
       { src: "/images/work/full/full-fulcrum-handout.jpg", alt: "Fulcrum Handout", fullWidth: true, aspectRatio: "100/64" },
       { src: "/images/work/gridded/grid-fulcrum-buildericons-v3.jpg", alt: "Fulcrum Builder Icons v3" },
     ],
-    tags: projectTags["Fulcrum Community"],
+    tags: projectTags["Fulcrum Report Builder"],
     description: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
     coverImage: "/images/work/index/work-index-fulcrum.jpg",
     heading: "Fulcrum",
-    headingAlt: "Community",
+    headingAlt: "Report Builder",
     subheading: "As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.",
   },
-  // "Spatial Networks": {
-  //   content: SpatialNetworksContent, 
-  //   images: [
-  //     { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks Icon" },
-  //     { src: "/images/work/isolated/iso-sni-logo.jpg", alt: "Spatial Networks Logo" },
-  //     { src: "/images/work/isolated/iso-sni-icon-fall.jpg", alt: "Spatial Networks Icon fall" },
-  //     { src: "/images/work/isolated/iso-sni-icon-fall-tshirt.jpg", alt: "Spatial Networks Icon fall tshirt" },
-  //     { src: "/images/work/browser/browser-sni-2011.jpg", alt: "Spatial Networks 2011 Site", aspectRatio: "1440/1261" },
-  //     { src: "/images/work/browser/browser-sni-2013.jpg", alt: "Spatial Networks 2013 Site", aspectRatio: "1440/1261" },
-  //     { src: "/images/work/browser/browser-sni-2017.jpg", alt: "Spatial Networks 2017 Site", aspectRatio: "1440/1261" },
-  //     { src: "/images/work/browser/browser-sni-2019-1.jpg", alt: "Spatial Networks 2019 Site 1", aspectRatio: "1440/1261" },
-  //     { src: "/images/work/browser/browser-sni-2019-3.jpg", alt: "Spatial Networks 2019 Site 3", aspectRatio: "1440/1261" },
-  //     { src: "/images/work/browser/browser-sni-2019-4.jpg", alt: "Spatial Networks 2019 Site 4", aspectRatio: "1440/1261" },
-  //     { src: "/images/work/browser/browser-sni-2019-5.jpg", alt: "Spatial Networks 2019 Site 5", aspectRatio: "1440/1261" },
-  //     { src: "/images/work/browser/browser-sni-foresight-1.jpg", alt: "Spatial Networks Foresight", aspectRatio: "1440/1261" },
-  //     { src: "/images/work/full/full-sni-ad-1.jpg", alt: "Spatial Networks Ad 1" },
-  //     { src: "/images/work/full/full-sni-ad-2.jpg", alt: "Spatial Networks Ad 2" },
-  //     { src: "/images/work/isolated/iso-sni-tradeshow-booth.jpg", alt: "Spatial Networks Tradeshow booth" },
-  //     { src: "/images/work/snapshots/snapshot-sni-tradeshow-1.jpg", alt: "Spatial Networks Tradeshow" },
-  //   ],
-  //   tags: projectTags["Spatial Networks"],
-  //   description: "Rebranding and digital presence for a geospatial intelligence company.",
-  //   coverImage: "/images/work/full/full-sni-ad-1.jpg",
-  //   heading: "Spatial Networks",
-  //   headingAlt: "Geospatial Intelligence Platform",
-  //   subheading: "Geospatial intelligence specializing in technology, analytics, and ground-truthing. I led design for all aspects of the company, including marketing, branding, and product design of its software products.",
-  // },
   "Divide": {
     content: DivideContent, 
     images: [

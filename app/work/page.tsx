@@ -63,8 +63,8 @@ export default function WorkPage() {
                   position: 2,
                   item: {
                     '@type': 'CreativeWork',
-                    name: 'Fulcrum Branding',
-                    url: 'https://helveticampbell.com/work/fulcrum/evolution',
+                    name: 'Fulcrum Lines and Polygons',
+                    url: 'https://helveticampbell.com/work/fulcrum-lines-and-polygons',
                     image: 'https://helveticampbell.com/images/work/isolated/iso-fulcrum-icon.png'
                   }
                 },
@@ -83,8 +83,8 @@ export default function WorkPage() {
                   position: 4,
                   item: {
                     '@type': 'CreativeWork',
-                    name: 'Fulcrum Community',
-                    url: 'https://helveticampbell.com/work/fulcrum/community',
+                    name: 'Fulcrum Report Builder',
+                    url: 'https://helveticampbell.com/work/fulcrum/report-builder',
                     image: 'https://helveticampbell.com/images/work/isolated/iso-fulcrum-icon.png'
                   }
                 },

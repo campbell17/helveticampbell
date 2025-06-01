@@ -1,16 +1,16 @@
 import React from 'react';
-import FulcrumCommunityContent from '../../../components/projects/FulcrumCommunityContent';
+import FulcrumReportBuilderContent from '../../../components/projects/FulcrumReportBuilderContent';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Fulcrum Community | Crisis Response Platform | Tim Campbell',
-  description: 'Designing tools that help emergency response teams coordinate effectively during natural disasters, humanitarian crises, and community emergencies.',
+  title: 'Fulcrum Report Builder | Data Visualization Platform | Tim Campbell',
+  description: 'Designing an intuitive report builder that enables users to create custom reports and visualizations from their field data.',
 };
 
 export default function FulcrumCommunityPage() {
   return (
     <div className="project-page">
-      <FulcrumCommunityContent />
+      <FulcrumReportBuilderContent />
     </div>
   );
 } 

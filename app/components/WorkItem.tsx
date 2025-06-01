@@ -29,14 +29,14 @@ export default function WorkItem({ image, imageAspectRatio = "aspect-video" }: W
   // Convert project key to URL-friendly format
   const getProjectUrl = (key: string) => {
     // Handle nested Fulcrum projects
-    if (key === 'Fulcrum Branding') {
-      return '/work/fulcrum/evolution';
+    if (key === 'Fulcrum Lines and Polygons') {
+      return '/work/fulcrum-lines-and-polygons';
     }
     if (key === 'Fulcrum Data') {
       return '/work/fulcrum/data';
     }
-    if (key === 'Fulcrum Community') {
-      return '/work/fulcrum/community';
+    if (key === 'Fulcrum Report Builder') {
+      return '/work/fulcrum/report-builder';
     }
     
     // Default behavior for other projects

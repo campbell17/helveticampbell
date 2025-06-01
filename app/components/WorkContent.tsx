@@ -14,10 +14,9 @@ import { PortfolioStructuredData } from './StructuredDataManager'
 // Work images from Sidebar component
 const workImages = [
   // Gallery 1: My Work
-  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum", gallery: 1 },
-  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum Branding", projectKey: "Fulcrum Branding", gallery: 1 },
+  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum Lines and Polygons", projectKey: "Fulcrum Lines and Polygons", gallery: 1 },
   { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum Data", projectKey: "Fulcrum Data", gallery: 1 },
-  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum Community", projectKey: "Fulcrum Community", gallery: 1 },
+  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum Report Builder", projectKey: "Fulcrum Report Builder", gallery: 1 },
   // { src: "/images/work/isolated/iso-sni-icon.jpg", alt: "Spatial Networks", projectKey: "Spatial Networks", gallery: 1 },
   { src: "/images/work/isolated/iso-divide-logo.jpg", alt: "Divide for PS4", projectKey: "Divide", gallery: 1 },
   { src: "/images/work/isolated/iso-allinspections-icon-alt.jpg", alt: "Allinspections", projectKey: "Allinspections", gallery: 1 },

@@ -6,7 +6,7 @@ import { H1, H2, H3, Overline } from '../Typography';
 import ProjectNavigation from '../ProjectNavigation';
 import { projectTags } from '../../data/projectTags';
 
-const FulcrumEvolutionContent: React.FC = () => {
+const FulcrumLinesAndPolygonsContent: React.FC = () => {
   const [isTimelineVisible, setIsTimelineVisible] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);
 
@@ -332,4 +332,4 @@ const FulcrumEvolutionContent: React.FC = () => {
   );
 }
 
-export default FulcrumEvolutionContent; 
+export default FulcrumLinesAndPolygonsContent; 
