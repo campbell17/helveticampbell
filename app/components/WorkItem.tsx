@@ -36,7 +36,7 @@ export default function WorkItem({ image, imageAspectRatio = "aspect-video" }: W
       return '/work/fulcrum/data';
     }
     if (key === 'Fulcrum Report Builder') {
-      return '/work/fulcrum/report-builder';
+      return '/work/fulcrum-report-builder';
     }
     
     // Default behavior for other projects
