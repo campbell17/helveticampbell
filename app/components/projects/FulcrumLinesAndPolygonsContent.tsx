@@ -66,18 +66,9 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
 
   return (
     <>
-      <div className="container-medium px-4 sm:px-6 md:px-8 xl:px-0 pb-10">
-        {/* <div className="flex flex-wrap mb-8">
-          {fulcrumTags.map((tag, index) => (
-            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
-          ))}
-        </div> */}
-        <H1 className="mb-4">Lines & Polygons<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Fulcrum</span></H1>
-        <p className="subheading">A shift in company focus back to our GIS roots.</p>
-        
         {/* Hero Video */}
-        <div className="mt-12 mb-16">
-          <div className="aspect-[21/11.8] w-full overflow-hidden rounded-xl shadow-md">
+        <div className="-mt-6 md:-mt-12 mb-16">
+          <div className="aspect-[21/11.8] w-full overflow-hidden shadow-md">
             <video
               src="/images/work/index/lines-and-polygons.webm"
               poster="/images/work/index/lines-and-polygons-fallback.jpg"
@@ -89,7 +80,16 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
             />
           </div>
         </div>
+      <div className="container-medium px-4 sm:px-6 md:px-8 xl:px-0 pb-10">
+        {/* <div className="flex flex-wrap mb-8">
+          {fulcrumTags.map((tag, index) => (
+            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
+          ))}
+        </div> */}
+        <H1 className="mb-4">Lines & Polygons<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Fulcrum</span></H1>
+        {/* <p className="subheading">A shift in company focus back to our GIS roots.</p> */}
       </div>
+        
 
       {/* Problem/Context Section */}
       <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] py-12 border-y border-[var(--color-border)]">
@@ -107,37 +107,38 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
         <div className="container-medium px-4 sm:px-6 md:px-8 xl:px-0">
           <Overline className="!text-base mb-4">Problem</Overline>
           <H2 className="mb-8">Our Primary Challenge</H2>
-          <p className="text-lg mb-12">
-            One of the reasons we passed on adding this capability over the years was due to the complexity and team resources required. <strong>How might we finally tackle this problem without incurring the opportunity cost of ceasing work on other priorities?</strong>
+          <p className="text-lg !mb-8">
+            One of the reasons we passed on adding this capability over the years was due to the complexity and team resources required. Work behind the scenes at the corporate level generated a joint partnership with industry giant Esri, opening the door to an integration with their SDK. 
           </p>
+          <p className="text-lg">Working with a product manager, a staff engineer, and a combination of mid-level and senior front-end and back-end engineers, I was responsible for creative direction, design, and prototyping the end-to-end experience.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="!space-y-4">
-              <H3>Initial Solution</H3>
+              <H3><em>A</em> Solution...</H3>
               <p className="text-base text-[var(--text-color)]">
-                Integrate with the well-established Esri SDK and add the new geometry capability to our existing map editor. i.e., build the controls and UI functionality ourselves.
+                We aimed to integrate with the well-established Esri SDK and add the new geometry capability to our existing map editor. i.e., build the controls and UI functionality ourselves.
               </p>
               <ul className="!text-base list-disc list-inside">
-                <strong>Benefits</strong>
+                <strong>Benefit</strong>
                 <li>Full customizability of the implementation/design patterns</li>
               </ul>
               <ul className="!text-base list-disc list-inside">
-                <strong>Tradeoffs</strong>
-                <li>Requires longer than desirable design / development time</li>
+                <strong>Tradeoff</strong>
+                <li>Requires longer than desirable design / development time - this is something that only emerged after digging in to the initial stages of a home-grown solution. I combed back through our initial research paths...</li>
               </ul>
             </div>
             
             <div className="!space-y-4">
-              <H3>Ultimate Solution</H3>
+              <H3><em>The</em> Solution</H3>
               <p className="text-base text-[var(--text-color)]">
-              After a number of weeks, the progress was slower than anticipated. Being familiar with how robust and thorough their documentation, I performed additional research to see if the Esri SDK offered a standalone version of the capability to draw line & polygon geometry, which they did, allowing us to integrate a more out-of-the-box solution and keep us from "reinventing the wheel".
+                Digging back in to the SDK documentation, I found a standalone version of the capability to draw line & polygon geometry, which allowed us to integrate a more out-of-the-box solution and keep us from "reinventing the wheel".
               </p>
               <ul className="!text-base list-disc list-inside">
-                <strong>Benefits</strong>
+                <strong>Benefit</strong>
                 <li>Significantly cut down the delivery time by not having to design/develop the building blocks in-house</li>
               </ul>
               <ul className="!text-base list-disc list-inside">
-                <strong>Tradeoffs</strong>
+                <strong>Tradeoff</strong>
                 <li>Lose customizability by having to adopt elements of Esri's design patterns in their out-of-the-box widget</li>
               </ul>
             </div>
@@ -187,7 +188,7 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
       </div> */}
 
       {/* Impact Section */}
-      <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] py-12 border-y border-[var(--color-border)]">
+      <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] py-16 border-y border-[var(--color-border)]">
         <div className="container-medium px-4 sm:px-6 md:px-8 xl:px-0">
           <Overline className="!text-base mb-4">Impact</Overline>
           <H2>A tradeoff worth making</H2>
@@ -204,7 +205,7 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">Initial Solution</span>
-                  <span className="text-sm text-[var(--text-color-light)]">4+ Quarters</span>
+                  <span className="text-sm text-[var(--text-color-light)]">4+ Quarters (estimated)</span>
                 </div>
                 <div className="w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-3">
                   <div 
@@ -229,8 +230,8 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
               </div>
             </div>
             
-            <p className="text-sm text-[var(--text-color-light)] mt-4">
-              The ultimate solution delivered the same functionality in 75% less time
+            <p className="text-sm text-[var(--text-color-light)] mt-4 !mb-4">
+              The ultimate solution delivered in 75% less time
             </p>
           </div>
 
@@ -243,7 +244,7 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
           <Overline className="!text-base mb-4">Problem</Overline>
           <H2 className="mb-8">A Hidden Wrinkle</H2>
           <p className="text-lg mb-12">
-            In trying to solve the resource allocation problem, The team put any ideas about altering the map on the back burner due to the intensity of the primary objective, i.e., adding the new GIS functionality. In testing out initial prototypes, however, it became clear to me that keeping our existing map would make the experience of the new functionality unacceptably cumbersome, which may have a sizable negative impact on first impressions and overall adoption. In addition, and this is a major reason for the hesitance to address the map layout, the record editor was one in a series of features developed in the early days of the product, and the team had grown hesitant to make changes to the legacy code. <strong>How might we address this issue without a) interrupting the team's focus on the primary objective of adding new functionality, and b) the risk of breaking the existing functionality of a legacy feature?</strong>
+            In trying to solve the resource allocation problem, The team put any ideas about altering the map on the back burner due to the intensity of the primary objective, i.e., adding the new GIS functionality. In testing out initial prototypes, however, it became clear to me that keeping our existing map would make the experience of the new functionality unacceptably cumbersome, which may have a sizable negative impact on first impressions and overall adoption. In addition, and this is a major reason for the hesitance to address the map layout, the record editor was one in a series of features developed in the early days of the product, and the team had grown hesitant to make changes to the legacy code. <strong className="highlighter">How might we address this issue without a) interrupting the team's focus on the primary objective of adding new functionality, and b) the risk of breaking the existing functionality of a legacy feature?</strong>
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -304,7 +305,7 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
       </div>
 
       {/* Conclusion Section */}
-      <div className="w-full pt-12 pb-16">
+      <div className="w-full pt-16 pb-20">
         <div className="container-medium px-4 sm:px-6 md:px-8 xl:px-0">
           <Overline className="!text-base mb-4">Post Mortem</Overline>
           <H2>But...What could we have done better?</H2>

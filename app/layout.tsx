@@ -111,6 +111,7 @@ export default function RootLayout({
         fontVariables.bitter,
         fontVariables.merriweather,
         fontVariables.lato,
+        fontVariables.latoSans,
         fontVariables.mono,
         fontVariables.lobster
       )}>

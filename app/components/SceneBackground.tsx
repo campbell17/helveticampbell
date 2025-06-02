@@ -49,7 +49,7 @@ const gridFragmentShader = `
     float totalOffset = cellTimeOffset + spatialOffset + initialPhaseOffset;
     
     // Apply the combined offsets to create truly random-looking pulse states
-    float pulse = sin((t * 15.0) + totalOffset) * 0.5 + 0.5;
+    float pulse = sin((t * 50.0) + totalOffset) * 0.5 + 0.5;
     
     // Make the pulse smoother with easing
     pulse = smoothstep(0.1, 0.9, pulse);

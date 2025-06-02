@@ -16,7 +16,7 @@ import { HomepageStructuredData } from './StructuredDataManager'
 // Work images from Sidebar component
 const workImages = [
   // Gallery 1: My Work
-  // { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum", gallery: 1 },
+  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum", gallery: 1 },
   { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum Lines and Polygons", gallery: 1 },
   { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum Data", gallery: 1 },
   { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum Report Builder", gallery: 1 },
@@ -58,7 +58,7 @@ export default function HomeContent() {
       {/* <Overline className="!text-xl">This is</Overline> */}
       <H1>I Help Software Teams Design, Build, and Evolve Their Products.</H1>
       
-      <div className="subheading !mb-0">
+      <div className="subheading">
         Let's make something better together.
       </div>
       
@@ -86,10 +86,9 @@ export default function HomeContent() {
       {/* <div className="flex items-center justify-between mb-8">
         <H2 className="!mb-0">Featured Work</H2>
       </div>       */}
-      <div className="@container mb-16">
+      {/* <div className="@container mb-16">
         <div className="h-full flex flex-col md:flex-row gap-6">
           <ul className="w-full h-full flex items-center flex-col gap-2 lg:flex-row mt-12 !mb-0 text-base">
-            {/* Get in touch:  */}
             <li className="w-full h-full">
               <Link href="https://github.com/campbell17" target="_blank" rel="noopener noreferrer" className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-12 pane flex items-center justify-center transition-colors">
                 <CalendarIcon className="h-5 w-5 mr-2" />
@@ -110,7 +109,7 @@ export default function HomeContent() {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {workImages.map((image, index) => {
             // Check if this project has a video to determine aspect ratio

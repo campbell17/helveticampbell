@@ -1,7 +1,7 @@
 @theme {
   /* Fonts  */
   --font-display: var(--font-merriweather);
-  --font-body: var(--font-bitter);
+  --font-body: var(--font-sans);
   --font-helveticampbell: var(--font-lobster);
   --font-merriweather: var(--font-merriweather);
   --font-lato: var(--font-sans);

@@ -4,7 +4,7 @@ import { Bitter, Merriweather, JetBrains_Mono, Lobster, Lato } from 'next/font/g
 export const bitter = Bitter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-body',
+  variable: '--font-serif',
 });
 
 export const merriweather = Merriweather({
@@ -14,8 +14,16 @@ export const merriweather = Merriweather({
   variable: '--font-display',
 });
 
-// Sans-serif fonts
+// Sans-serif fonts (also used as body font)
 export const lato = Lato({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+  weight: '400',
+});
+
+// Sans-serif variant of Lato for compatibility
+export const latoSans = Lato({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
@@ -38,13 +46,16 @@ export const lobster = Lobster({
 });
 
 // Default font (for backward compatibility)
-export const font = bitter;
+export const font = lato;
 
 // Export font variables object to easily apply multiple fonts
 export const fontVariables = {
   bitter: bitter.variable,
   merriweather: merriweather.variable,
   lato: lato.variable,
+  latoSans: latoSans.variable,
+  sans: latoSans.variable,
+  body: lato.variable,
   mono: jetbrainsMono.variable,
   lobster: lobster.variable,
 }; 

@@ -49,14 +49,28 @@ const FulcrumContent: React.FC = () => {
 
   return (
     <>
-      <div className="px-4 sm:px-6 pb-10 md:px-20">
-        <div className="flex flex-wrap mb-8">
-          {fulcrumTags.map((tag, index) => (
-            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
-          ))}
+      {/* Hero Image */}
+      <div className="w-full -mt-36" style={{ backgroundColor: '#eb1300' }}>
+        <div className="relative overflow-hidden">
+          <div className="relative">
+            <Image 
+              src="/images/work/hero/hero-fulcrum.png"
+              alt="Fulcrum Hero"
+              width={1920}
+              height={757}
+              sizes="100vw"
+              className=""
+              priority
+            />
+          </div>
         </div>
-        <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
-        <p className="subheading">(2012 - 2025) As the primary designer for Fulcrum, I led the product's visual and user experience evolution, helping build it into a comprehensive enterprise field operations platform used by thousands of organizations worldwide.</p>
+      </div>
+      
+      <div className="bg-[#fdecee] px-4 sm:px-6 pb-10 md:px-20">
+        <H1 className="mb-4 pt-16">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
+        <div className="flex gap-12">
+          <p className="!mb-10">Fulcrum allows users to collect data, media, and GPS locations in the field via mobile app, with everything synced to the cloud for centralized access, management, and reporting via the web. As the Lead Product Designer for Fulcrum, I was responsible for branding, marketing, UX, and visual design for the entire product. I was the sole designer for the first few years, ultimately growing the team to four designers. We were a tight group and proudly staked our claim as the glue between product and engineering.</p>
+        </div>
       </div>
       {/* <div className="p-20 pt-0"> */}
       <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] pt-12 pb-16 px-4 sm:px-6 md:px-20 border-y border-[var(--color-border)]">
@@ -512,7 +526,7 @@ const FulcrumContent: React.FC = () => {
       </div>
 
       {/* Project Navigation */}
-      <ProjectNavigation currentProject="Fulcrum" />
+      {/* <ProjectNavigation currentProject="Fulcrum" /> */}
     </>
   );
 }

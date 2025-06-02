@@ -169,8 +169,12 @@ nav a {
 }
 
 .subheading {
-  @apply font-display text-2xl lg:text-4xl leading-normal mb-24;
+  @apply font-sans text-2xl lg:text-4xl leading-normal mb-24;
   color: var(--text-color-light);
+}
+
+.highlighter {
+  @apply font-[700] !text-black bg-[var(--theme-color-accent)];
 }
 
 .project-sidebar-content {

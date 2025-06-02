@@ -1,9 +1,9 @@
 // Project tags data separated to avoid circular dependencies
 export const projectTags: Record<string, string[]> = {
-  "Fulcrum": ["UX/UI Design", "Platform Design", "Mobile App", "SaaS Platform"],
-  "Fulcrum Lines and Polygons": ["Fulcrum | Lines & Polygons"],
+  "Fulcrum": ["Fulcrum"],
+  "Fulcrum Lines and Polygons": ["Lines & Polygons | Fulcrum"],
   "Fulcrum Data": ["UX/UI Design", "Product Design", "Data Analytics"],
-  "Fulcrum Report Builder": ["Fulcrum | Report Builder"],
+  "Fulcrum Report Builder": ["Custom Report Builder | Fulcrum"],
   "Spatial Networks": ["Branding", "Product Design", "Marketing Design"],
   "Divide": ["UI", "Branding", "Visual Design", "Icon Design", "Marketing Design"],
   "Allinspections": ["UX/UI", "Branding", "Product Design", "Marketing Design"],
