@@ -67,33 +67,15 @@ const FulcrumContent: React.FC = () => {
       </div>
       
       <div className="bg-[#fdecee] px-4 sm:px-6 pb-10 md:px-20">
-        <H1 className="mb-4 pt-16">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
+        
+        <div className="flex flex-wrap pt-16">
+          <Overline className="!text-lg mr-8">Case Study</Overline>
+        </div>
+        <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
         <div className="flex gap-12">
           <p className="!mb-10">Fulcrum allows users to collect data, media, and GPS locations in the field via mobile app, with everything synced to the cloud for centralized access, management, and reporting via the web. As the Lead Product Designer for Fulcrum, I was responsible for branding, marketing, UX, and visual design for the entire product. I was the sole designer for the first few years, ultimately growing the team to four designers. We were a tight group and proudly staked our claim as the glue between product and engineering.</p>
         </div>
       </div>
-      {/* <div className="p-20 pt-0"> */}
-      <div className="w-full bg-neutral-500/10 dark:bg-[var(--pane-bg-color)] backdrop-blur-[1px] pt-12 pb-16 px-4 sm:px-6 md:px-20 border-y border-[var(--color-border)]">
-        <div className="w-full 2xl:max-w-7xl mx-auto">
-          <Overline className="mb-4">Company Overview</Overline>
-          <H2>From Startup to Enterprise Platform</H2>
-          <p className="text-lg max-w-3xl mb-8">
-            Fulcrum evolved from a small Florida startup to a global leader in field operations software, serving thousands of organizations across diverse industries.
-          </p>
-          
-          <div>
-            <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3 font-sans">
-              {stats.map((item) => (
-                <div key={item.name} className="overflow-hidden bg-white/50 gametime:bg-[var(--theme-color)] dark:bg-[var(--pane-bg-color)] rounded-lg px-4 py-5 shadow shadow-[var(--color-shadow)] sm:p-6">
-                  <dt className="truncate text-sm font-medium">{item.name}</dt>
-                  <dd className="mt-1 text-xl md:text-3xl font-semibold">{item.stat}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-        </div>
-      </div>      
       {/* <div className="mt-20 px-4 sm:px-6 pb-10 md:px-20">
         <H2>Case Studies</H2> */}
         
