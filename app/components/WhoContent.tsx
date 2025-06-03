@@ -38,7 +38,7 @@ export default function WhoContent() {
       </div>
       
       <div className="subheading">
-        I'm a founding product designer based near Philadelphia with experience making shrewd decisions about what to build and when, executing quality work to improve life for customers and internal teams alike.
+        I'm a multi-disciplinary designer based near Philly with experience executing quality work to improve life for clients, internal teams, and their customers.
         <div className="flex flex-col md:flex-row gap-6">
         <ul className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full md:w-fit flex flex-col gap-1 md:gap-0 md:flex-row mt-12 !mb-0 text-base">
           {/* Get in touch:  */}
@@ -90,16 +90,13 @@ export default function WhoContent() {
           I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer">Fulcrum</Link> for its first 10 years, growing it from an idea on a whiteboard to $12M+ in ARR with a small team and scant resources.
         </li>
         <li>
-          I&apos;m adaptable and always learning. No one asked me to learn how to code, I did it to speed up our shipping time.
-        </li>
-        <li>
           In addition to working on Fulcrum, I was also solely responsible for designing and shipping the branding, website, and print / trade show materials for our parent company, Spatial Networks.
         </li>
         <li>
           I write for fun. You can read what I publish on <Link href="https://campbellseventeen.substack.com" target="_blank" rel="noopener noreferrer" className="text-teal-600">Substack</Link>.
         </li>
         <li>
-          I enjoy sports and I love Formula 1. I haven&apos;t missed a race since Hockenheim in 2000, which made Rubens Barrichello so sad he cried on the podium.
+          I love hockey and I obsess over Formula 1. I haven&apos;t missed a race since Hockenheim in 2000, which made Rubens Barrichello so sad he cried on the podium.
         </li>
       </ul>
 

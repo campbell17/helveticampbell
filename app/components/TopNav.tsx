@@ -13,17 +13,25 @@ export default function TopNav() {
   const { initiateLoading } = useLoading()
   const [scrolled, setScrolled] = useState(false)
   
-  // Handle scroll effect
+  // Initialize scroll state and handle scroll effect
   useEffect(() => {
+    // Check initial scroll position on mount
+    const checkInitialScroll = () => {
+      const isScrolled = window.scrollY > 40
+      setScrolled(isScrolled)
+    }
+    
+    // Check immediately
+    checkInitialScroll()
+    
+    // Set up scroll listener
     let ticking = false
     
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const isScrolled = window.scrollY > 40
-          if (isScrolled !== scrolled) {
-            setScrolled(isScrolled)
-          }
+          setScrolled(isScrolled)
           ticking = false
         })
         ticking = true
@@ -32,7 +40,7 @@ export default function TopNav() {
     
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [scrolled])
+  }, []) // Remove scrolled dependency since we're not using it in the effect
   
   const navLinks = [
     // { name: 'Work', href: '/work' },

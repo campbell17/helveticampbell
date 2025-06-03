@@ -50,7 +50,7 @@ const FulcrumContent: React.FC = () => {
   return (
     <>
       {/* Hero Image */}
-      <div className="w-full -mt-36" style={{ backgroundColor: '#eb1300' }}>
+      <div className="w-full -mt-36 bg-[#eb1300]">
         <div className="relative overflow-hidden">
           <div className="relative">
             <Image 
@@ -73,123 +73,53 @@ const FulcrumContent: React.FC = () => {
         </div>
         <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
         <div className="flex gap-12">
-          <p className="!mb-10">Fulcrum allows users to collect data, media, and GPS locations in the field via mobile app, with everything synced to the cloud for centralized access, management, and reporting via the web. As the Lead Product Designer for Fulcrum, I was responsible for branding, marketing, UX, and visual design for the entire product. I was the sole designer for the first few years, ultimately growing the team to four designers. We were a tight group and proudly staked our claim as the glue between product and engineering.</p>
+          <p className="!mb-10">Fulcrum allows users to collect data, media, and GPS locations in the field via mobile app, with everything synced to the cloud for centralized access, management, and reporting via the web. As the Lead Product Designer for Fulcrum, I was responsible for branding, marketing, UX, and visual design for the entire product. I was the sole designer for the first few years, ultimately growing the team to four designers. We were a tight group, proudly dubbed as the glue between product and engineering.</p>
         </div>
       </div>
-      {/* <div className="mt-20 px-4 sm:px-6 pb-10 md:px-20">
-        <H2>Case Studies</H2> */}
-        
-        {/* Feature Case Studies Disclosures */}
-        {/* <div className="mt-8"> */}
-          
-          {/* Data Viewer Redesign Case Study */}
-          {/* <Disclosure>
-            <DisclosureButton className="!bg-red-400 pane w-full flex items-center justify-between p-6 text-left">
-              <span className="text-lg font-medium">Data Viewer Redesign</span>
-              <ChevronDownIcon className="w-5 h-5 group-data-open:rotate-180 transition-transform duration-200" />
-            </DisclosureButton>
-            <DisclosurePanel className="mt-4 !bg-yellow-400">
-              <div className="pane p-8">
-                <p className="text-base text-slate-700 mb-6">
-                  A comprehensive redesign of Fulcrum's data viewing interface to improve usability and performance for large datasets. This project involved reimagining how users interact with their collected field data.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100">
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-500">
-                      Before: Legacy Data Viewer
-                    </div>
-                  </div>
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100">
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-500">
-                      After: Modern Data Viewer
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </DisclosurePanel>
-          </Disclosure> */}
 
-          {/* Groups Case Study */}
-          {/* <Disclosure>
-            <DisclosureButton className="pane w-full flex items-center justify-between p-6 text-left">
-              <span className="text-lg font-medium">Groups</span>
-              <ChevronDownIcon className="w-5 h-5 group-data-open:rotate-180 transition-transform duration-200" />
-            </DisclosureButton>
-            <DisclosurePanel className="mt-4">
-              <div className="pane p-8">
-                <p className="text-base text-slate-700 mb-6">
-                  Implementation of a flexible grouping system that allows organizations to structure their data collection workflows hierarchically. This feature enables better organization and permissions management across large teams.
-                </p>
-                <div className="space-y-4">
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100">
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-500">
-                      Groups Feature Implementation
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                    <div className="bg-white/50 p-4 rounded-lg">
-                      <strong>Challenge:</strong> Managing permissions across complex organizational structures
-                    </div>
-                    <div className="bg-white/50 p-4 rounded-lg">
-                      <strong>Solution:</strong> Hierarchical group system with inherited permissions
-                    </div>
-                    <div className="bg-white/50 p-4 rounded-lg">
-                      <strong>Impact:</strong> 40% reduction in setup time for new organizations
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </DisclosurePanel>
-          </Disclosure> */}
-
-          {/* Lines & Polygons Case Study */}
-          {/* <Disclosure>
-            <DisclosureButton className="pane w-full flex items-center justify-between p-6 text-left">
-              <span className="text-lg font-medium">Lines & Polygons</span>
-              <ChevronDownIcon className="w-5 h-5 group-data-open:rotate-180 transition-transform duration-200" />
-            </DisclosureButton>
-            <DisclosurePanel className="mt-4">
-              <div className="pane p-8">
-                <p className="text-base text-slate-700 mb-6">
-                  Development of advanced geometry collection tools allowing field teams to capture complex spatial data including linear features (roads, pipelines) and area features (plots, boundaries) with precision GPS tracking.
-                </p>
-                <div className="space-y-4">
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100">
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-500">
-                      Geometry Collection Interface
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <h4 className="font-medium">Key Features:</h4>
-                      <ul className="text-sm text-slate-600 space-y-1">
-                        <li>• Real-time GPS tracking with sub-meter accuracy</li>
-                        <li>• Complex polygon creation with hole support</li>
-                        <li>• Line snapping and editing capabilities</li>
-                        <li>• Automatic area and distance calculations</li>
-                      </ul>
-                    </div>
-                    <div className="space-y-2">
-                      <h4 className="font-medium">Use Cases:</h4>
-                      <ul className="text-sm text-slate-600 space-y-1">
-                        <li>• Infrastructure mapping</li>
-                        <li>• Environmental monitoring</li>
-                        <li>• Agricultural plot management</li>
-                        <li>• Emergency response planning</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </DisclosurePanel>
-          </Disclosure>
-
+      <div className="w-full bg-[#fdecee]">
+        <div className="relative overflow-hidden">
+          <Image 
+            src="/images/work/browser/browser-fulcrum-app-builder-prototype.jpg"
+            alt="Fulcrum Modern Builder Selected"
+            width={1920}
+            height={1080}
+            sizes="100vw"
+            className="rounded-t-xl mx-auto shadow-lg w-[96%] -mb-4"
+            priority
+          />
         </div>
-        
-      </div> */}
+      </div>
 
-      <div className="mt-10">
-        <div className="px-8 sm:px-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6">
+      {/* Overview Section */}
+      <div className="w-full bg-[#fafafa]">
+        <div className="max-w-7xl mx-auto px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-12">
+            {/* Left column - Overline */}
+            <div className="md:col-span-4 flex items-center justify-start md:justify-center">
+              <Overline className="!text-2xl mb-4 md:mb-0">Fulcrum Overview</Overline>
+            </div>
+            
+            {/* Vertical divider */}
+            <div className="hidden md:block md:col-span-1 flex justify-center">
+              <div className="w-[1px] h-full bg-gray-300"></div>
+            </div>
+            
+            {/* Right column - Paragraph */}
+            <div className="md:col-span-7">
+              <p className="text-base !mb-4">
+                Fulcrum is a cloud-based platform for field data collection that lets teams use custom-built forms to capture field observations, media, GPS locations, and other structured inputs on mobile devices, with everything synced to a web app for viewing, organizing, and reporting. I joined the team shortly after version 0.5 debuted at the 2011 GEOINT Symposium, stepping in to elevate the product's visual identity, lead the design of its iOS, Android, and web applications, and establish consistent UX patterns that would form the foundation of the Fulcrum design system in the years that followed.
+              </p>
+              <p className="text-base !mb-0">
+                What follows are some vignettes of a few key contributions I've made to Fulcrum over the years. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white pt-6">
+        <div className="px-8 sm:px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6">
           {/* First row */}
           
           <div className="cursor-default relative group overflow-hidden rounded-xl">
@@ -283,6 +213,7 @@ const FulcrumContent: React.FC = () => {
               />
             </div>
           </div> */}
+          <span className="text-center col-span-2 sm:col-span-3 md:col-span-6 text-sm !text-[var(--text-color-light)] mb-12">Our humble red triangle never left our side.</span>
         </div>
       </div>
 
