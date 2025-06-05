@@ -170,16 +170,7 @@ export default function Footer() {
                       Home
                     </Link>
                   </li>
-                  {/* <li className="leading-tight mb-1">
-                    <Link 
-                      href="/writing" 
-                      onClick={() => handleLinkClick("/writing")}
-                      className="text-sm inline"
-                      prefetch={pathname !== "/writing" ? true : false}
-                    >
-                      Writing
-                    </Link>
-                  </li> */}
+
                   <li className="leading-tight mb-1">
                     <Link 
                       href="/who" 

@@ -3,11 +3,6 @@ import './globals.css'
 import './theme.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
-import SceneBackground from './components/SceneBackground'
-import ThemeSwitcher from './components/ThemeSwitcher'
-import Navigation from './components/Navigation'
-import AnimatedLayout from './components/AnimatedLayout'
-
 import BackToTop from './components/BackToTop'
 import { cn } from './lib/utils'
 import { fontVariables } from './lib/fonts'
@@ -22,7 +17,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helveticampbell.com
 
 export const metadata: Metadata = {
   title: 'Helveticampbell',
-  description: 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up',
+  description: 'I Help Software Teams Design, Build, and Evolve Their Products',
   keywords: ['portfolio', 'creative', 'design', 'product design', 'web design'],
   authors: [{ name: 'Tim Campbell' }],
   creator: 'Tim Campbell',
@@ -136,39 +131,18 @@ export default function RootLayout({
             <Suspense fallback={null}>
               <NavigationEvents />
             </Suspense>
-            {/* SceneBackground completely disabled for mobile performance */}
 
-            {/* Global Top navigation bar */}
-            {/* <ThemeSwitcher />               */}
             <div className="relative min-h-screen">
               <TopNav />
-              {/* Mobile navigation */}
-              {/* <div className="block top-0 left-0 right-0 z-50 md:hidden">
-                <nav className="p-6">
-                  <Navigation />                    
-                </nav>
-              </div> */}
 
-              {/* Desktop sidebar navigation */}
-              {/* <div className="fixed pt-12 ml-8 top-0 bottom-0 left-0 w-64 z-50 overflow-y-auto hidden md:block">
-                <nav className="rounded-[var(--container-radius)] p-6 pt-0 flex flex-col h-full">
-                  <Navigation />
-                  <div className="flex-none mt-6">
-                    <ThemeSwitcher />
-                  </div>
-                </nav>
-              </div> */}
-
-              {/* Main content area with grid layout */}
               <main className="mx-auto overflow-visible">
                 <div className="grid grid-cols-12 gap-4 overflow-visible">
-                  <AnimatedLayout>
+                  <div className="grid-wide-content py-6 md:py-12 overflow-visible">
                     {children}
-                  </AnimatedLayout>
+                  </div>
                 </div>
               </main>
               
-              {/* Footer */}
               <Footer />
             </div>
 

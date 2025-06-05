@@ -8,33 +8,21 @@ export const sitemap = {
   home: {
     path: "/",
     title: "Helveticampbell - Tim Campbell's Portfolio",
-    description: "Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up.",
-    content: "Tim Campbell is a designer focusing on digital product design. Portfolio showcasing work with Fulcrum, Spatial Networks, and other projects, along with writing and personal background."
+    description: "I Help Software Teams Design, Build, and Evolve Their Products.",
+    content: "Tim Campbell is a designer focusing on digital product design. Portfolio showcasing work with Fulcrum, Spatial Networks, and other projects, along with personal background."
   },
   who: {
     path: "/who",
     title: "Tim Campbell - About | Helveticampbell",
     description: "Learn about Tim Campbell's background, experience, and approach to design and product development.",
     content: "Tim Campbell was the sole designer on Fulcrum for its first 10 years, growing it from an idea to $12M+ in ARR with 2,000+ customers. Experienced in web and mobile app design, branding, marketing, and comfortable working with Rails, HTML, CSS, and JS/React. Previously worked with Spatial Networks and other organizations."
-  },
-  work: {
-    path: "/work",
-    title: "Portfolio & Projects | Helveticampbell",
-    description: "View Tim Campbell's design and development work, including projects for Fulcrum, Spatial Networks, and more.",
-    content: "Portfolio showcasing work including Fulcrum app, Spatial Networks branding, Divide for PS4, Allinspections, and other projects. Details Tim's career path from art school to becoming a product designer, with testimonials from colleagues."
-  },
-  writing: {
-    path: "/writing",
-    title: "Articles & Essays | Helveticampbell",
-    description: "Essays and articles on design, productivity, and personal stories by Tim Campbell.",
-    content: "A collection of essays and articles focused on productivity and personal stories. Topics range from design insights to professional experiences and creative processes."
   }
 };
 
 // Define default metadata for the site
 export const defaultMetadata = {
   title: "Helveticampbell - Versatile, product-focused design",
-  description: "Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up.",
+  description: "I Help Software Teams Design, Build, and Evolve Their Products.",
   author: "Tim Campbell",
   openGraph: {
     type: "website",
