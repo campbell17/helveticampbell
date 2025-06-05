@@ -11,22 +11,25 @@ const FulcrumLinesAndPolygonsContent: React.FC = () => {
   const timelineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentRef = timelineRef.current
+    if (!currentRef) return
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsTimelineVisible(true);
-          observer.disconnect(); // Stop observing once animation is triggered
+          setIsTimelineVisible(true)
+          observer.disconnect() // Stop observing once animation is triggered
         }
       },
       { threshold: 0.3 } // Trigger when 30% of the element is visible
-    );
+    )
 
-    if (timelineRef.current) {
-      observer.observe(timelineRef.current);
+    observer.observe(currentRef)
+
+    return () => {
+      observer.disconnect()
     }
-
-    return () => observer.disconnect();
-  }, []);
+  }, [])
 
   const stats = [
     { name: 'Time to Customer - Initial Solution', stat: '4+ Q' },

@@ -17,30 +17,35 @@ export default function TopNav() {
   useEffect(() => {
     // Check initial scroll position on mount
     const checkInitialScroll = () => {
-      const isScrolled = window.scrollY > 40
-      setScrolled(isScrolled)
+      setScrolled(window.scrollY > 40)
     }
     
     // Check immediately
     checkInitialScroll()
     
-    // Set up scroll listener
-    let ticking = false
+    // Throttled scroll handler
+    let timeoutId: NodeJS.Timeout | null = null
     
     const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const isScrolled = window.scrollY > 40
-          setScrolled(isScrolled)
-          ticking = false
-        })
-        ticking = true
+      if (timeoutId) {
+        clearTimeout(timeoutId)
       }
+      
+      timeoutId = setTimeout(() => {
+        setScrolled(window.scrollY > 40)
+        timeoutId = null
+      }, 16) // ~60fps
     }
     
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, []) // Remove scrolled dependency since we're not using it in the effect
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
+    }
+  }, [])
   
   const navLinks = [
     // { name: 'Work', href: '/work' },

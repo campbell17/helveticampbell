@@ -296,7 +296,8 @@ export default function UnifiedContentList({ localEssays, showFilters = false, l
                       style={{ objectFit: 'cover' }}
                       className="transition-transform duration-300"
                       onError={() => handleImageError(item.id)}
-                      loading="eager"
+                      loading="lazy"
+                      priority={false}
                     />
                   </div>
                 )}
@@ -381,7 +382,8 @@ export default function UnifiedContentList({ localEssays, showFilters = false, l
                           style={{ objectFit: 'cover' }}
                           className="transition-transform duration-300"
                           onError={() => handleImageError(item.id)}
-                          loading="eager"
+                          loading="lazy"
+                          priority={false}
                         />
                       </div>
                     </div>

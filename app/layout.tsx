@@ -136,7 +136,7 @@ export default function RootLayout({
             <Suspense fallback={null}>
               <NavigationEvents />
             </Suspense>
-            {/* <SceneBackground /> */}
+            {/* SceneBackground completely disabled for mobile performance */}
 
             {/* Global Top navigation bar */}
             {/* <ThemeSwitcher />               */}

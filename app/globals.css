@@ -250,7 +250,7 @@ nav a {
 }
 
 .vignette-image-container {
-  @apply relative h-full min-h-[320px] aspect-square;
+  @apply relative min-h-[320px] aspect-square h-auto w-full lg:h-full lg:aspect-auto;
 }
 
 /* Class for light text that can be applied to specific elements */
@@ -289,18 +289,3 @@ nav a {
   margin-bottom: 2rem;
 }
 
-/* Improve image loading and memory management */
-img {
-  /* Prevent images from being unloaded aggressively on older devices */
-  content-visibility: auto;
-  /* Better memory management */
-  contain-intrinsic-size: 300px 200px;
-  /* Smooth loading transitions */
-  transition: opacity 0.2s ease-in-out;
-}
-
-/* Ensure Next.js images maintain loaded state */
-img[data-loaded="true"] {
-  /* Keep images in memory once loaded */
-  content-visibility: visible;
-}

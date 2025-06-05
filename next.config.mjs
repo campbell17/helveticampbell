@@ -1,11 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Improve image loading behavior for older devices
-    loader: 'default',
-    // Prevent aggressive unloading of images once they're loaded
-    unoptimized: false,
-    // Better memory management
     formats: ['image/webp', 'image/avif'],
     domains: [
       'substackcdn.com',       // Substack CDN for images

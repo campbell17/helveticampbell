@@ -1,8 +1,7 @@
 import React from 'react';
-import Image from 'next/image';
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { H1, H2, H3, Overline } from '../Typography';
+import Image from 'next/image';
+import Link from 'next/link';
 import ProjectNavigation from '../ProjectNavigation';
 import { projectTags } from '../../data/projectTags';
 

@@ -71,8 +71,8 @@ export default function HomeContent() {
             height={1000}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover h-full w-full"
-            priority={true}
-            loading="eager"
+            priority={false}
+            loading="lazy"
           />
         </div>
         <div className="flex flex-col max-w-md"> 
