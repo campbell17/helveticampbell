@@ -74,7 +74,7 @@ const FulcrumContent: React.FC = () => {
         <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
         <div className="flex flex-col lg:flex-row gap-12">
           <p className="!mb-0 lg:!mb-10">Fulcrum allows users to collect data, media, and GPS locations in the field via mobile app, with everything synced to the cloud for centralized access, management, and reporting via the web.</p>
-          <p className="!mb-10">As the Lead Product Designer for Fulcrum, I was responsible for branding, marketing, UX, and visual design for the entire product. I was the sole designer for the first few years, ultimately growing the team to four designers. We were a tight group, proudly dubbed as the glue between product and engineering.</p>
+          <p className="!mb-10">As the Lead Product Designer for Fulcrum, I was responsible for branding, marketing, UX, and visual design for the entire product. I was the sole designer for the first few years, ultimately growing the team to four designers. We were a tight group, proudly upholding the mantle as the glue between product and engineering.</p>
         </div>
       </div>
 
@@ -109,7 +109,7 @@ const FulcrumContent: React.FC = () => {
             {/* Right column - Paragraph */}
             <div className="md:col-span-7">
               <p className="text-base !mb-6">
-                Fulcrum is a cloud-based platform for field data collection that lets teams use custom-built forms to capture field observations, media, GPS locations, and other structured inputs on mobile devices, with everything synced to a web app for viewing, organizing, and reporting. I joined the team shortly after version 0.5 debuted at the 2011 GEOINT Symposium, stepping in to elevate the product's visual identity, lead the design of its iOS, Android, and web applications, and establish consistent UX patterns that would form the foundation of the Fulcrum design system in the years that followed.
+                Fulcrum is a cloud-based platform for field data collection that lets teams use custom-built forms to capture field observations, media, GPS locations, and other structured inputs on mobile devices, with everything synced to a web app for viewing, organizing, and reporting. I joined the team from another internal project just as we unveiled v0.5 at the 2011 GEOINT Symposium, stepping in to elevate the product's visual identity, lead the design of its iOS, Android, and web apps, and establish consistent UX patterns that would form the foundation of the Fulcrum design system in the years that followed.
               </p>
               <p className="text-base !mb-0">
                 What follows are some vignettes of a few key contributions I've made to Fulcrum over the years. 
@@ -219,7 +219,7 @@ const FulcrumContent: React.FC = () => {
       </div>
 
       {/* Vignette Section - App Dashboard */}
-      <div className="w-full bg-[#efefef]">
+      <div className="w-full bg-[#efefef] lg:py-32">
         <div className="flex flex-col lg:flex-row ">
           {/* Left column - Text content */}
           <div className="flex-1 px-4 sm:px-6 pt-16 lg:pt-0 md:px-20 flex flex-col md:min-w-[500px] justify-center">
@@ -236,7 +236,7 @@ const FulcrumContent: React.FC = () => {
           </div>
           
           {/* Right column - Fixed size image */}
-          <div className="flex-shrink-0 p-10 md:p-16 lg:p-20 flex items-center justify-center">
+          <div className="flex-shrink-0 px-4 sm:px-6 py-16 md:p-20 flex items-center justify-center">
             <div className="relative rounded-xl shadow-lg overflow-hidden max-w-[1200px]">
               <Image 
                 src="/images/work/browser/browser-fulcrum-app-dashboard-prototype.jpg"
@@ -252,7 +252,7 @@ const FulcrumContent: React.FC = () => {
       </div>
 
       {/* Full-width sketches image */}
-      <div className="w-full bg-[#efefef]">
+      <div className="w-full bg-[#efefef] pb-10 lg:pb-32">
         <div className="relative">
           <Image 
             src="/images/work/full/full-fulcrum-app-dashboard-sketches.jpg"
@@ -263,7 +263,7 @@ const FulcrumContent: React.FC = () => {
             className="w-full"
           />
         </div>
-        <div className="pt-8 pb-4">
+        <div className="pt-8">
           <p className="!text-[var(--text-color-light)] text-sm text-center">Some early concepts, notes, and exploration.</p>
         </div>
       </div>
