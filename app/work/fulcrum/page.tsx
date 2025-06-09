@@ -257,7 +257,7 @@ export default function FulcrumPage() {
             There was no mass import. The stepper experience felt clunky. Orgs with any scale were spending too much time onboarding their workforce, and the stepper became error prone and got slower with more people, not faster. We wanted to appeal to larger businesses, so I created a new flow to optimize the experience, adding the ability to mass import a list of team members, assign them a role, administer permissions, and send the invites in message, all in one place.
           </p>
           <p className="text-base !mb-0">
-            This resulted in a 73% increase in onboarding efficiency and a drastic improvement in ease-of-use according to customers.
+            This resulted in a 73% increase in onboarding speed and a drastic improvement in ease-of-use.
           </p>
         </div>
         
