@@ -1,5 +1,5 @@
 import React from 'react';
-import { H1, H2, H3, Overline } from '../../components/Typography';
+import { H1, H2, H3, H4, Overline } from '../../components/Typography';
 import Image from 'next/image';
 import { Metadata } from 'next';
 
@@ -58,7 +58,7 @@ export default function FulcrumPage() {
               width={1920}
               height={757}
               sizes="100vw"
-              className=""
+              className="min-w-[1200px]"
               priority
             />
           </div>
@@ -201,13 +201,13 @@ export default function FulcrumPage() {
           {/* Left column - Text content */}
           <div className="flex-1 px-4 sm:px-6 pt-16 lg:pt-0 md:px-20 flex flex-col md:min-w-[500px] justify-center">
             <H3 className="!mb-6">App Dashboard</H3>
-            <p className="text-base text-slate-700 !mb-6">
+            <p className="text-base !mb-6">
               In Fulcrum, an App refers to a custom form, complete with settings, attachments, reports, and automated workflows. Early on, users could view the list of Apps, edit the form schema, and view the App data, but there was no way to get an overview of App-level activity, nor was there a central place to admin tasks.
             </p>
-            <p className="text-base text-slate-700 !mb-6">
+            <p className="text-base !mb-6">
               I created the App Dashboard as a way for users to drill into a specific App to get a broader sense of data & activity and provide us a place to hang future functionality such as data sharing, workflows, and crowdsourcing admin.
             </p>
-            <p className="text-base text-slate-700 !mb-0">
+            <p className="text-base !mb-0">
               The result was a more well-rounded web experience for users and breathing room for our product team to explore the expansion of an App's capabilities.
             </p>
           </div>
@@ -242,6 +242,111 @@ export default function FulcrumPage() {
         </div>
         <div className="pt-8">
           <p className="!text-[var(--text-color-light)] text-sm text-center">Some early concepts, notes, and exploration.</p>
+        </div>
+      </div>
+
+      {/* Vignette Section - Member Onboarding */}
+      <div className="w-full bg-white py-16 lg:py-32">
+        {/* Centered heading and overview text */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
+          <H3 className="!mb-6">Member Onboarding</H3>
+          <p className="text-base !mb-6">
+            Fulcrum helps companies of all sizes run better, but it's not a one-man-show kind of product. Inviting and onboarding your team is an early and necessary step to getting up and running. And while our first iteration of the member invite flow worked for smaller outfits, it did not scale well at all.
+          </p>
+          <p className="text-base !mb-6">
+            There was no mass import. The stepper experience felt clunky. Orgs with any scale were spending too much time onboarding their workforce, and the stepper became error prone and got slower with more people, not faster. We wanted to appeal to larger businesses, so I created a new flow to optimize the experience, adding the ability to mass import a list of team members, assign them a role, administer permissions, and send the invites in message, all in one place.
+          </p>
+          <p className="text-base !mb-0">
+            This resulted in a 73% increase in onboarding efficiency and a drastic improvement in ease-of-use according to customers.
+          </p>
+        </div>
+        
+        {/* Centered 3-box consolidated image */}
+        <div className="px-4 sm:px-6 md:px-8 pt-24 flex flex-col items-center">
+          <div className="relative overflow-hidden max-w-[1200px] mb-24">
+            <Image 
+              src="/images/work/full/full-fulcrum-members-original-stepper.jpg"
+              alt="Fulcrum Member Onboarding Flow"
+              width={1920}
+              height={1080}
+              sizes="(max-width: 1024px) 100vw, 1600px"
+              className="w-full h-auto"
+            />
+          </div>
+          <p className="!text-[var(--text-color-light)] text-sm text-center max-w-2xl">
+            The original "stepper" experience (above) and the consolidated & optimized iteration (below)
+          </p>
+        </div>
+        
+        {/* Two-column section: Fat Marker Sketches + Main Prototype */}
+        <div className="flex flex-col lg:flex-row pt-16 lg:pt-24">
+          {/* Left column - Fat Marker Sketches (order-2 on mobile, order-1 on desktop) */}
+          <div className="flex-1 py-8 lg:py-0 flex flex-col justify-center md:min-w-[500px] order-2 lg:order-1">
+            <div className="relative overflow-hidden mb-6">
+              <Image 
+                src="/images/work/full/full-fulcrum-members-sketches.jpg"
+                alt="Fat Marker Sketches"
+                width={800}
+                height={600}
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="w-full h-auto max-w-[600px] !mb-8 md:mb-0"
+              />
+            </div>
+            <div className="px-4 sm:px-6 md:px-20">
+              <Overline className="!text-xl !mb-6">Fat Marker Sketches</Overline>
+              <p className="text-base !mb-0">
+                Establishing an understanding of the core problem can be difficult if we go hi-fi too early. We used fat-marker sketches<sup>1</sup> as a way to validate ideas quickly without attaching too much affinity early on toward any particular approach.
+              </p>
+              <p className="!text-[var(--text-color-light)] text-sm !mt-4 !mb-0">
+                [1] Coined in 'Shape Up' by Ryan Singer (2019)
+              </p>
+            </div>
+          </div>
+          
+          {/* Right column - Main prototype image (order-1 on mobile, order-2 on desktop) */}
+          <div className="flex-shrink-0 px-4 sm:px-6 py-8 lg:py-0 md:p-20 flex items-center justify-center order-1 lg:order-2">
+            <div className="relative rounded-xl shadow-lg overflow-hidden max-w-[1200px]">
+              <Image 
+                src="/images/work/browser/browser-fulcrum-members-prototype.jpg"
+                alt="Fulcrum Members Prototype"
+                width={1920}
+                height={1080}
+                sizes="(max-width: 1024px) 100vw, 1600px"
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tour Illustrations Section */}
+      <div className="w-full relative" style={{ backgroundColor: '#dfdfdf' }}>
+        {/* Text Content - Upper area */}
+        <div className="relative z-10 py-16 lg:py-32">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
+            <H3 className="!mb-6">Tour Illustrations</H3>
+            <p className="text-base !mb-6">
+              A few years into building and marketing Fulcrum, we kept running into a problem where potential customers had difficulty connecting the dots between our screenshots of our features and what the features actually <em>did</em>. This reduced our potential inbound funnel and put undue pressure on the sales team as a result.
+            </p>
+            <p className="text-base !mb-6">
+              I created a series of illustrations for the Tour section of the marketing site to abstract these concepts, resulting in visuals that were more easy to internalize on first glance. I definitely went out on a limb for a few of these, so I'm grateful to the team for putting their faith in this quirky approach. And it worked. Within two weeks of launch, inbound leads rose by 13%, which clearly signaled the new approach had the desired effect.
+            </p>
+            <p className="text-base !mb-0">
+              It's easy to get caught up in the grind of creating content, assets, buttons, screens, and "experiences", that we forget to look up once in a while and remember this can be fun, too.
+            </p>
+          </div>
+        </div>
+        
+        {/* Background Image - Below text */}
+        <div className="w-full relative flex justify-center">
+          <Image 
+            src="/images/work/full/full-fulcrum-tour-bg.jpg"
+            alt="Tour Illustrations Background"
+            width={1920}
+            height={1200}
+            sizes="100vw"
+            className="min-w-[800px] w-full h-auto"
+          />
         </div>
       </div>
 
