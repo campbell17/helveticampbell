@@ -323,7 +323,7 @@ export default function FulcrumPage() {
       <div className="w-full relative" style={{ backgroundColor: '#dfdfdf' }}>
         {/* Text Content - Upper area */}
         <div className="relative z-10 py-16 lg:py-32">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="max-w-4xl px-4 sm:px-6 md:px-20 lg:mx-auto">
             <H3 className="!mb-6">Tour Illustrations</H3>
             <p className="text-base !mb-6">
               A few years into building and marketing Fulcrum, we kept running into a problem where potential customers had difficulty connecting the dots between our screenshots of our features and what the features actually <em>did</em>. This reduced our potential inbound funnel and put undue pressure on the sales team as a result.
@@ -349,6 +349,67 @@ export default function FulcrumPage() {
           />
         </div>
       </div>
+
+      {/* Vignette Section - Groups */}
+      <div className="w-full lg:py-32">
+        <div className="flex flex-col lg:flex-row ">
+          {/* Left column - Text content */}
+          <div className="flex-1 px-4 sm:px-6 pt-16 lg:pt-0 md:px-20 flex flex-col md:min-w-[500px] justify-center">
+            <H3 className="!mb-6">Groups</H3>
+            <p className="text-base !mb-6">
+              Working with business data comes with the added wrinkle of having to provision the access, visibility, and permissioning of it to each member of the team. in Fulcrum, we had nice boundaries around user roles and permissions, but as we began swimming in Enterprise waters, assigning access to the Apps, Projects, and Map Layers started to show weakness at scale.
+            </p>
+            <p className="text-base !mb-6">
+              Through deep discussions with customers, it became clear we would have to think of a completely new way of performing this work in Fulcrum. The problem couldn’t be “enhanced away” by modifying the existing method.
+            </p>
+            <p className="text-base !mb-0">
+              So we designed Groups. It’s a classic example of “why didn’t we think of this sooner” because of how immediate and overwhelming the response was from customers about the improved experience. This also unblocked quite a few sales conversations with potential enterprise-level prospects who had concerns about scaling in Fulcrum.
+            </p>
+          </div>
+          
+          {/* Right column - Fixed size image */}
+          <div className="flex-shrink-0 px-4 sm:px-6 py-16 md:p-20 flex items-center justify-center">
+            <div className="relative rounded-xl shadow-lg overflow-hidden max-w-[1200px]">
+              <Image 
+                src="/images/work/browser/browser-fulcrum-groups-prototype.jpg"
+                alt="Fulcrum App Dashboard"
+                width={1920}
+                height={1168}
+                sizes="(max-width: 1024px) 100vw, 1600px"
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+        {/* Two-column section: Reduce redundancy */}
+        <div className="flex flex-col items-center xl:flex-row">
+          {/* Left column */}
+          <div className="py-8 xl:py-0 flex items-center justify-center w-full">
+            <div className="px-4 sm:px-6 md:px-20 xl:px-0 relative overflow-hidden w-full">
+              <Image 
+                src="/images/work/full/full-fulcrum-groups-redundant.jpg"
+                alt="Fulcrum Members Prototype"
+                width={1920}
+                height={940}
+                sizes="(max-width: 1024px) 100vw, 1600px"
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+
+          {/* Right column */}
+          <div className="flex-1 py-8 lg:py-0 flex flex-col justify-center md:min-w-[500px]">
+            <div className="px-4 sm:px-6 md:px-20">
+              <Overline className="!text-xl !mb-6">Reducing Redundancy</Overline>
+              <p className="text-base !mb-0">
+                Prior to Groups, customers were forced to perform redundant operations in each object to manage access and visibility.
+              </p>
+            </div>
+          </div>          
+        </div>
+      </div>
+
+
 
       {/* Gallery Section */}
       <div className="p-8 pb-10 md:p-20 md:pb-28">
