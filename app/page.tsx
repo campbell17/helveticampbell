@@ -4,19 +4,17 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRightIcon, CalendarDateRangeIcon, CalendarIcon, DocumentTextIcon, HandRaisedIcon } from '@heroicons/react/24/outline'
 
-// Define OG image parameters
-const ogTitle = 'Helveticampbell';
-const ogSubtitle = 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up';
-const ogImageUrl = `/api/og?title=${encodeURIComponent(ogTitle)}&subtitle=${encodeURIComponent(ogSubtitle)}`;
+// Use static OG image
+const ogImageUrl = '/images/social/og-default.png';
 
 export const metadata: Metadata = {
-  title: "Helveticampbell",
+  title: "Tim Campbell",
   description: "I Help Software Teams Design, Build, and Evolve Their Products.",
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Helveticampbell",
+    title: "Tim Campbell",
     description: "I Help Software Teams Design, Build, and Evolve Their Products.",
     url: 'https://helveticampbell.com',
     images: [

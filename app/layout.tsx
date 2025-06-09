@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: 'Helveticampbell',
     images: [
       {
-        url: `${siteUrl}/api/og?title=Helveticampbell&subtitle=Versatile%2C%20product-focused%20design.%20Building%2C%20shipping%2C%20and%20evolving%20digital%20experiences%20from%20the%20ground%20up`,
+        url: `${siteUrl}/images/social/og-default.png`,
         width: 1200,
         height: 630,
         alt: 'Helveticampbell Portfolio',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Helveticampbell',
     description: 'Versatile, product-focused design. Building, shipping, and evolving digital experiences from the ground up',
-    images: [`${siteUrl}/api/og?title=Helveticampbell&subtitle=Versatile%2C%20product-focused%20design.%20Building%2C%20shipping%2C%20and%20evolving%20digital%20experiences%20from%20the%20ground%20up`],
+    images: [`${siteUrl}/images/social/og-default.png`],
   },
   icons: {
     icon: [
