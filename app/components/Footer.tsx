@@ -104,7 +104,7 @@ export default function Footer() {
                 </Link>
                 
                 {/* Twitch */}
-                <Link 
+                {/* <Link 
                   href="https://twitch.tv/angrymallards" 
                   rel="me" 
                   className="h-8 w-8 group text-white hover:text-[var(--mode-color)] rounded-full bg-[var(--color-link)] flex items-center justify-center hover:bg-[var(--color-link-hover)] transition-colors duration-150"
@@ -114,10 +114,10 @@ export default function Footer() {
                     <path d="M18 4H16V10H18V4Z" fill="currentColor"/>
                     <path d="M14 4H12V10H14V4Z" fill="currentColor"/>
                   </svg>
-                </Link>
+                </Link> */}
                 
                 {/* Instagram */}
-                <Link 
+                {/* <Link 
                   href="https://instagram.com/campbell1117" 
                   rel="me" 
                   className="h-8 w-8 group text-white hover:text-[var(--mode-color)] rounded-full bg-[var(--color-link)] flex items-center justify-center hover:bg-[var(--color-link-hover)] transition-colors duration-150"
@@ -127,7 +127,7 @@ export default function Footer() {
                     <path d="M12 5.83594C8.59688 5.83594 5.83594 8.59688 5.83594 12C5.83594 15.4031 8.59688 18.1641 12 18.1641C15.4031 18.1641 18.1641 15.4031 18.1641 12C18.1641 8.59688 15.4031 5.83594 12 5.83594ZM12 15.9984C9.79219 15.9984 8.00156 14.2078 8.00156 12C8.00156 9.79219 9.79219 8.00156 12 8.00156C14.2078 8.00156 15.9984 9.79219 15.9984 12C15.9984 14.2078 14.2078 15.9984 12 15.9984Z" fill="currentColor"/>
                     <path d="M19.8469 5.59214C19.8469 6.38901 19.2 7.03127 18.4078 7.03127C17.6109 7.03127 16.9688 6.38433 16.9688 5.59214C16.9688 4.79527 17.6156 4.15308 18.4078 4.15308C19.2 4.15308 19.8469 4.79995 19.8469 5.59214Z" fill="currentColor"/>
                   </svg>
-                </Link>
+                </Link> */}
                 
                 {/* LinkedIn */}
                 <Link 
