@@ -11,6 +11,7 @@ import { NavigationEvents } from './components/NavigationEvents'
 import { Suspense } from 'react'
 import Footer from './components/Footer'
 import TopNav from './components/TopNav'
+import DotGridBackground from './components/DotGridBackground'
 
 // Use environment variables if available, or default to localhost during development
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helveticampbell.com';
@@ -133,6 +134,7 @@ export default function RootLayout({
             </Suspense>
 
             <div className="relative min-h-screen grid grid-rows-[min-content_1fr_min-content]">
+              <DotGridBackground />
               <TopNav />
 
               <main className="mx-auto overflow-visible content-center">

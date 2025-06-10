@@ -303,7 +303,7 @@ export default function FulcrumPage() {
       </div>
 
       {/* Tour Illustrations Section */}
-      <div className="w-full relative" style={{ backgroundColor: '#dfdfdf' }}>
+      <div className="w-full relative bg-[#dfdfdf]">
         {/* Text Content - Upper area */}
         <div className="relative z-10 py-16 lg:py-32">
           <div className="max-w-4xl px-4 sm:px-6 md:px-20 lg:mx-auto">
@@ -334,7 +334,7 @@ export default function FulcrumPage() {
       </div>
 
       {/* Vignette Section - Groups */}
-      <div className="w-full pb-24 xl:pb-0 lg:pt-32">
+      <div className="w-full pb-24 xl:pb-0 lg:pt-32 bg-white z-10">
         <div className="flex flex-col lg:flex-row ">
           {/* Left column - Text content */}
           <div className="flex-1 px-4 sm:px-6 pt-16 lg:pt-0 md:px-20 flex flex-col md:min-w-[500px] justify-center">
