@@ -132,12 +132,12 @@ export default function RootLayout({
               <NavigationEvents />
             </Suspense>
 
-            <div className="relative min-h-screen">
+            <div className="relative min-h-screen grid grid-rows-[min-content_1fr_min-content]">
               <TopNav />
 
-              <main className="mx-auto overflow-visible">
+              <main className="mx-auto overflow-visible content-center">
                 <div className="grid grid-cols-12 gap-4 overflow-visible">
-                  <div className="grid-wide-content py-36 md:py-36 overflow-visible">
+                  <div className="grid-wide-content overflow-visible">
                     {children}
                   </div>
                 </div>

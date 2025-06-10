@@ -29,18 +29,18 @@ export default function Footer() {
     <AnimatePresence>
       <motion.footer 
         id="main-footer" 
-        className="container-wide"
+        className="px-4 sm:px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.75, delay: 0.25, ease: 'easeOut' }}
       >
 
-          <div className="flex flex-col text-center items-center sm:text-left sm:flex-row gap-6 justify-between lg:gap-24 px-4 sm:px-6 2xl:px-0 py-6 pb-16 sm:py-12 overflow-visible">
+          <div className="flex flex-col text-center items-start sm:text-left min-[320px]:flex-row gap-6 justify-between lg:gap-24 pt-8 pb-6 overflow-visible">
             {/* Column 1: Navigation Links */}
             <div className="">
-              <ul className="flex flex-col sm:flex-row gap-4 items-center list-none p-0 !m-0">
-                <div className="h-8 w-8 sm:mr-2">
+              <ul className="flex flex-row gap-4 items-center list-none p-0 !m-0">
+                {/* <div className="h-8 w-8 sm:mr-2">
                   <Link 
                     href="/" 
                     onClick={() => handleLinkClick("/")} 
@@ -51,18 +51,17 @@ export default function Footer() {
                       <path fill="currentColor" d="M61.73,31.25c.47-4.22-.3-7.16-2.31-8.82-2-1.66-4.86-2.49-8.56-2.5h0s-5.94,0-5.94,0L49.16,0h-9.63l-4.28,19.93h-9.83L29.71,0h-12.32c-2.41,0-4.67.39-6.77,1.19C6.71,2.69,3.79,5.39,1.84,9.29.18,12.61-.36,15.54.23,18.08c.59,2.54,2.88,4.55,6.86,6.01l3.55-7.09c-1.03-.41-1.85-1-2.45-1.77-.79-1.08-.78-2.44.04-4.08,1.17-2.33,3.24-3.59,6.23-3.78,1.16-.07,2.5.04,4.02.34l-9.02,42.31h9.63l5.01-23.55h9.83l-5.01,23.55h8.84c1.66.82,3.75,1.24,6.31,1.24,4.76,0,8.71-1.69,11.86-5.08,1.97-2.1,3.29-4.33,3.96-6.68h-7.9c-.49,1.56-1.22,2.82-2.19,3.8-.97.98-2.36,1.47-4.17,1.47-2.55,0-4.03-1.23-4.43-3.69-.22-1.32-.1-3.07.35-5.24.49-2.28,1.13-4.11,1.93-5.48,1.5-2.59,3.56-3.88,6.16-3.88,1.83,0,3.05.6,3.67,1.79.42.89.58,1.88.49,2.99h7.93Z"/>
                     </svg>
                   </Link>
-                </div>
+                </div> */}
                 <li className="leading-tight mb-1">
                   <Link 
-                    href="/" 
-                    onClick={() => handleLinkClick("/")}
+                    href="/work" 
+                    onClick={() => handleLinkClick("/work")}
                     className="text-sm inline"
-                    prefetch={pathname !== "/" ? true : false}
+                    prefetch={pathname !== "/work" ? true : false}
                   >
-                    Home
+                    Work
                   </Link>
                 </li>
-
                 <li className="leading-tight mb-1">
                   <Link 
                     href="/who" 
@@ -87,7 +86,7 @@ export default function Footer() {
 
             {/* Column 2: Logo & Social Icons */}
             <div className="flex flex-col space-y-8">
-              <div className="flex flex-col sm:flex-row items-center gap-4">
+              <div className="flex flex-row gap-2 ">
                 {/* GitHub */}
                 <Link 
                   href="https://github.com/campbell17" 

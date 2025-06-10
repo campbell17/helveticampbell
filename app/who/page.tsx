@@ -155,8 +155,7 @@ export default function WhoPage() {
           })
         }}
       />
-      {/* About page content inlined from WhoContent component */}
-      <div className="container-wide px-4 sm:px-6 md:px-8 xl:px-0">
+      <div className="container-wide px-4 sm:px-6 md:px-8 xl:px-0 py-48">
         {/* Person structured data inlined */}
         <script
           type="application/ld+json"
@@ -181,7 +180,7 @@ export default function WhoPage() {
         </div>
         
         <div className="subheading !mb-0">
-          I'm a multi-disciplinary designer based near Philly with experience executing quality work to improve life for clients, internal teams, and their customers.
+          I'm a multi-disciplinary designer & writer, executing the kind of work that improves the lives of clients, internal teams, and their customers.
         </div>
         <div className="flex flex-col md:flex-row gap-6 mb-24">
           <ul className="rounded-md border border-[var(--color-border)] w-full md:w-fit flex flex-col gap-1 md:gap-0 md:flex-row mt-12 !mb-0 text-base">

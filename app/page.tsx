@@ -78,13 +78,14 @@ export default function HomePage() {
             })
           }}
         />
-        <H1>I Help Software Teams Design, Build, and Evolve Their Products.</H1>
-        
-        <div className="subheading">
-          Let's make something better together.
+        <div className="placement-center">
+          <H1>I Help Software Teams Design, Build, and Evolve Their Products.</H1>
+          <div className="subheading !mb-0">
+            Let's make something better together.
+          </div>
         </div>
 
-        <H2 className="mt-48">Work</H2>
+        {/* <H2 className="mt-48">Work</H2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <Link href="/work/fulcrum" className="group block">
@@ -122,7 +123,7 @@ export default function HomePage() {
             <Overline className="mb-2">Experiment</Overline>
             <H3 className="mb-0">Panthers Logo Remix</H3>
           </Link>
-        </div>
+        </div> */}
 
       </div>
     </>

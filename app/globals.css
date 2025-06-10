@@ -127,9 +127,9 @@ p, ul, ol {
   @apply mb-12 font-body font-[400] leading-loose;
 }
 
-figure, body a {
+/* figure, body a {
   @apply font-body
-}
+} */
 
 /* Link styling - separated from color inheritance */
 a {
@@ -193,6 +193,24 @@ nav a {
     @apply border-1 bg-white/50 border-teal-100;
     /* border-color: var(--color-border); */
   }
+}
+
+/* TopNav hover animation - matches footer link animation */
+.nav-link-hover::after {
+  @apply bg-[var(--theme)];
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 4px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.15s ease;
+}
+
+.nav-link-hover:hover::after {
+  transform: scaleX(1);
 }
 
 /* Parallax background */

@@ -49,7 +49,7 @@ export default function FulcrumPage() {
   return (
     <>
       {/* Hero Image */}
-      <div className="w-full -mt-60 bg-[#eb1300]">
+      <div className="w-full -mt-18 bg-[#eb1300]">
         <div className="relative overflow-hidden">
           <div className="relative">
             <Image 
@@ -314,7 +314,7 @@ export default function FulcrumPage() {
             <p className="text-base !mb-6">
               I created a series of illustrations for the Tour section of the marketing site to abstract these concepts, resulting in visuals that were more easy to internalize on first glance. I definitely went out on a limb for a few of these, so I'm grateful to the team for putting their faith in this quirky approach. And it worked. Within two weeks of launch, inbound leads rose by 13%, which clearly signaled the new approach had the desired effect.
             </p>
-            <p className="text-base !mb-0">
+            <p className="text-base !-mb-12 lg:!-mb-48">
               It's easy to get caught up in the grind of creating content, assets, buttons, screens, and "experiences", that we forget to look up once in a while and remember this can be fun, too.
             </p>
           </div>
@@ -323,10 +323,10 @@ export default function FulcrumPage() {
         {/* Background Image - Below text */}
         <div className="w-full relative flex justify-center">
           <Image 
-            src="/images/work/full/full-fulcrum-tour-bg.jpg"
+            src="/images/work/full/full-fulcrum-tour-bg2.jpg"
             alt="Tour Illustrations Background"
             width={1920}
-            height={1200}
+            height={1077}
             sizes="100vw"
             className="min-w-[800px] w-full h-auto"
           />

@@ -48,7 +48,7 @@ export default function DividePage() {
   return (
     <div className="project-page bg-neutral-100">
       {/* Hero Image */}
-      <div className="w-full -mt-60 bg-black">
+      <div className="w-full -mt-18 bg-black">
         <div className="relative overflow-hidden flex justify-center items-center">
           <div className="relative">
             <Image 
@@ -70,8 +70,10 @@ export default function DividePage() {
         <div className="flex flex-wrap mb-4">
           <p className="!text-[var(--text-color-light)]">Role: UI design, branding/iconography, visual design, marketing design</p>
         </div>
+        <Overline className="!text-base mb-2 inline-block">From the developers</Overline>
         <div className="flex flex-col lg:flex-row gap-12">
-          <p className="!mb-0 flex-1">Divide is a character-driven, science fiction action/adventure game with a modern take on isometric adventures of the past.</p>
+          <p className="!mb-0 lg:!mb-10 flex-1">Every facet of story in Divide is delivered with a bias. A snippet of dialog may be a half truth, an old memorandum may be mere propaganda. As the player gains new insight, discerning truth from lie becomes more and more of a concern. Each new revelation expands dialog options giving the player opportunity to come to their own conclusions about what to believe.</p>
+          <p className="flex-1">Divide is a science fiction dungeon crawl. Power up derelict complexes, unlock jammed doors, and delve into long abandoned computer networks as you dust off the secrets of the mighty Vestige Corporation. Players explore expansive “detail mapped” isometric environments and stroll through deep matte paintings that bring Divide’s world to life.</p>
         </div>
       </div>
 
