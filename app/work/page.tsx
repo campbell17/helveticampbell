@@ -147,13 +147,17 @@ export default function WorkPage() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col mt-24">
-          <H2>What It's Like to Work With Me</H2>
-          <div className="subheading !mb-0">
-            A few endorsements from teammates past and present.
+          <div>
+            <Overline className="!text-base mb-2">Alpha-Omega</Overline>
+            <span className="mb-6 group inline-flex items-center hover:text-primary">
+              <H2 className="text-2xl lg:text-5xl font-bold text-text-heading font-display !mb-0">Archive</H2>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" className="w-6 h-6 ml-2 group-hover:text-red-500 transition-all duration-300">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+              </svg>
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm !text-red-500 -mt-0.5">not yet!</span>
+            </span>            
+            <p>An unsortable cacaphony of screenshots, logos, sketches, paintings, photos, and other abomonations unsuitable for human consumption. <span className="highlighter px-1">coming soon...</span></p>
           </div>
-
         </div>
       </div>
     </>
