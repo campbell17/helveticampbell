@@ -183,7 +183,7 @@ export default function WhoPage() {
           I'm a multi-disciplinary designer & writer who ships work that improves the lives of clients, internal teams, and their customers.
         </div>
         <div className="flex flex-col md:flex-row gap-6 mb-24">
-          <ul className="rounded-md border border-[var(--color-border)] w-full md:w-fit flex flex-col gap-1 md:gap-0 md:flex-row mt-12 !mb-0 text-base">
+          <ul className="rounded-md border pane no-hover border-[var(--color-border)] w-full md:w-fit flex flex-col gap-1 md:gap-0 md:flex-row mt-12 !mb-0 text-base">
             {/* Resume, GitHub, LinkedIn */}
             <li>
               <Link href="/pdf/Tim-Campbell-Lead-Product-Designer-Resume-2025.pdf" target="_blank" rel="noopener noreferrer" className="w-full p-6 py-4 flex items-center transition-colors">
