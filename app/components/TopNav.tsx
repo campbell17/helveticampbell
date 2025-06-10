@@ -30,7 +30,7 @@ export default function TopNav() {
       if (!isScrolling) {
         isScrolling = true
         rafId = requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 40)
+          setScrolled(window.scrollY > 480)
           isScrolling = false
           rafId = null
         })

@@ -46,20 +46,37 @@ const subheading = "A character-driven, science fiction action/adventure game wi
 
 export default function DividePage() {
   return (
-    <div className="project-page">
-      {/* Divide page content inlined from DivideContent component */}
-      <div className="px-4 sm:px-6 pb-10 md:px-20">
-        <div className="flex flex-wrap mb-8">
-          {tags.map((tag, index) => (
-            <Overline key={index} className="!text-lg mr-8">{tag}</Overline>
-          ))}
+    <div className="project-page bg-neutral-100">
+      {/* Hero Image */}
+      <div className="w-full -mt-60 bg-black">
+        <div className="relative overflow-hidden flex justify-center items-center">
+          <div className="relative">
+            <Image 
+              src="/images/work/hero/hero-divide.jpg"
+              alt="Fulcrum Hero"
+              width={1920}
+              height={757}
+              sizes="100vw"
+              className="min-w-[1200px]"
+              priority
+            />
+          </div>
         </div>
-        <H1 className="mb-4">Divide<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Action / Adventure Game (PS4)</span></H1>
-        <p className="subheading">(2014) A character-driven, science fiction action/adventure game with a modern take on isometric adventures of the past. I designed the logo, UI assets, icons, menus, HUD, and map, as well as posters and branding for the in-game world.</p>
+      </div>
+
+      <div className="px-4 sm:px-6 pb-10 md:px-20">
+        
+        <H1 className="pt-16 !mb-0">Divide<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Action / Adventure Game (PS4)</span></H1>
+        <div className="flex flex-wrap mb-4">
+          <p className="!text-[var(--text-color-light)]">Role: UI design, branding/iconography, visual design, marketing design</p>
+        </div>
+        <div className="flex flex-col lg:flex-row gap-12">
+          <p className="!mb-0 flex-1">Divide is a character-driven, science fiction action/adventure game with a modern take on isometric adventures of the past.</p>
+        </div>
       </div>
 
       {/* Gallery Section */}
-      <div className="p-8 pb-10 md:p-20 md:pb-28 pt-0">
+      <div className="px-4 sm:px-6 pb-10 md:px-20 pt-12">
         <div className="max-w-none">
           
           {/* Row */}
@@ -85,10 +102,31 @@ export default function DividePage() {
 
           {/* Row */}
           <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-8 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
               {
-                images.slice(2, 11).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative md:col-start-2 md:col-span-6 group overflow-hidden rounded-xl shadow-md">
+                images.slice(2, 5).map((image, index) => (
+                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
+                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
+                      <Image 
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          {/* Row */}
+          <div className="mb-4 lg:mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+              {
+                images.slice(5, 11).map((image, index) => (
+                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
                     <div className="relative" style={{ aspectRatio: image.aspectRatio || '1' }}>
                       <Image 
                         src={image.src}

@@ -137,7 +137,7 @@ export default function RootLayout({
 
               <main className="mx-auto overflow-visible">
                 <div className="grid grid-cols-12 gap-4 overflow-visible">
-                  <div className="grid-wide-content py-6 md:py-12 overflow-visible">
+                  <div className="grid-wide-content py-36 md:py-36 overflow-visible">
                     {children}
                   </div>
                 </div>

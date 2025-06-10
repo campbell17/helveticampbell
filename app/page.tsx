@@ -29,52 +29,6 @@ export const metadata: Metadata = {
   }
 }
 
-// Minimal project data for home page
-const projectData: Record<string, { tags: string[]; coverImage: string }> = {
-  "Fulcrum": {
-    tags: ["Fulcrum"],
-    coverImage: "/images/work/index/work-index-fulcrum.jpg"
-  },
-  "Fulcrum Lines and Polygons": {
-    tags: ["Lines & Polygons | Fulcrum"],
-    coverImage: "/images/work/index/lines-and-polygons-fallback.jpg"
-  },
-  "Fulcrum Data": {
-    tags: ["Fulcrum"],
-    coverImage: "/images/work/index/work-index-fulcrum.jpg"
-  },
-  "Fulcrum Report Builder": {
-    tags: ["Fulcrum"],
-    coverImage: "/images/work/index/work-index-fulcrum.jpg"
-  }
-};
-
-// Work images data inlined from HomeContent component
-const workImages = [
-  // Gallery 1: My Work
-  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum", gallery: 1 },
-  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum Lines and Polygons", gallery: 1 },
-  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum Data", gallery: 1 },
-  { src: "/images/work/isolated/iso-fulcrum-icon.png", alt: "Fulcrum", projectKey: "Fulcrum Report Builder", gallery: 1 },
-];
-
-// WorkItem component functionality inlined
-const getProjectUrl = (key: string) => {
-  // Handle nested Fulcrum projects
-  if (key === 'Fulcrum Lines and Polygons') {
-    return '/work/fulcrum-lines-and-polygons';
-  }
-  if (key === 'Fulcrum Data') {
-    return '/work/fulcrum/data';
-  }
-  if (key === 'Fulcrum Report Builder') {
-    return '/work/fulcrum-report-builder';
-  }
-  
-  // Default behavior for other projects
-  return `/work/${key.toLowerCase().replace(/\s+/g, '-')}`;
-};
-
 export default function HomePage() {
   return (
     <>
@@ -130,36 +84,46 @@ export default function HomePage() {
           Let's make something better together.
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {workImages.map((image, index) => (
-            // WorkItem component content inlined
-            <div 
-              key={index}
-              className="flex flex-col transition-all duration-[var(--duration-300)]"
-            >
-              <Overline className="flex items-center !text-lg mb-2">{projectData[image.projectKey]?.tags?.[0]}</Overline>
-              <Link 
-                href={getProjectUrl(image.projectKey)}
-                className="container-behavior-primary pane"
-              >
-                {/* Cover image with customizable aspect ratio */}
-                {projectData[image.projectKey]?.coverImage && (
-                  <div className="aspect-[21/12] w-full overflow-hidden">
-                    <Image
-                      src={projectData[image.projectKey]?.coverImage || ''}
-                      alt={`Cover for ${image.alt}`}
-                      width={1920}
-                      height={1080}
-                      className="object-cover w-full h-full"
-                      priority={false}
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-              </Link>
+        <H2 className="mt-48">Work</H2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <Link href="/work/fulcrum" className="group block">
+            <div className="mb-4 overflow-hidden rounded-lg shadow-lg">
+              <Image
+                src="/images/work/index/work-index-fulcrum.jpg"
+                alt="Fulcrum B2B SaaS project"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
-          ))}
+            <Overline className="mb-2">Case study</Overline>
+            <H3 className="mb-0">Fulcrum (B2B SaaS)</H3>
+          </Link>
+
+          <Link href="/work/divide" className="group block">
+            <div className="mb-4 overflow-hidden rounded-lg shadow-lg">
+              <Image
+                src="/images/work/index/work-index-divide.jpg"
+                alt="Divide PS4 project"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <Overline className="mb-2">Visual Design</Overline>
+            <H3 className="mb-0">Divide (PS4)</H3>
+          </Link>
+
+          <Link href="/work/panthers" className="group block">
+            <div className="mb-4 overflow-hidden rounded-lg shadow-lg bg-red-700">
+              <div className="w-full h-64 bg-red-700"></div>
+            </div>
+            <Overline className="mb-2">Experiment</Overline>
+            <H3 className="mb-0">Panthers Logo Remix</H3>
+          </Link>
         </div>
+
       </div>
     </>
   )

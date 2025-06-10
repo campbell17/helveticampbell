@@ -15,9 +15,9 @@ export default function ContactButton() {
 
   return (
     <>
-      <Link href="#contact" onClick={openContactModal} className="w-full p-6 py-4 pane flex items-center transition-colors">
+      <Link href="#contact" onClick={openContactModal} className="w-full p-6 py-4 flex items-center transition-colors">
         <ChatBubbleLeftRightIcon className="h-5 w-5 mr-2" />
-        <span>Talk to me</span>
+        <span>Contact me</span>
       </Link>
       
       {/* Contact Modal */}

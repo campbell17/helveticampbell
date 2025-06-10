@@ -1,5 +1,5 @@
 import React from 'react';
-import { H1, H2, H3, H4, Overline } from '../../components/Typography';
+import { H1, H2, H3, H4, Overline, Caption } from '../../components/Typography';
 import Image from 'next/image';
 import { Metadata } from 'next';
 
@@ -49,7 +49,7 @@ export default function FulcrumPage() {
   return (
     <>
       {/* Hero Image */}
-      <div className="w-full -mt-36 bg-[#eb1300]">
+      <div className="w-full -mt-60 bg-[#eb1300]">
         <div className="relative overflow-hidden">
           <div className="relative">
             <Image 
@@ -67,13 +67,13 @@ export default function FulcrumPage() {
       
       <div className="bg-[#fdecee] px-4 sm:px-6 pb-10 md:px-20">
         
-        <div className="flex flex-wrap pt-16">
-          <Overline className="!text-lg mr-8">Case Study</Overline>
+        <H1 className="pt-16 !mb-0">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
+        <div className="flex flex-wrap mb-4">
+          <p className="!text-[var(--text-color-light)]">Role: product strategy, product design, branding, marketing design, front-end development, copywriting</p>
         </div>
-        <H1 className="mb-4">Fulcrum<span className="font-[200] block lg:inline"><span className="hidden lg:inline"> |</span> Field Operations Platform</span></H1>
         <div className="flex flex-col lg:flex-row gap-12">
-          <p className="!mb-0 lg:!mb-10">Fulcrum allows users to collect data, media, and GPS locations in the field via mobile app, with everything synced to the cloud for centralized access, management, and reporting via the web.</p>
-          <p className="!mb-10">As the Lead Product Designer for Fulcrum, I was responsible for branding, marketing, UX, and visual design for the entire product. I was the sole designer for the first few years, ultimately growing the team to four designers. We were a tight group, proudly upholding the mantle as the glue between product and engineering.</p>
+          <p className="!mb-0 lg:!mb-10 flex-1">Fulcrum allows users to collect data, media, and GPS locations in the field via mobile app, with everything synced to the cloud for centralized access, management, and reporting via the web.</p>
+          <p className="flex-1">I was an agency of one for the first few years, ultimately growing the team to four designers. We were a tight group, proudly upholding the mantle as the glue between product and engineering.</p>
         </div>
       </div>
 
@@ -191,7 +191,7 @@ export default function FulcrumPage() {
             </div>
           </div>
           
-          <span className="text-center col-span-2 sm:col-span-3 md:col-span-6 text-sm !text-[var(--text-color-light)] mb-12">Our humble red triangle never left our side.</span>
+          <span className="text-center col-span-2 sm:col-span-3 md:col-span-6 text-sm !text-[var(--text-color-light)] mb-12">Our brand evolved, but the humble red triangle never left our side.</span>
         </div>
       </div>
 
@@ -202,13 +202,13 @@ export default function FulcrumPage() {
           <div className="flex-1 px-4 sm:px-6 pt-16 lg:pt-0 md:px-20 flex flex-col md:min-w-[500px] justify-center">
             <H3 className="!mb-6">App Dashboard</H3>
             <p className="text-base !mb-6">
-              In Fulcrum, an App refers to a custom form, complete with settings, attachments, reports, and automated workflows. Early on, users could view the list of Apps, edit the form schema, and view the App data, but there was no way to get an overview of App-level activity, nor was there a central place to admin tasks.
+              In Fulcrum, an App refers to a custom form, complete with settings, attachments, reports, and automated workflows. Early on, users could view the list of Apps, edit the form schema, and view the App data, but there was no way to get an overview of App-level activity, nor was there a central place to handle administration.
             </p>
             <p className="text-base !mb-6">
-              I created the App Dashboard as a way for users to drill into a specific App to get a broader sense of data & activity and provide us a place to hang future functionality such as data sharing, workflows, and crowdsourcing admin.
+              Our goal was to create a way for users to drill into a specific App to get a broader sense of data & activity, as well as provide us a place to hang some other features we had planned like data sharing, workflows, and crowdsourcing admin.
             </p>
             <p className="text-base !mb-0">
-              The result was a more well-rounded web experience for users and breathing room for our product team to explore the expansion of an App's capabilities.
+              The result was a stickier product (users no longer had to go somewhere else for basic metrics) more well-rounded web experience for users and breathing room for our product team to explore the expansion of an App's capabilities.
             </p>
           </div>
           
@@ -254,27 +254,7 @@ export default function FulcrumPage() {
             Fulcrum helps companies of all sizes run better, but it's not a one-man-show kind of product. Inviting and onboarding your team is an early and necessary step to getting up and running. And while our first iteration of the member invite flow worked for smaller outfits, it did not scale well at all.
           </p>
           <p className="text-base !mb-6">
-            There was no mass import. The stepper experience felt clunky. Orgs with any scale were spending too much time onboarding their workforce, and the stepper became error prone and got slower with more people, not faster. We wanted to appeal to larger businesses, so I created a new flow to optimize the experience, adding the ability to mass import a list of team members, assign them a role, administer permissions, and send the invites in message, all in one place.
-          </p>
-          <p className="text-base !mb-0">
-            This resulted in a 73% increase in onboarding speed and a drastic improvement in ease-of-use.
-          </p>
-        </div>
-        
-        {/* Centered 3-box consolidated image */}
-        <div className="px-4 sm:px-6 md:px-8 pt-24 flex flex-col items-center">
-          <div className="relative overflow-hidden max-w-[1200px] mb-24">
-            <Image 
-              src="/images/work/full/full-fulcrum-members-original-stepper.jpg"
-              alt="Fulcrum Member Onboarding Flow"
-              width={1920}
-              height={1080}
-              sizes="(max-width: 1024px) 100vw, 1600px"
-              className="w-full h-auto"
-            />
-          </div>
-          <p className="!text-[var(--text-color-light)] text-sm text-center max-w-2xl">
-            The original "stepper" experience (above) and the consolidated & optimized iteration (below)
+            There was no mass import. The stepper experience felt clunky. Orgs with any scale were spending too much time onboarding and the stepper became error prone and got slower with more people, not faster. We wanted to appeal to larger businesses, so I created a new flow to optimize the experience, adding the ability to mass import a list of team members, assign them a role, administer permissions, and send the invites in message, all in one place.
           </p>
         </div>
         
@@ -289,7 +269,7 @@ export default function FulcrumPage() {
                 width={800}
                 height={600}
                 sizes="(max-width: 768px) 100vw, 600px"
-                className="w-full h-auto max-w-[600px] !mb-8 md:mb-0"
+                className="w-full h-auto !mb-8 md:mb-0"
               />
             </div>
             <div className="px-4 sm:px-6 md:px-20">
@@ -304,7 +284,7 @@ export default function FulcrumPage() {
           </div>
           
           {/* Right column - Main prototype image (order-1 on mobile, order-2 on desktop) */}
-          <div className="flex-shrink-0 px-4 sm:px-6 py-8 lg:py-0 md:p-20 flex items-center justify-center order-1 lg:order-2">
+          <div className="flex-shrink-0 px-4 sm:px-6 py-8 lg:py-0 md:p-20 flex flex-col items-center md:items-start justify-center order-1 lg:order-2">
             <div className="relative rounded-xl shadow-lg overflow-hidden max-w-[1200px]">
               <Image 
                 src="/images/work/browser/browser-fulcrum-members-prototype.jpg"
@@ -315,6 +295,9 @@ export default function FulcrumPage() {
                 className="w-full h-auto"
               />
             </div>
+            <p className="!text-[var(--text-color-light)] text-sm text-center max-w-2xl mt-4">
+              The consolidated & optimized iteration won out over the original "stepper" experience by a 73% margin.
+            </p>
           </div>
         </div>
       </div>
@@ -351,7 +334,7 @@ export default function FulcrumPage() {
       </div>
 
       {/* Vignette Section - Groups */}
-      <div className="w-full lg:py-32">
+      <div className="w-full pb-24 xl:pb-0 lg:pt-32">
         <div className="flex flex-col lg:flex-row ">
           {/* Left column - Text content */}
           <div className="flex-1 px-4 sm:px-6 pt-16 lg:pt-0 md:px-20 flex flex-col md:min-w-[500px] justify-center">
@@ -360,10 +343,10 @@ export default function FulcrumPage() {
               Working with business data comes with the added wrinkle of having to provision the access, visibility, and permissioning of it to each member of the team. in Fulcrum, we had nice boundaries around user roles and permissions, but as we began swimming in Enterprise waters, assigning access to the Apps, Projects, and Map Layers started to show weakness at scale.
             </p>
             <p className="text-base !mb-6">
-              Through deep discussions with customers, it became clear we would have to think of a completely new way of performing this work in Fulcrum. The problem couldn’t be “enhanced away” by modifying the existing method.
+              Through deep discussions with customers, it became clear we would have to think of a completely new way of performing this work in Fulcrum. The problem couldn't be “enhanced away” by modifying the existing method.
             </p>
             <p className="text-base !mb-0">
-              So we designed Groups. It’s a classic example of “why didn’t we think of this sooner” because of how immediate and overwhelming the response was from customers about the improved experience. This also unblocked quite a few sales conversations with potential enterprise-level prospects who had concerns about scaling in Fulcrum.
+              So we designed Groups. It's a classic example of “why didn't we think of this sooner” because of how immediate and overwhelming the response was from customers about the improved experience. This also unblocked quite a few sales conversations with potential enterprise-level prospects who had concerns about scaling in Fulcrum.
             </p>
           </div>
           
@@ -382,15 +365,15 @@ export default function FulcrumPage() {
           </div>
         </div>
         {/* Two-column section: Reduce redundancy */}
-        <div className="flex flex-col items-center xl:flex-row">
+        <div className="flex flex-col items-center xl:flex-row mt-12 lg:mt-24 xl:border-b border-[var(--color-border)]">
           {/* Left column */}
           <div className="py-8 xl:py-0 flex items-center justify-center w-full">
             <div className="px-4 sm:px-6 md:px-20 xl:px-0 relative overflow-hidden w-full">
               <Image 
-                src="/images/work/full/full-fulcrum-groups-redundant.jpg"
+                src="/images/work/full/full-fulcrum-groups-redundant2.jpg"
                 alt="Fulcrum Members Prototype"
                 width={1920}
-                height={940}
+                height={603}
                 sizes="(max-width: 1024px) 100vw, 1600px"
                 className="w-full h-auto"
               />
@@ -408,229 +391,7 @@ export default function FulcrumPage() {
           </div>          
         </div>
       </div>
-
-
-
-      {/* Gallery Section */}
-      <div className="p-8 pb-10 md:p-20 md:pb-28">
-        <div className="max-w-none">
-          
-          {/* Row */}
-          <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-              {
-                images.filter(img => !img.fullWidth).slice(0, 6).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '10/6' }}>
-                      <Image 
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-          
-
-        </div>
-      </div>
-
-      {/* Vignette Section 1 */}
-      <div className="w-full bg-[var(--mode-color)] border-y border-[var(--color-border)]">
-        <div className="vignette-container">
-          {/* Left column - Full-bleed image */}
-          <div className="vignette-image-container">
-            <Image 
-              src="/images/work/gridded/grid-fulcrum-buildericons-v3.jpg"
-              alt="Fulcrum App Builder Icons v3"
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="w-full h-full"
-              />
-          </div>
-          
-          {/* Right column - Text content */}
-          <div className="p-10 md:p-16 lg:p-20">
-            <Overline className="mb-4">Icons</Overline>
-            <H3>App Builder Icons v3</H3>
-            <p className="text-base text-slate-700 max-w-xl mt-4">
-              A custom icon set I created for Fulcrum's drag & drop App Builder. One of the constraints for v3 was for each icon to be identical in width and height, leading to some unique design choices (see: the flattened mailbox icon for the Address Field).
-            </p>
-          </div>
-        </div>
-      </div>
-
               
-      {/* Gallery Section */}
-      <div className="p-8 pb-10 md:p-20 md:pb-28">
-        <div className="max-w-none">
-          
-          {/* Row */}
-          <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:col-start-2 gap-4 lg:gap-6">
-              {
-                images.filter(img => !img.fullWidth).slice(6, 10).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
-                      <Image 
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-          
-    
-          </div>
-        </div>
-
-
-          {/* Vignette Section 2 */}
-          <div className="w-full bg-[var(--mode-color)] border-y border-[var(--color-border)]">
-            <div className="vignette-container">
-              {/* Left column - Full-bleed image */}
-              <div className="vignette-image-container">
-                <Image 
-                  src="/images/work/full/full-fulcrum-brochure-mini-mockup-cool.jpg"
-                  alt="Fulcrum Brochure Mini Mockup"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="w-full h-full"
-                  />
-              </div>
-              
-              {/* Right column - Text content */}
-              <div className="p-10 md:p-16 lg:p-20">
-                <Overline className="mb-4">Illustration</Overline>
-                <H3>Mini Brochure</H3>
-                <p className="text-base text-slate-700 max-w-xl mt-4">I created custom illustrations for the Features section of the website. Each was unique enough to conceptually stand on its own, and the striking visuals left such an impression on the team, we decided to create a 4-panel brochure to hand out at trade shows and industry events. </p>
-              </div>
-            </div>
-          </div>
-
-      <div className="p-8 pb-10 md:p-20 md:pb-28">
-        <div className="max-w-none">
-
-          {/* Row */}
-          <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-              {
-                images.filter(img => !img.fullWidth).slice(10, 12).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
-                      <Image 
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-
-          {/* Row */}
-          <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-              {
-                images.filter(img => !img.fullWidth).slice(13,15).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
-                      <Image 
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-
-          {/* Row */}
-          <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-              {
-                images.filter(img => !img.fullWidth).slice(15, 17).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
-                      <Image 
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-
-          {/* Row */}
-          <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-              {
-                images.filter(img => !img.fullWidth).slice(17, 19).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
-                      <Image 
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>  
-
-          {/* Row */}
-          <div className="mb-4 lg:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-              {
-                images.filter(img => !img.fullWidth).slice(19, 21).map((image, index) => (
-                  <div key={image.src || index} className="cursor-default relative group overflow-hidden rounded-xl shadow-md">
-                    <div className="relative" style={{ aspectRatio: image.aspectRatio || '4/4' }}>
-                      <Image 
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>            
-
-        </div>
-      </div>
     </>
   );
 } 

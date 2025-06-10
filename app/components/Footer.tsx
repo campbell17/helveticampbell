@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLoading } from '../contexts/LoadingContext'
-import { Overline } from './Typography'
 import { useState } from 'react'
 import ContactModal from './ContactModal'
 import Image from 'next/image'
@@ -14,16 +13,6 @@ export default function Footer() {
   const pathname = usePathname()
   const { initiateLoading } = useLoading()
   const [contactModalOpen, setContactModalOpen] = useState(false)
-  
-  // Project links matching those in Navigation.tsx
-  const projects = [
-    { name: 'Fulcrum', href: '/work/fulcrum', key: 'Fulcrum' },
-    // { name: 'Spatial Networks', href: '/work/spatial-networks', key: 'Spatial Networks' },
-    { name: 'Divide', href: '/work/divide', key: 'Divide' },
-    { name: 'Allinspections', href: '/work/allinspections', key: 'Allinspections' },
-    // { name: 'Branding', href: '/work/branding', key: 'Branding' },
-    // { name: 'Art', href: '/work/personal', key: 'Personal' },
-  ]
   
   const handleLinkClick = (href: string) => {
     if (href !== pathname) {
@@ -47,12 +36,11 @@ export default function Footer() {
         transition={{ duration: 0.75, delay: 0.25, ease: 'easeOut' }}
       >
 
-          <div className="flex flex-col md:flex-row gap-6 justify-between lg:gap-24 px-4 sm:px-6 md:px-8 xl:px-0 py-6 pb-16 md:py-12 overflow-visible">
-            {/* Column 1: Logo & Info */}
-            <div className="flex flex-col space-y-8">
-              {/* Logo and Talk to me button */}
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-16">
+          <div className="flex flex-col text-center items-center sm:text-left sm:flex-row gap-6 justify-between lg:gap-24 px-4 sm:px-6 2xl:px-0 py-6 pb-16 sm:py-12 overflow-visible">
+            {/* Column 1: Navigation Links */}
+            <div className="">
+              <ul className="flex flex-col sm:flex-row gap-4 items-center list-none p-0 !m-0">
+                <div className="h-8 w-8 sm:mr-2">
                   <Link 
                     href="/" 
                     onClick={() => handleLinkClick("/")} 
@@ -64,20 +52,42 @@ export default function Footer() {
                     </svg>
                   </Link>
                 </div>
-                
-                {/* Talk to me button */}
-                <ul className="w-fit !mb-0 flex text-base">
-                  <li>
-                    <Link href="#contact" onClick={openContactModal} className="rounded-md bg-neutral-400/10 border border-[var(--color-border)] w-full p-6 py-4 pane flex items-center justify-center transition-colors flex items-center transition-colors">
-                      <ChatBubbleLeftRightIcon className="h-5 w-5 mr-2" />
-                      <span>Talk to me</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+                <li className="leading-tight mb-1">
+                  <Link 
+                    href="/" 
+                    onClick={() => handleLinkClick("/")}
+                    className="text-sm inline"
+                    prefetch={pathname !== "/" ? true : false}
+                  >
+                    Home
+                  </Link>
+                </li>
 
-              {/* Social icons */}
-              <div className="flex space-x-4">
+                <li className="leading-tight mb-1">
+                  <Link 
+                    href="/who" 
+                    onClick={() => handleLinkClick("/who")}
+                    className="text-sm inline"
+                    prefetch={pathname !== "/who" ? true : false}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li className="leading-tight mb-1">
+                  <Link 
+                    href="#contact"
+                    onClick={openContactModal}
+                    className="text-sm inline"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 2: Logo & Social Icons */}
+            <div className="flex flex-col space-y-8">
+              <div className="flex flex-col sm:flex-row items-center gap-4">
                 {/* GitHub */}
                 <Link 
                   href="https://github.com/campbell17" 
@@ -132,66 +142,6 @@ export default function Footer() {
                 </Link>
               </div>
               
-              {/* Copyright */}
-              <div className="text-gray-500 text-sm">
-                © 2025 Tim Campbell
-              </div>
-            </div>
-            
-            <div className="flex flex-col md:flex-row gap-12">
-              {/* Column 2: WORK */}
-              <div className="py-6 md:py-0 md:my-0 border-y border-neutral-200 md:border-0 t-8 sm:mt-0">
-                <Overline className="mb-2">The Work</Overline>
-                <ul className="list-none p-0 !m-0">
-                  {projects.map((project) => (
-                    <li key={project.key} className="leading-tight mb-1">
-                      <Link
-                        href={project.href}                        
-                        className="cursor-pointer text-gray-500 hover:text-black transition-colors text-sm p-0 m-0 inline bg-transparent border-0 font-normal"
-                      >
-                        {project.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              {/* Column 3: THE REST */}
-              <div className="">
-                <Overline className="mb-2">The Rest</Overline>
-                <ul className="list-none p-0 !m-0">
-                  <li className="leading-tight mb-1">
-                    <Link 
-                      href="/" 
-                      onClick={() => handleLinkClick("/")}
-                      className="text-sm inline"
-                      prefetch={pathname !== "/" ? true : false}
-                    >
-                      Home
-                    </Link>
-                  </li>
-
-                  <li className="leading-tight mb-1">
-                    <Link 
-                      href="/who" 
-                      onClick={() => handleLinkClick("/who")}
-                      className="text-sm inline"
-                      prefetch={pathname !== "/who" ? true : false}
-                    >
-                      About
-                    </Link>
-                  </li>
-                  <li className="leading-tight mb-1">
-                    <Link 
-                      href="#contact"
-                      onClick={openContactModal}
-                      className="text-sm inline"
-                    >
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
 
