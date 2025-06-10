@@ -224,7 +224,7 @@ export default function WhoPage() {
 
         <ul className="space-y-4 list-disc list-outside ml-5">
           <li>
-            I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer">Fulcrum</Link> for its first 10 years, growing it from an idea on a whiteboard to $12M+ in ARR with a small team and scant resources.
+            I was the sole designer on <Link href="https://www.fulcrumapp.com" target="_blank" rel="noopener noreferrer">Fulcrum</Link> for its first 10 years, growing it from an idea on a whiteboard to $25M+ in ARR with a small team and scant resources.
           </li>
           <li>
             In addition to working on Fulcrum, I also designed the branding, marketing website, and print materials for our parent company, Spatial Networks.

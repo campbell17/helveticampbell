@@ -303,7 +303,7 @@ export default function FulcrumPage() {
       </div>
 
       {/* Tour Illustrations Section */}
-      <div className="w-full relative bg-[#dfdfdf]">
+      <div className="w-full relative bg-[#dfdfdf] overflow-hidden">
         {/* Text Content - Upper area */}
         <div className="relative z-10 py-16 lg:py-32">
           <div className="max-w-4xl px-4 sm:px-6 md:px-20 lg:mx-auto">
