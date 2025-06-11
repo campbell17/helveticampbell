@@ -208,7 +208,7 @@ export default function FulcrumPage() {
               Our goal was to create a way for users to drill into a specific App to get a broader sense of data & activity, as well as provide us a place to hang some other features we had planned like data sharing, workflows, and crowdsourcing admin.
             </p>
             <p className="text-base !mb-0">
-              The result was a stickier product (users no longer had to go somewhere else for basic metrics) more well-rounded web experience for users and breathing room for our product team to explore the expansion of an App's capabilities.
+              The result was a stickier product (users no longer had to go somewhere else for basic metrics), a more well-rounded web experience for users, and breathing room for our product team to explore the expansion of an App's capabilities.
             </p>
           </div>
           
