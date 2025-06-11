@@ -12,6 +12,8 @@ import { Suspense } from 'react'
 import Footer from './components/Footer'
 import TopNav from './components/TopNav'
 import DotGridBackground from './components/DotGridBackground'
+import { Analytics } from '@vercel/analytics/next';
+
 
 // Use environment variables if available, or default to localhost during development
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://helveticampbell.com';
@@ -141,6 +143,7 @@ export default function RootLayout({
                 <div className="grid grid-cols-12 gap-4 overflow-visible">
                   <div className="grid-wide-content overflow-visible">
                     {children}
+                    <Analytics />
                   </div>
                 </div>
               </main>
