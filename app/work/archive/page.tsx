@@ -144,7 +144,7 @@ const images: ImageData[] = [
   { src: "/images/work/full/full-personal-photo-12.png", alt: "Personal photo 12", aspectRatio: "3/2" },
 
   // Isolated images
-  { src: "/images/work/isolated/iso-fulcrum-origins.jpg", alt: "Fulcrum origins", aspectRatio: "1" },
+  // { src: "/images/work/isolated/iso-fulcrum-origins.jpg", alt: "Fulcrum origins", aspectRatio: "1" },
   { src: "/images/work/isolated/iso-soteriqa-logo.jpg", alt: "Soteriqa logo", aspectRatio: "1" },
   { src: "/images/work/isolated/iso-soteriqa-icon.jpg", alt: "Soteriqa icon", aspectRatio: "1" },
   { src: "/images/work/isolated/iso-personal-murphys-garage.jpg", alt: "Murphy's Garage sticker", aspectRatio: "1" },
