@@ -13,6 +13,7 @@ import Footer from './components/Footer'
 import TopNav from './components/TopNav'
 import DotGridBackground from './components/DotGridBackground'
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 
 // Use environment variables if available, or default to localhost during development
@@ -144,6 +145,7 @@ export default function RootLayout({
                   <div className="grid-wide-content overflow-visible">
                     {children}
                     <Analytics />
+                    <SpeedInsights />
                   </div>
                 </div>
               </main>
