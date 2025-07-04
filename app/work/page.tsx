@@ -121,7 +121,7 @@ export default function WorkPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
               </svg>
             </a>            
-            <p>A super fun side project, I teamed up with Exploding Tuba Studios on their debut game, Divide. I helped shape the branding & marketing, worked on the game menus, combat HUD, and a ton of in-game assets. <Link href="/work/divide">View project</Link></p>
+            <p>I teamed up with Exploding Tuba Studios on their debut game, Divide. I helped shape the branding & marketing, worked on the game menus, combat HUD, and a ton of in-game assets. <Link href="/work/divide">View project</Link></p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="relative">
                 <Image 
