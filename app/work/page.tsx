@@ -149,14 +149,13 @@ export default function WorkPage() {
           </div>
           <div>
             <Overline className="!text-base mb-2">Alpha-Omega</Overline>
-            <span className="mb-6 group inline-flex items-center hover:text-primary">
+            <a className="mb-6 group inline-flex items-center hover:text-primary" href="/work/archive">
               <H2 className="text-2xl lg:text-5xl font-bold text-text-heading font-display !mb-0">Archive</H2>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" className="w-6 h-6 ml-2 group-hover:text-red-500 transition-all duration-300">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" className="w-6 h-6 ml-2 group-hover:text-[var(--color-link)] group-hover:translate-x-2 transition-translate duration-300">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
               </svg>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm !text-red-500 -mt-0.5">not yet!</span>
-            </span>            
-            <p>An unsortable cacaphony of screenshots, logos, sketches, paintings, photos, and other abomonations unsuitable for human consumption. <span className="highlighter px-1">coming soon...</span></p>
+            </a>            
+            <p>A cacaphony of screenshots, logos, sketches, paintings, photos, and other potential abomonations.</p>
           </div>
         </div>
       </div>

@@ -212,7 +212,7 @@ export default function ArchivePage() {
         <div className="relative overflow-hidden flex justify-center items-center">
           <div className="relative">
             <Image 
-              src="/images/work/hero/hero-divide.jpg"
+              src="/images/work/hero/hero-archive.jpg"
               alt="Fulcrum Hero"
               width={1920}
               height={757}
