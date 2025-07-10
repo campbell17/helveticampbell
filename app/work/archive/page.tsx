@@ -57,13 +57,13 @@ const images: ImageData[] = [
   { src: "/images/work/browser/browser-allinspections-4-1.jpg", alt: "AllInspections 4.1 screenshot", aspectRatio: "8/7", categories: ["web"] },
   { src: "/images/work/browser/browser-allinspections-2.jpg", alt: "AllInspections screenshot 2", aspectRatio: "8/7", categories: ["web"] },
   { src: "/images/work/browser/browser-allinspections-3.jpg", alt: "AllInspections screenshot 3", aspectRatio: "8/7", categories: ["web"] },
-  { src: "/images/work/full/full-fulcrum-tour-bg2.jpg", alt: "Fulcrum tour background 2", aspectRatio: "1", categories: ["web"] },
-  { src: "/images/work/full/full-fulcrum-groups-redundant2.jpg", alt: "Fulcrum groups redundant design 2", aspectRatio: "1", categories: ["web"] },
-  { src: "/images/work/full/full-fulcrum-groups-redundant.jpg", alt: "Fulcrum groups redundant design", aspectRatio: "1", categories: ["web"] },
-  { src: "/images/work/full/full-fulcrum-tour-bg.jpg", alt: "Fulcrum tour background", aspectRatio: "1", categories: ["web"] },
-  { src: "/images/work/full/full-fulcrum-members-original-stepper.jpg", alt: "Fulcrum members original stepper", aspectRatio: "1", categories: ["web"] },
-  { src: "/images/work/full/full-fulcrum-members-sketches.jpg", alt: "Fulcrum members sketches", aspectRatio: "1", categories: ["web"] },
-  { src: "/images/work/full/full-fulcrum-app-dashboard-sketches.jpg", alt: "Fulcrum app dashboard sketches", aspectRatio: "1", categories: ["web"] },
+  // { src: "/images/work/full/full-fulcrum-tour-bg2.jpg", alt: "Fulcrum tour background 2", aspectRatio: "1", categories: ["web"] },
+  // { src: "/images/work/full/full-fulcrum-groups-redundant2.jpg", alt: "Fulcrum groups redundant design 2", aspectRatio: "1", categories: ["web"] },
+  // { src: "/images/work/full/full-fulcrum-groups-redundant.jpg", alt: "Fulcrum groups redundant design", aspectRatio: "1", categories: ["web"] },
+  // { src: "/images/work/full/full-fulcrum-tour-bg.jpg", alt: "Fulcrum tour background", aspectRatio: "1", categories: ["web"] },
+  // { src: "/images/work/full/full-fulcrum-members-original-stepper.jpg", alt: "Fulcrum members original stepper", aspectRatio: "1", categories: ["web"] },
+  // { src: "/images/work/full/full-fulcrum-members-sketches.jpg", alt: "Fulcrum members sketches", aspectRatio: "1", categories: ["web"] },
+  // { src: "/images/work/full/full-fulcrum-app-dashboard-sketches.jpg", alt: "Fulcrum app dashboard sketches", aspectRatio: "1", categories: ["web"] },
 
   // === PRINT CATEGORY ===
   { src: "/images/work/full/full-fulcrum-brochure-mini-mockup-cool.jpg", alt: "Fulcrum brochure mini mockup cool", aspectRatio: "1", categories: ["print"] },
@@ -84,18 +84,18 @@ const images: ImageData[] = [
   { src: "/images/work/full/full-sni-ad-2.jpg", alt: "SNI advertisement 2", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-sni-flyer-1.jpg", alt: "SNI flyer 1", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-sni-ad-1.jpg", alt: "SNI advertisement 1", aspectRatio: "1", categories: ["print"] },
-  { src: "/images/work/full/full-fulcrum-ad-2.jpg", alt: "Fulcrum advertisement 2", aspectRatio: "1", categories: ["print"] },
+  { src: "/images/work/full/full-fulcrum-ad-2.jpg", alt: "Fulcrum advertisement 2", aspectRatio: "835/1000", categories: ["print"] },
   { src: "/images/work/full/full-fulcrum-brochure-mini-2.jpg", alt: "Fulcrum brochure mini 2", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-fulcrum-brochure-mini-1.jpg", alt: "Fulcrum brochure mini 1", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-allinspections-brochure.jpg", alt: "AllInspections brochure", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-allinspections-double-ad.jpg", alt: "AllInspections double advertisement", aspectRatio: "1", categories: ["print"] },
-  { src: "/images/work/full/full-fulcrum-ad-1.jpg", alt: "Fulcrum advertisement 1", aspectRatio: "1", categories: ["print"] },
-  { src: "/images/work/full/full-fulcrum-tradeshow.jpg", alt: "Fulcrum tradeshow display", aspectRatio: "1", categories: ["print"] },
+  // { src: "/images/work/full/full-fulcrum-ad-1.jpg", alt: "Fulcrum advertisement 1", aspectRatio: "1", categories: ["print"] },
+  // { src: "/images/work/full/full-fulcrum-tradeshow.jpg", alt: "Fulcrum tradeshow display", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-fulcrum-book-fundamentals.jpg", alt: "Fulcrum book fundamentals", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-fulcrum-book-data.jpg", alt: "Fulcrum book data", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-fulcrum-book-cover.jpg", alt: "Fulcrum book cover", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/full/full-fulcrum-handout.jpg", alt: "Fulcrum handout", aspectRatio: "1", categories: ["print"] },
-  { src: "/images/work/full/full-allinspections-ad.jpg", alt: "AllInspections advertisement", aspectRatio: "1", categories: ["print"] },
+  // { src: "/images/work/full/full-allinspections-ad.jpg", alt: "AllInspections advertisement", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/isolated/iso-sni-tradeshow-booth.jpg", alt: "SNI tradeshow booth", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/isolated/iso-fulcrum-package.jpg", alt: "Fulcrum package", aspectRatio: "1", categories: ["print"] },
   { src: "/images/work/isolated/iso-fulcrum-pullup-1.jpg", alt: "Fulcrum pullup banner 1", aspectRatio: "1", categories: ["print"] },
@@ -132,14 +132,14 @@ const images: ImageData[] = [
   { src: "/images/work/full/full-personal-photo-16.jpg", alt: "Personal photo 16", aspectRatio: "3/2", categories: ["photo"] },
   { src: "/images/work/full/full-personal-photo-13.png", alt: "Personal photo 13", aspectRatio: "3/2", categories: ["photo"] },
   { src: "/images/work/full/full-personal-photo-12.png", alt: "Personal photo 12", aspectRatio: "3/2", categories: ["photo"] },
-  { src: "/images/work/snapshots/snapshot-divide-recording-1.jpg", alt: "Divide recording session 1", aspectRatio: "1", categories: ["photo", "gaming"] },
-  { src: "/images/work/snapshots/snapshot-sni-tradeshow-1.jpg", alt: "SNI tradeshow photo 1", aspectRatio: "1", categories: ["photo"] },
-  { src: "/images/work/snapshots/snapshot-fulcrum-cw-onsite-fema-2.jpg", alt: "Fulcrum CW onsite FEMA 2", aspectRatio: "1", categories: ["photo"] },
-  { src: "/images/work/snapshots/snapshot-fulcrum-cw-onsite-fema-1.jpg", alt: "Fulcrum CW onsite FEMA 1", aspectRatio: "1", categories: ["photo"] },
-  { src: "/images/work/snapshots/snapshot-fulcrum-cw-office-2.jpg", alt: "Fulcrum CW office 2", aspectRatio: "1", categories: ["photo"] },
-  { src: "/images/work/snapshots/snapshot-fulcrum-cw-tradeshow.jpg", alt: "Fulcrum CW tradeshow", aspectRatio: "1", categories: ["photo"] },
-  { src: "/images/work/snapshots/snapshot-fulcrum-cw-early-swag.jpg", alt: "Fulcrum CW early swag", aspectRatio: "1", categories: ["photo"] },
-  { src: "/images/work/snapshots/snapshot-fulcrum-cw-office-1.jpg", alt: "Fulcrum CW office 1", aspectRatio: "1", categories: ["photo"] },
+  // { src: "/images/work/snapshots/snapshot-divide-recording-1.jpg", alt: "Divide recording session 1", aspectRatio: "1", categories: ["photo", "gaming"] },
+  // { src: "/images/work/snapshots/snapshot-sni-tradeshow-1.jpg", alt: "SNI tradeshow photo 1", aspectRatio: "1", categories: ["photo"] },
+  // { src: "/images/work/snapshots/snapshot-fulcrum-cw-onsite-fema-2.jpg", alt: "Fulcrum CW onsite FEMA 2", aspectRatio: "1", categories: ["photo"] },
+  // { src: "/images/work/snapshots/snapshot-fulcrum-cw-onsite-fema-1.jpg", alt: "Fulcrum CW onsite FEMA 1", aspectRatio: "1", categories: ["photo"] },
+  // { src: "/images/work/snapshots/snapshot-fulcrum-cw-office-2.jpg", alt: "Fulcrum CW office 2", aspectRatio: "1", categories: ["photo"] },
+  // { src: "/images/work/snapshots/snapshot-fulcrum-cw-tradeshow.jpg", alt: "Fulcrum CW tradeshow", aspectRatio: "1", categories: ["photo"] },
+  // { src: "/images/work/snapshots/snapshot-fulcrum-cw-early-swag.jpg", alt: "Fulcrum CW early swag", aspectRatio: "1", categories: ["photo"] },
+  // { src: "/images/work/snapshots/snapshot-fulcrum-cw-office-1.jpg", alt: "Fulcrum CW office 1", aspectRatio: "1", categories: ["photo"] },
 
   // === BRANDING CATEGORY ===
   { src: "/images/work/isolated/iso-soteriqa-logo.jpg", alt: "Soteriqa logo", aspectRatio: "1", categories: ["branding"] },
@@ -183,7 +183,7 @@ const images: ImageData[] = [
   { src: "/images/work/full/full-personal-drawing-2.jpg", alt: "Personal drawing 2", aspectRatio: "1", categories: ["art"] },
   { src: "/images/work/full/full-personal-painting-1.jpg", alt: "Personal painting 1", aspectRatio: "1", categories: ["art"] },
   { src: "/images/work/full/full-personal-drawing-1.jpg", alt: "Personal drawing 1", aspectRatio: "1", categories: ["art"] },
-  { src: "/images/work/isolated/iso-personal-helmet-concept.jpg", alt: "Personal helmet concept", aspectRatio: "1", categories: ["art"] },
+  // { src: "/images/work/isolated/iso-personal-helmet-concept.jpg", alt: "Personal helmet concept", aspectRatio: "1", categories: ["art"] },
 
   // === GAMING CATEGORY ===
   { src: "/images/work/full/full-divide-screenshot-2.jpg", alt: "Divide game screenshot 2", aspectRatio: "1", categories: ["gaming"] },
@@ -229,6 +229,11 @@ export default function ArchivePage() {
         <div className="flex flex-wrap mb-4">
           <p className="!text-[var(--text-color-light)]">Role: designer, developer, artist, maker...whatev-er</p>
         </div>
+        <div className="flex flex-col lg:flex-row gap-12">
+          <p className="!mb-0 lg:!mb-10 flex-1">I've never been any good at keeping my work documented. I have an aversion to busywork and keeping my portfolio up to date was always more opportunity cost than I wanted to pay.</p>
+          <p className="flex-1">But I'm paying for it now with this disorganized train-wreck. I'm sure there are some projects missing, as well as some that are past their sell-by date, but these should be enough to get a sense of my aesthetic, anyway.</p>
+        </div>
+
       </div>
 
       {/* Archive Gallery with Filters */}

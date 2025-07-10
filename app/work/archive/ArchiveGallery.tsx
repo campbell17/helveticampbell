@@ -51,12 +51,13 @@ export default function ArchiveGallery({ images }: ArchiveGalleryProps) {
       <div className="px-4 sm:px-6 pb-10 md:px-20">
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="flex-1">
-            <div className="flex flex-wrap gap-4 mb-6">
+            <div className="text-base flex flex-wrap gap-4 mb-6">
+              <span className="!text-[var(--theme)]">Filter:</span> 
               {filters.map(filter => (
                 <button
                   key={filter.id}
                   onClick={() => toggleFilter(filter.id)}
-                  className={`text-sm inline cursor-pointer relative transition-colors duration-150 group ${
+                  className={`text-base inline cursor-pointer relative transition-colors duration-150 group ${
                     selectedFilters.includes(filter.id)
                       ? 'text-[var(--color-link-hover)]'
                       : 'text-[var(--color-link)] hover:text-[var(--color-link-hover)]'
@@ -75,7 +76,7 @@ export default function ArchiveGallery({ images }: ArchiveGalleryProps) {
               {selectedFilters.length > 0 && (
                 <button
                   onClick={clearSelection}
-                  className="text-sm inline cursor-pointer relative text-red-600 hover:text-red-800 transition-colors duration-150 group"
+                  className="inline cursor-pointer relative !text-[var(--text-color-light)] hover:!text-[var(--text-color)] transition-colors duration-150 group"
                 >
                   Clear Selection
                   <span className="absolute w-full h-0.5 bottom-[-2px] left-0 bg-current scale-x-0 group-hover:scale-x-100 transition-transform duration-150 ease-out origin-left" />
