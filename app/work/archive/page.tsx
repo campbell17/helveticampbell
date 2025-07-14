@@ -13,7 +13,7 @@ interface ImageData {
 }
 
 export const metadata: Metadata = {
-  title: 'Branding | Logo Design & Identity | Tim Campbell',
+  title: 'Archive | Tim Campbell',
   description: 'Various logo and identity work.',
 };
 
