@@ -93,7 +93,7 @@ export default function HomePage() {
               </li>
               <li className="rounded-md border bg-[var(--theme)] hover:backdrop-blur-xs hover:bg-[var(--pane-bg-color)] border-[var(--color-border)] transition-all">
                 <Link href="/who#what-it-s-like-to-work-with-me" className="w-full p-6 py-4 flex items-center !text-white hover:!text-black  transition-colors">
-                  Read what people say about me
+                  Hear what people say about me
                 </Link>
               </li>
             </ul>
