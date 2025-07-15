@@ -4,15 +4,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLoading } from '../contexts/LoadingContext'
-import { useState } from 'react'
-import ContactModal from './ContactModal'
+import { useContactModal } from '../contexts/ContactModalContext'
 import Image from 'next/image'
 import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
 
 export default function Footer() {
   const pathname = usePathname()
   const { initiateLoading } = useLoading()
-  const [contactModalOpen, setContactModalOpen] = useState(false)
+  const { openModal } = useContactModal()
   
   const handleLinkClick = (href: string) => {
     if (href !== pathname) {
@@ -20,9 +19,9 @@ export default function Footer() {
     }
   }
 
-  const openContactModal = (e: React.MouseEvent) => {
+  const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    setContactModalOpen(true)
+    openModal()
   }
   
   return (
@@ -75,7 +74,7 @@ export default function Footer() {
                 <li className="leading-tight mb-1">
                   <Link 
                     href="#contact"
-                    onClick={openContactModal}
+                    onClick={handleContactClick}
                     className="text-sm inline"
                   >
                     Contact
@@ -143,9 +142,6 @@ export default function Footer() {
               
             </div>
           </div>
-
-        {/* Contact Modal */}
-        <ContactModal isOpen={contactModalOpen} onClose={() => setContactModalOpen(false)} />
       
         </motion.footer>
     </AnimatePresence>

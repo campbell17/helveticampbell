@@ -83,6 +83,21 @@ export default function HomePage() {
           <div className="subheading !mb-0">
             Let's make something better together.
           </div>
+          <div className="flex flex-col md:flex-row gap-6 mb-24">
+            <ul className="w-full md:w-fit flex flex-col gap-2 md:flex-row mt-12 !mb-0 text-base">
+              {/* Resume, GitHub, LinkedIn */}
+              <li className="rounded-md border pane no-hover border-[var(--color-border)]">
+                <Link href="/work" className="w-full p-6 py-4 flex items-center transition-colors">
+                  See my work
+                </Link>
+              </li>
+              <li className="rounded-md border bg-[var(--theme)] hover:backdrop-blur-xs hover:bg-[var(--pane-bg-color)] border-[var(--color-border)] transition-all">
+                <Link href="/who#what-it-s-like-to-work-with-me" className="w-full p-6 py-4 flex items-center !text-white hover:!text-black  transition-colors">
+                  Read what people say about me
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* <H2 className="mt-48">Work</H2>

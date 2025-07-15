@@ -238,7 +238,7 @@ export default function WhoPage() {
         </ul>
 
         <div className="flex flex-col mt-24">
-          <H2>What It's Like to Work With Me</H2>
+          <H2 anchor>What It's Like to Work With Me</H2>
           <div className="subheading !mb-0">
             A few endorsements from teammates past and present.
           </div>

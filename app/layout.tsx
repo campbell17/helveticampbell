@@ -7,11 +7,13 @@ import BackToTop from './components/BackToTop'
 import { cn } from './lib/utils'
 import { fontVariables } from './lib/fonts'
 import { LoadingProvider } from './contexts/LoadingContext'
+import { ContactModalProvider } from './contexts/ContactModalContext'
 import { NavigationEvents } from './components/NavigationEvents'
 import { Suspense } from 'react'
 import Footer from './components/Footer'
 import TopNav from './components/TopNav'
 import DotGridBackground from './components/DotGridBackground'
+import GlobalContactModal from './components/GlobalContactModal'
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -132,28 +134,31 @@ export default function RootLayout({
           }}
         >
           <LoadingProvider>
-            <Suspense fallback={null}>
-              <NavigationEvents />
-            </Suspense>
+            <ContactModalProvider>
+              <Suspense fallback={null}>
+                <NavigationEvents />
+              </Suspense>
 
-            <div className="relative min-h-screen grid grid-rows-[min-content_1fr_min-content]">
-              <DotGridBackground />
-              <TopNav />
+              <div className="relative min-h-screen grid grid-rows-[min-content_1fr_min-content]">
+                <DotGridBackground />
+                <TopNav />
 
-              <main className="mx-auto overflow-visible content-center">
-                <div className="grid grid-cols-12 gap-4 overflow-visible">
-                  <div className="grid-wide-content overflow-visible">
-                    {children}
-                    <Analytics />
-                    <SpeedInsights />
+                <main className="mx-auto overflow-visible content-center">
+                  <div className="grid grid-cols-12 gap-4 overflow-visible">
+                    <div className="grid-wide-content overflow-visible">
+                      {children}
+                      <Analytics />
+                      <SpeedInsights />
+                    </div>
                   </div>
-                </div>
-              </main>
-              
-              <Footer />
-            </div>
+                </main>
+                
+                <Footer />
+              </div>
 
-            <BackToTop />
+              <BackToTop />
+              <GlobalContactModal />
+            </ContactModalProvider>
           </LoadingProvider>
         </ThemeProvider>
       </body>
